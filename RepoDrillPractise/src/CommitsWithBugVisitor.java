@@ -9,6 +9,7 @@ public class CommitsWithBugVisitor implements CommitVisitor {
 
 	@Override
 	public void process(SCMRepository repo, Commit commit, PersistenceMechanism writer) {
+		// looking for the term "fix" in the commit msg
 		boolean hasFix = commit.getMsg().contains("fix");
 		if (hasFix)
 			{
