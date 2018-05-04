@@ -1,10 +1,18 @@
                Commit ID:               ,            Commit Message:             
-1e7bdb8e03fc5ee9f31b4047a52f499187739892,Delete assignment description from repo
-
-In case of any fixes etc., better to keep one place on eClass as the official assignment description
-b57c96fbd45e3a776b5ba41b046b0ba03fe16c02,this code is almost done, but still buggy
-5d5dd1ac0d5934f917a67114331e354c287245f2,     cleaned up code and fixed bugs     
-d986edaaa33ea03d6cc0e2da8ad2dba6585f1e00,            debugging update            
-4220e855002d18c075b8667472d7bd2f5d92659f,             debugged draft             
-e147db455f9b2c380fb7dddb77ee3dda41d1abe4,                 fixed                  
-ffaf8c4e0d9eb940a5bac7eb0c3c70d1f09753af,             updated error              
+6e41c2ce99b27c32571d1deb55d8476d6ce63e6e,          The fixed hello file          
+130cabc397893d6083065f305e6e8e447a759297,             Test fix mege              
+108bc1ffbfed48cd3cffd819291ce833870b7dc7,          fixed missing brace           
+bccc6485aae471613927f27e35e40a16ab1b0325,          fixed missing brace           
+a9696f9da854f12541dbbf0c2dd98129d053c00f,          fixed missing brace           
+443f3a0cf78b10afbb6f4bf9a6c8071cd1503e16,          fixed missing brace           
+71b1c3f799cae6ef8d8cbd3d1bdcefa2a50807b1,          fixed missing brace           
+c61c72b511aa5ecc4e8013a79e01e3c574e49794,              error fixed               
+37e2fa78375cb5459edd6f922df0a34dab45266d,         fixed whitespace error         
+f1ce3972e228cc7be4d81f79ada1a09b33d197f0,               fixed typo               
+7a1ed3e7274ccb5f24bdd5ced874786ee017ace8,               fixed typo               
+1285b4655a72ecdc87ff6c24c919a5bc87979f3d,               fixed typo               
+197492cbcb93061913c05c53776fcbe917b2a961,     updaed to fix negative problem     
+3476b53f78a0594d7b4c32bf2d22cd66cf6c6f67,             fixed warning              
+038319599150a32eeba40001f0f129f29e9ee6b3,            fixed mem leaks             
+5a4b6067ded0efef14a4f1ae1b94c8cd467d489c,        fixed missing semicolon         
+2654aabf1acd0244de124dd834ef535c34b124d4,fixed segfault error from accidentally clearing in switch
