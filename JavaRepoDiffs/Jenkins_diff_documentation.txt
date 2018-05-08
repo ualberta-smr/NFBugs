@@ -1,415 +1,260 @@
 REPO: JENKINS https://github.com/jenkinsci/jenkins
 --------------------------------------------------
 
-In Repository: Jenkins 
-Commit ID:3f0b72e1c116f8cc0107a2afa8c481e4730e789a
-Message: moving dependency computation logic to a single place to improve efficiency.
-
-
-Relevant Changes: lines 0-130 in DependencyGraph.java
-Diff:
-diff --git a/core/src/main/java/hudson/maven/MavenModule.java b/core/src/main/ja
-index 1231784..06fb827 100644
---- a/core/src/main/java/hudson/maven/MavenModule.java
-+++ b/core/src/main/java/hudson/maven/MavenModule.java
-@@ -7,6 +7,8 @@ import hudson.model.Descriptor.FormException;
- import hudson.model.Item;
- import hudson.model.ItemGroup;
- import hudson.model.Job;
-+import hudson.model.DependencyGraph;
-+import hudson.model.Hudson;
- import hudson.util.DescribableList;
- import org.apache.maven.project.MavenProject;
- import org.kohsuke.stapler.StaplerRequest;
-@@ -94,9 +96,8 @@ public final class MavenModule extends AbstractProject<MavenMo
-         return true;
-     }
- 
--    public List<MavenModule> getDownstreamProjects() {
-+    protected void buildDependencyGraph(DependencyGraph graph) {
-         // TODO
--        return Collections.emptyList();
-     }
- 
-     /**
-@@ -116,5 +117,8 @@ public final class MavenModule extends AbstractProject<Maven
-         }
-:
-+++ b/core/src/main/java/hudson/maven/MavenModule.java
-@@ -7,6 +7,8 @@ import hudson.model.Descriptor.FormException;
- import hudson.model.Item;
- import hudson.model.ItemGroup;
- import hudson.model.Job;
-+import hudson.model.DependencyGraph;
-+import hudson.model.Hudson;
- import hudson.util.DescribableList;
- import org.apache.maven.project.MavenProject;
- import org.kohsuke.stapler.StaplerRequest;
-@@ -94,9 +96,8 @@ public final class MavenModule extends AbstractProject<MavenModule,MavenBuild> i
-         return true;
-     }
- 
--    public List<MavenModule> getDownstreamProjects() {
-+    protected void buildDependencyGraph(DependencyGraph graph) {
-         // TODO
--        return Collections.emptyList();
-     }
- 
-     /**
-@@ -116,5 +117,8 @@ public final class MavenModule extends AbstractProject<MavenModule,MavenBuild> i
-         }
- 
-         save();
-+
-+        // dependency setting might have been changed by the user, so rebuild.
-+        Hudson.getInstance().rebuildDependencyGraph();
-     }
- }
-diff --git a/core/src/main/java/hudson/model/AbstractProject.java b/core/src/main/java/hudson/model/AbstractProject.jav
-index ae5863b..2cabab0 100644
---- a/core/src/main/java/hudson/model/AbstractProject.java
-+++ b/core/src/main/java/hudson/model/AbstractProject.java
-@@ -19,7 +19,6 @@ import org.kohsuke.stapler.StaplerResponse;
- import javax.servlet.ServletException;
- import java.io.File;
- import java.io.IOException;
--import java.util.ArrayList;
- import java.util.Collection;
- import java.util.Comparator;
- import java.util.List;
-@@ -351,15 +350,12 @@ public abstract class AbstractProject<P extends AbstractProject<P,R>,R extends A
-      * Gets the other {@link AbstractProject}s that should be built
-      * when a build of this project is completed.
-      */
--    public abstract List<? extends AbstractProject> getDownstreamProjects();
-+    public final List<AbstractProject> getDownstreamProjects() {
-+        return Hudson.getInstance().getDependencyGraph().getDownstream(this);
-+    }
- 
--    public List<AbstractProject> getUpstreamProjects() {
--        List<AbstractProject> r = new ArrayList<AbstractProject>();
--        for( AbstractProject p : Hudson.getInstance().getAllItems(AbstractProject.class) ) {
--            if(p.getDownstreamProjects().contains(this))
--                r.add(p);
--        }
--        return r;
-+    public final List<AbstractProject> getUpstreamProjects() {
-+        return Hudson.getInstance().getDependencyGraph().getUpstream(this);
-     }
- 
-     /**
-@@ -400,6 +396,12 @@ public abstract class AbstractProject<P extends AbstractProject<P,R>,R extends A
-         }
-     }
- 
-+    /**
-+     * Builds the dependency graph.
-+     * @see DependencyGraph
-+     */
-+    protected abstract void buildDependencyGraph(DependencyGraph graph);
-+
- //
- //
- // actions
-diff --git a/core/src/main/java/hudson/model/DependencyGraph.java b/core/src/main/java/hudson/model/DependencyGraph.jav
-new file mode 100644
-index 0000000..5a04776
---- /dev/null
-+++ b/core/src/main/java/hudson/model/DependencyGraph.java
-@@ -0,0 +1,130 @@
-+package hudson.model;
-+
-+import java.util.ArrayList;
-+import java.util.Collection;
-+import java.util.Collections;
-+import java.util.Comparator;
-+import java.util.HashMap;
-+import java.util.List;
-+import java.util.Map;
-+import java.util.Map.Entry;
-+
-+/**
-+ * Maintains the build dependencies between {@link AbstractProject}s
-+ * for efficient dependency computation.
-+ *
-+ * <p>
-+ * The "master" data of dependencies are owned/persisted/maintained by
-+ * individual {@link AbstractProject}s, but because of that, it's relatively
-+ * slow  to compute backward edges.
-+ *
-+ * <p>
-+ * This class builds the complete bi-directional dependency graph
-+ * by collecting information from all {@link AbstractProject}s.
-+ *
-+ * <p>
-+ * Once built, {@link DependencyGraph} is immutable, and every time
-+ * there's a change (which is relatively rare), a new instance
-+ * will be created. This eliminates the need of synchronization.
-+ *
-+ * @author Kohsuke Kawaguchi
-+ */
-+public final class DependencyGraph {
-+
-+    private Map<AbstractProject, List<AbstractProject>> forward = new HashMap<AbstractProject, List<AbstractProject>>(
-+    private Map<AbstractProject, List<AbstractProject>> backward = new HashMap<AbstractProject, List<AbstractProject>>
-+
-+    private boolean built;
-+
-+    /**
-+     * Builds the dependency graph.
-+     */
-+    public DependencyGraph() {
-+        for( AbstractProject p : Hudson.getInstance().getAllItems(AbstractProject.class) )
-+            p.buildDependencyGraph(this);
-+
-+        forward = finalize(forward);
-+        backward = finalize(backward);
-+
-+        built = true;
-+    }
-+
-+    /**
-+     * Special constructor for creating an empty graph
-+     */
-+    private DependencyGraph(boolean dummy) {
-+        forward = backward = Collections.emptyMap();
-+        built = true;
-+    }
-+
-+    /**
-+     * Gets all the immediate downstream projects (IOW forward edges) of the given project.
-+     *
-+     * @return
-+     *      can be empty but never null.
-+     */
-+    public List<AbstractProject> getDownstream(AbstractProject p) {
-+        return get(forward,p);
-+    }
-+
-+    /**
-+     * Gets all the immediate upstream projects (IOW backward edges) of the given project.
-+     *
-+     * @return
-+     *      can be empty but never null.
-+     */
-+    public List<AbstractProject> getUpstream(AbstractProject p) {
-+        return get(backward,p);
-+    }
-+
-+    private List<AbstractProject> get(Map<AbstractProject, List<AbstractProject>> map, AbstractProject src) {
-+        List<AbstractProject> v = map.get(src);
-+        if(v!=null) return v;
-+        else        return Collections.emptyList();
-+    }
-+
-+    /**
-+     * Called during the dependency graph build phase to add a dependency edge.
-+     */
-+    public void addDependency(AbstractProject from, AbstractProject to) {
-+        if(built)
-+            throw new IllegalStateException();
-+        add(forward,from,to);
-+        add(backward,to,from);
-+    }
-+
-+    public void addDependency(AbstractProject from, Collection<? extends AbstractProject> to) {
-+        for (AbstractProject p : to)
-+            addDependency(from,p);
-+    }
-+
-+    public void addDependency(Collection<? extends AbstractProject> from, AbstractProject to) {
-+        for (AbstractProject p : from)
-+            addDependency(p,to);
-+    }
-+
-+    private void add(Map<AbstractProject, List<AbstractProject>> map, AbstractProject src, AbstractProject dst) {
-+        List<AbstractProject> set = map.get(src);
-+        if(set==null) {
-+            set = new ArrayList<AbstractProject>();
-+            map.put(src,set);
-+        }
-+        set.add(dst);
-+    }
-+
-+    private Map<AbstractProject, List<AbstractProject>> finalize(Map<AbstractProject, List<AbstractProject>> m) {
-+        for (Entry<AbstractProject, List<AbstractProject>> e : m.entrySet()) {
-+            Collections.sort( e.getValue(), NAME_COMPARATOR );
-+            e.setValue( Collections.unmodifiableList(e.getValue()) );
-+        }
-+        return Collections.unmodifiableMap(m);
-+    }
-+
-+    private static final Comparator<AbstractProject> NAME_COMPARATOR = new Comparator<AbstractProject>() {
-+        public int compare(AbstractProject lhs, AbstractProject rhs) {
-+            return lhs.getName().compareTo(rhs.getName());
-+        }
-+    };
-+
-+    public static final DependencyGraph EMPTY = new DependencyGraph(false);
-+}
-diff --git a/core/src/main/java/hudson/model/Hudson.java b/core/src/main/java/hudson/model/Hudson.java
-index 04ee147..d476e0a 100644
---- a/core/src/main/java/hudson/model/Hudson.java
-+++ b/core/src/main/java/hudson/model/Hudson.java
-@@ -122,6 +122,8 @@ public final class Hudson extends View implements ItemGroup<TopLevelItem>, Node
- 
-     private List<JDK> jdks = new ArrayList<JDK>();
- 
-+    private transient volatile DependencyGraph dependencyGraph = DependencyGraph.EMPTY;
-+
-     /**
-      * Set of installed cluster nodes.
-      *
-@@ -801,6 +803,7 @@ public final class Hudson extends View implements ItemGroup<TopLevelItem>, Node
-                 e.printStackTrace(); // TODO: logging
-             }
-         }
-+        rebuildDependencyGraph();
-     }
- 
-     /**
-@@ -1339,6 +1342,17 @@ public final class Hudson extends View implements ItemGroup<TopLevelItem>, Node
-         return r;
-     }
- 
-+    /**
-+     * Rebuilds the dependency map.
-+     */
-+    public void rebuildDependencyGraph() {
-+        dependencyGraph = new DependencyGraph();
-+    }
-+
-+    public DependencyGraph getDependencyGraph() {
-+        return dependencyGraph;
-+    }
-+
-     public static final class MasterComputer extends Computer {
-         private MasterComputer() {
-             super(Hudson.getInstance());
-diff --git a/core/src/main/java/hudson/model/Project.java b/core/src/main/java/hudson/model/Project.java
-diff --git a/core/src/main/java/hudson/maven/MavenModule.java b/core/src/main/java/hudson/maven/MavenModule.java
-index 1231784..06fb827 100644
---- a/core/src/main/java/hudson/maven/MavenModule.java
-+++ b/core/src/main/java/hudson/maven/MavenModule.java
-@@ -7,6 +7,8 @@ import hudson.model.Descriptor.FormException;
- import hudson.model.Item;
- import hudson.model.ItemGroup;
- import hudson.model.Job;
-+import hudson.model.DependencyGraph;
-+import hudson.model.Hudson;
- import hudson.util.DescribableList;
- import org.apache.maven.project.MavenProject;
- import org.kohsuke.stapler.StaplerRequest;
-@@ -94,9 +96,8 @@ public final class MavenModule extends AbstractProject<MavenModule,MavenBuild> i
-         return true;
-     }
- 
--    public List<MavenModule> getDownstreamProjects() {
-+    protected void buildDependencyGraph(DependencyGraph graph) {
-         // TODO
--        return Collections.emptyList();
-     }
- 
-     /**
-@@ -116,5 +117,8 @@ public final class MavenModule extends AbstractProject<MavenModule,MavenBuild> i
-         }
- 
-         save();
-+
-+        // dependency setting might have been changed by the user, so rebuild.
-+        Hudson.getInstance().rebuildDependencyGraph();
-
-
-
-
-Description: Programmers added a class to use for building and maintaining a di-graph instead of finding back edges whenever accessing a node. This reduces runtime and improves efficiency, maintainability.
-
-
-
-
-________________
-
-
-
-
-
-
-
-
-In Repository: Jenkins
-Commit ID: 9793a71e28163a2ad948b8e905acf4e6cb95dc01
-Message: improved error diagnostics.
-Relevant Changes: lines 1-8
-Diff:
-
-
-diff --git a/core/src/main/java/hudson/FilePath.java b/core/src/main/java/hudson
-index 6e80d92..6760077 100644
---- a/core/src/main/java/hudson/FilePath.java
-+++ b/core/src/main/java/hudson/FilePath.java
-@@ -1,5 +1,7 @@
- package hudson;
- 
-+import hudson.util.IOException2;
-+
- import java.io.File;
- import java.io.IOException;
- 
-@@ -112,8 +114,12 @@ public final class FilePath {
-      * Creates a temporary file.
-      */
-     public FilePath createTempFile(String prefix, String suffix) throws IOExcep
--        File f = File.createTempFile(prefix, suffix, getLocal());
--        return new FilePath(this,f.getName());
-+        try {
-+            File f = File.createTempFile(prefix, suffix, getLocal());
-+            return new FilePath(this,f.getName());
-+        } catch (IOException e) {
-+            throw new IOException2("Failed to create a temp file on "+getLocal(
-+        }
-     }
- 
-     /**
-
-
-
-
-Description: Programmers added exception handling for if a file could not be created; this improves the security, integrity, and performance of the program
-
-
-________________
-
-
-
+REPO: JENKINS https://github.com/jenkinsci/jenkins
+--------------------------------------------------
 
 In Repository: Jenkins
 Commit ID: fe21d5c1414da04ba92344665f339889be3cb3dd
 Message: fixed a horrible horrible memory leak.
 
-
-Relevant Changes: lines 38-44
+Relevant Changes: lines 
 Diff:
-diff --git a/remoting/src/main/java/hudson/remoting/Response.java b/remoting/src
-index 4f5dba3..4bb882f 100644
---- a/remoting/src/main/java/hudson/remoting/Response.java
-+++ b/remoting/src/main/java/hudson/remoting/Response.java
-@@ -38,6 +38,7 @@ final class Response<RSP,EXC extends Throwable> extends Comman
-         if(req==null)
-             return; // maybe aborted
-         req.onCompleted(this);
-+        channel.pendingCalls.remove(id);
-     }
- 
-
-
-
-
-
+40a41
+>         channel.pendingCalls.remove(id);
 
 Description: Programmers added a call to release some memory that had previously been abandoned
 
+________________
+
+In Repository: Jenkins 
+Commit ID:3f0b72e1c116f8cc0107a2afa8c481e4730e789a
+Message: moving dependency computation logic to a single place to improve efficiency.
+Relevant Changes: lines 0-130 in DependencyGraph.java
+Diff:
+> import hudson.model.DependencyGraph;
+> import hudson.model.Hudson;
+97c99
+<     public List<MavenModule> getDownstreamProjects() {
+---
+>     protected void buildDependencyGraph(DependencyGraph graph) {
+99d100
+<         return Collections.emptyList();
+118a120,122
+> 
+>         // dependency setting might have been changed by the user, so rebuild.
+>         Hudson.getInstance().rebuildDependencyGraph();
+22d21
+< import java.util.ArrayList;
+354c353,355
+<     public abstract List<? extends AbstractProject> getDownstreamProjects();
+---
+>     public final List<AbstractProject> getDownstreamProjects() {
+>         return Hudson.getInstance().getDependencyGraph().getDownstream(this);
+>     }
+356,362c357,358
+<     public List<AbstractProject> getUpstreamProjects() {
+<         List<AbstractProject> r = new ArrayList<AbstractProject>();
+<         for( AbstractProject p : Hudson.getInstance().getAllItems(AbstractProject.class) ) {
+<             if(p.getDownstreamProjects().contains(this))
+<                 r.add(p);
+<         }
+<         return r;
+---
+>     public final List<AbstractProject> getUpstreamProjects() {
+>         return Hudson.getInstance().getDependencyGraph().getUpstream(this);
+401a398,403
+> 
+>     /**
+>      * Builds the dependency graph.
+>      * @see DependencyGraph
+>      */
+>     protected abstract void buildDependencyGraph(DependencyGraph graph);
+0a1,130
+> package hudson.model;
+> 
+> import java.util.ArrayList;
+> import java.util.Collection;
+> import java.util.Collections;
+> import java.util.Comparator;
+> import java.util.HashMap;
+> import java.util.List;
+> import java.util.Map;
+> import java.util.Map.Entry;
+> 
+> /**
+>  * Maintains the build dependencies between {@link AbstractProject}s
+>  * for efficient dependency computation.
+>  *
+>  * <p>
+>  * The "master" data of dependencies are owned/persisted/maintained by
+>  * individual {@link AbstractProject}s, but because of that, it's relatively
+>  * slow  to compute backward edges.
+>  *
+>  * <p>
+>  * This class builds the complete bi-directional dependency graph
+>  * by collecting information from all {@link AbstractProject}s.
+>  *
+>  * <p>
+>  * Once built, {@link DependencyGraph} is immutable, and every time
+>  * there's a change (which is relatively rare), a new instance
+>  * will be created. This eliminates the need of synchronization.
+>  *
+>  * @author Kohsuke Kawaguchi
+>  */
+> public final class DependencyGraph {
+> 
+>     private Map<AbstractProject, List<AbstractProject>> forward = new HashMap<AbstractProject, List<AbstractProject>>();
+>     private Map<AbstractProject, List<AbstractProject>> backward = new HashMap<AbstractProject, List<AbstractProject>>();
+> 
+>     private boolean built;
+> 
+>     /**
+>      * Builds the dependency graph.
+>      */
+>     public DependencyGraph() {
+>         for( AbstractProject p : Hudson.getInstance().getAllItems(AbstractProject.class) )
+>             p.buildDependencyGraph(this);
+> 
+>         forward = finalize(forward);
+>         backward = finalize(backward);
+> 
+>         built = true;
+>     }
+> 
+>     /**
+>      * Special constructor for creating an empty graph
+>      */
+>     private DependencyGraph(boolean dummy) {
+>         forward = backward = Collections.emptyMap();
+>         built = true;
+>     }
+> 
+>     /**
+>      * Gets all the immediate downstream projects (IOW forward edges) of the given project.
+>      *
+>      * @return
+>      *      can be empty but never null.
+>      */
+>     public List<AbstractProject> getDownstream(AbstractProject p) {
+>         return get(forward,p);
+>     }
+> 
+>     /**
+>      * Gets all the immediate upstream projects (IOW backward edges) of the given project.
+>      *
+>      * @return
+>      *      can be empty but never null.
+>      */
+>     public List<AbstractProject> getUpstream(AbstractProject p) {
+>         return get(backward,p);
+>     }
+> 
+>     private List<AbstractProject> get(Map<AbstractProject, List<AbstractProject>> map, AbstractProject src) {
+>         List<AbstractProject> v = map.get(src);
+>         if(v!=null) return v;
+>         else        return Collections.emptyList();
+>     }
+> 
+>     /**
+>      * Called during the dependency graph build phase to add a dependency edge.
+>      */
+>     public void addDependency(AbstractProject from, AbstractProject to) {
+>         if(built)
+>             throw new IllegalStateException();
+>         add(forward,from,to);
+>         add(backward,to,from);
+>     }
+> 
+>     public void addDependency(AbstractProject from, Collection<? extends AbstractProject> to) {
+>         for (AbstractProject p : to)
+>             addDependency(from,p);
+>     }
+> 
+>     public void addDependency(Collection<? extends AbstractProject> from, AbstractProject to) {
+>         for (AbstractProject p : from)
+>             addDependency(p,to);
+>     }
+> 
+>     private void add(Map<AbstractProject, List<AbstractProject>> map, AbstractProject src, AbstractProject dst) {
+>         List<AbstractProject> set = map.get(src);
+>         if(set==null) {
+>             set = new ArrayList<AbstractProject>();
+>             map.put(src,set);
+>         }
+>         set.add(dst);
+>     }
+> 
+>     private Map<AbstractProject, List<AbstractProject>> finalize(Map<AbstractProject, List<AbstractProject>> m) {
+>         for (Entry<AbstractProject, List<AbstractProject>> e : m.entrySet()) {
+>             Collections.sort( e.getValue(), NAME_COMPARATOR );
+>             e.setValue( Collections.unmodifiableList(e.getValue()) );
+>         }
+>         return Collections.unmodifiableMap(m);
+>     }
+> 
+>     private static final Comparator<AbstractProject> NAME_COMPARATOR = new Comparator<AbstractProject>() {
+>         public int compare(AbstractProject lhs, AbstractProject rhs) {
+>             return lhs.getName().compareTo(rhs.getName());
+>         }
+>     };
+> 
+>     public static final DependencyGraph EMPTY = new DependencyGraph(false);
+> }
+124a125,126
+>     private transient volatile DependencyGraph dependencyGraph = DependencyGraph.EMPTY;
+> 
+803a806
+>         rebuildDependencyGraph();
+1339a1343,1353
+>     }
+> 
+>     /**
+>      * Rebuilds the dependency map.
+>      */
+>     public void rebuildDependencyGraph() {
+>         dependencyGraph = new DependencyGraph();
+>     }
+> 
+>     public DependencyGraph getDependencyGraph() {
+>         return dependencyGraph;
+134c134
+<     public List<AbstractProject> getDownstreamProjects() {
+---
+>     protected void buildDependencyGraph(DependencyGraph graph) {
+136,139c136,137
+<         if(buildTrigger==null)
+<             return new ArrayList<AbstractProject>();
+<         else
+<             return buildTrigger.getChildProjects();
+---
+>         if(buildTrigger!=null)
+>              graph.addDependency(this,buildTrigger.getChildProjects());
+215c213,216
+<         Hudson.getInstance().getQueue().scheduleMaintenance();  
+---
+>         Hudson.getInstance().getQueue().scheduleMaintenance();
+> 
+>         // dependency setting might have been changed by the user, so rebuild.
+>         Hudson.getInstance().rebuildDependencyGraph();
 
 
+Description: Programmers added a class to use for building and maintaining a di-graph instead of finding back edges whenever accessing a node. This reduces runtime and improves efficiency, maintainability.
+_______________
+
+
+In Repository: Jenkins
+Commit ID: 9793a71e28163a2ad948b8e905acf4e6cb95dc01
+Message: improved error diagnostics.
+Relevant Changes: lines 
+Diff:
+
+
+2a3,4
+> import hudson.util.IOException2;
+> 
+115,116c117,122
+<         File f = File.createTempFile(prefix, suffix, getLocal());
+<         return new FilePath(this,f.getName());
+---
+>         try {
+>             File f = File.createTempFile(prefix, suffix, getLocal());
+>             return new FilePath(this,f.getName());
+>         } catch (IOException e) {
+>             throw new IOException2("Failed to create a temp file on "+getLocal(),e);
+>         }
+
+Description: Programmers added exception handling for if a file could not be created; this improves the security, integrity, and performance of the program
 
 ________________
 
@@ -419,67 +264,28 @@ Commit ID: 66b9d9baaf6877be2bc14962aeb5c4bfb1c82ff5
 Message: fixed a possible security issue (SECURITY-3)
 
 
-Relevant Changes:lines 120-126
+Relevant Changes: lines 
 Diff:
-diff --git a/core/src/main/java/hudson/ProxyConfiguration.java b/core/src/main/j
-index 0752f80..362685c 100644
---- a/core/src/main/java/hudson/ProxyConfiguration.java
-+++ b/core/src/main/java/hudson/ProxyConfiguration.java
-@@ -120,6 +120,7 @@ public final class ProxyConfiguration implements Saveable {
-             Authenticator.setDefault(new Authenticator() {
-                 @Override
-                 public PasswordAuthentication getPasswordAuthentication() {
-+                    if (getRequestorType()!=RequestorType.PROXY)    return null
-                     ProxyConfiguration p = Hudson.getInstance().proxy;
-                     return new PasswordAuthentication(p.getUserName(),
-                             p.getPassword().toCharArray());
-
-
-
+122a123
+>                     if (getRequestorType()!=RequestorType.PROXY)    return null;
 
 Description: Programmers ensured a process would terminate if the proxy was invalid, which improves security of the application.
-
-
-
-
-________________
-
-
-
+_______________
 
 In Repository: Jenkins
 Commit ID: 1bdecb463bed8db59d556d403a5cee7d5d87d182
 Message: getItemByFullName shouldn't bypass security check
 
 
-Relevant Changes: lines 2095-2101
+Relevant Changes: line
 Diff:
-diff --git a/core/src/main/java/hudson/model/Hudson.java b/core/src/main/java/hu
-index 7700f54..b8f8d47 100644
---- a/core/src/main/java/hudson/model/Hudson.java
-+++ b/core/src/main/java/hudson/model/Hudson.java
-@@ -2095,6 +2095,9 @@ public final class Hudson extends Node implements ItemGrou
-             if(!(item instanceof ItemGroup))
-                 return null;    // this item can't have any children
- 
-+            if (!item.hasPermission(Item.READ))
-+                return null;
-+
-             parent = (ItemGroup) item;
-         }
-     }
-
-
+2097a2098,2100
+>             if (!item.hasPermission(Item.READ))
+>                 return null;
 
 
 Description: Programmers improved security by adding a permission check to a variable
-
-
-
-
-
-
-________________
+_______________
 
 
 In Repository: Jenkins
@@ -487,42 +293,23 @@ Commit ID: 1ff064187b485d39860fdc0eaa201fe90f9155fc
 Message: fixed a security hole
 
 
-Relevant Changes: lines 434-444
+Relevant Changes: line 
 Diff:
-diff --git a/core/src/main/java/hudson/PluginWrapper.java b/core/src/main/java/h
-index a8a1754..08f22b7 100644
---- a/core/src/main/java/hudson/PluginWrapper.java
-+++ b/core/src/main/java/hudson/PluginWrapper.java
-@@ -1,6 +1,7 @@
- package hudson;
- 
- import hudson.util.IOException2;
-+import hudson.model.Hudson;
- import org.apache.tools.ant.BuildException;
- import org.apache.tools.ant.Project;
- import org.apache.tools.ant.taskdefs.Expand;
-@@ -434,10 +435,14 @@ public final class PluginWrapper {
- //
- //
-     public void doMakeEnabled(StaplerRequest req, StaplerResponse rsp) throws I
-+        if(!Hudson.adminCheck(req,rsp))
-+            return;
-         enable();
-         rsp.setStatus(200);
-     }
-     public void doMakeDisabled(StaplerRequest req, StaplerResponse rsp) throws 
-+        if(!Hudson.adminCheck(req,rsp))
-+            return;
-         disable();
-         rsp.setStatus(200);
-     }
-
+3a4
+> import hudson.model.Hudson;
+436a438,439
+>         if(!Hudson.adminCheck(req,rsp))
+>             return;
+440a444,445
+>         if(!Hudson.adminCheck(req,rsp))
+>             return;
+5c5
+< <l:layout>
+---
+> <l:layout secured="true">
 
 Description:
 Programmers ensured a function terminated if admin requirements were not met. This was to improve security of the application. 
-
-
-
 
 ________________
 
@@ -530,67 +317,46 @@ ________________
 In Repository: Jenkins
 Commit ID: 9eb6cee10a9c982493b6a0256c4c32b9e95853ee
 Message: Fixed a security issue. The security should be on by default. (#926)
-Relevant Changes: lines 28-35
+Relevant Changes: line 31
 Diff:
-diff --git a/core/src/main/java/hudson/model/BuildAuthorizationToken.java b/core
-index 0463368..68731cb 100644
---- a/core/src/main/java/hudson/model/BuildAuthorizationToken.java
-+++ b/core/src/main/java/hudson/model/BuildAuthorizationToken.java
-@@ -28,7 +28,7 @@ public final class BuildAuthorizationToken {
-     }
- 
-     public static void startBuildIfAuthorized(BuildAuthorizationToken token, Bu
--        if(token==null || token.authorizedToStartBuild(req,rsp)) {
-+        if(!Hudson.getInstance().isUseSecurity() || (token!=null && token.autho
-             job.scheduleBuild();
-             rsp.forwardToPreviousPage(req);
-         }
-
+31c31
+<         if(token==null || token.authorizedToStartBuild(req,rsp)) {
+---
+>         if(!Hudson.getInstance().isUseSecurity() || (token!=null && token.authorizedToStartBuild(req,rsp))) {
 
 Description: The change improves security by ensuring a check for security is always done.
 
-
-
-
-________________
-
+_______________
 
 In Repository: Jenkins
 Commit ID: d0a6643b10aba58f31956bbb9bba4b824955e5e8
 Message: more testability improvements.
-Relevant Changes: lines 58 - 70
+Relevant Changes: line 61
 Diff:
-diff --git a/core/src/main/java/hudson/diagnosis/HudsonHomeDiskUsageMonitor.java
-index f1448d3..a984661 100644
---- a/core/src/main/java/hudson/diagnosis/HudsonHomeDiskUsageMonitor.java
-+++ b/core/src/main/java/hudson/diagnosis/HudsonHomeDiskUsageMonitor.java
-@@ -29,8 +29,9 @@ import hudson.model.AbstractModelObject;
- import hudson.Extension;
- import hudson.ExtensionPoint;
- import hudson.ExtensionList;
--import org.kohsuke.stapler.StaplerRequest;
--import org.kohsuke.stapler.StaplerResponse;
-+import org.kohsuke.stapler.HttpResponse;
-+import org.kohsuke.stapler.HttpRedirect;
-+import org.kohsuke.stapler.QueryParameter;
- 
- import java.io.IOException;
- import java.util.List;
-@@ -58,12 +59,12 @@ public final class HudsonHomeDiskUsageMonitor extends Admini
-     /**
-      * Depending on whether the user said "yes" or "no", send him to the right 
-      */
--    public void doAct(StaplerRequest req, StaplerResponse rsp) throws IOExcepti
--        if(req.hasParameter("no")) {
-+    public HttpResponse doAct(@QueryParameter boolean no) throws IOException {
-+        if(no) {
-             disable(true);
--            rsp.sendRedirect(req.getContextPath()+"/manage");
-+            return HttpRedirect.fromContextPath("/manage");
-         } else {
--            rsp.sendRedirect(".");
-+            return new HttpRedirect(".");
-         }
-     }
- 
+322c322
+<       <version>1.107</version>
+---
+>       <version>1.108</version>
+32,33c32,34
+< import org.kohsuke.stapler.StaplerRequest;
+< import org.kohsuke.stapler.StaplerResponse;
+---
+> import org.kohsuke.stapler.HttpResponse;
+> import org.kohsuke.stapler.HttpRedirect;
+> import org.kohsuke.stapler.QueryParameter;
+61,62c62,63
+<     public void doAct(StaplerRequest req, StaplerResponse rsp) throws IOException {
+<         if(req.hasParameter("no")) {
+---
+>     public HttpResponse doAct(@QueryParameter boolean no) throws IOException {
+>         if(no) {
+64c65
+<             rsp.sendRedirect(req.getContextPath()+"/manage");
+---
+>             return HttpRedirect.fromContextPath("/manage");
+66c67
+<             rsp.sendRedirect(".");
+---
+>             return new HttpRedirect(".");
+
 Description: Programmers added more exceptions to improve testing and error handling
