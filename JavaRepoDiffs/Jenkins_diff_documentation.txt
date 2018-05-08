@@ -1,9 +1,6 @@
 REPO: JENKINS https://github.com/jenkinsci/jenkins
 --------------------------------------------------
 
-REPO: JENKINS https://github.com/jenkinsci/jenkins
---------------------------------------------------
-
 In Repository: Jenkins
 Commit ID: fe21d5c1414da04ba92344665f339889be3cb3dd
 Message: fixed a horrible horrible memory leak.
