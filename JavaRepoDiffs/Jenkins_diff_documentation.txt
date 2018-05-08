@@ -5,7 +5,7 @@ In Repository: Jenkins
 Commit ID: fe21d5c1414da04ba92344665f339889be3cb3dd
 Message: fixed a horrible horrible memory leak.
 
-Relevant Changes: lines 
+Relevant Changes: line 40 
 Diff:
 40a41
 >         channel.pendingCalls.remove(id);
@@ -233,7 +233,7 @@ _______________
 In Repository: Jenkins
 Commit ID: 9793a71e28163a2ad948b8e905acf4e6cb95dc01
 Message: improved error diagnostics.
-Relevant Changes: lines 
+Relevant Changes: line 115
 Diff:
 
 
@@ -261,7 +261,7 @@ Commit ID: 66b9d9baaf6877be2bc14962aeb5c4bfb1c82ff5
 Message: fixed a possible security issue (SECURITY-3)
 
 
-Relevant Changes: lines 
+Relevant Changes: line 122
 Diff:
 122a123
 >                     if (getRequestorType()!=RequestorType.PROXY)    return null;
@@ -274,7 +274,7 @@ Commit ID: 1bdecb463bed8db59d556d403a5cee7d5d87d182
 Message: getItemByFullName shouldn't bypass security check
 
 
-Relevant Changes: line
+Relevant Changes: line 2097
 Diff:
 2097a2098,2100
 >             if (!item.hasPermission(Item.READ))
@@ -290,7 +290,7 @@ Commit ID: 1ff064187b485d39860fdc0eaa201fe90f9155fc
 Message: fixed a security hole
 
 
-Relevant Changes: line 
+Relevant Changes: line 436
 Diff:
 3a4
 > import hudson.model.Hudson;
