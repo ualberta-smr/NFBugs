@@ -1,0 +1,49 @@
+REPO: PLAID https://github.com/nickbutcher/plaid
+-----------------------------------------------------------
+In Repository: plaid
+Commit ID: 6fb89b38be0ec1f8da00b321c4af72d1d4147f92
+Message: Improved password mask anim efficiency.
+Relevant changes: line 286
+Diff:
+276c276
+<             // offset the mask center from the character center
+---
+>             // difference between mask & character center
+282c282
+<          * Progress through the morph:  0 = character, 1 = •.
+---
+>          * Progress through the morph:  0 = character, 1 = •
+286c286,287
+<             final int alpha = paint.getAlpha();
+---
+>             int alpha = paint.getAlpha();
+>             float x = charWidth * index;
+290d290
+<             canvas.translate(charWidth * index, 0);
+293c293
+<             canvas.scale(textScale, textScale, bounds.exactCenterX(), bounds.exactCenterY());
+---
+>             canvas.scale(textScale, textScale, x + bounds.exactCenterX(), bounds.exactCenterY());
+295c295
+<             canvas.drawText(password, index, index + 1, 0, 0, paint);
+---
+>             canvas.drawText(password, index, index + 1, x, 0, paint);
+300,302d299
+<             float dy = lerp(textOffsetY, 0f, progress);
+<             // move the mask: character center ↔ mask center
+<             canvas.translate(charWidth * index, -dy);
+304,305c301,302
+<             // scale the mask down from/up to the character size
+<             canvas.scale(maskScale, maskScale, bounds.exactCenterX(), bounds.exactCenterY() + dy);
+---
+>             // scale the mask: down from/up to the character width
+>             canvas.scale(maskScale, maskScale, x + bounds.exactCenterX(), bounds.exactCenterY());
+307c304,305
+<             canvas.drawText(PASSWORD_MASK, 0, 1, 0, 0, paint);
+---
+>             // vertically move the mask: character center ↔ mask center
+>             canvas.drawText(PASSWORD_MASK, 0, 1, x, -lerp(textOffsetY, 0f, progress), paint);
+
+
+Description: Programmers reduced number of method calls to improve efficiency 
+
