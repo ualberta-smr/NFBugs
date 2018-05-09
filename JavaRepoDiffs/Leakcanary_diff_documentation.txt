@@ -1,0 +1,110 @@
+REPO: LEAKCANARY https://github.com/square/leakcanary
+--------------------------------------------------------------------
+In Repository: leakcanary
+Commit ID: 0163dfaa6360f51f2e861b8ded20109e52e857d2
+Message: Merge pull request #444 from jrodbx/fix-oom Lower memory usage when parsing heap dumps on M
+Relevant changes: line 90
+Diff:
+19a20
+>   testCompile 'org.assertj:assertj-core:1.7.0'
+29a30,32
+> import com.squareup.haha.trove.THashMap;
+> import com.squareup.haha.trove.TObjectProcedure;
+> 
+78a82
+>       deduplicateGcRoots(snapshot);
+90a95,123
+>   }
+> 
+>   /**
+>    * Pruning duplicates reduces memory pressure from hprof bloat added in Marshmallow.
+>    */
+>   void deduplicateGcRoots(Snapshot snapshot) {
+>     // THashMap has a smaller memory footprint than HashMap.
+>     final THashMap<String, RootObj> uniqueRootMap = new THashMap<>();
+> 
+>     final List<RootObj> gcRoots = (ArrayList) snapshot.getGCRoots();
+>     for (RootObj root : gcRoots) {
+>       String key = generateRootKey(root);
+>       if (!uniqueRootMap.containsKey(key)) {
+>         uniqueRootMap.put(key, root);
+>       }
+>     }
+> 
+>     // Repopulate snapshot with unique GC roots.
+>     gcRoots.clear();
+>     uniqueRootMap.forEach(new TObjectProcedure<String>() {
+>       @Override
+>       public boolean execute(String key) {
+>         return gcRoots.add(uniqueRootMap.get(key));
+>       }
+>     });
+>   }
+> 
+>   private String generateRootKey(RootObj root) {
+>     return String.format("%s@0x%08x", root.getRootType().getName(), root.getId());
+0a1,61
+> package com.squareup.leakcanary;
+> 
+> import com.squareup.haha.perflib.RootObj;
+> import com.squareup.haha.perflib.Snapshot;
+> 
+> import org.junit.Before;
+> import org.junit.Test;
+> 
+> import java.util.ArrayList;
+> import java.util.Collection;
+> import java.util.Collections;
+> import java.util.List;
+> 
+> import static com.squareup.haha.perflib.RootType.NATIVE_STATIC;
+> import static com.squareup.haha.perflib.RootType.SYSTEM_CLASS;
+> import static java.util.Arrays.asList;
+> import static org.assertj.core.api.Assertions.assertThat;
+> 
+> public class HeapAnalyzerTest {
+>   private static final ExcludedRefs NO_EXCLUDED_REFS = null;
+>   private static final List<RootObj> DUP_ROOTS =
+>           asList(new RootObj(SYSTEM_CLASS, 6L),
+>                   new RootObj(SYSTEM_CLASS, 5L),
+>                   new RootObj(SYSTEM_CLASS, 3L),
+>                   new RootObj(SYSTEM_CLASS, 5L),
+>                   new RootObj(NATIVE_STATIC, 3L));
+> 
+>   private HeapAnalyzer heapAnalyzer;
+> 
+>   @Before
+>   public void setUp() {
+>     heapAnalyzer = new HeapAnalyzer(NO_EXCLUDED_REFS);
+>   }
+> 
+>   @Test
+>   public void ensureUniqueRoots() {
+>     Snapshot snapshot = createSnapshot(DUP_ROOTS);
+> 
+>     heapAnalyzer.deduplicateGcRoots(snapshot);
+> 
+>     Collection<RootObj> uniqueRoots = snapshot.getGCRoots();
+>     assertThat(uniqueRoots).hasSize(4);
+> 
+>     List<Long> rootIds = new ArrayList<>();
+>     for (RootObj root : uniqueRoots) {
+>       rootIds.add(root.getId());
+>     }
+>     Collections.sort(rootIds);
+> 
+>     // 3 appears twice because even though two RootObjs have the same id, they're different types.
+>     assertThat(rootIds).containsExactly(3L, 3L, 5L, 6L);
+>   }
+> 
+>   private Snapshot createSnapshot(List<RootObj> gcRoots) {
+>     Snapshot snapshot = new Snapshot(null);
+>     for (RootObj root : gcRoots) {
+>       snapshot.addRoot(root);
+>     }
+>     return snapshot;
+>   }
+> }
+
+Description: Programmers reduced memory usage by removing duplicates from a map
+
