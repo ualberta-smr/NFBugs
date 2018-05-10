@@ -605,4 +605,35 @@ Description: Preventing data corruption by remembering to close a file at termin
 
 ________________
 
+In Repository: Jenkins
+Commit ID: 137c90cc612ddb3a51d050be298dcd2e0ae86a4c
+Message: [FIXED JENKINS-24080] Improved security of CommandDuringBuild and its current implementations
+Relevant changes: line 34,69
+Diff:
+66a67,69
+>   <li class="bug">
+>     Improving security of <code>set-build-parameter</code> and <code>set-build-result</code> CLI commands.
+>     (<a href="https://issues.jenkins-ci.org/browse/JENKINS-24080">issue 24080</a>)
+69a70,72
+>                 if (!r.isBuilding()) {
+>                     throw new CmdLineException(r + " is not currently being built");
+>                 }
+34a35
+>         r.checkPermission(Run.UPDATE);
+51c51
+<         r.getParent().checkPermission(Item.BUILD);
+---
+>         r.checkPermission(Run.UPDATE);
+6a7
+> import hudson.model.Result
+44a46,51
+>         assert r.equals(["a":"x", "b":"y"]);
+> 
+>         p.buildersList.add(new Shell("BUILD_NUMBER=1 java -jar cli.jar set-build-parameter a b"));
+>         def b2 = j.assertBuildStatus(Result.FAILURE, p.scheduleBuild2(0).get());
+>         r = [:];
+>         b.getAction(ParametersAction.class).parameters.each { v -> r[v.name]=v.value }
+
+
+Description: Programmers ensured necessary permissions were granted before proceeding
 
