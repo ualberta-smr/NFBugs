@@ -1,0 +1,811 @@
+REPO: Terasology https://github.com/MovingBlocks/Terasology
+---------------------------------------------------------------------
+
+In Repository: Terasology
+Commit ID: 773cce0f2954f14427214b589aca8a392161c9ce
+Message: * Vastly improved memory overhead (32x32 chunks can now be displayed with a JVM heap size < 512 MB) whereas 16x16 where problematic with 1024 MB before(!) But make sure your computer/GPU can handle values > 16 chunks...
+ * Removed foreach loops
+ * The viewing distance in chunks can now be changed dynamically while running the game (set v_dist_z/v_dist_x)
+ * The intensity of the fog now depends on the chosen viewing distance
+ * Fixed small bugs
+ * Invisible chunks are periodically removed from the normal updating queue
+ * Added a pool for vectors
+ * Some refactoring
+
+Relevant changes: line 844
+Diff:
+35c35,36
+<     ${libs.LWJGL.classpath}
+---
+>     ${libs.LWJGL.classpath}:\
+>     ${libs.Javolution.classpath}
+78c79
+< run.jvmargs=-Xms1024m -Xmx1024m  -Djava.library.path=/Users/bg/Bibliotheken/lwjgl-2.7.1/native/macosx
+---
+> run.jvmargs=-Xms128m -Xmx512m  -Djava.library.path=/Users/bg/Bibliotheken/lwjgl-2.7.1/native/macosx
+17a18
+> import com.github.begla.blockmania.utilities.VectorPool;
+73c74
+<         return new Vector3f((float) x - _origin.x, (float) y - _origin.y, (float) z - _origin.z).lengthSquared();
+---
+>         return VectorPool.getVector((float) x - _origin.x, (float) y - _origin.y, (float) z - _origin.z).lengthSquared();
+64,72c64,72
+<     private final FastList<Float> _quadsTranslucent = new FastList<Float>();
+<     private final FastList<Float> _texTranslucent = new FastList<Float>();
+<     private final FastList<Float> _colorTranslucent = new FastList<Float>();
+<     private final FastList<Float> _quadsOpaque = new FastList<Float>();
+<     private final FastList<Float> _texOpaque = new FastList<Float>();
+<     private final FastList<Float> _colorOpaque = new FastList<Float>();
+<     private final FastList<Float> _quadsBillboard = new FastList<Float>();
+<     private final FastList<Float> _texBillboard = new FastList<Float>();
+<     private final FastList<Float> _colorBillboard = new FastList<Float>();
+---
+>     private FastList<Float> _quadsTranslucent;
+>     private FastList<Float> _texTranslucent;
+>     private FastList<Float> _colorTranslucent;
+>     private FastList<Float> _quadsOpaque;
+>     private FastList<Float> _texOpaque;
+>     private FastList<Float> _colorOpaque;
+>     private FastList<Float> _quadsBillboard;
+>     private FastList<Float> _texBillboard;
+>     private FastList<Float> _colorBillboard;
+239,240c239,240
+<             for (ChunkGenerator g : _generators) {
+<                 g.generate(this);
+---
+>             for (FastList.Node<ChunkGenerator> n = _generators.head(), end = _generators.tail(); (n = n.getNext()) != end;) {
+>                 n.getValue().generate(this);
+291a292,301
+>         _quadsTranslucent = new FastList<Float>();
+>         _texTranslucent = new FastList<Float>();
+>         _colorTranslucent = new FastList<Float>();
+>         _quadsOpaque = new FastList<Float>();
+>         _texOpaque = new FastList<Float>();
+>         _colorOpaque = new FastList<Float>();
+>         _quadsBillboard = new FastList<Float>();
+>         _texBillboard = new FastList<Float>();
+>         _colorBillboard = new FastList<Float>();
+> 
+820,823c830,832
+<         if (_colorOpaque.isEmpty() && _texOpaque.isEmpty() && _quadsOpaque.isEmpty() && _colorTranslucent.isEmpty() && _texTranslucent.isEmpty() && _quadsTranslucent.isEmpty()) {
+<             if (_colorBillboard.isEmpty() && _texBillboard.isEmpty() && _quadsBillboard.isEmpty()) {
+<                 return;
+<             }
+---
+>         // Check on of the vertex arrays
+>         if (_colorOpaque == null) {
+>             return;
+844,845c853,854
+<         for (Float f : _quadsOpaque) {
+<             vb.put(f);
+---
+>         for (FastList.Node<Float> n = _quadsOpaque.head(), end = _quadsOpaque.tail(); (n = n.getNext()) != end;) {
+>             vb.put(n.getValue());
+850,851c859,860
+<         for (Float f : _texOpaque) {
+<             tb.put(f);
+---
+>         for (FastList.Node<Float> n = _texOpaque.head(), end = _texOpaque.tail(); (n = n.getNext()) != end;) {
+>             tb.put(n.getValue());
+856,857c865,866
+<         for (Float f : _colorOpaque) {
+<             cb.put(f);
+---
+>         for (FastList.Node<Float> n = _colorOpaque.head(), end = _colorOpaque.tail(); (n = n.getNext()) != end;) {
+>             cb.put(n.getValue());
+877,880d885
+<         _quadsOpaque.clear();
+<         _texOpaque.clear();
+<         _colorOpaque.clear();
+< 
+883,884c888,889
+<         for (Float f : _quadsTranslucent) {
+<             vb.put(f);
+---
+>         for (FastList.Node<Float> n = _quadsTranslucent.head(), end = _quadsTranslucent.tail(); (n = n.getNext()) != end;) {
+>             vb.put(n.getValue());
+889,890c894,895
+<         for (Float f : _texTranslucent) {
+<             tb.put(f);
+---
+>         for (FastList.Node<Float> n = _texTranslucent.head(), end = _texTranslucent.tail(); (n = n.getNext()) != end;) {
+>             tb.put(n.getValue());
+895,896c900,901
+<         for (Float f : _colorTranslucent) {
+<             cb.put(f);
+---
+>         for (FastList.Node<Float> n = _colorTranslucent.head(), end = _colorTranslucent.tail(); (n = n.getNext()) != end;) {
+>             cb.put(n.getValue());
+916,919d920
+<         _quadsTranslucent.clear();
+<         _texTranslucent.clear();
+<         _colorTranslucent.clear();
+< 
+922,923c923,924
+<         for (Float f : _quadsBillboard) {
+<             vb.put(f);
+---
+>         for (FastList.Node<Float> n = _quadsBillboard.head(), end = _quadsBillboard.tail(); (n = n.getNext()) != end;) {
+>             vb.put(n.getValue());
+928,929c929,930
+<         for (Float f : _texBillboard) {
+<             tb.put(f);
+---
+>         for (FastList.Node<Float> n = _texBillboard.head(), end = _texBillboard.tail(); (n = n.getNext()) != end;) {
+>             tb.put(n.getValue());
+934,935c935,936
+<         for (Float f : _colorBillboard) {
+<             cb.put(f);
+---
+>         for (FastList.Node<Float> n = _colorBillboard.head(), end = _colorBillboard.tail(); (n = n.getNext()) != end;) {
+>             cb.put(n.getValue());
+955,957c956,964
+<         _quadsBillboard.clear();
+<         _texBillboard.clear();
+<         _colorBillboard.clear();
+---
+>         _quadsTranslucent = null;
+>         _texTranslucent = null;
+>         _colorTranslucent = null;
+>         _quadsOpaque = null;
+>         _texOpaque = null;
+>         _colorOpaque = null;
+>         _quadsBillboard = null;
+>         _texBillboard = null;
+>         _colorBillboard = null;
+18a19
+> import com.github.begla.blockmania.utilities.VectorPool;
+37,43d37
+<      * The viewing distance in chunks.
+<      *
+<      * 16x1x16 seems to be a good value. With a chunk size of 16x128x16 there are 8.388.608 blocks
+<      * present at the same time.
+<      */
+<     public static final Vector2f VIEWING_DISTANCE_IN_CHUNKS = new Vector2f(16.0f, 16.0f);
+<     /**
+46c40
+<     public static final Vector3f CHUNK_DIMENSIONS = new Vector3f(16, 128, 16);
+---
+>     public static final Vector3f CHUNK_DIMENSIONS = VectorPool.getVector(16, 128, 16);
+163a158,159
+>         _settingsNumeric.put("V_DIST_X", 16f);
+>         _settingsNumeric.put("V_DIST_Z", 16f);
+19a20
+> import com.github.begla.blockmania.utilities.VectorPool;
+36d36
+< import org.lwjgl.util.vector.Vector3f;
+57a58
+>     private float _memoryUsage;
+158,160d158
+<         float viewingDistance = (Configuration.VIEWING_DISTANCE_IN_CHUNKS.x * Configuration.CHUNK_DIMENSIONS.x) / 2f;
+<         glFogf(GL_FOG_START, viewingDistance / 16f);
+<         glFogf(GL_FOG_END, viewingDistance);
+189a188,193
+>         // Update by the viewing distance
+>         float maxDist = Math.max(Configuration.getSettingNumeric("V_DIST_X") * Configuration.CHUNK_DIMENSIONS.x, Configuration.getSettingNumeric("V_DIST_Z") * Configuration.CHUNK_DIMENSIONS.z);
+>         float viewingDistance = maxDist / 2f;
+>         glFogf(GL_FOG_START, 16f);
+>         glFogf(GL_FOG_END, viewingDistance);
+> 
+242a247,249
+>                 // Calculate the current memory usage in MB
+>                 _memoryUsage = (Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / 1048576;
+> 
+293c300
+<             _font1.drawString(4, 4, String.format("%s (fps: %.2f, free heap space: %d MB)", Configuration.GAME_TITLE, _meanFps, Runtime.getRuntime().freeMemory() / 1048576), Color.white);
+---
+>             _font1.drawString(4, 4, String.format("%s (fps: %.2f, mem usage: %.2f MB)", Configuration.GAME_TITLE, _meanFps, _memoryUsage, Color.white));
+361c368
+<                         if (c >= 'a' && c < 'z' || c >= '0' && c < '9' + 1 || c >= 'A' && c < 'A' + 1 || c == ' ' || c == '_' || c == '.' || c == '!') {
+---
+>                         if (c >= 'a' && c < 'z' + 1 || c >= '0' && c < '9' + 1 || c >= 'A' && c < 'A' + 1 || c == ' ' || c == '_' || c == '.' || c == '!') {
+433c440
+<                 _player.setPosition(new Vector3f(x, y, z));
+---
+>                 _player.setPosition(VectorPool.getVector(x, y, z));
+18a19
+> import com.github.begla.blockmania.utilities.VectorPool;
+36a38
+>     private static final Vector3f _playerOrigin = VectorPool.getVector(128, 100, 128);
+42,43c44,45
+<     private final Vector3f _movement = new Vector3f(0, 0, 0);
+<     private final Vector3f _acc = new Vector3f(0, 0, 0);
+---
+>     private final Vector3f _movement = VectorPool.getVector(0, 0, 0);
+>     private final Vector3f _acc = VectorPool.getVector(0, 0, 0);
+47c49
+<     private Vector3f _viewingDirection = new Vector3f();
+---
+>     private Vector3f _viewingDirection = VectorPool.getVector();
+213c215
+<                         FastList<RayFaceIntersection> iss = _parent.rayBlockIntersection((int) _position.x + x, (int) _position.y + y, (int) _position.z + z, new Vector3f(_position.x, _position.y + getAABB().getDimensions().y / 1.2f, _position.z), _viewingDirection);
+---
+>                         FastList<RayFaceIntersection> iss = _parent.rayBlockIntersection((int) _position.x + x, (int) _position.y + y, (int) _position.z + z, VectorPool.getVector(_position.x, _position.y + getAABB().getDimensions().y / 1.2f, _position.z), _viewingDirection);
+385c387
+<             byte blockType1 = _parent.getBlockAtPosition(new Vector3f(bp.x, bp.y, bp.z));
+---
+>             byte blockType1 = _parent.getBlockAtPosition(VectorPool.getVector(bp.x, bp.y, bp.z));
+440c442
+<             byte blockType1 = _parent.getBlockAtPosition(new Vector3f(bp.x, bp.y, bp.z));
+---
+>             byte blockType1 = _parent.getBlockAtPosition(VectorPool.getVector(bp.x, bp.y, bp.z));
+447c449
+<                     Vector3f slideVector = Vector3f.cross(normal, new Vector3f(0, 1, 0), null);
+---
+>                     Vector3f slideVector = Vector3f.cross(normal, VectorPool.getVector(0, 1, 0), null);
+449c451
+<                     Vector3f direction = new Vector3f(_position.x, 0f, _position.z);
+---
+>                     Vector3f direction = VectorPool.getVector(_position.x, 0f, _position.z);
+455a458,461
+>                     
+>                     VectorPool.putVector(normal);
+>                     VectorPool.putVector(slideVector);
+>                     VectorPool.putVector(direction);
+471c477,478
+<         Vector3f oldPosition = new Vector3f(_position);
+---
+>         Vector3f oldPosition = VectorPool.getVector();
+>         oldPosition.set(_position);
+547a555,556
+>         
+>         VectorPool.putVector(oldPosition);
+554c563
+<         _position = Player.calcPlayerOrigin();
+---
+>         _position = Player.getPlayerOrigin();
+616c625
+<         return new AABB(_position, new Vector3f(.3f, 0.7f, .3f));
+---
+>         return new AABB(_position, VectorPool.getVector(.3f, 0.7f, .3f));
+626,627c635,636
+<     public static Vector3f calcPlayerOrigin() {
+<         return new Vector3f(128, 100, 128);
+---
+>     public static Vector3f getPlayerOrigin() {
+>         return _playerOrigin;
+18a19
+> import com.github.begla.blockmania.utilities.VectorPool;
+146c147
+<         if (norm.equals(new Vector3f(0, 1, 0))) {
+---
+>         if (norm.equals(VectorPool.getVector(0, 1, 0))) {
+148c149
+<         } else if (norm.equals(new Vector3f(0, -1, 0))) {
+---
+>         } else if (norm.equals(VectorPool.getVector(0, -1, 0))) {
+150c151
+<         } else if (norm.equals(new Vector3f(0, 0, 1))) {
+---
+>         } else if (norm.equals(VectorPool.getVector(0, 0, 1))) {
+152c153
+<         } else if (norm.equals(new Vector3f(0, 0, -1))) {
+---
+>         } else if (norm.equals(VectorPool.getVector(0, 0, -1))) {
+154c155
+<         } else if (norm.equals(new Vector3f(1, 0, 0))) {
+---
+>         } else if (norm.equals(VectorPool.getVector(1, 0, 0))) {
+156c157
+<         } else if (norm.equals(new Vector3f(-1, 0, 0))) {
+---
+>         } else if (norm.equals(VectorPool.getVector(-1, 0, 0))) {
+158a160,161
+>         
+>         VectorPool.putVector(norm);
+170a174,176
+>         
+>         VectorPool.putVector(a);
+>         VectorPool.putVector(b);
+18a19
+> import com.github.begla.blockmania.utilities.VectorPool;
+31c32
+<     protected Vector3f _position = new Vector3f();
+---
+>     protected Vector3f _position = VectorPool.getVector();
+26a27
+> import com.github.begla.blockmania.utilities.VectorPool;   
+65,66c66,67
+<     private final FastList<Chunk> _chunkUpdateQueueDL = new FastList<Chunk>();
+<     private final FastList<Chunk> _chunkUpdateNormal = new FastList<Chunk>();
+---
+>     private final FastList<Chunk> _chunkUpdateQueueDL = new FastList<Chunk>(64);
+>     private final FastList<Chunk> _chunkUpdateNormal = new FastList<Chunk>(1024);
+80c81
+<     private FastList<Chunk> _visibleChunks = new FastList<Chunk>();
+---
+>     private FastList<Chunk> _visibleChunks = new FastList<Chunk>(256);
+137,139c138,141
+< 
+<                         for (int i = 0; i < _chunkUpdateNormal.size(); i++) {
+<                             Chunk c = _chunkUpdateNormal.get(i);
+---
+>                         int i = 0;
+>                         
+>                         for (FastList.Node<Chunk> n = _chunkUpdateNormal.head(), end = _chunkUpdateNormal.tail(); (n = n.getNext()) != end;) {
+>                             Chunk c = n.getValue();                          
+145a148
+>                             i++;                
+163a168,183
+>                         
+>                         FastList<Chunk> chunksToDelete = new FastList<Chunk>();
+> 
+>                         // Periodically check for invisible chunks
+>                         for (FastList.Node<Chunk> n = _chunkUpdateNormal.head(), end = _chunkUpdateNormal.tail(); (n = n.getNext()) != end;) {
+>                             Chunk c = n.getValue();
+>                             if (!_visibleChunks.contains(c)) {
+>                                 chunksToDelete.add(c);
+>                             }
+>                         }
+>                         
+>                         for (FastList.Node<Chunk> n = chunksToDelete.head(), end = chunksToDelete.tail(); (n = n.getNext()) != end;) {
+>                             _chunkUpdateNormal.remove(n.getValue());
+>                         }
+>                         
+>                         chunksToDelete.clear();      
+212,215c232,234
+<             for (Chunk nc : neighbors) {
+<                 if (nc != null) {
+<                     nc.generate();
+< 
+---
+>             for (int i = 0; i < neighbors.length; i++) {
+>                 if (neighbors[i] != null) {
+>                     neighbors[i].generate();
+225,227c244,246
+< 
+<             for (Chunk nc : neighbors) {
+<                 if (nc != null) {
+---
+>             
+>             for (int i = 0; i < neighbors.length; i++) {
+>                 if (neighbors[i] != null) {
+232,233c251,252
+<                     if (nc.isDirty() && isChunkVisible(nc)) {
+<                         queueChunkForUpdate(nc);
+---
+>                     if (neighbors[i].isDirty() && isChunkVisible(neighbors[i])) {
+>                         queueChunkForUpdate(neighbors[i]);
+314,315c333,334
+<         for (Chunk c : _visibleChunks) {
+<             queueChunkForUpdate(c);
+---
+>         for (FastList.Node<Chunk> n = _visibleChunks.head(), end = _visibleChunks.tail(); (n = n.getNext()) != end;) {
+>             queueChunkForUpdate(n.getValue());
+349c368
+<         glTranslatef(_player.getPosition().x, Configuration.CHUNK_DIMENSIONS.y * 1.25f, Configuration.VIEWING_DISTANCE_IN_CHUNKS.y * Configuration.CHUNK_DIMENSIONS.z + _player.getPosition().z);
+---
+>         glTranslatef(_player.getPosition().x, Configuration.CHUNK_DIMENSIONS.y * 1.25f, Configuration.getSettingNumeric("V_DIST_Z") * Configuration.CHUNK_DIMENSIONS.z + _player.getPosition().z);      
+387,389c406,407
+<         for (int x = -((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x / 2); x < ((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x / 2); x++) {
+<             for (int z = -((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y / 2); z < ((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y / 2); z++) {
+---
+>         for (int x = -(Configuration.getSettingNumeric("V_DIST_X").intValue() / 2); x < (Configuration.getSettingNumeric("V_DIST_X").intValue() / 2); x++) {
+>             for (int z = -(Configuration.getSettingNumeric("V_DIST_Z").intValue() / 2); z < (Configuration.getSettingNumeric("V_DIST_Z").intValue() / 2); z++) {
+400c418
+< 
+---
+>         
+408,409c426,427
+<         for (Chunk c : _visibleChunks) {
+<             c.render(false);
+---
+>         for (FastList.Node<Chunk> n = _visibleChunks.head(), end = _visibleChunks.tail(); (n = n.getNext()) != end;) {
+>             n.getValue().render(false);
+411,412c429,430
+<         for (Chunk c : _visibleChunks) {
+<             c.render(true);
+---
+>         for (FastList.Node<Chunk> n = _visibleChunks.head(), end = _visibleChunks.tail(); (n = n.getNext()) != end;) {
+>             n.getValue().render(true);
+457c475
+<         x1 = x1 % ((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x * (int) Configuration.CHUNK_DIMENSIONS.x);
+---
+>         x1 = x1 % (Configuration.getSettingNumeric("V_DIST_X").intValue() * (int) Configuration.CHUNK_DIMENSIONS.x);
+469c487
+<         z1 = z1 % ((int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y * (int) Configuration.CHUNK_DIMENSIONS.z);
+---
+>         z1 = z1 % (Configuration.getSettingNumeric("V_DIST_Z").intValue() * (int) Configuration.CHUNK_DIMENSIONS.z);
+484,486c502,504
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>                            
+532,534c550,552
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>          
+555,557c573,575
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();      
+579,581c597,599
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>             
+603,605c621,623
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>                
+628,630c646,648
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>              
+653,655c671,673
+<         int chunkPosX = calcChunkPosX(x) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.x;
+<         int chunkPosZ = calcChunkPosZ(z) % (int) Configuration.VIEWING_DISTANCE_IN_CHUNKS.y;
+< 
+---
+>         int chunkPosX = calcChunkPosX(x) % Configuration.getSettingNumeric("V_DIST_X").intValue();
+>         int chunkPosZ = calcChunkPosZ(z) % Configuration.getSettingNumeric("V_DIST_Z").intValue();
+>                 
+690c708
+<         return new Vector3f(getDaylightAsFloat() * 0.55f, getDaylightAsFloat() * 0.85f, 0.99f * getDaylightAsFloat());
+---
+>         return VectorPool.getVector(getDaylightAsFloat() * 0.55f, getDaylightAsFloat() * 0.85f, 0.99f * getDaylightAsFloat());
+721,731c739,749
+< 
+<         vertices[0] = new Vector3f(x - .5f, y - .5f, z - .5f);
+<         vertices[1] = new Vector3f(x + .5f, y - .5f, z - .5f);
+<         vertices[2] = new Vector3f(x + .5f, y + .5f, z - .5f);
+<         vertices[3] = new Vector3f(x - .5f, y + .5f, z - .5f);
+< 
+<         vertices[4] = new Vector3f(x - .5f, y - .5f, z + .5f);
+<         vertices[5] = new Vector3f(x + .5f, y - .5f, z + .5f);
+<         vertices[6] = new Vector3f(x + .5f, y + .5f, z + .5f);
+<         vertices[7] = new Vector3f(x - .5f, y + .5f, z + .5f);
+< 
+---
+>         
+>         vertices[0] = VectorPool.getVector(x - .5f, y - .5f, z - .5f);
+>         vertices[1] = VectorPool.getVector(x + .5f, y - .5f, z - .5f);
+>         vertices[2] = VectorPool.getVector(x + .5f, y + .5f, z - .5f);
+>         vertices[3] = VectorPool.getVector(x - .5f, y + .5f, z - .5f);
+>         
+>         vertices[4] = VectorPool.getVector(x - .5f, y - .5f, z + .5f);
+>         vertices[5] = VectorPool.getVector(x + .5f, y - .5f, z + .5f);
+>         vertices[6] = VectorPool.getVector(x + .5f, y + .5f, z + .5f);
+>         vertices[7] = VectorPool.getVector(x - .5f, y + .5f, z + .5f);
+>              
+760c778
+<         Vector3f blockPos = new Vector3f(x, y, z);
+---
+>         Vector3f blockPos = VectorPool.getVector(x, y, z);      
+842c860
+<         Vector3f intersectPoint = new Vector3f(ray.x * t, ray.y * t, ray.z * t);
+---
+>         Vector3f intersectPoint = VectorPool.getVector(ray.x * t, ray.y * t, ray.z * t);        
+1076,1079c1094,1097
+< 
+<         for (Chunk nc : neighbors) {
+<             if (nc != null) {
+<                 nc.generate();
+---
+>         
+>         for (int i = 0; i < neighbors.length; i++) {
+>             if (neighbors[i] != null) {
+>                 neighbors[i].generate();       
+1099c1117
+<         Chunk c = new Chunk(this, new Vector3f(x, 0, z), gs);
+---
+>         Chunk c = new Chunk(this, VectorPool.getVector(x, 0, z), gs);
+1109,1111c1127,1129
+<         if (c.getPosition().x >= calcChunkPosX((int) _player.getPosition().x) - Configuration.VIEWING_DISTANCE_IN_CHUNKS.x / 2 && c.getPosition().x < Configuration.VIEWING_DISTANCE_IN_CHUNKS.x / 2 + calcChunkPosX((int) _player.getPosition().x)) {
+<             if (c.getPosition().z >= calcChunkPosZ((int) _player.getPosition().z) - Configuration.VIEWING_DISTANCE_IN_CHUNKS.y / 2 && c.getPosition().z < Configuration.VIEWING_DISTANCE_IN_CHUNKS.y / 2 + calcChunkPosZ((int) _player.getPosition().z)) {
+< 
+---
+>         if (c.getPosition().x >= calcChunkPosX((int) _player.getPosition().x) - Configuration.getSettingNumeric("V_DIST_X") / 2 && c.getPosition().x < Configuration.getSettingNumeric("V_DIST_X") / 2 + calcChunkPosX((int) _player.getPosition().x)) {
+>             if (c.getPosition().z >= calcChunkPosZ((int) _player.getPosition().z) - Configuration.getSettingNumeric("V_DIST_Z") / 2 && c.getPosition().z < Configuration.getSettingNumeric("V_DIST_Z") / 2 + calcChunkPosZ((int) _player.getPosition().z)) {
+>                 
+20a21
+> import com.github.begla.blockmania.utilities.VectorPool;
+173c174
+<         return new AABB(new Vector3f(x, y, z), new Vector3f(0.5f, 0.5f, 0.5f));
+---
+>         return new AABB(VectorPool.getVector(x, y, z), VectorPool.getVector(0.5f, 0.5f, 0.5f));
+148c148
+<         sides[0] = new Vector3f(_position.x, _position.y + _dimensions.y, _position.z);
+---
+>         sides[0] = VectorPool.getVector(_position.x, _position.y + _dimensions.y, _position.z);
+150c150
+<         sides[1] = new Vector3f(_position.x - _dimensions.x, _position.y, _position.z);
+---
+>         sides[1] = VectorPool.getVector(_position.x - _dimensions.x, _position.y, _position.z);
+152c152
+<         sides[2] = new Vector3f(_position.x + _dimensions.x, _position.y, _position.z);
+---
+>         sides[2] = VectorPool.getVector(_position.x + _dimensions.x, _position.y, _position.z);
+154c154
+<         sides[3] = new Vector3f(_position.x, _position.y - _dimensions.y, _position.z);
+---
+>         sides[3] = VectorPool.getVector(_position.x, _position.y - _dimensions.y, _position.z);
+156c156
+<         sides[4] = new Vector3f(_position.x, _position.y, _position.z + _dimensions.z);
+---
+>         sides[4] = VectorPool.getVector(_position.x, _position.y, _position.z + _dimensions.z);
+158c158
+<         sides[5] = new Vector3f(_position.x, _position.y, _position.z - _dimensions.z);
+---
+>         sides[5] = VectorPool.getVector(_position.x, _position.y, _position.z - _dimensions.z);
+176c176
+<                 return new Vector3f(0, 1, 0);
+---
+>                 return VectorPool.getVector(0, 1, 0);
+178c178
+<                 return new Vector3f(1, 0, 0);
+---
+>                 return VectorPool.getVector(1, 0, 0);
+180c180
+<                 return new Vector3f(-1, 0, 0);
+---
+>                 return VectorPool.getVector(-1, 0, 0);
+182c182
+<                 return new Vector3f(0, -1, 0);
+---
+>                 return VectorPool.getVector(0, -1, 0);
+184c184
+<                 return new Vector3f(0, 0, 1);
+---
+>                 return VectorPool.getVector(0, 0, 1);
+186c186
+<                 return new Vector3f(0, 0, -1);
+---
+>                 return VectorPool.getVector(0, 0, -1);
+189c189
+<         return new Vector3f();
+---
+>         return VectorPool.getVector();
+0a1,55
+> /*
+>  * Copyright 2011 Benjamin Glatzel <benjamin.glatzel@me.com>.
+>  *
+>  * Licensed under the Apache License, Version 2.0 (the "License");
+>  * you may not use this file except in compliance with the License.
+>  * You may obtain a copy of the License at
+>  *
+>  *      http://www.apache.org/licenses/LICENSE-2.0
+>  *
+>  * Unless required by applicable law or agreed to in writing, software
+>  * distributed under the License is distributed on an "AS IS" BASIS,
+>  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+>  * See the License for the specific language governing permissions and
+>  * limitations under the License.
+>  */
+> package com.github.begla.blockmania.utilities;
+> 
+> import javolution.util.FastList;
+> import org.lwjgl.util.vector.Vector3f;
+> 
+> /**
+>  *
+>  * @author Benjamin Glatzel <benjamin.glatzel@me.com>
+>  */
+> public class VectorPool {
+> 
+>     static FastList<Vector3f> _pool = new FastList<Vector3f>();
+>     static int _reUseCounter = 0;
+> 
+>     public static Vector3f getVector(float x, float y, float z) {
+>         Vector3f v = null;
+>         
+>         try {
+>             v = _pool.removeFirst();
+>             _reUseCounter++;
+>         } catch (Exception e) {
+>         }
+> 
+>         if (v == null) {
+>             v = new Vector3f(x, y, z);
+>         } else {
+>             v.set(x, y, z);
+>         }
+> 
+>         return v;
+>     }
+> 
+>     public static Vector3f getVector() {
+>         return getVector(0f, 0f, 0f);
+>     }
+> 
+>     public static void putVector(Vector3f v) {
+>         _pool.add(v);
+>     }
+> }
+
+
+Description: Replacing enhanced for loops with regular ones improves performance, and memory space usage was reduced.
+
+-----------------------------------------------
+
+
+In Repository: Terasology
+Commit ID: 3227f5ab9ab185dd68d25d0c6f59d15f2e51c5fa
+Message: - Immensely improves generation speed of chunks by distributing chunk generation to multiple cores/threads
+ - Fixes buggy alpha values in the chunk fragment shader
+Relevant Changes: 69
+Diff:
+60c60,61
+<         gl_FragColor = linearToSrgb(mix(color, vec4(0.9,0.9,0.9,1.0) * daylight, fog));
+---
+>         gl_FragColor.rgb = linearToSrgb(mix(color, vec4(0.9,0.9,0.9,1.0) * daylight, fog)).rgb;
+>         gl_FragColor.a = color.a;
+62c63
+<         gl_FragColor = linearToSrgb(mix(color, vec4(0.0,0.0,0.0,1.0) * daylight, fog*16.0));
+---
+>         gl_FragColor.rgb = linearToSrgb(mix(color, vec4(0.0,0.0,0.0,1.0) * daylight, fog*16.0)).rgb;
+64a66
+>         gl_FragColor.a = color.a;
+19a20
+> import javolution.util.FastSet;
+30a32
+>     private final FastSet<Chunk> _currentlyProcessedChunks = new FastSet<Chunk>();
+47c49
+<         FastList<Chunk> dirtyChunks = new FastList<Chunk>(_parent.getVisibleChunks());
+---
+>         final FastList<Chunk> dirtyChunks = new FastList<Chunk>(_parent.getVisibleChunks());
+62,65c64,67
+<         if (!dirtyChunks.isEmpty()) {
+<             Collections.sort(dirtyChunks);
+<             Chunk closestChunk = dirtyChunks.getFirst();
+<             processChunkUpdate(closestChunk);
+---
+>         Collections.sort(dirtyChunks);
+> 
+>         if (dirtyChunks.isEmpty()) {
+>             return;
+68c70,74
+<         _chunkUpdateAmount = dirtyChunks.size();
+---
+>         final Chunk chunkToProcess = dirtyChunks.removeFirst();
+> 
+>         if (!_currentlyProcessedChunks.contains(chunkToProcess)) {
+> 
+>             _currentlyProcessedChunks.add(chunkToProcess);
+69a76,98
+>             Thread t = new Thread() {
+>                 @Override
+>                 public void run() {
+>                     synchronized (_currentlyProcessedChunks) {
+>                         if (_currentlyProcessedChunks.size() > Runtime.getRuntime().availableProcessors() / 2) {
+>                             try {
+>                                 _currentlyProcessedChunks.wait();
+>                             } catch (InterruptedException e) {
+>                             }
+>                         }
+>                     }
+>                     processChunkUpdate(chunkToProcess);
+>                     synchronized (_currentlyProcessedChunks) {
+>                         _currentlyProcessedChunks.remove(chunkToProcess);
+>                         _currentlyProcessedChunks.notify();
+>                     }
+>                 }
+>             };
+> 
+>             t.start();
+>         }
+> 
+>         _chunkUpdateAmount = dirtyChunks.size();
+Description: what it says in the commit msg
+
+-----------------------------------------------
+
+In Repository: Terasology
+Commit ID: b3c8ed757236b84f41da5a1f593072bd5962c124
+Message: Reset the visibility binding properly when the in game state is left.
+
+This also fix an uncritical memory leak: The StateIngame reference could
+not be garbage collected properly before, because the HUDScreenLayer
+was referencing it implictly through the anonymous binding class.
+
+Relevant Changes: line 147
+Diff:
+142c141,145
+< 
+---
+> 		/*
+> 		 * Clear the binding as otherwise the complete ingame state would be
+> 		 * referenced.
+> 		 */
+> 		nuiManager.getHUD().clearVisibleBinding();
+147a148,151
+> 	public void clearVisibleBinding() {
+> 		this.visible = new DefaultBinding<>(true);
+> 	}
+> 
+
+Description: Programmers fixed a memory leak
+
+-----------------------------------------------
+
+In Repository: Terasology
+Commit ID: a69cac624a4976ba27121ea6626137a7d0b4234a
+Message: Merge pull request #1285 from flo/memory-leak-fixes. Memory leak fixes
+Relevant Changes: line 160
+Diff:
+
+
+252a253
+>         storageManager = null;
+160a161
+>         liquidWrapper.dispose();
+487d486
+<         ChunkMonitor.fireChunkProviderDisposed(this);
+499c498,502
+< 
+---
+>         /*
+>          * The chunk monitor needs to clear chunk references, so it's important
+>          * that no new chunk get created
+>          */
+>         ChunkMonitor.fireChunkProviderDisposed(this);
+
+Description: Programmers fixed a memory leak
+
+-----------------------------------------------
+
+In Repository: Terasology
+Commit ID: 8cce02c77c1d74b5ce9d1ba3a9286a451758b447
+Message: Merge PR #2460 by @flo - memory leak fix.
+Relevant Changes: line 540
+Diff:
+
+382a383,385
+>     /**
+>      * Creates the entity without sending any events. The entity life cycle subscriber will however be informed.
+>      */
+385c388,392
+<         return createEntity(components);
+---
+>         EntityRef entity = createEntity(components);
+>         for (Component component: components) {
+>             notifyComponentAdded(entity, component.getClass());
+>         }
+>         return entity;
+387a395,397
+>     /**
+>      * Creates the entity without sending any events. The entity life cycle subscriber will however be informed.
+>      */
+392a403,405
+>     /**
+>      * Creates the entity without sending any events. The entity life cycle subscriber will however be informed.
+>      */
+407a421,423
+>     /**
+>      * Destroys the entity without sending any events. The entity life cycle subscriber will however be informed.
+>      */
+410a427
+>             notifyComponentRemovalAndEntityDestruction(entity.getId(), entity);
+540a558,562
+>         notifyComponentRemovalAndEntityDestruction(entityId, ref);
+>         destroy(ref);
+>     }
+> 
+>     private void notifyComponentRemovalAndEntityDestruction(long entityId, EntityRef ref) {
+547d568
+<         destroy(ref);
+
+Description: Programmers fixed a memory leak
+
+
