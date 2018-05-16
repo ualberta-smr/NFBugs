@@ -1,0 +1,6 @@
+name: leakcanary
+    repository:
+        type: git
+        url: https://github.com/square/leakcanary
+url: https://github.com/square/leakcanary
+
