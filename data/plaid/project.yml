@@ -1,0 +1,5 @@
+name: plaid
+repository:
+    type: git
+    url: https://github.com/nickbutcher/plaid
+url: https://github.com/nickbutcher/plaid 
