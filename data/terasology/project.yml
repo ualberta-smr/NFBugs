@@ -1,5 +1,5 @@
-name: leakcanary
+name: terasology
 repository:
     type: git
-    url: https://github.com/square/leakcanary
-url: https://github.com/square/leakcanary
+    url: https://github.com/MovingBlocks/Terasology
+url: https://github.com/MovingBlocks/Terasology
