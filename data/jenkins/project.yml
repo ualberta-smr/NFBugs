@@ -1,6 +1,5 @@
-name: leakcanary
+name: jenkins
     repository:
         type: git
-        url: https://github.com/square/leakcanary
-url: https://github.com/square/leakcanary
-
+        url: https://github.com/jenkinsci/jenkins
+url: https://jenkins.io
