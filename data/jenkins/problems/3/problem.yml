@@ -7,7 +7,7 @@ fix:
     description: Programmers improved security by adding a permission check to a variable
     commit message: >
         getItemByFullName shouldn't bypass security check
-    commit: https://github.com/jenkinsci/jenkinsy/commit/1bdecb4
+    commit: https://github.com/jenkinsci/jenkins/commit/1bdecb4
 location:
     file: core/src/main/java/hudson/model/Hudson.java
     method: private File getRootDirFor(String name)
