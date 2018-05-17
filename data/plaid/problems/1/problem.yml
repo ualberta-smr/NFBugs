@@ -1,5 +1,5 @@
 source:
-  name: commit-msg-keywords
+    name: commit-msg-keywords
 project: 
     name: plaid
     url: https://github.com/nickbutcher/plaid
@@ -8,5 +8,5 @@ fix:
     commit message: Improved password mask anim efficiency
     commit: https://github.com/nickbutcher/plaid/commit/6fb89b3
 location:
-  file: app/src/main/java/io/plaidapp/ui/widget/PasswordEntry.java
-  method: "public Float get(MaskMorphDrawable drawable)"
+    file: app/src/main/java/io/plaidapp/ui/widget/PasswordEntry.java
+    method: "public Float get(MaskMorphDrawable drawable)"
