@@ -7,7 +7,7 @@ fix:
     description: Programmers added a class to use for building and maintaining a di-graph instead of finding back edges whenever accessing a node. This reduces runtime and improves efficiency, maintainability.
     commit message: >
         moving dependency computation logic to a single place to improve efficiency.
-    commit: https://github.com/jenkinsci/jenkinsy/commit/3f0b72e
+    commit: https://github.com/jenkinsci/jenkins/commit/3f0b72e
 location:
     file: core/src/main/java/hudson/model/DependencyGraph.java
     method: 
