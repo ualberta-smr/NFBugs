@@ -16,5 +16,5 @@ fix:
             * Some refactoring
     commit: https://github.com/MovingBlocks/Terasology/commit/773cce0
 location:
-  file: 
-  method: 
+  file: src/com/github/begla/blockmania/Chunk.java
+  method: public boolean generate(), public void generateDisplayLists(),
