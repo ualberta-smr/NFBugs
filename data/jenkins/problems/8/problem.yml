@@ -7,7 +7,7 @@ fix:
     description: Programmers improved security by making sure that anonymous users don’t have the same permissions as admins
     commit message: >
         fixed #478 "anonymous user should not be able to tag sources"
-    commit: https://github.com/jenkinsci/jenkinsy/commit/46339e1
+    commit: https://github.com/jenkinsci/jenkins/commit/46339e1
 location:
     file: core/src/main/java/hudson/scm/CVSSCM.java
     method: public TagAction(AbstractBuild build)
