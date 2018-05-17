@@ -7,7 +7,7 @@ fix:
     description: Programmers improved security by adding error handling for a scenario where a container has no valid authentication
     commit message: >
         improved the error diagnostics when authentication is not set up in the container
-    commit: https://github.com/jenkinsci/jenkinsy/commit/feaf22a
+    commit: https://github.com/jenkinsci/jenkins/commit/feaf22a
 location:
     file: core/src/main/java/hudson/model/Hudson.java
     method: public static void checkGoodName(String name) throws ParseException 
