@@ -1,5 +1,5 @@
 source:
-  name: commit-msg-keywords
+    name: commit-msg-keywords
 project: 
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
@@ -12,5 +12,6 @@ fix:
           not be garbage collected properly before, because the HUDScreenLayer
           was referencing it implictly through the anonymous binding class.
     commit: https://github.com/MovingBlocks/Terasology/commit/b3c8ed
-  file: engine/src/main/java/org/terasology/engine/modes/StateIngame.java
-  method: public void dispose()
+location:
+    file: engine/src/main/java/org/terasology/engine/modes/StateIngame.java
+    method: public void dispose()
