@@ -1,5 +1,5 @@
 source:
-  name: commit-msg-keywords
+    name: commit-msg-keywords
 project: 
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
@@ -8,5 +8,6 @@ fix:
     commit message: >
         Merge pull request #1285 from flo/memory-leak-fixes. Memory leak fixes
     commit: https://github.com/MovingBlocks/Terasology/commit/a69cac6
-file: engine/src/main/java/org/terasology/physics/bullet/BulletPhysics.java
-method: public BulletPhysics(WorldProvider world)
+location:
+    file: engine/src/main/java/org/terasology/physics/bullet/BulletPhysics.java
+    method: public BulletPhysics(WorldProvider world)
