@@ -7,7 +7,7 @@ fix:
     description: Programmers added a call to release some memory that had previously been abandoned
     commit message: >
         fixed a horrible horrible memory leak.
-    commit: https://github.com/jenkinsci/jenkinsy/commit/fe21d5c
+    commit: https://github.com/jenkinsci/jenkins/commit/fe21d5c
 location:
     file: remoting/src/main/java/hudson/remoting/Response.java
     method: protected void execute(Channel channel)
