@@ -10,3 +10,4 @@ fix:
 location:
     file: app/src/main/java/io/plaidapp/ui/widget/PasswordEntry.java
     method: "public Float get(MaskMorphDrawable drawable)"
+ 
