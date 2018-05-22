@@ -11,3 +11,7 @@ fix:
 location:
     file: remoting/src/main/java/hudson/remoting/Response.java
     method: protected void execute(Channel channel)
+api:
+    hudson.remoting.Channel
+rule:
+    when done processing a request, remove its id to free memory
