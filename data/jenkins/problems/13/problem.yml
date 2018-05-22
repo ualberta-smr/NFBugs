@@ -11,3 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/PluginWrapper.java
     method: public PluginWrapper(PluginManager owner, File archive) throws IOException
+api: java.io.BufferedReader
+rule:
+    close streams when done
