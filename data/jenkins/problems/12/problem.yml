@@ -11,3 +11,8 @@ fix:
 location:
     file: core/src/main/java/hudson/scm/CVSSCM.java
     method: public void log(String msg, int msgLevel)
+api: 
+    java.io.BufferedOutputStream
+    import org.apache.commons.io.IOUtils
+rule:
+    close streams when done
