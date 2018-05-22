@@ -15,3 +15,6 @@ fix:
 location:
     file: engine/src/main/java/org/terasology/engine/modes/StateIngame.java
     method: public void dispose()
+api: org.terasology.rendering.nui.NUIManager
+rule:
+    clear uneeded references so memory can be garbage collected
