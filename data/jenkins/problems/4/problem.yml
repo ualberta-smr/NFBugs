@@ -11,3 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/PluginWrapper.java
     method: private void explode(File archive, File destDir) throws IOException
+api: hudson.model.hudson
+rule:
+    enable/disable plugins only for those with correct permissions
