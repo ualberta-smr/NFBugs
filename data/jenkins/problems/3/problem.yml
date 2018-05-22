@@ -11,3 +11,7 @@ fix:
 location:
     file: core/src/main/java/hudson/model/Hudson.java
     method: private File getRootDirFor(String name)
+api: hudson.model.Item
+rule: 
+    check if accessing an object is allowed before trying to do it
+    
