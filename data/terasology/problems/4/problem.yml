@@ -11,3 +11,6 @@ fix:
 location:
     file: engine/src/main/java/org/terasology/physics/bullet/BulletPhysics.java
     method: public BulletPhysics(WorldProvider world)
+api: org.terasology.physics.engine.PhysicsLiquidWrapper
+rule:
+    get rid of uneeded memory when done with it
