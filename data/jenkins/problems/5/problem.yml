@@ -11,3 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/model/BuildAuthorizationToken.java
     method: public static BuildAuthorizationToken create(StaplerRequest req)
+api: hudson.model.Hudson
+rule:
+    make sure everyone is authorized before scheduling a job 
