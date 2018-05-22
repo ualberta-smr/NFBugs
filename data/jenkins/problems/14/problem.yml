@@ -11,3 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/cli/SetBuildParameterCommand.java
     method: public String getShortDescription()
+api: hudson.model.Run
+rule:
+    don't update states unless authorized
