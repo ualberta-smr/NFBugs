@@ -11,6 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/scm/SubversionSCM.java
     method: private boolean calcChangeLog(AbstractBuild<?,?> build, File changelogFile, BuildListener listener, List<String> externals) throws IOException, InterruptedException
-api: import java.io.FileReader
+api: java.io.FileReader
 rule: 
     close files when done
