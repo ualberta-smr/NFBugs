@@ -1,5 +1,5 @@
 source:
-  name: commit-msg-keywords
+    name: commit-msg-keywords
 project: 
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
@@ -16,5 +16,7 @@ fix:
             * Some refactoring
     commit: https://github.com/MovingBlocks/Terasology/commit/773cce0
 location:
-  file: src/com/github/begla/blockmania/Chunk.java
-  method: public boolean generate(), public void generateDisplayLists(),
+    file: src/com/github/begla/blockmania/Chunk.java
+    method: public boolean generate(), public void generateDisplayLists(),
+suggestion:
+    a for loop may be more effiient than a foreach loop
