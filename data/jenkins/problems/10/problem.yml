@@ -11,3 +11,6 @@ fix:
 location:
     file: core/src/main/java/hudson/Launcher.java
     method: protected final void maskedPrintCommandLine(final String[] cmd, final boolean[] mask, final FilePath workDir)
+suggestion:
+    make masks a uniform length so their contents can't be inferred
+    
