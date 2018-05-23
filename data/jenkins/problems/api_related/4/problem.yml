@@ -1,0 +1,16 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: jenkins
+    url: https://github.com/jenkinsci/jenkins
+fix:
+    description: Programmers ensured a function terminated if admin requirements were not met. This was to improve security of the application. 
+    commit message: >
+        fixed a security hole.
+    commit: https://github.com/jenkinsci/jenkins/commit/1ff0641
+location:
+    file: core/src/main/java/hudson/PluginWrapper.java
+    method: private void explode(File archive, File destDir) throws IOException
+api: hudson.model.Hudson
+rule:
+    enable/disable plugins only for those with correct permissions
