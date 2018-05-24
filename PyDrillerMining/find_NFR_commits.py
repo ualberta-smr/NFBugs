@@ -20,21 +20,22 @@ def main():
     # mine for non-functional fixes in commit messages
     search_terms = ["fix","bug","error","security","maintenance","crash" \
                     "stability","portability","efficiency","usability" \
-                    "reliability", "testability", "changeability"]
+                    "reliability", "testability", "changeability", "memory" \
+			,"resource","runtime"]
     
     # the program is run with command line arguments representing
     # github repos
     for repo in range(1,len(sys.argv)):
         
         # NB: using the with keyword will close the file automatically
-        with open("commit_out"+str(repo)+".csv","w") as new_file:
+        with open(sys.argv[repo].replace('../', '').replace('/','')+".csv","w") as new_file:
             new_file.write('{:^40},{:^40}\n'.format('Commit ID:','Commit Message:')) 
             
             for commit in RepositoryMining(sys.argv[repo]).traverse_commits():
                 # bool written avoids duplication if more than one word matches
                 written = False             
                 for term in search_terms:
-                    if term in commit.msg and not written:
+                    if term in commit.msg and "typo" not in commit.msg and not written:
                         written = True
                         # print the commit ID and committer message
                         new_file.write('{:^40},{:^40}\n'.format(commit.hash,commit.msg))
