@@ -17,11 +17,11 @@ from pydriller import RepositoryMining
 import sys
 
 def main():
-    # mine for non-functional fixes in commit messages
-    search_terms = ["fix","bug","error","security","maintenance","crash" \
-                    "stability","portability","efficiency","usability" \
-                    "reliability", "testability", "changeability", "memory" \
-			,"resource","runtime"]
+    # mine for non-functional fixes in commit messages -- stem words to catch more commits
+    search_terms = ["fix","bug","error","secur","maintenance","maintain","crash" \
+                    "stability","portability","efficien","usability" \
+                    "reliab", "testab", "changeab", \
+                    "memory","resource", "runtime", "#"]
     
     # the program is run with command line arguments representing
     # github repos
@@ -31,7 +31,7 @@ def main():
         with open(sys.argv[repo].replace('../', '').replace('/','')+".csv","w") as new_file:
             new_file.write('{:^40},{:^40}\n'.format('Commit ID:','Commit Message:')) 
             
-            for commit in RepositoryMining(sys.argv[repo]).traverse_commits():
+            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java']).traverse_commits():
                 # bool written avoids duplication if more than one word matches
                 written = False             
                 for term in search_terms:
