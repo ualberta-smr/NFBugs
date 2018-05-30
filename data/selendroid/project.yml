@@ -2,4 +2,4 @@ name: selendroid
 repository:
     type: git
     url: https://github.com/selendroid/selendroid
-url: hhttp://selendroid.io
+url: http://selendroid.io
