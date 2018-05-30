@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: ig-json-parser
+    url: https://github.com/Instagram/ig-json-parser
+fix:
+    description: changing the retention procedure to SOURCE reduces memory use because the annotations are discarded 
+    commit message: >
+            Merge pull request #33 from stashuk/retention
+            Change retention policy for JsonField from class to source
+    commit: https://github.com/Instagram/ig-json-parser/commit/2262ede
+location:
+    file: 
+        common/src/main/java/com/instagram/common/json/annotation/JsonField.java
+    method: -
+api: java.lang.annotation.RetentionPolicy
+rule:
+    use the SOURCE policy instead of the CLASS policy to take up less space
+        
