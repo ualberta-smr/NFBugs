@@ -1,0 +1,16 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: cocos2d
+    url: https://github.com/ZhouWeikuan/cocos2d
+fix:
+    description: 
+    commit message: >
+            fixed memory leaks in CCQuadParticleSystem
+    commit: https://github.com/ZhouWeikuan/cocos2d/commit/da0fe4f
+location:
+    file: 
+        cocos2d-android/src/org/cocos2d/particlesystem/CCQuadParticleSystem.java    
+    method: 
+        public CCQuadParticleSystem(int numberOfParticles)
+suggestion: 
