@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: EfficientAdapter
+    url: https://github.com/StanKocken/EfficientAdapter
+fix:
+    description: Added ability to remove items from a collection when no longer needed
+    commit message: >
+        Merge pull request #13 from preplay/master
+        Methods to clear views cached on ViewHolder        
+    commit: https://github.com/StanKocken/EfficientAdapter/commit/82197a2
+location:
+    file: 
+        library/src/main/java/com/skocken/efficientadapter/lib/viewholder/AbsViewHolder.java
+    method: 
+        public void clearViewsCached()
+        public void clearViewCached(int parentId, int viewId)
+api:
+    android.util.SparseArray
+rule:
+    clear memory that isn't needed
