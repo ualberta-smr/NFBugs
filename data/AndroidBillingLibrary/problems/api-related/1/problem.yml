@@ -13,5 +13,7 @@ location:
         AndroidBillingLibrary/src/net/robotmedia/billing/BillingService.java
     method: 
         public void onDestroy()
-suggestion: 
-    remember to release uneeded resources
+api: 
+    android.app.Service
+rule:
+    unbind services when done with them
