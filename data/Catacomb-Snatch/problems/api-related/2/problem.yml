@@ -16,6 +16,9 @@ location:
         src/com/mojang/mojam/downloader/Downloader.java
         src/com/mojang/mojam/mod/ModSystem.java
     method: 
+        public void downloadTo(String turl, String dest) throws IOException
+        public static void unpackJar(String jarFile, String destDir)
+        private static ScriptEngine addScript(ZipEntry entry), private static String readStringFromFile(File f) throws IOException, private static boolean upToDate(String s) throws IOException
 api: 
     java.io.FileOutputStream
     java.util.jar
