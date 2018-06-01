@@ -13,9 +13,14 @@ location:
     file: 
         src/main/java/com/tinkerpop/pipes/serial/SingleIterator.java
         src/main/java/com/tinkerpop/pipes/serial/filter/AndFilterPipe.java
+        src/main/java/com/tinkerpop/pipes/serial/filter/FutureFilterPipe.java
+        src/main/java/com/tinkerpop/pipes/serial/filter/OrFilterPipe.java
     method: 
         public class SingleIterator<T> implements Iterator<T> 
         public S processNextStart()
+        public FutureFilterPipe(Pipe<S, ?> pipe)
+        public S processNextStart()
+        
 api:
     com.tinkerpop.pipes.serial.SingleIterator
 rule: 
