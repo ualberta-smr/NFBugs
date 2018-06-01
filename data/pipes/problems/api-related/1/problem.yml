@@ -1,0 +1,22 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: SproutLife
+    url: https://github.com/ShprAlex/SproutLife
+fix:
+    description: Provided a new iterator class with better performance 
+    commit message: >
+            Created a handy utility class called SingleIterator<T>. It takes a single object and emits it and then shuts down. 
+            This is more efficient than Arrays.toList(t).iterator() -- timing tests show its 2x as fast.
+    commit: https://github.com/tinkerpop/pipes/commit/8ec2bb4
+location:
+    file: 
+        src/main/java/com/tinkerpop/pipes/serial/SingleIterator.java
+        src/main/java/com/tinkerpop/pipes/serial/filter/AndFilterPipe.java
+    method: 
+        public class SingleIterator<T> implements Iterator<T> 
+        public S processNextStart()
+api:
+    com.tinkerpop.pipes.serial.SingleIterator
+rule: 
+    exchange with for to make the program more efficient 
