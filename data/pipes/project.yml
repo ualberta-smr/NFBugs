@@ -1,0 +1,5 @@
+name: pipes
+repository:
+    type: git
+    url: https://github.com/tinkerpop/pipes
+url: http://tinkerpop.apache.org/docs/3.2.9/
