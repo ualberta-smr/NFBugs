@@ -19,4 +19,4 @@ location:
 api:
     com.tinkerpop.pipes.serial.SingleIterator
 rule: 
-    exchange with for to make the program more efficient 
+    exchange Arrays.asList with SingleIterator to make the program more efficient 
