@@ -1,8 +1,8 @@
 source:
     name: commit-msg-keywords
 project: 
-    name: SproutLife
-    url: https://github.com/ShprAlex/SproutLife
+    name: pipes
+    url: https://github.com/tinkerpop/pipes
 fix:
     description: Provided a new iterator class with better performance 
     commit message: >
