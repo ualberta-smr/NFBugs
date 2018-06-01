@@ -18,7 +18,7 @@ location:
     method: 
         public class SingleIterator<T> implements Iterator<T> 
         public S processNextStart()
-        public FutureFilterPipe(Pipe<S, ?> pipe)
+        protected S processNextStart()        
         public S processNextStart()
         
 api:
