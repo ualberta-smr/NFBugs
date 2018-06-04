@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: needle
+    url: https://github.com/python-needle/needle
+fix:
+    description: improved efficiency with a faster method
+    commit message: >
+            NeedleTestCase: refactor driver setup to setUpClass
+            This saves a considerable amount of time by not loading the driver
+            for every test (50%+ of runtime with 7 tests with Firefox).
+    commit: https://github.com/python-needle/needle/commit/2f138d7
+location:
+    file: 
+        AndroidBillingLibrary/src/net/robotmedia/billing/BillingService.java
+    method: 
+        setUpClass(cls) in class NeedleTestCase(TestCase)
+api: 
+    needle.driver.NeedleWebDriver
+rule:
+    avoid loading the driver multiple times
