@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Catacomb-Snatch
+    url: https://github.com/Maescool/Catacomb-Snatch
+fix:
+    description: made class method toggleButton private 
+    commit message: >
+            Merge pull request #1 from KyleBrodie/joypad
+            Joypad Clean up : Stability and memory usage
+    commit: https://github.com/Maescool/Catacomb-Snatch/commit/e228751
+location:
+    file: 
+        src/com/mojang/mojam/JoypadHandler.java
+    method: 
+        private void toggleButton
+suggestion: 
+    to improve security, use private class members

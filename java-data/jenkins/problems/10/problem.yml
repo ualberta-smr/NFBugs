@@ -1,0 +1,16 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: jenkins
+    url: https://github.com/jenkinsci/jenkins
+fix:
+    description: Programmers improved security by ensuring commands couldn’t be guessed from their length.
+    commit message: >
+        I am quite sure I had a good reason for wanting the length of a masked portion of a command to be equal to the length of the thing that is masked... but for the life of me I cannot remember why.  Making all masks have fixed length to provide less information to password snoopers
+    commit: https://github.com/jenkinsci/jenkins/commit/0ff8353
+location:
+    file: core/src/main/java/hudson/Launcher.java
+    method: protected final void maskedPrintCommandLine(final String[] cmd, final boolean[] mask, final FilePath workDir)
+suggestion:
+    make masks a uniform length so their contents can't be inferred
+    

@@ -1,0 +1,14 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: terasology
+    url: https://github.com/MovingBlocks/Terasology
+fix:
+    description: reduces time copmlexity by using multiple threads 
+    commit message: >
+        * Immensely improves generation speed of chunks by distributing chunk generation to multiple cores/threads
+        * Fixes buggy alpha values in the chunk fragment shader
+    commit: https://github.com/MovingBlocks/Terasology/commit/3227f
+location:
+    file: src/com/github/begla/blockmania/world/WorldUpdateManager.java
+    method: public void processChunkUpdates()

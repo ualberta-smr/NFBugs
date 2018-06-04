@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: terasology
+    url: https://github.com/MovingBlocks/Terasology
+fix:
+    description: Programmers fixed a memory leak 
+    commit message: >
+        * Reset the visibility binding properly when the in game state is left.
+
+        * This also fix an uncritical memory leak: The StateIngame reference could
+          not be garbage collected properly before, because the HUDScreenLayer
+          was referencing it implictly through the anonymous binding class.
+    commit: https://github.com/MovingBlocks/Terasology/commit/b3c8ed
+location:
+    file: engine/src/main/java/org/terasology/engine/modes/StateIngame.java
+    method: public void dispose()
+api: org.terasology.rendering.nui.NUIManager
+rule:
+    clear uneeded references so memory can be garbage collected

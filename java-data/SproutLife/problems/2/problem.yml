@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: SproutLife
+    url: https://github.com/ShprAlex/SproutLife
+fix:
+    description: made class attribute private 
+    commit message: >
+            Merge pull request #5 from DanyYanev/small-fix/private-game-clock
+            Class member was converted to private and Java Doc was added.
+    commit: https://github.com/ShprAlex/SproutLife/commit/9ba71b5
+location:
+    file: 
+        src/com/sproutlife/model/GameClock.java
+    method: 
+        public class GameClock 
+suggestion: 
+    to improve security, use private class attributes
