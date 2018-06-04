@@ -12,7 +12,7 @@ fix:
     commit: https://github.com/python-needle/needle/commit/2f138d7
 location:
     file: 
-        AndroidBillingLibrary/src/net/robotmedia/billing/BillingService.java
+        needle/cases.py
     method: 
         setUpClass(cls) in class NeedleTestCase(TestCase)
 api: 
