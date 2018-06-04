@@ -1,0 +1,5 @@
+name: himawaripy
+repository:
+    type: git
+    url: https://github.com/boramalper/himawaripy
+url: http://labs.boramalper.org/himawaripy/
