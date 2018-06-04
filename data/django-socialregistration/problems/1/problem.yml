@@ -12,6 +12,6 @@ location:
     file: 
         socialregistration/views.py
     method: 
-        get(self, request) in class EditEmailHandler(BaseHandler)
+        get(self, request) in class SetupCallback(SocialRegistration, TemplateView)
 suggestion: 
     for security, check that user credentials can only match one account
