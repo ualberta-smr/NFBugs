@@ -21,7 +21,7 @@ def main():
     search_terms = ["fix","bug","error","secur","maintenance","maintain","crash" \
                     "stability","portability","efficien","usability" \
                     "reliab", "testab", "changeab", \
-                    "memory","resource", "runtime", "#"]
+                    "memory","resource", "runtime", "#", "leak"]
     
     # the program is run with command line arguments representing
     # github repos
@@ -33,10 +33,25 @@ def main():
             
             for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java']).traverse_commits():
                 # bool written avoids duplication if more than one word matches
-                written = False             
+                written = False 
+                msg = commit.msg.lower()
                 for term in search_terms:
-                    if term in commit.msg and "typo" not in commit.msg and not written:
+                    if term.lower() in msg and filter(msg) and not written:
                         written = True
                         # print the commit ID and committer message
-                        new_file.write('{:^40},{:^40}\n'.format(commit.hash,commit.msg))
+                        new_file.write('{:^40},{:^40}\n'.format(commit.hash,msg))
+                        
+                        
+def filter(message):
+    # message is a string
+    # returns a boolean
+    filters = ["typo","npe","spelling"]
+    safe = True
+    for word in filters:
+        if word in message:
+            safe = False
+            break
+    return safe
+
+
 main()
