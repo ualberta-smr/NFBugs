@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: salmon
+    url: https://github.com/lincolnloop/salmon
+fix:
+    description: call .delete() on old data in database to prevent excessive space usage
+    commit message: >
+            Cleans up old results on run_checks. Fixes #5
+    commit: https://github.com/lincolnloop/salmon/commit/13315d1
+location:
+    file: 
+        salmon/apps/monitor/management/commands/run_checks.py
+    method: 
+        cleanup(self) in class Command(BaseCommand)
+api:
+    django.db.models.Model
+rule: 
+    conserve resources by pruning outdated info from databases
