@@ -1,5 +1,0 @@
-name: selendroid
-repository:
-    type: git
-    url: https://github.com/selendroid/selendroid
-url: http://selendroid.io

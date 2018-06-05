@@ -1,5 +1,0 @@
-name: django-socialregistration
-repository:
-    type: git
-    url: https://github.com/flashingpumpkin/django-socialregistration
-url: http://django-socialregistration.readthedocs.io/en/latest/

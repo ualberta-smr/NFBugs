@@ -1,5 +1,0 @@
-name: gae-boilerplate
-repository:
-    type: git
-    url: https://github.com/coto/gae-boilerplate
-url: https://cloud.google.com/appengine/docs/
