@@ -11,6 +11,7 @@
 # Output for each repo is stored in a csv file
 
 # May 4th, 2018
+# Last Updated: June 5th, 2018 -- Aida Radu
 
 from pydriller import GitRepository
 from pydriller import RepositoryMining
