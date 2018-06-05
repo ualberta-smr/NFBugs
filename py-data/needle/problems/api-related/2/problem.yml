@@ -1,0 +1,34 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: needle
+    url: https://github.com/python-needle/needle
+fix:
+    description: improved efficiency with a faster method
+    commit message: >
+           Refactored assertScreenshot into a context manager
+           This allows tests to be written in this style:
+                def test_about(self):
+                  with self.compareScreenshot('body', 'about-us'):
+                    self.driver.get('%s/about/' % BASE_URL)
+
+            along with the traditional:
+
+                def test_about(self):
+                  self.driver.get('%s/about/' % BASE_URL)
+                   self.assertScreenshot('body', 'about-us'):
+
+            The difference is that the former case can be significantly more
+            efficient when recording baseline screenshots as it doesn't require
+            loading the page simply to declare that an existing baseline will
+            not be overwritten
+    commit: https://github.com/python-needle/needle/commit/b4ba41d
+location:
+    file: 
+        needle/cases.py
+    method: 
+        compareScreenshot(self, element_or_selector, filename, threshold=0.1)
+api: 
+    needle.driver.NeedleWebDriver
+rule:
+    avoid loading a page unnecessarily by using compareScreenshot instead of assertScreenshot
