@@ -1,0 +1,27 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: RoboSpock
+    url: https://github.com/robospock/RoboSpock
+fix:
+    description: Initialized a ClassLoader once instead of multiple times to reduce perm space
+    commit message: >
+            Fix PermGen OOME
+            *Why I did it?*
+            When running multiple tests with RoboSpecification,
+            perm size inreases drastically.
+            
+            *How I did it?*
+            Large perm usage was due to creating separated classloader for every
+            specification. Create RobolectricClassLoader as static field,
+            initialize it only once reuse it among RoboSpecifications.
+    commit: https://github.com/robospock/RoboSpock/commit/b65057f
+location:
+    file: 
+        src/main/java/pl/polidea/robospock/RoboSputnik.java
+    method: 
+        public RoboSputnik(final Class<?> clazz) throws InitializationError
+api: 
+    com.xtremelabs.robolectric.bytecode.RobolectricClassLoader
+rule:
+    reuse Class Loaders to reduce memory usage
