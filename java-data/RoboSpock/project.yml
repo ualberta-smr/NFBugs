@@ -1,0 +1,5 @@
+name: RoboSpock
+repository:
+    type: git
+    url: https://github.com/robospock/RoboSpock
+url: http://robospock.github.io/RoboSpock/
