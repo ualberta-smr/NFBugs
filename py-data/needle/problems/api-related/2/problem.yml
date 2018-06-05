@@ -27,7 +27,7 @@ location:
     file: 
         needle/cases.py
     method: 
-        compareScreenshot(self, element_or_selector, filename, threshold=0.1)
+        compareScreenshot(self, element_or_selector, filename, threshold=0.1) in class NeedleTestCase(TestCase)
 api: 
     needle.driver.NeedleWebDriver
 rule:
