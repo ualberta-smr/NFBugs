@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Terminal-on-FB-Messenger
+    url: https://github.com/dhruvramani/Terminal-on-FB-Messenger
+fix:
+    description: use getpass instead of input to hide characters typed in the password field
+    commit message: >
+            Merge pull request #4 from idoqo/master
+            Added getpass module to make password invisible when typing
+    commit: https://github.com/dhruvramani/Terminal-on-FB-Messenger/commit/37c19e6
+location:
+    file: 
+        main.py
+    method: 
+        runCommand(command)
+suggestion: 
+    to improve security, hide characters in password input
