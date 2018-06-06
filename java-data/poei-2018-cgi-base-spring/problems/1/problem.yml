@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: gae-boilerplate
+    url: https://github.com/coto/gae-boilerplate
+fix:
+    description: enhance security by making password characters WRITE_ONLY
+    commit message: >
+            Hide password
+    commit: https://github.com/jponcy/poei-2018-cgi-base-spring/commit/8c66187
+location:
+    file: 
+        src/main/java/hello/entity/User.java
+    method: 
+        public class User
+suggestion: 
+    to improve security, conceal user password fields
