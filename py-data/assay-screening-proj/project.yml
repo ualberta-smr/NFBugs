@@ -1,0 +1,5 @@
+name: assay-screening-proj
+repository:
+    type: git
+    url: https://github.com/pete-dnae/assay-screening-proj
+url: https://github.com/pete-dnae/assay-screening-proj
