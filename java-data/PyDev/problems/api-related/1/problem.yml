@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Pydev
+    url: https://github.com/aptana/Pydev
+fix:
+    description: saved memory space by caching values
+    commit message: >
+            Added a cache to prevent using too much memory on the ModulesManager
+            git-svn-id: svn://localhost/trunk@924 7f4d9e04-a92a-ab41-bea9-970b690ef4a7
+    commit: https://github.com/aptana/Pydev/commit/25ac8be
+location:
+    file: 
+        org.python.pydev/src/org/python/pydev/editor/codecompletion/revisited/ModulesManager.java
+    method: 
+        private final class ModulesManagerCache extends LRUCache<ModulesKey, AbstractModule>
+api:
+    org.python.pydev.core.cache.Cache
+rule: 
+    cache old modules to reduce memory needs
