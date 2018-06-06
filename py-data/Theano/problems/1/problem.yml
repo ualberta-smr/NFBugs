@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Theano
+    url: https://github.com/Theano/Theano
+fix:
+    description: decreased object reference count to release memory
+    commit message: >
+            Fix a memory leak
+    commit: https://github.com/Theano/Theano/commit/7469193
+location:
+    file: 
+        theano/gpuarray/multinomial.py
+    method: 
+        c_code(self, node, name, inp, outputs, sub)
+suggestion:
+    remember to release memory to avoid leaks
