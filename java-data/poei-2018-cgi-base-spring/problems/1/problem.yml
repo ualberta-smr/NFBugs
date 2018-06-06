@@ -1,8 +1,8 @@
 source:
     name: commit-msg-keywords
 project: 
-    name: gae-boilerplate
-    url: https://github.com/coto/gae-boilerplate
+    name: poei-2018-cgi-base-spring
+    url: https://github.com/jponcy/poei-2018-cgi-base-spring
 fix:
     description: enhance security by making password characters WRITE_ONLY
     commit message: >
