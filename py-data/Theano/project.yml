@@ -1,0 +1,5 @@
+name: Theano
+repository:
+    type: git
+    url: https://github.com/Theano/Theano
+url: http://www.deeplearning.net/software/theano/
