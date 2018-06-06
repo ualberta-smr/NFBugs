@@ -1,0 +1,5 @@
+name: deltachat-android
+repository:
+    type: git
+    url: https://github.com/deltachat/deltachat-android
+url: https://github.com/deltachat/deltachat-android
