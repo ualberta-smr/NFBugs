@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: assay-screening-proj
+    url: https://github.com/pete-dnae/assay-screening-proj
+fix:
+    description: made class methods and attributes private 
+    commit message: >
+            made member functions private
+    commit: https://github.com/pete-dnae/assay-screening-proj/commit/61da3c0
+location:
+    file: 
+        clients/expt_recipes/nested/model_builders.py
+    method: 
+        -
+suggestion: 
+    to improve security, use private class members
