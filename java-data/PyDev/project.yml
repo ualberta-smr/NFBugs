@@ -1,0 +1,5 @@
+name: Pydev
+repository:
+    type: git
+    url: https://github.com/aptana/Pydev
+url: http://www.pydev.org/
