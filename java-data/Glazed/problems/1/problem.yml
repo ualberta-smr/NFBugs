@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Glazed
+    url: https://github.com/SleeplessDevelopment/Glazed
+fix:
+    description: Replacing enhanced for loops with regular ones improves performance because it saves memory space 
+    commit message: >
+            Replace foreach with indexed loop
+    commit: https://github.com/SleeplessDevelopment/Glazed/commit/2fad00a
+location:
+    file: 
+        src/main/java/net/insomniakitten/glazed/Glazed.java
+    method: 
+        public void displayAllRelevantItems(NonNullList<ItemStack> list)
+suggestion: 
+    a for loop may be more effiient than a foreach loop
