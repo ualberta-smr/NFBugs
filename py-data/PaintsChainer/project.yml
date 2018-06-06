@@ -1,0 +1,5 @@
+name: PaintsChainer
+repository:
+    type: git
+    url: https://github.com/pfnet/PaintsChainer
+url: https://paintschainer.preferred.tech/index_en.html
