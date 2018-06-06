@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: PointCloudDatasetReader
+    url: https://github.com/stefanmarks/PointCloudDatasetReader
+fix:
+    description: Preventing data corruption by remembering to close a file when finished
+    commit message: >
+        Forgot to close file
+    commit: https://github.com/stefanmarks/PointCloudDatasetReader/commit/a88e151
+location:
+    file: rc/nz/ac/aut/SentienceLab/PointCloudDatasetReader/MainForm.java
+    method: public void run() throws IOException, InterruptedException
+api: 
+    src.nz.ac.aut.SentienceLab.PointCloudDatasetReader.DataSource
+rule: 
+    close files when done
