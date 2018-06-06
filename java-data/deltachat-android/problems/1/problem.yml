@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: deltachat-android
+    url: https://github.com/deltachat/deltachat-android
+fix:
+    description: replace hashmap to discard old images without leaking memory
+    commit message: >
+            Fix a memory leak.
+    commit: https://github.com/deltachat/deltachat-android/commit/848862a
+location:
+    file: 
+        MessengerProj/src/main/java/com/b44t/messenger/ContactsController.java
+    method: 
+        public static void setupAvatarByStrings(final View avtView,
+                                   final ImageReceiver avtImageReceiver,
+                                   final AvatarDrawable avtDrawable,
+                                   String tempEmail,
+                                   String tempName)
+suggestion:
+    HashMaps may easily cause memory leaks; consider using another structure 
