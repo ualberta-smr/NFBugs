@@ -14,4 +14,4 @@ location:
     method: 
         public void displayAllRelevantItems(NonNullList<ItemStack> list)
 suggestion: 
-    a for loop may be more effiient than a foreach loop
+    a for loop may be more efficient than a foreach loop
