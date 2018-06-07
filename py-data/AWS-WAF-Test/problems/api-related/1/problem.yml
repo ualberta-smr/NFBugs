@@ -1,0 +1,17 @@
+ource:
+    name: commit-msg-keywords
+project: 
+    name: AWS-WAF-Test
+    url: https://github.com/s2pAIr/AWS-WAF-Test
+fix:
+    description: Preventing data corruption by remembering to close a file when finished
+    commit message: >
+        Forgot to close the file, fixed
+    commit: https://github.com/s2pAIr/AWS-WAF-Test/commit/ad6db33
+location:
+    file: aws-waf-test.py
+    method: -
+api: 
+    io.py
+rule: 
+    close files when done
