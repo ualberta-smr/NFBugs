@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: ForestFireModel
+    url: https://github.com/Cashney/ForestFireModel
+fix:
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            StringBuilder instead of Concatenation (more efficient)
+    commit: https://github.com/Cashney/ForestFireModel/commit/2172f37
+location:
+    file: 
+        src/ForestFireModell/ForestFire_CA.java
+    method: 
+        public void printBoard(long timer) 
+api: 
+    java.lang.StringBuilder
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently
