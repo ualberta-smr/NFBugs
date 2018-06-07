@@ -1,0 +1,5 @@
+name: AWS-WAF-Test
+repository:
+    type: git
+    url: https://github.com/s2pAIr/AWS-WAF-Test
+url: https://github.com/s2pAIr/AWS-WAF-Test
