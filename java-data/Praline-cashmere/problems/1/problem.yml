@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Praline-cashmere
+    url: https://github.com/ManyCore-NLeSC/Praline-cashmere
+fix:
+    description: made attributes private 
+    commit message: >
+            Made members private.
+    commit: https://github.com/ManyCore-NLeSC/Praline-cashmere/commit/5103ede
+location:
+    file: 
+        src/main/java/nl/esciencecenter/praline/aligners/Alignment.java
+    method: 
+        public class Alignment
+suggestion: 
+    to improve security, use private class members
