@@ -16,4 +16,4 @@ location:
     method: 
         public void tick(float dt)
 suggestion: 
-    a for loop may be more effiient than a foreach loop
+    a for loop may be more efficient than a foreach loop
