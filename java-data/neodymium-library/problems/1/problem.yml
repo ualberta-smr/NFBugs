@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: neodymium-library
+    url: https://github.com/Xceptance/neodymium-library
+fix:
+    description: made class attributes private 
+    commit message: >
+            made members private
+    commit: https://github.com/Xceptance/neodymium-library/commit/9584737
+location:
+    file: 
+        src/main/java/com/xceptance/neodymium/NeodymiumRunner.java
+    method: 
+        public class NeodymiumRunner extends BlockJUnit4ClassRunner
+suggestion: 
+    to improve security, use private class members
