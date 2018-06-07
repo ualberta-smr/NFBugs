@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: WaniKani-Ripoff-Project
+    url: https://github.com/Firespirit93/WaniKani-Ripoff-Project
+fix:
+    description: made class attributes private 
+    commit message: >
+            Made some members private
+    commit: https://github.com/Firespirit93/WaniKani-Ripoff-Project/commit/12d85d0
+location:
+    file: 
+        WaniKaniRipoff/src/Wanikani/system/LessonSystem.java
+        WaniKaniRipoff/src/Wanikani/system/ReviewSystem.java
+    method: 
+        public abstract class LessonSystem
+        public abstract class ReviewSystem
+suggestion: 
+    to improve security, use private class members
