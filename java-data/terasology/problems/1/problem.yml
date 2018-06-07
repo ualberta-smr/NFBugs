@@ -19,4 +19,4 @@ location:
     file: src/com/github/begla/blockmania/Chunk.java
     method: public boolean generate(), public void generateDisplayLists(),
 suggestion:
-    a for loop may be more effiient than a foreach loop
+    a for loop may be more efficient than a foreach loop
