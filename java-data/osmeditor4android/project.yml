@@ -1,0 +1,5 @@
+name: osmeditor4android
+repository:
+    type: git
+    url: https://github.com/MarcusWolschon/osmeditor4android
+url: http://vespucci.io/
