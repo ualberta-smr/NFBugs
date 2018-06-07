@@ -21,7 +21,7 @@ def main():
     # mine for non-functional fixes in commit messages -- stem words to catch more commits
     search_terms = ["fix","bug","error","secur","maintenance","maintain","crash" \
                     "stability","portability","efficien","usability" \
-                    "reliab", "testab", "changeab", \
+                    "reliab", "testab", "changeab", "replace" \
                     "memory","resource", "runtime", "#", "leak"]
     
     # the program is run with command line arguments representing
