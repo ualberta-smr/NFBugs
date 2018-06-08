@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: osmeditor4android
+    url: https://github.com/MarcusWolschon/osmeditor4android
+fix:
+    description: fix a memory leak from a map not being properly disposed of
+    commit message: >
+            Fix leak of OpenStreetMapTileProvider.
+    commit: https://github.com/MarcusWolschon/osmeditor4android/commit/abbe4df
+location:
+    file: 
+        src/de/blau/android/Main.java
+    method: 
+        protected void onCreate(final Bundle savedInstanceState)
+api: 
+    src.main.java.de.blau.android.Map
+rule:
+    call onDestroy() method when finished with a Map object
