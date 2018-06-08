@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: osmeditor4android
+    url: https://github.com/MarcusWolschon/osmeditor4android
+fix:
+    description: Replacing "+" concatenation with a Uri Builder improves performance and security
+    commit message: >
+            Merge pull request #416 from johnjohndoe/uri-builder
+            Use Uri builder to construct URLs.
+    commit: https://github.com/MarcusWolschon/osmeditor4android/commit/e94e99f
+location:
+    file: 
+        src/de/blau/android/imageryoffset/BackgroundAlignmentActionModeCallback.java
+    method: 
+        protected void onPreExecute()
+api: 
+    android.net.Uri
+rule:
+    use a Uri object to build paths efficiently and securely
