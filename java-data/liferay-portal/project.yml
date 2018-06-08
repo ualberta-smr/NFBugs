@@ -1,0 +1,5 @@
+name: liferay-portal
+repository:
+    type: git
+    url: https://github.com/liferay/liferay-portal
+url: https://dev.liferay.com/
