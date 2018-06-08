@@ -13,7 +13,7 @@ location:
     file: 
         src/de/blau/android/imageryoffset/BackgroundAlignmentActionModeCallback.java
     method: 
-        protected void onPreExecute()
+        protected ArrayList<ImageryOffset> doInBackground(Integer... params)
 api: 
     android.net.Uri
 rule:
