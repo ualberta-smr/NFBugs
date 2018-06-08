@@ -1,0 +1,13 @@
+CONTENTS: Commits that aren't relevant to current project, but still interesting
+
+commit: https://github.com/bilelmoussaoui/Hardcode-Tray/commit/cc98dba7e2b1ebddd7d052dc66ff83535905bd3c
+    notes: programmers replaced % string formatting with the newer .format method. The method
+           was introduced in later versions of python and has more options, but it's also slower.
+
+commit: https://github.com/Maescool/Catacomb-Snatch/commit/f302f5e7303110b3a3d70ca3c4b3eeae8259afd5
+    notes: the file extension was changed for image files because .png is higher quality than .jpg 
+    
+    
+commit: https://github.com/lincolnloop/salmon/commit/71597f84e0c0ebcda6f0220f0aeeb17144a34131
+    notes: syntax changes were made to make the program compatible with earlier versions of python
+        
