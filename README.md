@@ -18,6 +18,9 @@ Mining:
                     ["fix","bug","error","secur","maintenance","maintain", \
                     "stab","portab","efficien","usab" \
                     "reliab", "testab", "changeab", "replace"\
-                    "memory","resource", "runtime", "#", "crash", "leak"]
+                    "memory","resource", "runtime", "#", "crash", "leak" \
+                    "attack" , "authenticat", "authoriz", "cipher","crack", \
+                    "decrypt","encrypt","vulnerab","minimize","optimize",\
+                    "slow"]
 - mining code [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/PyDrillerMining/find_NFR_commits.py)
 
