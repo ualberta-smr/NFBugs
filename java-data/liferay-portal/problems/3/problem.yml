@@ -1,0 +1,17 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: liferay-portal
+    url: https://github.com/liferay/liferay-portal
+fix:
+    description: made class attributes and methods private 
+    commit message: >
+            LPS-78346 Makes methods private
+    commit: https://github.com/liferay/liferay-portal/commit/3885a78
+location:
+    file: 
+        liferay-portal/modules/apps/web-experience/site/site-browser-web/src/main/java/com/liferay/site/browser/web/internal/display/context/SiteBrowserDisplayContext.java    
+    method: 
+        -
+suggestion: 
+    to improve security, use private class members
