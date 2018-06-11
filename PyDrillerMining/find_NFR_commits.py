@@ -22,7 +22,10 @@ def main():
     search_terms = ["fix","bug","error","secur","maintenance","maintain","crash" \
                     "stability","portability","efficien","usability" \
                     "reliab", "testab", "changeab", "replace" \
-                    "memory","resource", "runtime", "#", "leak"]
+                    "memory","resource", "runtime", "#", "leak"\
+                   "attack" , "authenticat", "authoriz", "cipher","crack", \
+                    "decrypt","encrypt","vulnerab","minimize","optimize",\
+                    "slow"]
     
     # the program is run with command line arguments representing
     # github repos
