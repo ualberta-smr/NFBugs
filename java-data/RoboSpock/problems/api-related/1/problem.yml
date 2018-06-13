@@ -4,6 +4,7 @@ project:
     name: RoboSpock
     url: https://github.com/robospock/RoboSpock
 fix:
+    tag: memory
     description: Initialized a ClassLoader once instead of multiple times to reduce perm space
     commit message: >
             Fix PermGen OOME
