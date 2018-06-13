@@ -4,6 +4,7 @@ project:
     name: osmeditor4android
     url: https://github.com/MarcusWolschon/osmeditor4android
 fix:
+    tag: memory
     description: fix a memory leak from a map not being properly disposed of
     commit message: >
             Fix leak of OpenStreetMapTileProvider.
