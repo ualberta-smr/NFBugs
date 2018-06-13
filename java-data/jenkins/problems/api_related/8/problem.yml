@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: security
     description: Programmers improved security by making sure that anonymous users don’t have the same permissions as admins
     commit message: >
         fixed #478 "anonymous user should not be able to tag sources"
