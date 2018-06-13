@@ -4,6 +4,7 @@ project:
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
 fix:
+    tag: performance
     description: reduces time copmlexity by using multiple threads 
     commit message: >
         * Immensely improves generation speed of chunks by distributing chunk generation to multiple cores/threads
@@ -12,3 +13,5 @@ fix:
 location:
     file: src/com/github/begla/blockmania/world/WorldUpdateManager.java
     method: public void processChunkUpdates()
+suggestion:
+    consider using multiple threads
