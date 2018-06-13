@@ -4,6 +4,7 @@ project:
     name: liferay-portal
     url: https://github.com/liferay/liferay-portal
 fix:
+    tag: memory
     description: Removed reference to an object that was preventing memory release
     commit message: >
             LPS-64050 Don't keep the references to the bundles, we are creating a memory leak here, 
