@@ -4,6 +4,7 @@ project:
     name: Theano
     url: https://github.com/Theano/Theano
 fix:
+    tag: memory
     description: accidentally kept object from being collected 
     commit message: >
             fix a memory leak. We where doing INCREF 2 times on the inputs!
