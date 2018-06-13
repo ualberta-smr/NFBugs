@@ -4,6 +4,7 @@ project:
     name: himawaripy
     url: https://github.com/boramalper/himawaripy
 fix:
+    tag: performance
     description: improves performance by running parallel downloads
     commit message: >
             Merge pull request #12 from predator5047/master
