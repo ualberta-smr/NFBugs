@@ -4,9 +4,15 @@ project:
     name: leakcanary
     url: https://github.com/square/leakcanary
 fix:
+    tag: memory
     description: reduced memory usage by removing duplicates from a map 
     commit message: Merge pull request \#444 from jrodbx/fix-oom Lower memory usage when parsing heap dumps on M
     commit: https://github.com/square/leakcanary/commit/0163dfa
 location:
   file: leakcanary-analyzer/src/main/java/com/squareup/leakcanary/HeapAnalyzer.java
-  method: "checkForLeak(File heapDumpFile, String referenceKey)"
+  method: public AnalysisResult checkForLeak(File heapDumpFile, String referenceKey)
+api:
+    com.squareup.haha.perflib.Snapshot
+rule:
+    deduplicate Snapshot roots before performing operations
+
