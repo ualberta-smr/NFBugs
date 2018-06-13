@@ -4,6 +4,7 @@ project:
     name: gae-boilerplate
     url: https://github.com/coto/gae-boilerplate
 fix:
+    tag: security
     description: enhance security by enabling a csrf token
     commit message: >
             wtforms implementation completed (issue #36)
