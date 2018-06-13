@@ -4,6 +4,7 @@ project:
     name: Pydev
     url: https://github.com/aptana/Pydev
 fix:
+    tag: memory
     description: saved memory space by caching values
     commit message: >
             Added a cache to prevent using too much memory on the ModulesManager
