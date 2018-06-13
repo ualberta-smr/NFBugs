@@ -4,6 +4,7 @@ project:
     name: poei-2018-cgi-base-spring
     url: https://github.com/jponcy/poei-2018-cgi-base-spring
 fix:
+    tag: security
     description: enhance security by making password characters WRITE_ONLY
     commit message: >
             Hide password
