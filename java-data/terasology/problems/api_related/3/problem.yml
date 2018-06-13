@@ -4,6 +4,7 @@ project:
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
 fix:
+    tag: memory
     description: Programmers fixed a memory leak 
     commit message: >
         * Reset the visibility binding properly when the in game state is left.
