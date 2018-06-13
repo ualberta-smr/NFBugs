@@ -8,7 +8,7 @@ import com.github.gumtreediff.tree.*;
 import java.util.List;
 import java.io.IOException;
 
-public class getActions{
+public class TreeAction{
     public static void main (String[] args) throws IOException{
         Run.initGenerators();
         String file1 = "/Users/radu/Documents/HelloWorld.java";
