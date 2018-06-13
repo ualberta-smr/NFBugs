@@ -4,6 +4,7 @@ project:
     name: osmeditor4android
     url: https://github.com/MarcusWolschon/osmeditor4android
 fix:
+    tag: performance
     description: Replacing "+" with StringBuilder improves performance and memory space
     commit message: >
             Use a StringBuilder instead of concatenating Strings
