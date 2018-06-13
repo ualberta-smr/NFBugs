@@ -4,6 +4,7 @@ project:
     name: EfficientAdapter
     url: https://github.com/StanKocken/EfficientAdapter
 fix:
+    tag: memory
     description: Added ability to remove items from a collection when no longer needed
     commit message: >
         Merge pull request #13 from preplay/master
