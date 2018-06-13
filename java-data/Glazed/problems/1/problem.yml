@@ -4,6 +4,7 @@ project:
     name: Glazed
     url: https://github.com/SleeplessDevelopment/Glazed
 fix:
+    tag: performance
     description: Replacing enhanced for loops with regular ones improves performance because it saves memory space 
     commit message: >
             Replace foreach with indexed loop
