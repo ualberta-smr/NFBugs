@@ -4,6 +4,7 @@ project:
     name: needle
     url: https://github.com/python-needle/needle
 fix:
+    tag: performance
     description: improved efficiency with a faster method
     commit message: >
             NeedleTestCase: refactor driver setup to setUpClass
