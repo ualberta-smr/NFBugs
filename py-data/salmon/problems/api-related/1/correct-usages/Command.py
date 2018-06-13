@@ -9,8 +9,8 @@ from django.utils import timezone
 
 from salmon.apps.monitor import models, utils
 
-
-def handle(self, *args, **options):
+class Command(BaseCommand):
+    def handle(self, *args, **options):
         config = self.load_salmon_checks()
         if options['fake']:
             self.stdout.write("Printing checks [fake mode] ...")
@@ -31,7 +31,7 @@ def handle(self, *args, **options):
         if not options['fake']:
             self.cleanup()
 
- def cleanup(self):
+    def cleanup(self):
         """
         Flag inactive checks and remove old results from database.
         """
