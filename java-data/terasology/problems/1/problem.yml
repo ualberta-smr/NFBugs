@@ -4,6 +4,7 @@ project:
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
 fix:
+    tag: performance
     description: Replacing enhanced for loops with regular ones improves performance. Also reduce memory space usage.
     commit message: >
             * Vastly improved memory overhead (32x32 chunks can now be displayed with a JVM heap size < 512 MB) whereas 16x16 where problematic with 1024 MB before(!) But make sure your computer/GPU can handle values > 16 chunks...
