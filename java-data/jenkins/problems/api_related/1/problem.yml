@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: memory
     description: Programmers added a call to release some memory that had previously been abandoned
     commit message: >
         fixed a horrible horrible memory leak.
