@@ -4,6 +4,7 @@ project:
     name: gae-boilerplate
     url: https://github.com/coto/gae-boilerplate
 fix:
+    tag: security
     description: enhance security by encrypting passwords
     commit message: >
             Added basic encryption to hashing function, extra security layer for passwords.
