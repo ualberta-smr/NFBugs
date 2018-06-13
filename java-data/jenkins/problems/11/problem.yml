@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: performance
     description: makes the program more efficient by using a previously defined function to return a Reader
     commit message: >
         improved efficiency
