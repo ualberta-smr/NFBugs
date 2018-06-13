@@ -4,6 +4,7 @@ project:
     name: PaintsChainer
     url: https://github.com/pfnet/PaintsChainer
 fix:
+    tag: memory
     description: delete object to free memory space
     commit message: >
             Reduce memory usage
