@@ -4,6 +4,7 @@ project:
     name: pipes
     url: https://github.com/tinkerpop/pipes
 fix:
+    tag: performance
     description: Provided a new iterator class with better performance 
     commit message: >
             Created a handy utility class called SingleIterator<T>. It takes a single object and emits it and then shuts down. 
