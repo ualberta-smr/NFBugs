@@ -4,6 +4,7 @@ project:
     name: pipes
     url: https://github.com/tinkerpop/pipes
 fix:
+    tag: memory
     description: Provided a new class that reduces the running memory space
     commit message: >
             GroupByReducePipe makes use of internal ExpandableMultiIterator to ensure a low memory footprint.
