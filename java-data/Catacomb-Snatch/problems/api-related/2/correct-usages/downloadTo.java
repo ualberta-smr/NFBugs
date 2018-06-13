@@ -18,7 +18,6 @@ public class ChannelDownloader implements IDownloader {
 	public void downloadTo(String turl, String dest) throws IOException {
 		URL url = new URL(turl);
 
-		System.out.println("Opening connection to " + url + "...");
 		URLConnection urlC = url.openConnection();
 
 		// allow both GZip and Deflate (ZLib) encodings
@@ -29,14 +28,7 @@ public class ChannelDownloader implements IDownloader {
 
 		urlC.setRequestProperty("User-agent", Downloader.getUserAgent());
 
-		// Print info about resource
-
-		Date date = new Date(urlC.getLastModified());
-		//int fileSize = urlC.getContentLength();
-		System.out.print("Copying resource (type: " + urlC.getContentType());
-		System.out.println(", modified on: " + date.toString() + ")...");
-		System.out.flush();
-
+		
 		String encoding = urlC.getContentEncoding();
 
 		InputStream is = null;
@@ -50,6 +42,7 @@ public class ChannelDownloader implements IDownloader {
 		}
 
 		ReadableByteChannel rbc = Channels.newChannel(is);
+		
 		FileOutputStream fos = new FileOutputStream(dest);
 		fos.getChannel().transferFrom(rbc, 0, 1 << 24);
 		// DownloadScreen.drawGraph(fileSize/2, fileSize);
