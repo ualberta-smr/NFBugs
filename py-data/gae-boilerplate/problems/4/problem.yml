@@ -4,6 +4,7 @@ project:
     name: gae-boilerplate
     url: https://github.com/coto/gae-boilerplate
 fix:
+    tag: security
     description: send the account owner an email when their data (email, psswd, etc.) is changed
     commit message: >
             app_name, utils.send_mails(), Email message when password was changed (closes #24), 
