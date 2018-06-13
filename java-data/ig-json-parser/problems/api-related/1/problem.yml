@@ -4,6 +4,7 @@ project:
     name: ig-json-parser
     url: https://github.com/Instagram/ig-json-parser
 fix:
+    tag: memory
     description: changing the retention procedure to SOURCE reduces memory use because the annotations are discarded 
     commit message: >
             Merge pull request #33 from stashuk/retention
