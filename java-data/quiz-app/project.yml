@@ -1,0 +1,5 @@
+name: quiz-app
+repository:
+    type: git
+    url: https://github.com/UdacityAndroidDevScholarship/quiz-app
+url: https://github.com/UdacityAndroidDevScholarship/quiz-app/wiki
