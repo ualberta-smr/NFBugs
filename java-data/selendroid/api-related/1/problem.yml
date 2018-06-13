@@ -4,6 +4,7 @@ project:
     name: selendroid
     url: https://github.com/selendroid/selendroid
 fix:
+    tag: performance
     description: Replacing a slower function with a faster one to reduce runtime 
     commit message: >
             Optimizing performance of generation random UUIDs.
@@ -19,3 +20,8 @@ location:
         public String initializeSession(JSONObject desiredCapabilities),
         public String add(AndroidElement element),
         public void assertThatANewtestSessionCanBeCreated() throws Exception, public void assertThatANewtestSessionCanBeCreatedWithAlreadyInstalledApp()
+    api:
+        java.util.UUID
+        java.util.Random
+    rule: 
+        generating a random uuid using random.nextLong is faster than using UUID.randomUUID
