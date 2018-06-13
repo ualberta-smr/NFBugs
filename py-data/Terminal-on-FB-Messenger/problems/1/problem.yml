@@ -4,6 +4,7 @@ project:
     name: Terminal-on-FB-Messenger
     url: https://github.com/dhruvramani/Terminal-on-FB-Messenger
 fix:
+    tag: security
     description: use getpass instead of input to hide characters typed in the password field
     commit message: >
             Merge pull request #4 from idoqo/master
