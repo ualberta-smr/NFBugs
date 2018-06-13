@@ -9,7 +9,9 @@ from .. import tensor
 from .. import compile
 from .. import scalar
 
- def c_code(self, node, name, (a_val, a_ind, a_ptr, a_nrows, b), (z,), sub):
+class StructuredDotCSC(gof.Op):
+
+   def c_code(self, node, name, (a_val, a_ind, a_ptr, a_nrows, b), (z,), sub):
         """
         C-implementation of the dot product of the sparse matrix A and matrix B.
         @param a_val: non-zero values of the sparse matrix
