@@ -4,6 +4,7 @@ project:
     name: osmeditor4android
     url: https://github.com/MarcusWolschon/osmeditor4android
 fix:
+    tag: performance, security
     description: Replacing "+" concatenation with a Uri Builder improves performance and security
     commit message: >
             Merge pull request #416 from johnjohndoe/uri-builder
