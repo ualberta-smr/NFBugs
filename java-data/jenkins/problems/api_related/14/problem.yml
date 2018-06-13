@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: security
     description: Programmers ensured necessary permissions were granted before proceeding
     commit message: >
         [FIXED JENKINS-24080] Improved security of CommandDuringBuild and its current implementations
