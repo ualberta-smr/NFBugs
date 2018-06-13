@@ -4,6 +4,7 @@ project:
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
 fix:
+    tag: memory
     description: Programmers fixed a memory leak from an object that was not properly disposed 
     commit message: >
         Merge pull request #1285 from flo/memory-leak-fixes. Memory leak fixes
