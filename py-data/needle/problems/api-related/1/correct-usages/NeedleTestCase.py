@@ -13,7 +13,7 @@ from PIL import Image
 from needle.diff import ImageDiff
 from needle.driver import NeedleWebDriver
 
-
+class NeedleTestCase(TestCase)
     @classmethod
     def setUpClass(cls):
         cls.driver = cls.get_web_driver()
