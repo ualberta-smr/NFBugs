@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: liferay-portal
+    url: https://github.com/liferay/liferay-portal
+fix:
+    tag: security
+    description: changed access of id to read-only
+    commit message: >
+            Make Employee.id read-only and stop employees from being updated via POST endpoint
+    commit: https://github.com/derrikcurran/sample-employee-rest-server/commit/c17722d
+location:
+    file: 
+        src/main/java/com/derrikcurran/sample/employeerestserver/employee/Employee.java
+    method: 
+        -
+suggestion:
+    prevent user credentials from being changed by others
