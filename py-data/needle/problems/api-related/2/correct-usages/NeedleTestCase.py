@@ -15,8 +15,8 @@ from needle.diff import ImageDiff
 from needle.driver import NeedleWebDriver, NeedleWebElement
 
 
-
- def assertScreenshot(self, element_or_selector, filename, threshold=0.1):
+class NeedleTestCase(TestCase)
+    def assertScreenshot(self, element_or_selector, filename, threshold=0.1):
         """assert-style variant of compareScreenshot context manager
         compareScreenshot() can be considerably more efficient for recording baselines by avoiding the need
         to load pages before checking whether we're actually going to save them. This function allows you
