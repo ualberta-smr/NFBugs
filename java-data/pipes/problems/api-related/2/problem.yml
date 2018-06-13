@@ -4,6 +4,7 @@ project:
     name: pipes
     url: https://github.com/tinkerpop/pipes
 fix:
+    tag: performance
     description:  Provided a new class to improve performance
     commit message: >
             Added a new Pipe--CollectionFilterPipe--which filters an object 
