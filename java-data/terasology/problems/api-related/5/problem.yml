@@ -4,6 +4,7 @@ project:
     name: terasology
     url: https://github.com/MovingBlocks/Terasology
 fix:
+    tag: memory
     description: Programmers fixed a memory leak from an object not properly disposed of
     commit message: >
         Merge PR #2460 by @flo - memory leak fix.
@@ -11,3 +12,7 @@ fix:
 location:
     file: engine/src/main/java/org/terasology/entitySystem/entity/internal/PojoEntityManager.java
     method: public void destroy(long entityId)
+api:
+    org.terasology.entitySystem.entity.EntityRef
+rule:
+    call notifyComponentRemovalAndEntityDestruction to send an event when destroying
