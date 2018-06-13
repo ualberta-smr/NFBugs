@@ -4,6 +4,7 @@ project:
     name: WaniKani-Ripoff-Project
     url: https://github.com/Firespirit93/WaniKani-Ripoff-Project
 fix:
+    tag: memory
     description: reduce memory usage by only generating an object in a getter instead of stroing the attribute
     commit message: >
             Fixed RAM usage
