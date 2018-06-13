@@ -4,6 +4,7 @@ project:
     name: Theano
     url: https://github.com/Theano/Theano
 fix:
+    tag: memory
     description: decreased object reference count to release memory
     commit message: >
             Fix a memory leak
