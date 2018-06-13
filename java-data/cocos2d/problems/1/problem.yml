@@ -4,6 +4,7 @@ project:
     name: cocos2d
     url: https://github.com/ZhouWeikuan/cocos2d
 fix:
+    tag: performance
     description: Replacing enhanced for loops with regular ones improves performance because it saves memory space 
     commit message: >
             GC optimization for CCScheduler, now in tick() on idle allocating less memory. 
