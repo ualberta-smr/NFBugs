@@ -2,11 +2,11 @@
 | List of all github repositories that have been mined, including    |
 | those that gave no results.                                        |
 |                                                                    |
-| TOTAL REPO COUNT = 122                                             |
+| TOTAL REPO COUNT = 124                                             |
 ----------------------------------------------------------------------
 
 
-JAVA REPOS | count = 103
+JAVA REPOS | count = 105
 ------------------------
 
 https://github.com/3pillarlabs/socialauth-android.git
@@ -30,6 +30,7 @@ https://github.com/commonsguy/cwac-wakeful.git
 https://github.com/cucumber-attic/gherkin2.git
 https://github.com/darvds/RibbonMenu
 https://github.com/deltachat/deltachat-android.git
+https://github.com/derrikcurran/sample-employee-rest-server.git
 https://github.com/ened/Android-Tiling-ScrollView.git
 https://github.com/faizmalkani/Fabulous
 https://github.com/fanfoudroid/fanfoudroid.git
@@ -104,6 +105,7 @@ https://github.com/tibi1712/Folding-Android
 https://github.com/tinkerpop/pipes
 https://github.com/tuxmonteiro/galeb-libraries.git
 https://github.com/txusballesteros/fit-chart.git
+https://github.com/UdacityAndroidDevScholarship/quiz-app.git
 https://github.com/Ullink/simple-slack-api.git
 https://github.com/uPhyca/GAlette.git
 https://github.com/wangshaolei/AutoSpannableTextView.git
