@@ -4,6 +4,7 @@ project:
     name: ForestFireModel
     url: https://github.com/Cashney/ForestFireModel
 fix:
+    tag: performance
     description: Replacing "+" with StringBuilder improves performance and memory space
     commit message: >
             StringBuilder instead of Concatenation (more efficient)
