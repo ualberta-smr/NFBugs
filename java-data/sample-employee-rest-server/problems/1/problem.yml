@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: sample-employee-rest-server
+    url: https://github.com/derrikcurran/sample-employee-rest-server
+fix:
+    tag: memory, performance
+    description: Replacing Long objects with long primitives improves performance and memory usage because these are stored on the stack instead of the heap
+    commit message: >
+            Replace occurences Long with primitive long where possible
+    commit: https://github.com/derrikcurran/sample-employee-rest-server/commit/b2ea3e1
+location:
+    file: 
+        src/main/java/com/derrikcurran/sample/employeerestserver/employee/EmployeeRepository.java
+        src/main/java/com/derrikcurran/sample/employeerestserver/security/AuthorizationFilter.java
+        src/main/java/com/derrikcurran/sample/employeerestserver/security/UserDetailsImpl.java
+        src/main/java/com/derrikcurran/sample/employeerestserver/security/UserDetailsServiceImpl.java
+    method: 
+        -
+suggestion:
+    use primitives instead of wrapper classes for performance optimization 
