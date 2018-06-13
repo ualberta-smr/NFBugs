@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: security
     description: Programmers improved security by adding a permission check to a variable
     commit message: >
         getItemByFullName shouldn't bypass security check
