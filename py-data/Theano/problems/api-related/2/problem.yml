@@ -4,6 +4,7 @@ project:
     name: Theano
     url: https://github.com/Theano/Theano
 fix:
+    tag: performance
     description: improved performance by using memset instead of nested loop to clear a matrix
     commit message: >
             Use memset for initializing memory block to 0 instead of looping over matrix
