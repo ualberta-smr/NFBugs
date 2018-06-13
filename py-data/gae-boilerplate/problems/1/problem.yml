@@ -4,6 +4,7 @@ project:
     name: gae-boilerplate
     url: https://github.com/coto/gae-boilerplate
 fix:
+    tag: security
     description: enhance security by ensuring user credentials cannot be reused
     commit message: >
             Merge pull request #49 from copycat91/master
