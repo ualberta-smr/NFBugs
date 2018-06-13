@@ -4,6 +4,7 @@ project:
     name: salmon
     url: https://github.com/lincolnloop/salmon
 fix:
+    tag: memory
     description: call .delete() on old data in database to prevent excessive space usage
     commit message: >
             Cleans up old results on run_checks. Fixes #5
