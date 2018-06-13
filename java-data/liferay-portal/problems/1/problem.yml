@@ -4,6 +4,7 @@ project:
     name: liferay-portal
     url: https://github.com/liferay/liferay-portal
 fix:
+    tag: memory, performance
     description: Replacing Long objects with long primitives improves performance and memory usage because these are stored on the stack instead of the heap
     commit message: >
             APIO-182 Use primitives instead of wrapper
