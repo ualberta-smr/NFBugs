@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: security
     description: ensures a check for security is always done
     commit message: >
         Fixed a security issue. The security should be on by default. (#926).
