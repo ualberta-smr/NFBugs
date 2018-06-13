@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: security
     description: Programmers ensured a function terminated if admin requirements were not met. This was to improve security of the application. 
     commit message: >
         fixed a security hole.
