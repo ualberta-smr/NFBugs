@@ -3,7 +3,7 @@
 Mining commit history of open-source projects for fixes related non-functional requirements. 
 
 
-Current TOTAL Bug Count = 80 (as of June 11)
+Current TOTAL Bug Count = 82 (as of June 13)
 
 Candidate Repos:
 - earlier: chosen by highest number of stars, then mined with PyDriller
