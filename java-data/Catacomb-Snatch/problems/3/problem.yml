@@ -4,7 +4,8 @@ project:
     name: Catacomb-Snatch
     url: https://github.com/Maescool/Catacomb-Snatch
 fix:
-    description: made class method toggleButton private 
+    tag: memory, performance
+    description: replaced ArrayList with an array -- the button axis count are variable; prevents resizing. Also an arraylist has higher memory overhead  
     commit message: >
             Merge pull request #1 from KyleBrodie/joypad
             Joypad Clean up : Stability and memory usage
@@ -13,6 +14,7 @@ location:
     file: 
         src/com/mojang/mojam/JoypadHandler.java
     method: 
-        private void toggleButton
+        public JoypadHandler(int index)
 suggestion: 
-    to improve security, use private class members
+    resizing an ArrayList can hurt performance; consider using an array with a set capacity instead
+    ArrayList has a larger memory overhead than an array because of object metadata
