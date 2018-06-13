@@ -4,6 +4,7 @@ project:
     name: gae-boilerplate
     url: https://github.com/coto/gae-boilerplate
 fix:
+    tag: security
     description: don't allow access to account unless user has authenticated their account email
     commit message: >
             Merge pull request #82 from copycat91/master Issue #22
