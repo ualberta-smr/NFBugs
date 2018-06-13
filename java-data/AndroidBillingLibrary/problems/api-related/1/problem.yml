@@ -4,6 +4,7 @@ project:
     name: AndroidBillingLibrary
     url: https://github.com/robotmedia/AndroidBillingLibrary
 fix:
+    tag: memory
     description: Release memory to avoid a memleak
     commit message: >
             Unbind android market service on server destroy to don't leak it.
