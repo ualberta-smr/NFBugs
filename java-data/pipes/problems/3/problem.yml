@@ -4,6 +4,7 @@ project:
     name: pipes
     url: https://github.com/tinkerpop/pipes
 fix:
+    tag: performance
     description:  Made more specialized child classes from parent classes to improve performance
     commit message: >
             broke VertexEdgePipe and EdgeVertexPipe into mini-atomic pipes--OutEdgesPipe, 
