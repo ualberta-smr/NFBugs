@@ -1,0 +1,23 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: quiz-app
+    url: https://github.com/UdacityAndroidDevScholarship/quiz-app
+fix:
+    tag: memory, performance
+    description: Replacing objects with long primitives improves performance and memory usage because these are stored on the stack instead of the heap
+    commit message: >
+            Replaced all wrappers with Primitive data types
+    commit: https://github.com/UdacityAndroidDevScholarship/quiz-app/commit/9a7afb9
+location:
+    file: 
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/NotificationPrefs.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Option.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Question.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/Quiz.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/QuizAttempted.java
+        app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/User.java
+    method: 
+        -
+suggestion:
+    use primitives instead of wrapper classes for performance optimization 
