@@ -15,7 +15,7 @@ Mining:
 - using word stemming and issue linking 
 - current search term inventory : 
                     
-                    ["fix","bug","error","secur","maintenance","maintain", \
+                    ["fix","bug","error","refactor","secur","maintenance","maintain", \
                     "stab","portab","efficien","usab" \
                     "reliab", "testab", "changeab", "replace"\
                     "memory","resource", "runtime", "#", "crash", "leak" \
