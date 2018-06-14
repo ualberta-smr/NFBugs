@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Fowler
+    url: https://github.com/TheFreshMango/Fowler
+fix:
+    tag: performance
+    description: Replacing "+" with StringBuilder improves performance and memory space
+    commit message: >
+            refactoring: Customer now uses StringBuilder for statement()
+    commit: https://github.com/TheFreshMango/Fowler/commit/d5f5290
+location:
+    file: 
+        Fowler/Fowler Refactor/src/de/dhbw/fowler/Customer.java
+    method: 
+        public String statement()
+api: 
+    java.lang.StringBuilder
+rule:
+    use a StringBuilder instead of adding strings to concatenate efficiently
