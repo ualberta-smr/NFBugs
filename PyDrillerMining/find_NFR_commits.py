@@ -19,7 +19,7 @@ import sys
 
 def main():
     # mine for non-functional fixes in commit messages -- stem words to catch more commits
-    search_terms = ["fix","bug","error","secur","maintenance","maintain","crash" \
+    search_terms = ["fix","bug","error","refactor","secur","maintenance","maintain","crash" \
                     "stability","portability","efficien","usability" \
                     "reliab", "testab", "changeab", "replace" \
                     "memory","resource", "runtime", "#", "leak"\
