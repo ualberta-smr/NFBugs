@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Fowler
+    url: https://github.com/TheFreshMango/Fowler
+fix:
+    tag: performance
+    description: Replacing Vector with ArrayList improves performance because it is not synced
+    commit message: >
+            refactoring: Customer -> Vector replaced by ArrayList
+    commit: https://github.com/TheFreshMango/Fowler/commit/49a46a4
+location:
+    file: 
+        Fowler/Fowler Refactor/src/de/dhbw/fowler/Customer.java
+    method: 
+        - in  public class Customer 
+api: 
+    java.util.ArrayList
+rule:
+    is syncing not required, use ArrayList instead of Vector for better performance
