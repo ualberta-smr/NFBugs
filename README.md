@@ -22,5 +22,10 @@ Mining:
                     "attack" , "authenticat", "authoriz", "cipher","crack", \
                     "decrypt","encrypt","vulnerab","minimize","optimize",\
                     "slow"]
-- mining code [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/PyDrillerMining/find_NFR_commits.py)
+                    
+- current terms filtered out :
+                    
+                    ["typo","npe","misspell"]
+                    
+-mining code [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/PyDrillerMining/find_NFR_commits.py)
 
