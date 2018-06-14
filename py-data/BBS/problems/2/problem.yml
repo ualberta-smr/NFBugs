@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: BBS
+    url: https://github.com/Timuer/BBS
+fix:
+    tag: security
+    description: enhance security by enabling a xsrf/csrf token
+    commit message: >
+            protect from xsrf attack
+    commit: https://github.com/Timuer/BBS/commit/8a6300d
+location:
+    file: 
+        model/User.py
+    method: 
+        register(cls, form)
+suggestion: 
+    to improve site security, allow csrf/xsrf processing
