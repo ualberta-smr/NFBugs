@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: librarytest
+    url: https://github.com/SaitDev/librarytest
+fix:
+    tag: security
+    description: encrypted user passwords upon registration
+    commit message: >
+        encrypt user password
+    commit: https://github.com/SaitDev/librarytest/commit/2ba6610
+location:
+    file: 
+        src/main/java/com/vmodev/library/services/impl/UserServiceImpl.java
+    method:
+        public ResponseEntity register(String sender, String username, String email, String password, String role)
+suggestion:
+    encrypt user data
