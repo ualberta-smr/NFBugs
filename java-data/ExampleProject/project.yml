@@ -1,0 +1,5 @@
+name: ExampleProject
+repository:
+    type: git
+    url: https://github.com/MidasChallenge2018/ExampleProject
+url: https://github.com/MidasChallenge2018/ExampleProject
