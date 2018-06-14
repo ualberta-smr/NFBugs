@@ -1,0 +1,5 @@
+name: VISNodeWS
+repository:
+    type: git
+    url: https://github.com/VISNode/VISNodeWS
+url: https://github.com/VISNode/VISNodeWS
