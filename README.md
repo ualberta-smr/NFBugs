@@ -25,7 +25,7 @@ Mining:
                     
 - current terms filtered out :
                     
-                    ["typo","npe","misspell"]
+                    ["typo","npe","spelling"]
                     
 -mining code [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/PyDrillerMining/find_NFR_commits.py)
 
