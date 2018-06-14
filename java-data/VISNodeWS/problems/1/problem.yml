@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: VISNodeWS
+    url: https://github.com/VISNode/VISNodeWS
+fix:
+    tag: security
+    description: encrypted passwords upon registration and login
+    commit message: >
+        Encrypt user password
+    commit: https://github.com/VISNode/VISNodeWS/commit/8694350
+location:
+    file: 
+        src/main/java/visnode/ws/db/UserService.java
+    method:
+        public User save(User obj)
+suggestion:
+    encrypt user data
