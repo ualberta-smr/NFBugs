@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: BBS
+    url: https://github.com/Timuer/BBS
+fix:
+    tag: security
+    description: called encrypt() on user passwords
+    commit message: >
+        encrypt password
+    commit: https://github.com/Timuer/BBS/commit/62a07ef
+location:
+    file: 
+        model/User.py
+    method:
+        new_and_save(cls, form=None, **kwargs)
+suggestion:
+    encrypt user data
