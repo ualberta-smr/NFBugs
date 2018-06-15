@@ -1,0 +1,5 @@
+name: randomchat
+repository:
+    type: git
+    url: https://github.com/matheus-crivellari/randomchat
+url: https://github.com/matheus-crivellari/randomchat
