@@ -12,6 +12,6 @@ location:
     file: aws-waf-test.py
     method: -
 api: 
-    io.py
+    builtins.io.IOBase
 rule: 
     close files when done
