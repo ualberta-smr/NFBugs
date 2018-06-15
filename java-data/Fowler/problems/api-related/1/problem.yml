@@ -17,4 +17,4 @@ location:
 api: 
     java.util.ArrayList
 rule:
-    is syncing not required, use ArrayList instead of Vector for better performance
+    if syncing not required, use ArrayList instead of Vector for better performance
