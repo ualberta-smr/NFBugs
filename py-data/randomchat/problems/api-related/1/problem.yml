@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: randomchat
+    url: https://github.com/matheus-crivellari/randomchat
+fix:
+    tag: performance
+    description: Replacing .append loop with list comp improves performance because it does not have to access the instance method
+    commit message: >
+            Changed free_space logic. Using list comprehension instead of looping through the list traditionally
+    commit: https://github.com/matheus-crivellari/randomchat/commit/0eecc3c
+location:
+    file: 
+        randomchat/chat/views.py
+    method: 
+        free_space(pairs)
+api: 
+    builtins.list
+rule:
+     use list comprehension instead of list.append loops to create lists efficiently
