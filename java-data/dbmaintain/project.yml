@@ -1,0 +1,5 @@
+name: dbmaintain
+repository:
+    type: git
+    url: https://github.com/DbMaintain/dbmaintain
+url: https://dbmaintain.github.io/
