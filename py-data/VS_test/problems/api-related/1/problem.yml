@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: VS_test
+    url: https://github.com/georgeriz/VS_test
+fix:
+    tag: performance
+    description: Replacing .append loop with list comp improves performance because it does not have to access the instance method
+    commit message: >
+            project duration: list comprehension instead of for loop
+    commit: https://github.com/georgeriz/VS_test/commit/ffac062
+location:
+    file: 
+        duration/duration.py
+    method: 
+        duration(seconds)
+api: 
+    builtins.list
+rule:
+     use list comprehension instead of list.append loops to create lists efficiently
