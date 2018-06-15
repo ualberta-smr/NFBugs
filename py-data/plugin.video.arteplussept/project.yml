@@ -1,0 +1,5 @@
+name: plugin.video.arteplussept
+repository:
+    type: git
+    url: https://github.com/known-as-bmf/plugin.video.arteplussept
+url: https://github.com/known-as-bmf/plugin.video.arteplussept
