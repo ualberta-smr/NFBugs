@@ -1,0 +1,21 @@
+
+source:
+    name: commit-msg-keywords
+project: 
+    name: backend-interpreter
+    url: https://github.com/ramrod-project/backend-interpreter
+fix:
+    tag: performance
+    description: Replacing str + str with str.join improves performance 
+    commit message: >
+            replace concat with join
+    commit: https://github.com/ramrod-project/backend-interpreter/commit/86cd3bd
+location:
+    file: 
+        plugin_interpreter/src/rethink_interface.py
+    method: 
+        _send_output(self, output_data) 
+api: 
+    builtins.str.join
+rule:
+    use .join() instead of adding strings to concatenate efficiently
