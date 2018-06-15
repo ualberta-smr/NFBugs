@@ -7,7 +7,7 @@ fix:
     tag: performance
     description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
     commit message: >
-            StringBuilder instead of Concatenation (more efficient)
+            Using StringBuilder instead of StringBuffer
     commit: https://github.com/alves-luis/POO/commit/5d6fa23
 location:
     file: 
