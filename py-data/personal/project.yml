@@ -1,0 +1,5 @@
+name: personal
+repository:
+    type: git
+    url: https://github.com/salmonroll/personal
+url: https://github.com/salmonroll/personal
