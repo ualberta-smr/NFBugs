@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: xslt-library
+    url: https://github.com/Offer-Ready/xslt-library
+fix:
+    tag: performance
+    description: Replacing Vector with ArrayList improves performance because it is not synced
+    commit message: >
+            Replace legacy Vector usage with modern non-synchronized ArrayList
+    commit: https://github.com/Offer-Ready/xslt-library/commit/51f7beb
+location:
+    file: 
+        src/main/java/com/offerready/xslt/config/PrivilegeRestriction.java
+    method: 
+        public static @Nonnull <P extends HasPrivilegeRestriction> List<P> restrict(@Nonnull Collection<P> input, @Nonnull Privilege privilege) 
+api: 
+    java.util.ArrayList
+rule:
+    if syncing not required, use ArrayList instead of Vector for better performance
