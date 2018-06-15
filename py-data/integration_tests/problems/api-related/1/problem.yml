@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: integration_tests
+    url: https://github.com/ManageIQ/integration_tests
+fix:
+    tag: performance
+    description: Replacing map(lambda...) with list comp improves performance because it avoids the extra call for each element
+    commit message: >
+            use a list comprehension instead of a lambda map for log sessionfinish
+    commit: https://github.com/ManageIQ/integration_tests/commit/0efc66b
+location:
+    file: 
+        fixtures/log.py
+    method: 
+        pytest_sessionfinish(session, exitstatus)
+api: 
+    builtins.list
+rule:
+     use list comprehension instead of lambda maps to efficiently create result lists
