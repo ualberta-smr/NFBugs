@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: personal
+    url: https://github.com/salmonroll/personal
+fix:
+    tag: performance
+    description: Replacing map(lambda...) with list comp improves performance because it avoids the extra call for each element
+    commit message: >
+            use a list comprehension instead of a lambda map for log sessionfinish
+    commit: https://github.com/salmonroll/personal/commit/2a16eeb
+location:
+    file: 
+        agricola/veterinarian.py
+    method: 
+        main()
+api: 
+    builtins.list
+rule:
+     use list comprehension instead of lambda maps to efficiently create result lists
