@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: inline_table
+    url: https://github.com/fjkz/inline_table
+fix:
+    tag: performance
+    description: Replacing .append loop with list comp improves performance because it does not have to access the instance method
+    commit message: >
+            Use list comprehension instead of while loop
+    commit: https://github.com/fjkz/inline_table/commit/a32e9c1
+location:
+    file: 
+        inline_table.py
+    method: 
+        select_all(self, **condition)
+api: 
+    builtins.list
+rule:
+     use list comprehension instead of list.append loops to create lists efficiently
