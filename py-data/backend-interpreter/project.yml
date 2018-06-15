@@ -1,0 +1,5 @@
+name: backend-interpreter
+repository:
+    type: git
+    url: https://github.com/ramrod-project/backend-interpreter
+url: https://github.com/ramrod-project/backend-interpreter
