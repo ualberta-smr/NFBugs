@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: catalina
+    url: https://github.com/mahairod/catalina
+fix:
+    tag: performance
+    description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
+    commit message: >
+            use StringBuilder instead of StringBuffer
+            svn path=/trunk/; revision=38313 Former-commit-id: e1487a72bea5cd933259f2d37c5d7bc83842f707
+    commit: https://github.com/mahairod/catalina/commit/0c762b9
+location:
+    file: 
+        java/org/apache/catalina/util/URL.java
+    method: 
+        public String toString()
+api: 
+    java.lang.StringBuilder
+rule:
+    if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently
