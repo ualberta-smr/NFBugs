@@ -1,0 +1,5 @@
+name: inline_table
+repository:
+    type: git
+    url: https://github.com/fjkz/inline_table
+url: https://fjkz.github.io/inline_table/0.1/index.html#module-inline_table
