@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Text-similarity-class
+    url: https://github.com/Chetan0403/Text-similarity-class
+fix:
+    tag: performance
+    description: Replacing str + str with str.join improves performance 
+    commit message: >
+            list comprehension instead of for loops
+    commit: https://github.com/Chetan0403/Text-similarity-class/commit/2d38d71
+location:
+    file: 
+        Similarity-class.py
+    method: 
+        _create_shingle(self, doc)
+api: 
+    builtins.str.join
+rule:
+    use .join() instead of adding strings to concatenate efficiently
