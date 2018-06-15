@@ -2,11 +2,11 @@
 | List of all github repositories that have been mined, including    |
 | those that gave no results.                                        |
 |                                                                    |
-| TOTAL REPO COUNT = 131                                             |
+| TOTAL REPO COUNT = 143                                             |
 ----------------------------------------------------------------------
 
 
-JAVA REPOS | count = 111
+JAVA REPOS | count = 114
 ------------------------
 
 https://github.com/3pillarlabs/socialauth-android.git
@@ -30,6 +30,7 @@ https://github.com/commonsguy/cwac-loaderex
 https://github.com/commonsguy/cwac-wakeful.git
 https://github.com/cucumber-attic/gherkin2.git
 https://github.com/darvds/RibbonMenu
+https://github.com/DbMaintain/dbmaintain
 https://github.com/deltachat/deltachat-android.git
 https://github.com/derrikcurran/sample-employee-rest-server.git
 https://github.com/ened/Android-Tiling-ScrollView.git
@@ -61,6 +62,7 @@ https://github.com/liferay/liferay-portal.git
 https://github.com/lisawray/fontbinding
 https://github.com/m2ym/rsense.git
 https://github.com/Maescool/Catacomb-Snatch
+https://github.com/mahairod/catalina
 https://github.com/Malinskiy/android-material-icons
 https://github.com/ManyCore-NLeSC/Praline-cashmere
 https://github.com/MarcusWolschon/osmeditor4android
@@ -83,6 +85,7 @@ https://github.com/naver/yobi.git
 https://github.com/negusoft/holoaccent.git
 https://github.com/nicolasjafelle/PagingGridView
 https://github.com/nzakas/cssembed.git
+https://github.com/Offer-Ready/xslt-library
 https://github.com/pedrovgs/Nox.git
 https://github.com/pedrovgs/TuentiTV.git
 https://github.com/promeG/XLog.git
@@ -125,25 +128,34 @@ https://github.com/zzz40500/ThemeDemo.git
 --------------------------------------------------------------------------------------------------------------------
 
 
-PYTHON REPOS | count = 19
+PYTHON REPOS | count = 28
 -------------------------
 https://github.com/adamn/python-webkit2png.git
 https://github.com/bilelmoussaoui/Hardcode-Tray.git
 https://github.com/boramalper/himawaripy.git
+https://github.com/chenblair/sight2sound
+https://github.com/Chetan0403/Text-similarity-class
 https://github.com/coto/gae-boilerplate.git
 https://github.com/countercept/doublepulsar-detection-script.git
 https://github.com/dhruvramani/Terminal-on-FB-Messenger.git
+https://github.com/fjkz/inline_table
+https://github.com/georgeriz/VS_test
 https://github.com/hubert3/iSniff-GPS.git
 https://github.com/kivy/pyjnius.git
+https://github.com/known-as-bmf/plugin.video.arteplussept
 https://github.com/kuba/simp_le.git
 https://github.com/lincolnloop/salmon.git
+https://github.com/ManageIQ/integration_tests
+https://github.com/matheus-crivellari/randomchat
 https://github.com/mhartl/rails_tutorial_sublime_text.git
 https://github.com/paulhammond/webkit2png.git
 https://github.com/pete-dnae/assay-screening-proj.git
 https://github.com/pfnet/PaintsChainer.git
 https://github.com/pyskell/slouchy.git
 https://github.com/python-needle/needle.git
+https://github.com/ramrod-project/backend-interpreter
 https://github.com/s2pAIr/AWS-WAF-Test.git
+https://github.com/salmonroll/personal
 https://github.com/Theano/Theano.git
 https://github.com/Timuer/BBS
 --------------------------------------------------------------------------------------------------------------------
