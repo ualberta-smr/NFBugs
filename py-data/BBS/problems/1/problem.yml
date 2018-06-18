@@ -5,7 +5,7 @@ project:
     url: https://github.com/Timuer/BBS
 fix:
     tag: security
-    description: called encrypt() on user passwords
+    description: hashing user passwords by calling encrypt()
     commit message: >
         encrypt password
     commit: https://github.com/Timuer/BBS/commit/62a07ef
@@ -15,4 +15,4 @@ location:
     method:
         new_and_save(cls, form=None, **kwargs)
 suggestion:
-    encrypt user data
+    use hashing on user data
