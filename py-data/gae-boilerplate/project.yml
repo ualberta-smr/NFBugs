@@ -2,4 +2,8 @@ name: gae-boilerplate
 repository:
     type: git
     url: https://github.com/coto/gae-boilerplate
+    stats:
+        watches: 97
+        stars: 705
+        forks: 210
 url: https://cloud.google.com/appengine/docs/
