@@ -2,4 +2,8 @@ name: EfficientAdapter
 repository:
     type: git
     url: https://github.com/StanKocken/EfficientAdapter
+    stats:
+        watches:18
+        stars: 434
+        forks: 48
 url: https://github.com/StanKocken/EfficientAdapter
