@@ -2,4 +2,8 @@ name: Theano
 repository:
     type: git
     url: https://github.com/Theano/Theano
+    stats:
+        watches: 585
+        stars: 8308
+        forks: 2454
 url: http://www.deeplearning.net/software/theano/
