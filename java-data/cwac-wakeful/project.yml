@@ -2,4 +2,8 @@ name: cwac-wakeful
 repository:
     type: git
     url: https://github.com/commonsguy/cwac-wakeful
+    stats:
+        watches: 42
+        stars: 407
+        forks: 135
 url: https://github.com/commonsguy/cwac-wakeful
