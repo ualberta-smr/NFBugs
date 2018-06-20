@@ -2,4 +2,8 @@ name: quiz-app
 repository:
     type: git
     url: https://github.com/UdacityAndroidDevScholarship/quiz-app
+    stats:
+        watches: 16
+        stars: 49
+        forks: 107
 url: https://github.com/UdacityAndroidDevScholarship/quiz-app/wiki
