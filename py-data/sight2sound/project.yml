@@ -2,4 +2,8 @@ name: sight2sound
 repository:
     type: git
     url: https://github.com/chenblair/sight2sound
+    stats:
+        watches: 4
+        stars: 0
+        forks: 0
 url: https://github.com/chenblair/sight2sound
