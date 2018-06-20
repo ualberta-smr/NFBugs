@@ -2,4 +2,8 @@ name: Fragmentation
 repository:
     type: git
     url: https://github.com/YoKeyword/Fragmentation
+    stats:
+        watches: 295
+        stars: 6706
+        forks: 1505
 url: https://github.com/YoKeyword/Fragmentation
