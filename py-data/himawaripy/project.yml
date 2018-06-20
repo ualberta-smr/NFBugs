@@ -2,4 +2,8 @@ name: himawaripy
 repository:
     type: git
     url: https://github.com/boramalper/himawaripy
+    stats:
+        watches: 42
+        stars: 969
+        forks: 172
 url: http://labs.boramalper.org/himawaripy/
