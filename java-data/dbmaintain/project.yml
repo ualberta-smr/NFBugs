@@ -2,4 +2,8 @@ name: dbmaintain
 repository:
     type: git
     url: https://github.com/DbMaintain/dbmaintain
+    stats:
+        watches: 5
+        stars: 10
+        forks: 9
 url: https://dbmaintain.github.io/
