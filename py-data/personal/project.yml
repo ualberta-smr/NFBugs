@@ -2,4 +2,8 @@ name: personal
 repository:
     type: git
     url: https://github.com/salmonroll/personal
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/salmonroll/personal
