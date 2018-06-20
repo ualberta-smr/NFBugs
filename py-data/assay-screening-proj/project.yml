@@ -2,4 +2,8 @@ name: assay-screening-proj
 repository:
     type: git
     url: https://github.com/pete-dnae/assay-screening-proj
+    stats:
+        watches: 0
+        stars: 1
+        forks: 0
 url: https://github.com/pete-dnae/assay-screening-proj
