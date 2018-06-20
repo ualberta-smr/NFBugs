@@ -2,4 +2,8 @@ name: backend-interpreter
 repository:
     type: git
     url: https://github.com/ramrod-project/backend-interpreter
+    stats:
+        watches: 2
+        stars: 0
+        forks: 0
 url: https://github.com/ramrod-project/backend-interpreter
