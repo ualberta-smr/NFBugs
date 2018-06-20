@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: ExampleProject
     url: https://github.com/MidasChallenge2018/ExampleProject
