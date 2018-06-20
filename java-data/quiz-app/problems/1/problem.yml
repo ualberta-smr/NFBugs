@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: quiz-app
     url: https://github.com/UdacityAndroidDevScholarship/quiz-app
