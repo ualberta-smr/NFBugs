@@ -2,4 +2,8 @@ name: ExampleProject
 repository:
     type: git
     url: https://github.com/MidasChallenge2018/ExampleProject
+    stats:
+        watches: 2
+        stars: 0
+        forks: 0
 url: https://github.com/MidasChallenge2018/ExampleProject
