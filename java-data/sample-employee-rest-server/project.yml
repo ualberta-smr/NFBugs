@@ -2,4 +2,8 @@ name: sample-employee-rest-server
 repository:
     type: git
     url: https://github.com/derrikcurran/sample-employee-rest-server
+    stats:
+        watches: 1
+        stars: 0
+        forks: 1
 url: https://github.com/derrikcurran/sample-employee-rest-server
