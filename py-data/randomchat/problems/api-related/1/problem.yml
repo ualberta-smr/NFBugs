@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: randomchat
     url: https://github.com/matheus-crivellari/randomchat
