@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: VS_test
     url: https://github.com/georgeriz/VS_test
