@@ -2,5 +2,9 @@ name: leakcanary
     repository:
         type: git
         url: https://github.com/square/leakcanary
+        stats:
+            watches: 1053
+            stars: 19718
+            forks: 3123
 url: https://github.com/square/leakcanary
 
