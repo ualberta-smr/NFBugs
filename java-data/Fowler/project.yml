@@ -2,4 +2,8 @@ name: Fowler
 repository:
     type: git
     url: https://github.com/TheFreshMango/Fowler
+    stats:
+        watches: 0
+        stars: 0
+        forks: 0
 url: https://github.com/TheFreshMango/Fowler
