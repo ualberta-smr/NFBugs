@@ -2,4 +2,8 @@ name: pipes
 repository:
     type: git
     url: https://github.com/tinkerpop/pipes
+    stats:
+        watches: 33
+        stars: 277
+        forks: 48
 url: http://tinkerpop.apache.org/docs/3.2.9/
