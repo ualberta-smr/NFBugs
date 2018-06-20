@@ -2,4 +2,8 @@ name: Terminal-on-FB-Messenger
 repository:
     type: git
     url: https://github.com/dhruvramani/Terminal-on-FB-Messenger
+    stats:
+        watches: 24
+        stars: 410
+        forks: 52
 url: http://dhruvramani.github.io/Terminal-on-FB-Messenger/
