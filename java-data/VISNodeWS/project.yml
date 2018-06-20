@@ -2,4 +2,8 @@ name: VISNodeWS
 repository:
     type: git
     url: https://github.com/VISNode/VISNodeWS
+    stats:
+        watches: 2
+        stars: 1
+        forks: 0
 url: https://github.com/VISNode/VISNodeWS
