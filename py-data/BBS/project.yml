@@ -2,4 +2,8 @@ name: BBS
 repository:
     type: git
     url: https://github.com/Timuer/BBS
+    stats:
+        watches: 0
+        stars: 0
+        forks: 0
 url: https://github.com/Timuer/BBS
