@@ -2,4 +2,8 @@ name: osmeditor4android
 repository:
     type: git
     url: https://github.com/MarcusWolschon/osmeditor4android
+    stats:
+        watches: 15
+        stars: 105
+        forks: 37
 url: http://vespucci.io/
