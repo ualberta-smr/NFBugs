@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: ADFGVX
     url: https://github.com/valentindubois/ADFGVX
