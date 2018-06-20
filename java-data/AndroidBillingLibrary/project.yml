@@ -2,4 +2,8 @@ name: AndroidBillingLibrary
 repository:
     type: git
     url: https://github.com/robotmedia/AndroidBillingLibrary
+    stats:
+        watches: 80
+        stars: 551
+        forks: 198
 url: https://github.com/robotmedia/AndroidBillingLibrary
