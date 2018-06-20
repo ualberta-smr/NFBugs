@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: sight2sound
     url: https://github.com/chenblair/sight2sound
