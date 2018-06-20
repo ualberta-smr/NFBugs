@@ -2,4 +2,8 @@ name: Pydev
 repository:
     type: git
     url: https://github.com/aptana/Pydev
+    stats:
+        watches: 34
+        stars: 243
+        forks: 90
 url: http://www.pydev.org/
