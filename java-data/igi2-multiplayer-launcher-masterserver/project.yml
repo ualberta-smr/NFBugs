@@ -2,4 +2,8 @@ name: igi2-multiplayer-launcher-masterserver
 repository:
     type: git
     url: https://github.com/hyperxpro/igi2-multiplayer-launcher-masterserver
+    stats:
+        watches: 0
+        stars: 1
+        forks: 0
 url: https://github.com/hyperxpro/igi2-multiplayer-launcher-masterserver
