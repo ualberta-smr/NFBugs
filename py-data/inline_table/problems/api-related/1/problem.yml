@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: inline_table
     url: https://github.com/fjkz/inline_table
