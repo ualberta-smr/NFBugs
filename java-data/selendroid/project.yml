@@ -2,4 +2,8 @@ name: selendroid
 repository:
     type: git
     url: https://github.com/selendroid/selendroid
+    stats:
+        watches: 132
+        stars: 695
+        forks: 406
 url: http://selendroid.io
