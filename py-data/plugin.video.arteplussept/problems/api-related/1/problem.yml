@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: plugin.video.arteplussept
     url: https://github.com/known-as-bmf/plugin.video.arteplussept
