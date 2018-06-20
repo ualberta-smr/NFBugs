@@ -2,4 +2,8 @@ name: jenkins
     repository:
         type: git
         url: https://github.com/jenkinsci/jenkins
+        stats:
+            watches: 826
+            stars: 10440
+            forks: 4539
 url: https://jenkins.io
