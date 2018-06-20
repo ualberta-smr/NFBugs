@@ -2,4 +2,8 @@ name: Catacomb-Snatch
 repository:
     type: git
     url: https://github.com/Maescool/Catacomb-Snatch
+    stats:
+        watches: 28
+        stars: 278
+        forks: 103
 url: http://catacombsnatch.net/
