@@ -2,4 +2,8 @@ name: PaintsChainer
 repository:
     type: git
     url: https://github.com/pfnet/PaintsChainer
+    stats:
+        watches: 190
+        stars: 2924
+        forks: 444
 url: https://paintschainer.preferred.tech/index_en.html
