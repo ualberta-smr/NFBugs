@@ -2,4 +2,8 @@ name: WaniKani-Ripoff-Project
 repository:
     type: git
     url: https://github.com/Firespirit93/WaniKani-Ripoff-Project
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/Firespirit93/WaniKani-Ripoff-Project
