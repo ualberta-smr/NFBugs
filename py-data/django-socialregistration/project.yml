@@ -2,4 +2,8 @@ name: django-socialregistration
 repository:
     type: git
     url: https://github.com/flashingpumpkin/django-socialregistration
+    stats:
+        watches: 8
+        stars: 617
+        forks: 162
 url: http://django-socialregistration.readthedocs.io/en/latest/
