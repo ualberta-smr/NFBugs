@@ -2,4 +2,8 @@ name: Text-similarity-class
 repository:
     type: git
     url: https://github.com/Chetan0403/Text-similarity-class
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/Chetan0403/Text-similarity-class
