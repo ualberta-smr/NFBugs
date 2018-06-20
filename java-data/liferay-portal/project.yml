@@ -2,4 +2,8 @@ name: liferay-portal
 repository:
     type: git
     url: https://github.com/liferay/liferay-portal
+    stats:
+        watches: 155
+        stars: 1236
+        forks: 2101
 url: https://dev.liferay.com/
