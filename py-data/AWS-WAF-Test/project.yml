@@ -2,4 +2,8 @@ name: AWS-WAF-Test
 repository:
     type: git
     url: https://github.com/s2pAIr/AWS-WAF-Test
+    stats:
+        watches: 1
+        stars: 1
+        forks: 0
 url: https://github.com/s2pAIr/AWS-WAF-Test
