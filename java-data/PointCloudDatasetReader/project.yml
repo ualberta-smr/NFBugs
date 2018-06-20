@@ -2,4 +2,8 @@ name: PointCloudDatasetReader
 repository:
     type: git
     url: https://github.com/stefanmarks/PointCloudDatasetReader
+    stats:
+        watches: 2
+        stars: 1
+        forks: 0
 url: https://github.com/stefanmarks/PointCloudDatasetReader
