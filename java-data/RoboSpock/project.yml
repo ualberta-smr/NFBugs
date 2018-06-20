@@ -2,4 +2,8 @@ name: RoboSpock
 repository:
     type: git
     url: https://github.com/robospock/RoboSpock
+    stats:
+        watches: 29
+        stars: 248
+        forks: 40
 url: http://robospock.github.io/RoboSpock/
