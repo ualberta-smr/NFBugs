@@ -2,4 +2,8 @@ name: terasology
 repository:
     type: git
     url: https://github.com/MovingBlocks/Terasology
+    stats:
+        watches: 210
+        stars: 2336
+        forks: 1063
 url: https://github.com/MovingBlocks/Terasology
