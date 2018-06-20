@@ -2,4 +2,8 @@ name: VS_test
 repository:
     type: git
     url: https://github.com/georgeriz/VS_test
+    stats:
+        watches: 1
+        stars: 1
+        forks: 0
 url: https://github.com/georgeriz/VS_test
