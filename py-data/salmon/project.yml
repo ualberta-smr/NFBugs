@@ -2,4 +2,8 @@ name: salmon
 repository:
     type: git
     url: https://github.com/lincolnloop/salmon
+    stats:
+        watches: 38
+        stars: 486
+        forks: 59
 url: https://github.com/lincolnloop/salmon
