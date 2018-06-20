@@ -2,4 +2,8 @@ name: ig-json-parser
 repository:
     type: git
     url: https://github.com/Instagram/ig-json-parser
+    stats:
+        watches: 75
+        stars: 1228
+        forks: 113
 url: https://instagram-engineering.com/fast-auto-generated-streaming-json-parsing-for-android-ab8e7be21033
