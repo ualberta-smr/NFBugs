@@ -2,4 +2,8 @@ name: needle
 repository:
     type: git
     url: https://github.com/python-needle/needle
+    stats:
+        watches: 26
+        stars: 512
+        forks: 40
 url: https://needle.readthedocs.io/en/latest/
