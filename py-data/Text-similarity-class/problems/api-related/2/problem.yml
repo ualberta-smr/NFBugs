@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: Text-similarity-class
     url: https://github.com/Chetan0403/Text-similarity-class
