@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: integration_tests
     url: https://github.com/ManageIQ/integration_tests
