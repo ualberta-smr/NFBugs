@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: Glazed
     url: https://github.com/SleeplessDevelopment/Glazed
