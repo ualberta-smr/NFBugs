@@ -2,4 +2,8 @@ name: plugin.video.arteplussept
 repository:
     type: git
     url: https://github.com/known-as-bmf/plugin.video.arteplussept
+    stats:
+        watches: 12
+        stars: 31
+        forks: 12
 url: https://github.com/known-as-bmf/plugin.video.arteplussept
