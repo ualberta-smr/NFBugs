@@ -2,4 +2,8 @@ name: deltachat-android
 repository:
     type: git
     url: https://github.com/deltachat/deltachat-android
+    stats:
+        watches: 27
+        stars: 213
+        forks: 36
 url: https://github.com/deltachat/deltachat-android
