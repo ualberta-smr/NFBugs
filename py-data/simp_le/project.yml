@@ -2,4 +2,8 @@ name: simp_le
 repository:
     type: git
     url: https://github.com/kuba/simp_le
+    stats:
+        watches: 30
+        stars: 916
+        forks: 64
 url: https://github.com/kuba/simp_le
