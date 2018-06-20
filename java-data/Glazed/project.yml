@@ -2,4 +2,8 @@ name: Glazed
 repository:
     type: git
     url: https://github.com/SleeplessDevelopment/Glazed
+    stats:
+        watches: 2
+        stars: 3
+        forks: 1
 url: https://github.com/SleeplessDevelopment/Glazed
