@@ -2,4 +2,8 @@ name: POO
 repository:
     type: git
     url: https://github.com/alves-luis/POO
+    stats:
+        watches: 0
+        stars: 0
+        forks: 2
 url: https://github.com/alves-luis/POO
