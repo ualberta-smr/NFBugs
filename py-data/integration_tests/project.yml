@@ -2,4 +2,8 @@ name: integration_tests
 repository:
     type: git
     url: https://github.com/ManageIQ/integration_tests
+    stats:
+        watches: 27
+        stars: 60
+        forks: 133
 url: http://cfme-tests.readthedocs.io/en/master/getting_started.html
