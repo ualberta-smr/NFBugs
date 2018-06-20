@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: backend-interpreter
     url: https://github.com/ramrod-project/backend-interpreter
