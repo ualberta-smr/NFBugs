@@ -2,4 +2,8 @@ name: XLog
 repository:
     type: git
     url: https://github.com/promeG/XLog
+    stats:
+        watches: 29
+        stars: 307
+        forks: 63
 url: https://github.com/promeG/XLog
