@@ -2,4 +2,8 @@ name: ForestFireModel
 repository:
     type: git
     url: https://github.com/Cashney/ForestFireModel
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/Cashney/ForestFireModel
