@@ -18,6 +18,6 @@ location:
         WaniKaniRipoff/src/Wanikani/bo/Profile.java
     method: 
         public final class LoginScreen extends JFrame
-        public abstract class Profile
+        public abstract class Profile 
 suggestion: 
     to improve security, use final classes and static/private class members 
