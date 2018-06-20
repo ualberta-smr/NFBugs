@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: AWS-WAF-Test
     url: https://github.com/s2pAIr/AWS-WAF-Test
