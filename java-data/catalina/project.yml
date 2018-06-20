@@ -2,4 +2,8 @@ name: catalina
 repository:
     type: git
     url: https://github.com/mahairod/catalina
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/mahairod/catalina
