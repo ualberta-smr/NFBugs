@@ -2,4 +2,8 @@ name: inline_table
 repository:
     type: git
     url: https://github.com/fjkz/inline_table
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://fjkz.github.io/inline_table/0.1/index.html#module-inline_table
