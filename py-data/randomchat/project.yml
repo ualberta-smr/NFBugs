@@ -2,4 +2,8 @@ name: randomchat
 repository:
     type: git
     url: https://github.com/matheus-crivellari/randomchat
+    stats:
+        watches: 1
+        stars: 0
+        forks: 0
 url: https://github.com/matheus-crivellari/randomchat
