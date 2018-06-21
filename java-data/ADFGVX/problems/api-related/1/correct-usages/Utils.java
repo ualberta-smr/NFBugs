@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Utils{
 
-
   private static String getIndicePermutation(int[] tab) {
       StringBuilder perm = new StringBuilder();
       int nbiter = tab.length;
@@ -15,7 +14,6 @@ public class Utils{
           perm.append(",");
         }
       }
-
       return perm.toString();
     }
 }
