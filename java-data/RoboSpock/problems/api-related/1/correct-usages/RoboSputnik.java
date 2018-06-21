@@ -18,8 +18,6 @@ import java.lang.reflect.Constructor;
 
 public class RoboSputnik extends Runner implements Filterable, Sortable {
 
-    private Runner sputnikRunner;
-
     private static RobolectricClassLoader classLoader;
 
     public RoboSputnik(final Class<?> clazz) throws InitializationError {
@@ -29,12 +27,5 @@ public class RoboSputnik extends Runner implements Filterable, Sortable {
             classLoader = createClassLoader();
             classLoader.delegateLoadingOf(ArrayUtil.class.getName());
         }
-
-        final Class<?> delegateClass = classLoader.bootstrap(Sputnik.class);
-        try {
-            final Constructor<?> constructorForDelegate = delegateClass.getConstructor(Class.class);
-            this.sputnikRunner = (Runner) constructorForDelegate.newInstance(classLoader.bootstrap(clazz));
-        } catch (final Exception e) {
-            throw new RuntimeException(e);
-        }
     }
+}
