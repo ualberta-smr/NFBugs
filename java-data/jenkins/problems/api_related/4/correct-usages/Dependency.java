@@ -25,16 +25,12 @@ import java.util.List;
 import java.util.jar.Manifest;
 import java.util.logging.Logger;
 
-
-public void doMakeEnabled(StaplerRequest req, StaplerResponse rsp) throws IOException {
-        if(!Hudson.adminCheck(req,rsp))
-            return;
-        enable();
-        rsp.setStatus(200);
-    }
-    public void doMakeDisabled(StaplerRequest req, StaplerResponse rsp) throws IOException {
-        if(!Hudson.adminCheck(req,rsp))
-            return;
-        disable();
-        rsp.setStatus(200);
-    }
+private static final class Dependency {
+        
+        public void pattern(StaplerRequest req, StaplerResponse rsp) throws IOException {
+                if(!Hudson.adminCheck(req,rsp))
+                    return;
+                enable();
+                rsp.setStatus(200);
+            }
+}
