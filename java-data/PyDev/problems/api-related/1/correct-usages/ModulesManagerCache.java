@@ -54,23 +54,4 @@ public abstract class ModulesManager implements IModulesManager, Serializable {
 			return obj;
 		}
 	}
-
-	public ModulesManager(){
-	}
-	
-    /**
-     * Modules that we have in memory. This is persisted when saved.
-     * 
-     * Keys are ModulesKey with the name of the module. Values are AbstractModule objects.
-     * 
-     * Implementation changed to contain a cache, so that it does not grow to much (some out of memo errors
-     * were thrown because of the may size when having too many modules).
-     */
-//    protected transient Map<ModulesKey, AbstractModule> modules = new HashMap<ModulesKey, AbstractModule>();
-	protected transient Map<ModulesKey, ModulesKey> modulesKeys = new HashMap<ModulesKey, ModulesKey>();
-	protected transient Cache<ModulesKey, AbstractModule> cache = createCache();
-    
-	protected Cache<ModulesKey, AbstractModule> createCache(){
-		return new ModulesManagerCache(300);
-	}
 }
