@@ -78,11 +78,9 @@ import java.util.logging.LogRecord;
 
 /**
  * Root object of the system.
- *
  * @author Kohsuke Kawaguchi
  */
 public final class Hudson extends View implements ItemGroup<TopLevelItem>, Node {
-
   /**
   * Called once the user logs in. Just forward to the top page.
   */
