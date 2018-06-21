@@ -1,4 +1,4 @@
- package hudson.scm;
+package hudson.scm;
 
 import static hudson.Util.fixNull;
 import hudson.FilePath;
@@ -69,46 +69,14 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-public synchronized void doSubmit(StaplerRequest req, StaplerResponse rsp) throws IOException, ServletException {
-            if(!Hudson.adminCheck(req,rsp))
-                return;
-
-            Map<AbstractBuild,String> tagSet = new HashMap<AbstractBuild,String>();
-
-            String name = req.getParameter("name");
-            if(isInvalidTag(name)) {
-                sendError("No valid tag name given",req,rsp);
-                return;
+public final class TagAction extends AbstractModelObject implements Action{
+    
+    public synchronized void doSubmit(StaplerRequest req, StaplerResponse rsp) throws IOException, ServletException {
+                if(!Hudson.adminCheck(req,rsp))
+                    return;
+                    
+                Map<AbstractBuild,String> tagSet = new HashMap<AbstractBuild,String>();    
+                String name = req.getParameter("name");
+                tagSet.put(build,name);
             }
-
-            tagSet.put(build,name);
-
-            if(req.getParameter("upstream")!=null) {
-                // tag all upstream builds
-                Enumeration e = req.getParameterNames();
-                Map<AbstractProject, Integer> upstreams = build.getUpstreamBuilds(); // TODO: define them at AbstractBuild level
-
-                while(e.hasMoreElements()) {
-                    String upName = (String) e.nextElement();
-                    if(!upName.startsWith("upstream."))
-                        continue;
-
-                    String tag = req.getParameter(upName);
-                    if(isInvalidTag(tag)) {
-                        sendError("No valid tag name given for "+upName,req,rsp);
-                        return;
-                    }
-
-                    upName = upName.substring(9);   // trim off 'upstream.'
-                    Job p = Hudson.getInstance().getItemByFullName(upName,Job.class);
-
-                    Run build = p.getBuildByNumber(upstreams.get(p));
-                    tagSet.put((AbstractBuild) build,tag);
-                }
-            }
-
-            new TagWorkerThread(tagSet).start();
-
-            doIndex(req,rsp);
-        }
+}
