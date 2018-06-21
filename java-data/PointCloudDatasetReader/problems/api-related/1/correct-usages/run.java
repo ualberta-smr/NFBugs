@@ -14,41 +14,16 @@ import javax.swing.JFileChooser;
 
 private class Converter implements Runnable
     {
-    public void run()
+    public void pattern()
         {
             if ( !execute )
             {
                 execute = true;
                 initialise();
                 
-                DataSource ds = (DataSource) cbxType.getSelectedItem();
-                List<PointData> pointList = new ArrayList<>();
-                if ( ds.openSource(new File(txtSource.getText())) )
-                {
-                    PointData p = null;    
-                    do
-                    {
-                        try
-                        {
-                            p = ds.readSource();
-                            if ( p != null)
-                            {
-                                pointList.add(p);
-                                prgConverting.setString("" + pointList.size());
-                            }
-                        }
-                        catch (IOException | ParseException e)
-                        {
-                            System.err.println(e);
-                            execute = false;
-                        }
-                    }
-                    while ( execute && (p != null) );
-                }
-                else
-                {
-                    execute = false;
-                }
+                DataSource ds = (DataSource) cbxType.getSelectedItem();                
+                
+              
                 ds.closeSource();
         }
     }
