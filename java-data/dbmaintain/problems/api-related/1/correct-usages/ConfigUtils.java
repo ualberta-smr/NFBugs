@@ -10,7 +10,6 @@ public class ConfigUtils {
   private static String getConfiguredClassName(Class<?> type, Properties configuration, String propertyName, String... implementationDiscriminatorValues) {
         String propKey = type.getName() + "." + propertyName;
 
-        // first try specific instance using the given discriminators
         if (implementationDiscriminatorValues != null) {
             StringBuilder implementationSpecificPropKey = new StringBuilder(propKey);
             for (String implementationDiscriminatorValue : implementationDiscriminatorValues) {
