@@ -11,3 +11,6 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
  * processor which fields exist, and how they may to/from the json object.
  */
 @Retention(SOURCE) @Target(FIELD)
+public @interface JsonField {
+  // ...
+}
