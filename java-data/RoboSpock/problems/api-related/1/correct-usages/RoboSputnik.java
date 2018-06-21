@@ -18,8 +18,6 @@ import java.lang.reflect.Constructor;
 
 public class RoboSputnik extends Runner implements Filterable, Sortable {
 
-    // we're using interface, because using Sputnik by class would throw
-    // "cannot cast from Sputnik to Sputnik"
     private Runner sputnikRunner;
 
     private static RobolectricClassLoader classLoader;
@@ -29,14 +27,11 @@ public class RoboSputnik extends Runner implements Filterable, Sortable {
         //Reuse classloader to decrease perm usage and speed up tests
         if (classLoader == null) {
             classLoader = createClassLoader();
-            // this line prevents overloading class loader ? LOL
             classLoader.delegateLoadingOf(ArrayUtil.class.getName());
         }
 
         final Class<?> delegateClass = classLoader.bootstrap(Sputnik.class);
         try {
-            // that's the only reason for new runner - to delegate to sputnik,
-            // which is loaded with Robolectric classloader
             final Constructor<?> constructorForDelegate = delegateClass.getConstructor(Class.class);
             this.sputnikRunner = (Runner) constructorForDelegate.newInstance(classLoader.bootstrap(clazz));
         } catch (final Exception e) {
