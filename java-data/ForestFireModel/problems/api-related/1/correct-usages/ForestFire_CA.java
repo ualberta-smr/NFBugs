@@ -18,7 +18,7 @@ public class ForestFire_CA extends CellularAutomaton {
 
     private StringBuilder sb = new StringBuilder();
     
-    public void printBoard(long timer) {
+    public void pattern(long timer) {
         
         for (int y = 0; y <= yDim - 1; y++) {
             for (int x = 0; x <= xDim - 1; x++) {
