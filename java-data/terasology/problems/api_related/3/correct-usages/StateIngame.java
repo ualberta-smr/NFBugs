@@ -35,41 +35,21 @@ import org.terasology.world.block.BlockManager;
 
 import java.util.Collections;
 
-public void dispose() {
-        if (CoreRegistry.get(Config.class).getRendering().isOculusVrSupport() && OculusVrHelper.isNativeLibraryLoaded()) {
-            logger.info("Shutting down Oculus SDK...");
-            TeraOVR.clear();
-        }
+public class StateIngame implements GameState {
+	private NUIManager nuiManager;
 
-        boolean save = networkSystem.getMode().isAuthority();
-        networkSystem.shutdown();
-        // TODO: Shutdown background threads
-        eventSystem.process();
-        GameThread.processWaitingProcesses();
-        nuiManager.clear();
+	public void pattern() {
 
-        if (worldRenderer != null) {
-            worldRenderer.dispose();
-            worldRenderer = null;
-        }
-        componentSystemManager.shutdown();
+		nuiManager.getHUD().bindVisible(new ReadOnlyBinding<Boolean>() {
+		    @Override
+		    public Boolean get() {
+			return !CoreRegistry.get(Config.class).getRendering().getDebug().isHudHidden();
+		    }
+		});
 
-        if (save) {
-            CoreRegistry.get(Game.class).save();
-        }
+		// ...
 
-        CoreRegistry.get(PhysicsEngine.class).dispose();
-
-        entityManager.clear();
-        ModuleEnvironment environment = CoreRegistry.get(ModuleManager.class).loadEnvironment(Collections.<Module>emptySet(), true);
-        CoreRegistry.get(AssetManager.class).setEnvironment(environment);
-        CoreRegistry.get(Console.class).dispose();
-        CoreRegistry.clear();
-        BlockManager.getAir().setEntity(EntityRef.NULL);
-        GameThread.clearWaitingProcesses();
-		/*
-		 * Clear the binding as otherwise the complete ingame state would be
-		 * referenced.
-		 */
+		nuiManager.clear();
 		nuiManager.getHUD().clearVisibleBinding();
-    }
+	    }
+}
