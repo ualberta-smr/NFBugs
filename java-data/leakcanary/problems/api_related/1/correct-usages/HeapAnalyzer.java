@@ -44,12 +44,6 @@ public final class HeapAnalyzer {
 
   public AnalysisResult checkForLeak(File heapDumpFile, String referenceKey) {
       long analysisStartNanoTime = System.nanoTime();
-
-      if (!heapDumpFile.exists()) {
-        Exception exception = new IllegalArgumentException("File does not exist: " + heapDumpFile);
-        return failure(exception, since(analysisStartNanoTime));
-      }
-
       try {
         HprofBuffer buffer = new MemoryMappedFileBuffer(heapDumpFile);
         HprofParser parser = new HprofParser(buffer);
@@ -57,15 +51,7 @@ public final class HeapAnalyzer {
         deduplicateGcRoots(snapshot);
 
         Instance leakingRef = findLeakingReference(referenceKey, snapshot);
-
-        // False alarm, weak reference was cleared in between key check and heap dump.
-        if (leakingRef == null) {
-          return noLeak(since(analysisStartNanoTime));
-        }
-
         return findLeakTrace(analysisStartNanoTime, snapshot, leakingRef);
-      } catch (Throwable e) {
-        return failure(e, since(analysisStartNanoTime));
       }
     }
 }
