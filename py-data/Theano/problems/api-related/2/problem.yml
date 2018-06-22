@@ -18,4 +18,4 @@ location:
 api:
     ctypes.memset
 rule:
-    (de)allocate memoray faster using ctypes library
+    (de)allocate memory faster using ctypes library
