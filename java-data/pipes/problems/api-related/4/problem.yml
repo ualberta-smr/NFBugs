@@ -18,4 +18,4 @@ location:
 api:
     com.tinkerpop.pipes.util.iterators.ExpandableMultiIterator
 rule: 
-    exchange ArraysList with ExpandableMultiIterator to make the program more memory efficient 
+    exchange List or ArraysList with ExpandableMultiIterator to make the program more memory efficient 
