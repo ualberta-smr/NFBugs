@@ -1,4 +1,4 @@
-def duration(seconds):
+def duration(seconds): 
 	p, s = divmod(seconds, 60)
 	p, m = divmod(p, 60)
 	p, h = divmod(p, 60)
