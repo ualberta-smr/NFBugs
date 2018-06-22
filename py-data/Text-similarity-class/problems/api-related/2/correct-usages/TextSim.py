@@ -22,11 +22,8 @@ class TextSim(object):
         shinglesInDoc = set()
         
         for index in range(0, len(doc) - (self.shinglesize - 1)):
-            # Construct the shingle text by combining words together, depending on the shingle size passed      
-            shingle = " ".join(doc[index:(index + self.shinglesize)])           
-            # Hash the shingle to a 32-bit integer.
-            shingle = bytes(shingle.strip(), encoding='utf-8')
-            crc = binascii.crc32(shingle) & 0xffffffff
-            # Add the hash value to the set of shingles for the current document. 
-            shinglesInDoc.add(crc)         
+            shingle = " ".join(doc[index:(index + self.shinglesize)]) 
+            
+            # ... 
+            
         return shinglesInDoc
