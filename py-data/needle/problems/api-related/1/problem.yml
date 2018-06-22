@@ -5,7 +5,7 @@ project:
     url: https://github.com/python-needle/needle
 fix:
     tag: performance
-    description: improved efficiency with a faster method
+    description: improved efficiency by changing from an instance method to a class method that runs once
     commit message: >
             NeedleTestCase: refactor driver setup to setUpClass
             This saves a considerable amount of time by not loading the driver
@@ -19,4 +19,4 @@ location:
 api: 
     needle.driver.NeedleWebDriver
 rule:
-    avoid loading the driver multiple times
+    avoid loading the driver for each instance
