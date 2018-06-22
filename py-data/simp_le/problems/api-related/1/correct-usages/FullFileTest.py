@@ -38,10 +38,8 @@ from acme import jose
 from acme import messages
 
 class FullFileTest(FileIOPluginTestMixin, UnitTestCase):
+    
     def persist_data(args, existing_data, new_data):
-        """Persist data on disk.
-        Uses all selected plugins to save certificate data to disk.
-        """
         for plugin_name in args.ioplugins:
             plugin = IOPlugin.registered[plugin_name]
             if any(persisted and existing != new
