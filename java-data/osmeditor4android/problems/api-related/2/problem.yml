@@ -5,16 +5,16 @@ project:
     url: https://github.com/MarcusWolschon/osmeditor4android
 fix:
     tag: memory
-    description: fix a memory leak from a map not being properly disposed of
+    description: fix a memory leak from forgetting to unbind services
     commit message: >
             Fix leak of OpenStreetMapTileProvider.
     commit: https://github.com/MarcusWolschon/osmeditor4android/commit/abbe4df
 location:
     file: 
-        src/de/blau/android/Main.java
+        src/de/blau/android/views/util/OpenStreetMapTileProvider.java
     method: 
-        protected void onCreate(final Bundle savedInstanceState)
+        public void clear()
 api: 
-    src.main.java.de.blau.android.Map
+    android.content.Context
 rule:
-    call onDestroy() method when finished with a Map object
+    unbind services when finished with them
