@@ -1,7 +1,5 @@
 package de.blau.android.imageryoffset;
 
-
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -55,18 +53,19 @@ import de.blau.android.util.ThemeUtils;
 import de.blau.android.util.jsonreader.JsonReader;
 import de.blau.android.util.jsonreader.JsonToken;
 
-
-private class OffsetLoader extends AsyncTask<Integer, Void, ArrayList<ImageryOffset>> {
+public class BackgroundAlignmentActionModeCallback implements Callback {
+	
+	private final Uri offsetServerUri;
 		
-		String error = null;
-    
-		@Override
-		protected ArrayList<ImageryOffset> doInBackground(Integer... params) {
+	private class OffsetLoader extends AsyncTask<Integer, Void, ArrayList<ImageryOffset>> {
+		
+		public void pattern(Integer... params) {
 	    	
 			BoundingBox bbox = Application.mainActivity.getMap().getViewBox();
 			double centerLon = (bbox.getLeft() + ((long)bbox.getRight() - (long)bbox.getLeft())/2L) / 1E7d;
 			Integer radius = params[0];
 			String radiusString = radius != null && radius > 0 ? String.valueOf(radius) : "";
+			
 			Uri uriBuilder = offsetServerUri.buildUpon()
 					.appendPath("get")
 					.appendQueryParameter("lat", String.valueOf(bbox.getCenterLat()))
@@ -75,53 +74,8 @@ private class OffsetLoader extends AsyncTask<Integer, Void, ArrayList<ImageryOff
 					.appendQueryParameter("imagery", osmts.getImageryOffsetId())
 					.appendQueryParameter("format", "json")
 					.build();
-			String urlString = uriBuilder.toString();
-			try {
-				Log.d("BackgroundAlignmentActionModeCallback", "urlString " + urlString);
-				URL url = new URL(urlString);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestProperty("User-Agent", Application.userAgent);
-				JsonReader reader = new JsonReader(new InputStreamReader(conn.getInputStream()));
-				ArrayList<ImageryOffset> result = new ArrayList<ImageryOffset>();
-				try {
-					
-					try {
-						JsonToken token = reader.peek();
-						if (token.equals(JsonToken.BEGIN_ARRAY)) {
-							reader.beginArray();
-							while (reader.hasNext()) {
-								ImageryOffset imOffset = readOffset(reader);
-								if (imOffset != null && imOffset.deprecated == null) //TODO handle deprecated 
-									result.add(imOffset);
-							}
-							reader.endArray();
-						} else if (token.equals(JsonToken.BEGIN_OBJECT)) {
-							reader.beginObject();
-							while (reader.hasNext()) {
-								String jsonName = reader.nextName();
-								if (jsonName.equals("error")) {
-									error = reader.nextString();
-								} else {
-									reader.skipValue();
-								}
-							}
-							return null;
-						} // can't happen ?
-					} catch (IOException e) {
-						error = e.getMessage();
-					} catch (IllegalStateException e) {
-						error = e.getMessage();
-					}
-					return result;
-				}
-				finally {
-				       reader.close();
-				}			
-			} catch (MalformedURLException e) {
-				error = e.getMessage();
-			} catch (IOException e) {
-				error = e.getMessage();
-			}			
-			return null;
+		
 		}
+	}
+}
 		
