@@ -17,4 +17,4 @@ location:
 api: 
     android.content.Context
 rule:
-    unbind services when finished with them
+    unbind service connections when finished with them
