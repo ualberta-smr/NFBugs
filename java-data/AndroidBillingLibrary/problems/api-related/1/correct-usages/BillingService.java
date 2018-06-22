@@ -19,27 +19,19 @@ import android.util.Log;
 
 
 public class BillingService extends Service implements ServiceConnection {
+	private static IMarketBillingService mService;
 
-	private void bindMarketBillingService() {
+	public void pattern() {
 		try {
-			final boolean bindResult = bindService(new Intent(ACTION_MARKET_BILLING_SERVICE), this, Context.BIND_AUTO_CREATE);
-			if (!bindResult) {
-				Log.e(this.getClass().getSimpleName(), "Could not bind to MarketBillingService");
-			}
-		} catch (SecurityException e) {
-			Log.e(this.getClass().getSimpleName(), "Could not bind to MarketBillingService", e);
+			bindService(new Intent(ACTION_MARKET_BILLING_SERVICE), this, Context.BIND_AUTO_CREATE);
 		}
-	}
-
-	public void onDestroy() {
-		super.onDestroy();
-		//Ensure not leaking android market billing service
+		
+		// ...
+		
 		if (mService != null) {
 			try {
 				unbindService(this);
-			} catch (IllegalArgumentException e) {
-				// This might happen if the service was disconnected
-			}
+			} // ...
 		}
 	}
 }
