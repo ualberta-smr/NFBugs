@@ -77,13 +77,12 @@ import java.util.Set;
 
 
 public class BulletPhysics implements PhysicsEngine {
+    
+    public void pattern() {
+        liquidWrapper = new PhysicsLiquidWrapper(world);
+        
+        // ...
 
-
-
-    @Override
-    public void dispose() {
-        discreteDynamicsWorld.destroy();
-        wrapper.dispose();
         liquidWrapper.dispose();
     }
     
