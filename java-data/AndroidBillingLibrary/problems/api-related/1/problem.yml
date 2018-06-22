@@ -15,6 +15,6 @@ location:
     method: 
         public void onDestroy()
 api: 
-    android.app.Service
+    android.content.ContextWrapper
 rule:
-    unbind services when done with them
+    unbind service connections when done with them
