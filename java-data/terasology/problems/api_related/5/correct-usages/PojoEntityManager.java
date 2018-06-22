@@ -44,22 +44,14 @@ import java.util.Set;
 
 
 public class PojoEntityManager implements EngineEntityManager {
-      /**
-     * Destroys this entity, sending event
-     *
-     * @param entityId
-     */
+      
     @Override
     public void destroy(long entityId) {
-        // Don't allow the destruction of unloaded entities.
-        if (!loadedIds.contains(entityId)) {
-            return;
-        }
+        
         EntityRef ref = createEntityRef(entityId);
-        if (eventSystem != null) {
-            eventSystem.send(ref, BeforeDeactivateComponent.newInstance());
-            eventSystem.send(ref, BeforeRemoveComponent.newInstance());
-        }
+        
+        // ..
+          
         notifyComponentRemovalAndEntityDestruction(entityId, ref);
         destroy(ref);
     }
