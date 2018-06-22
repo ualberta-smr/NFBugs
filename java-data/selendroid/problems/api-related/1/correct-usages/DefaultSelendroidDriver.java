@@ -55,31 +55,10 @@ import android.webkit.WebView;
 public class DefaultSelendroidDriver implements SelendroidDriver {
 
   public String initializeSession(JSONObject desiredCapabilities) {
-    if (this.session != null) {
-      session.getKnownElements().clear();
-      return session.getSessionId();
-    }
-    activeWindowType = WindowType.NATIVE_APP.name();
+  
     Random random = new Random();
     this.session = new Session(desiredCapabilities,
         new UUID(random.nextLong(), random.nextLong()).toString());
-    nativeSearchScope =
-        new NativeSearchScope(serverInstrumentation, getSession().getKnownElements());
-
-    selendroidNativeDriver =
-        new SelendroidNativeDriver(serverInstrumentation, (NativeSearchScope) nativeSearchScope);
-    SelendroidLogger.log("new s: " + session.getSessionId());
-
-    nativeExecuteScriptMap.put("invokeMenuActionSync", new InvokeMenuAction(session,
-        serverInstrumentation));
-    nativeExecuteScriptMap.put("findRId", new FindRId(serverInstrumentation));
-    nativeExecuteScriptMap.put("getL10nKeyTranslation", new GetL10nKeyTranslation(
-        serverInstrumentation));
-    nativeExecuteScriptMap.put("findElementByAndroidTag",
-        new FindElementByAndroidTag(session.getKnownElements(), serverInstrumentation, keySender));
-    nativeExecuteScriptMap.put("isElementDisplayedInViewport", new IsElementDisplayedInViewport(
-        session.getKnownElements(), serverInstrumentation));
-
     return session.getSessionId();
   }
 
