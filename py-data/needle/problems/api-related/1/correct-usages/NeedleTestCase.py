@@ -18,14 +18,3 @@ class NeedleTestCase(TestCase)
     def setUpClass(cls):
         cls.driver = cls.get_web_driver()
         super(NeedleTestCase, cls).setUpClass()
-
-    @classmethod
-    def tearDownClass(cls):
-        super(NeedleTestCase, cls).tearDownClass()
-        cls.driver.quit()
-
-    @classmethod
-    def get_web_driver(cls):
-        return NeedleWebDriver(cls.driver_command_executor,
-                               cls.driver_desired_capabilities,
-                               cls.driver_browser_profile)
