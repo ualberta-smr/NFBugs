@@ -29,7 +29,9 @@ location:
         needle/cases.py
     method: 
         compareScreenshot(self, element_or_selector, filename, threshold=0.1) in class NeedleTestCase(TestCase)
-api: 
-    needle.driver.NeedleWebDriver
+api:
+    needle.driver.NeedleWebDriver.assertScreenshot
+api change: 
+    needle.driver.NeedleWebDriver.assertScreenshot -> needle.driver.NeedleWebDriver.compareScreenshot
 rule:
     avoid loading a page unnecessarily by using compareScreenshot instead of assertScreenshot
