@@ -15,5 +15,9 @@ location:
         main.py
     method: 
         runCommand(command)
-suggestion: 
-    to improve security, hide characters in password input
+api:
+    builtins.input
+api change:
+    builtins.input -> getpass.getpass
+rule: 
+    to improve security, hide characters in password input using the getpass module
