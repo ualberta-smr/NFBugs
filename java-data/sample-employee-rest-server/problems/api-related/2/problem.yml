@@ -13,6 +13,8 @@ location:
     file: 
         src/main/java/com/derrikcurran/sample/employeerestserver/employee/Employee.java
     method: 
-        -
-suggestion:
-    prevent user credentials from being changed by others
+        - in public class Employee
+api:
+    com.fasterxml.jackson.annotation.JsonProperty.Access
+rule: 
+    to improve security, conceal user credentials using READ_ONLY access
