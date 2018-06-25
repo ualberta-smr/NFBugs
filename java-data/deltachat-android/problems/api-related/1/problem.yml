@@ -4,7 +4,7 @@ project:
     name: deltachat-android
     url: https://github.com/deltachat/deltachat-android
 fix:
-    description: replace hashmap to discard old images without leaking memory
+    description: replace hashmap with a class attribute to discard old images without leaking memory
     commit message: >
             Fix a memory leak.
     commit: https://github.com/deltachat/deltachat-android/commit/848862a
@@ -17,5 +17,9 @@ location:
                                    final AvatarDrawable avtDrawable,
                                    String tempEmail,
                                    String tempName)
-suggestion:
-    HashMaps may easily cause memory leaks; consider using another structure 
+api:
+    java.util.HashMap
+api change:
+    java.util.HashMap -> java.lang.String
+rule:
+    HashMaps may easily cause memory leaks; consider using attributes
