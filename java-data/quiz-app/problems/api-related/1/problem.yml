@@ -19,5 +19,13 @@ location:
         app/src/main/java/com/developervishalsehgal/udacityscholarsapp/data/models/User.java
     method: 
         -
-suggestion:
+api:
+    java.lang.Long
+    java.lang.Double
+    java.lang.Boolean
+api change:
+    java.lang.Long -> long
+    java.lang.Double -> double
+    java.lang.Boolean -> boolean
+rule:
     use primitives instead of wrapper classes for performance optimization 
