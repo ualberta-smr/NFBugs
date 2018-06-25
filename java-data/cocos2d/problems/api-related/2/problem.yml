@@ -4,7 +4,7 @@ project:
     name: cocos2d
     url: https://github.com/ZhouWeikuan/cocos2d
 fix:
-    description: added a WeakReference to ensure object can be garbace collected
+    description: added a WeakReference to ensure object can be garbage collected
     commit message: >
             memory leak fixed in CCLabel
     commit: https://github.com/ZhouWeikuan/cocos2d/commit/61f6864
