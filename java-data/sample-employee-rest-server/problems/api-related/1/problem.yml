@@ -17,5 +17,9 @@ location:
         src/main/java/com/derrikcurran/sample/employeerestserver/security/UserDetailsServiceImpl.java
     method: 
         -
-suggestion:
+api:
+    java.lang.Long
+api change:
+    java.lang.Long -> long
+rule:
     use primitives instead of wrapper classes for performance optimization 
