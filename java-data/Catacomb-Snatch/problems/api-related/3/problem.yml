@@ -5,7 +5,7 @@ project:
     url: https://github.com/Maescool/Catacomb-Snatch
 fix:
     tag: memory, performance
-    description: replaced ArrayList with an array -- the button axis count are variable; prevents resizing. Also an arraylist has higher memory overhead  
+    description: replaced ArrayList with an array -- resizing an ArrayList can hurt performance; also ArrayList has a larger memory overhead than an array because of object metadata
     commit message: >
             Merge pull request #1 from KyleBrodie/joypad
             Joypad Clean up : Stability and memory usage
@@ -15,6 +15,10 @@ location:
         src/com/mojang/mojam/JoypadHandler.java
     method: 
         public JoypadHandler(int index)
-suggestion: 
-    resizing an ArrayList can hurt performance; consider using an array with a set capacity instead
-    ArrayList has a larger memory overhead than an array because of object metadata
+api:
+    java.util.ArrayList
+api change:
+    java.util.ArrayList -> array[]
+rule:
+     replace ArrayList with Arrays if the desired size of the collection is known
+    
