@@ -16,6 +16,8 @@ location:
     method: 
         public class ExpandableMultiIterator<T> implements Iterator<T>       
 api:
-    com.tinkerpop.pipes.util.iterators.ExpandableMultiIterator
+    java.util.ArrayList
+api change:
+    java.util.ArrayList -> com.tinkerpop.pipes.util.iterators.ExpandableMultiIterator
 rule: 
     exchange List or ArraysList with ExpandableMultiIterator to make the program more memory efficient 
