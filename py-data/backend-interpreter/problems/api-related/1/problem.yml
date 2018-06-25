@@ -14,7 +14,9 @@ location:
         plugin_interpreter/src/rethink_interface.py
     method: 
         _send_output(self, output_data) 
-api: 
-    builtins.str.join
+api:
+    builtins.str + 
+api change: 
+    builtins.str + -> builtins.str.join
 rule:
     use .join() instead of adding strings to concatenate efficiently
