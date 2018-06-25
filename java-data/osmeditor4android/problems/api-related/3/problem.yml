@@ -16,6 +16,8 @@ location:
     method: 
         protected ArrayList<ImageryOffset> doInBackground(Integer... params)
 api: 
-    android.net.Uri
+    java.lang.String
+api change:
+    java.lang.String -> android.net.Uri
 rule:
     use a Uri object to build paths efficiently and securely
