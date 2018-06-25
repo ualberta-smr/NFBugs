@@ -19,6 +19,8 @@ location:
         public class CollectionFilterPipe<S> extends AbstractPipe<S, S> implements FilterPipe<S>, ComparisonFilterPipe<S, S>         
         public void testAggregatorPipe()
 api:
-    com.tinkerpop.pipes.serial.filter.CollectionFilterPipe
+    com.tinkerpop.pipes.serial.filter.ObjectFilterPipe
+api change:
+    com.tinkerpop.pipes.serial.filter.ObjectFilterPipe -> com.tinkerpop.pipes.serial.filter.CollectionFilterPipe
 rule: 
     exchange ObjectFilterPipe with CollectionFilterPipe to make the program more efficient
