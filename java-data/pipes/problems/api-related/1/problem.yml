@@ -23,6 +23,8 @@ location:
         public S processNextStart()
         
 api:
-    com.tinkerpop.pipes.serial.SingleIterator
+    java.util.ArrayList
+api change:
+    java.util.ArrayList -> com.tinkerpop.pipes.serial.SingleIterator
 rule: 
     exchange Arrays.asList with SingleIterator to make the program more efficient 
