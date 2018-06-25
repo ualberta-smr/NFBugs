@@ -14,7 +14,9 @@ location:
         main.py
     method: 
         main()
-api: 
-    builtins.list
+api:
+    builtins.list.append
+api change: 
+    builtins.list.append -> list comprehension
 rule:
      use list comprehension instead of list.append loops to create lists efficiently
