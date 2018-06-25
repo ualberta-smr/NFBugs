@@ -14,5 +14,9 @@ location:
         liferay-portal/modules/apps/headless-apio/folder/folder-apio-impl/src/main/java/com/liferay/folder/apio/internal/architect/resource/FolderNestedCollectionResource.java        
     method: 
         private Folder _addFolder, private Folder _updateFolder
-suggestion:
+api:
+   long 
+api change: 
+   long primitive -> java.lang.Long
+rule:
     use primitives instead of wrapper classes for performance optimization 
