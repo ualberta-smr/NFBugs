@@ -15,6 +15,8 @@ location:
     method: 
         public String getLongDescription
 api: 
-    java.lang.StringBuilder
+    java.lang.String
+api change:
+    java.lang.String -> java.lang.StringBuilder
 rule:
     use a StringBuilder to concatenate efficiently
