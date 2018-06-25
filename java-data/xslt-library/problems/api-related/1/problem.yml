@@ -15,6 +15,8 @@ location:
     method: 
         public static @Nonnull <P extends HasPrivilegeRestriction> List<P> restrict(@Nonnull Collection<P> input, @Nonnull Privilege privilege) 
 api: 
-    java.util.ArrayList
+    java.util.Vector
+api change:
+    java.util.Vector -> java.util.ArrayList
 rule:
     if syncing not required, use ArrayList instead of Vector for better performance
