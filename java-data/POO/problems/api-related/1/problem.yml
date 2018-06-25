@@ -15,6 +15,8 @@ location:
     method: 
         public String toString() 
 api: 
-    java.lang.StringBuilder
+    java.lang.StringBuffer
+api change:
+    java.lang.StringBuffer -> java.lang.StringBuilder
 rule:
     if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently
