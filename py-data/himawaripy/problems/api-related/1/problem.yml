@@ -15,5 +15,9 @@ location:
         himawaripy.py
     method: 
         main()
-suggestion: 
-    performing commands in parallel using multiprocessing.Pool object speeds up performance
+api: 
+    loop
+api change:
+    loop -> multiprocessing.Pool
+rule:
+    performing commands in parallel using Pool object speeds up performance
