@@ -15,8 +15,8 @@ location:
     method: 
         private Folder _addFolder, private Folder _updateFolder
 api:
-   long 
+   java.lang.Long 
 api change: 
-   long primitive -> java.lang.Long
+   java.lang.Long -> long  
 rule:
     use primitives instead of wrapper classes for performance optimization 
