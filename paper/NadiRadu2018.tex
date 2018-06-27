@@ -114,8 +114,8 @@ To create our dataset, we looked at a variety of Github repositories written in 
 
 
 \subsection {Project selection}
-We used two main methods to identify cadidate repositories for mining. 
-First, we filtered Github projects to java and python repositories, and chose repos in order of the highest number of stars. We found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Thus, for our second method we identified candidate repos using Github`s search bar find similar changes. We searched for commits containing keywords such as ``Stringbuilder replace,`` ``foreach loop replace,`` and ``fix memory leak.``
+We used two main methods to identify candidate repositories for mining. 
+First, we filtered Github projects to java and python repositories, and chose repos in order of the highest number of stars. We found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Thus, for our second method we identified candidate repos using Github`s search bar find similar changes. We searched for commits containing keywords such as ``StringBuilder replace,`` ``foreach loop replace,`` and ``fix memory leak.``
 
 
 \subsection{Obtaining commits}
@@ -151,7 +151,7 @@ For those repositories identified by star rating, we directly ran PyDriller; not
 Our PyDriller program generated a CSV file containing the id and message of the extracted commits. We then searched these files for true positives, which we documented in YAML files. 
 
 \subsection{Documentation}
-For each problem we identified, we recorded the \texttt{commit url} and \texttt{commit message}, as well as the partcular \texttt{file} and \texttt{method} where developers made the fix. Because a user`s commit message is not always thorough, we explained our interpretation of the problem under a \texttt{description} field. For fixes related to specific APIs (ex. using a Stingbuilder in place of  a String), we recorded the \texttt{API}, as well as a \texttt{rule} corresponding to the change. For commits not connected to a particular API, we created a general \texttt{suggestion} to address similar problems.
+For each problem we identified, we recorded the \texttt{commit url} and \texttt{commit message}, as well as the particular \texttt{file} and \texttt{method} where developers made the fix. Because a user`s commit message is not always thorough, we explained our interpretation of the problem under a \texttt{description} field. For fixes related to specific APIs (ex. using a StringBuilder in place of  a String), we recorded the \texttt{API}, as well as a \texttt{rule} corresponding to the change. For commits not connected to a particular API, we created a general \texttt{suggestion} to address similar problems.
 
 \section{Dataset}
 \section{Discussion and Directions for Future Work}
@@ -166,4 +166,3 @@ For each problem we identified, we recorded the \texttt{commit url} and \texttt{
 \bibliography{bibRaduNadi2018}
 
 \end{document}
-
