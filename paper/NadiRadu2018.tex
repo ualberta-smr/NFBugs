@@ -115,7 +115,7 @@ To create our dataset, we looked at a variety of Github repositories written in 
 
 \subsection {Project selection}
 We used two main methods to identify candidate repositories for mining. 
-First, we filtered Github projects to java and python repositories, and chose repos in order of the highest number of stars. We found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Thus, for our second method we identified candidate repos using Github`s search bar find similar changes. We searched for commits containing keywords such as ``StringBuilder replace,`` ``foreach loop replace,`` and ``fix memory leak.``
+First, we used the Github API to search for projects written in java or python, and sorted them based on their number of stars. We found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Thus, for our second method we identified candidate repos using Github`s search bar find similar changes. We searched for commits containing keywords such as ``StringBuilder replace,'' ``foreach loop replace,'' and ``fix memory leak.''
 
 
 \subsection{Obtaining commits}
@@ -146,7 +146,7 @@ To extract commits related to non-functional requirements, we implemented a keyw
 %--------------------------------------------------------------------------------------------------
 
 
-For those repositories identified by star rating, we directly ran PyDriller; note that some of these projects contained zero true positives. For projects identified via the Github search, we first documented the bug that was initially found in the search, then ran the PyDriller program on the rest of the repo. Thus, these projects always had at least one true positive. 
+For those repositories identified by star rating, we directly ran PyDriller; note that some of these projects contained zero true positives. For projects identified via the Github search, we first documented the bug that was initially found in the search, then ran the PyDriller program on the complete repo history. Thus, these projects always had at least one true positive. 
 
 Our PyDriller program generated a CSV file containing the id and message of the extracted commits. We then searched these files for true positives, which we documented in YAML files. 
 
