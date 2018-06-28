@@ -10,4 +10,6 @@ fix:
     commit: https://github.com/jenkinsci/jenkins/commit/3f0b72e
 location:
     file: core/src/main/java/hudson/model/DependencyGraph.java
-    method: 
+    method: public void doConfigSubmit(StaplerRequest req, StaplerResponse rsp) throws IOException, ServletException
+suggestion:
+    
