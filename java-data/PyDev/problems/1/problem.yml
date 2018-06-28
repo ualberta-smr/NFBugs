@@ -15,7 +15,5 @@ location:
         org.python.pydev/src/org/python/pydev/editor/codecompletion/revisited/ModulesManager.java
     method: 
         private final class ModulesManagerCache extends LRUCache<ModulesKey, AbstractModule>
-api:
-    org.python.pydev.core.cache.Cache
-rule: 
-    cache old modules to reduce memory needs
+suggestion:
+    cache items to reduce memory needs
