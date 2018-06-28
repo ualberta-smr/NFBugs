@@ -4,7 +4,7 @@ project:
     name: needle
     url: https://github.com/python-needle/needle
 fix:
-    tag: performance
+    tag: other,performance
     description: improved efficiency by changing from an instance method to a class method that runs once
     commit message: >
             NeedleTestCase: refactor driver setup to setUpClass
