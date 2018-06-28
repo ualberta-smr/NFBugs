@@ -4,6 +4,7 @@ project:
     name: cwac-wakeful
     url: https://github.com/commonsguy/cwac-wakeful
 fix:
+    tag: memory
     description: Avoids memory leaks in case of unexpected errors by always releasing memory
     commit message: >
         Added better lock-release logic, ensuring that the WakeLock is released even if doWakefulWork() encounters a runtime exception
