@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: resource management 
     description: Preventing data corruption by remembering to close a file when finished
     commit message: >
         fixed a FileReader leak.
