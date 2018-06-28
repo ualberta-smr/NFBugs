@@ -4,6 +4,7 @@ project:
     name: WaniKani-Ripoff-Project
     url: https://github.com/Firespirit93/WaniKani-Ripoff-Project
 fix:
+    tag: security
     description: made variables and classes final, private, or static 
     commit message: >
             Fixed RAM usage
