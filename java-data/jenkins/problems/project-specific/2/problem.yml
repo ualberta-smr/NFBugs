@@ -4,6 +4,7 @@ project:
     name: jenkins
     url: https://github.com/jenkinsci/jenkins
 fix:
+    tag: performance
     description: Programmers added a class to use for building and maintaining a di-graph instead of finding back edges whenever accessing a node. This reduces runtime and improves efficiency, maintainability.
     commit message: >
         moving dependency computation logic to a single place to improve efficiency.
