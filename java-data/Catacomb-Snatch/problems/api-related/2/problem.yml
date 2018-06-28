@@ -4,6 +4,7 @@ project:
     name: Catacomb-Snatch
     url: https://github.com/Maescool/Catacomb-Snatch
 fix:
+    tag: resource management 
     description: Preventing data corruption by remembering to close resources when finished
     commit message: >
         Code Cleanup: Closed resource leaks,
