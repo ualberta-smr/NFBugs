@@ -4,6 +4,7 @@ project:
     name: cocos2d
     url: https://github.com/ZhouWeikuan/cocos2d
 fix:
+    tag: memory
     description: added a WeakReference to ensure object can be garbage collected
     commit message: >
             fixed memory leaks in CCQuadParticleSystem
