@@ -4,6 +4,7 @@ project:
     name: PointCloudDatasetReader
     url: https://github.com/stefanmarks/PointCloudDatasetReader
 fix:
+    tag: resource management 
     description: Preventing data corruption by remembering to close a file when finished
     commit message: >
         Forgot to close file
