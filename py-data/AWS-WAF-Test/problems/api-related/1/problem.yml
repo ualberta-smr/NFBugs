@@ -4,6 +4,7 @@ project:
     name: AWS-WAF-Test
     url: https://github.com/s2pAIr/AWS-WAF-Test
 fix:
+    tag: resource management 
     description: Preventing data corruption by remembering to close a file when finished
     commit message: >
         Forgot to close the file, fixed
