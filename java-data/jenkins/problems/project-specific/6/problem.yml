@@ -12,5 +12,5 @@ fix:
 location:
     file: core/src/main/java/hudson/model/Descriptor.java
     method: protected synchronized void save()
-suggestion:
+rule:
     use synchronized methods to avoid data corruption
