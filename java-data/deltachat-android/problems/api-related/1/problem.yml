@@ -4,6 +4,7 @@ project:
     name: deltachat-android
     url: https://github.com/deltachat/deltachat-android
 fix:
+    tag: memory 
     description: replace hashmap with a class attribute to discard old images without leaking memory
     commit message: >
             Fix a memory leak.
