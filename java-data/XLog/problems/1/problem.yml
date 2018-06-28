@@ -4,6 +4,7 @@ project:
     name: XLog
     url: https://github.com/promeG/XLog
 fix:
+    tag: security
     description: made the class XLogInitializer final instead of public to improve efficiency and security 
     commit message: >
             Merge pull request #7 from promeG/2.0
