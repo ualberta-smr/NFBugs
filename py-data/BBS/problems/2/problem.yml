@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: BBS
     url: https://github.com/Timuer/BBS
