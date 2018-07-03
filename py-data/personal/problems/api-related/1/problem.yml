@@ -17,6 +17,6 @@ location:
 api: 
     builtins.map
 api change:
-    builtins.map -> list comprehension builtins.list
+    builtins.map -> builtins.list list comprehension 
 rule:
      use list comprehension instead of lambda maps to efficiently create result lists
