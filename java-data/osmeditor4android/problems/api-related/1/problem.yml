@@ -18,5 +18,7 @@ api:
     java.lang.String
 api change:
     java.lang.String -> java.lang.StringBuilder
+    method:
+        java.lang.String + -> java.lang.StringBuilder.append
 rule:
     use a StringBuilder to concatenate efficiently
