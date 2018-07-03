@@ -18,6 +18,6 @@ location:
 api: 
     loop
 api change:
-    loop -> multiprocessing.Pool
+    loop -> multiprocessing.Pool.map
 rule:
     performing commands in parallel using Pool object speeds up performance
