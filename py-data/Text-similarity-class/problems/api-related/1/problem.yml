@@ -15,7 +15,7 @@ location:
     method: 
         create_shingles(self, data)
 api: 
-    builtins.list.append
+    builtins.list
 api change:
     builtins.list.append -> list comprehension
 rule:
