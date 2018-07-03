@@ -18,6 +18,6 @@ location:
 api: 
     java.lang.String
 api change:
-    java.lang.String -> android.net.Uri
+    java.lang.String.+ -> android.net.Uri.append<field>
 rule:
     use a Uri object to build paths efficiently and securely
