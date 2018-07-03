@@ -15,7 +15,7 @@ location:
     method: 
         free_space(pairs)
 api: 
-    builtins.list.append
+    builtins.list
 api change:
     builtins.list.append -> list comprehension
 rule:
