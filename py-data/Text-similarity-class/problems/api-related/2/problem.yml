@@ -15,7 +15,7 @@ location:
     method: 
         _create_shingle(self, doc)
 api: 
-    builtins.str.+
+    builtins.str
 api change:
     builtins.str.+ -> builtins.str.join
 rule:
