@@ -15,8 +15,8 @@ location:
     method: 
         _create_shingle(self, doc)
 api: 
-    builtins.str +
+    builtins.str.+
 api change:
-    builtins.str. + -> builtins.str.join
+    builtins.str.+ -> builtins.str.join
 rule:
     use .join() instead of adding strings to concatenate efficiently
