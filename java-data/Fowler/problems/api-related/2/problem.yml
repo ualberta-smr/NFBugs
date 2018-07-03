@@ -17,6 +17,6 @@ location:
 api: 
     java.lang.String
 api change:
-   java.lang.String -> java.lang.StringBuilder
+   java.lang.String.+ -> java.lang.StringBuilder.append
 rule:
     use a StringBuilder instead of adding strings to concatenate efficiently
