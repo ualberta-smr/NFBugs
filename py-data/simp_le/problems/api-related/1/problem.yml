@@ -15,6 +15,6 @@ location:
     method: 
         persist_data(args, existing_data, new_data)
 api: 
-    IOPlugin
+    simp_le.IOPlugin
 rule:
     only save data to persist files if it has been modified
