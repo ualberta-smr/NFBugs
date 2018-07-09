@@ -23,7 +23,7 @@ location:
 api: 
     java.io.FileOutputStream
     java.util.jar
-    import java.io.BufferedReader
+    java.io.BufferedReader
     java.util.zip.ZipFile    
 rule: 
     close streams when done
