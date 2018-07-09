@@ -3,7 +3,7 @@ This file contains links to different types of graphs. We should discuss which w
 The graphs here so far are:
 
         - 3D graphs 
-              - stars vs watches vs forks: https://plot.ly/~aradu12/3/#plot  
+              - [stars vs watches vs forks](https://plot.ly/~aradu12/3/#plot) 
         
         - bar charts
               - problem tag vs problem type: https://plot.ly/~aradu12/8/
