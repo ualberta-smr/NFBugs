@@ -15,7 +15,7 @@ location:
     method: 
         public void setString(CharSequence seq)
 api: 
-    java.lang.ref.WeakReference;
+    java.lang.ref.WeakReference
 rule:
     use WeakReferences to avoid memory leaks
     
