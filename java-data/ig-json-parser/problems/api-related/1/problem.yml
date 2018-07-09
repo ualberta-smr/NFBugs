@@ -14,7 +14,7 @@ location:
     file: 
         common/src/main/java/com/instagram/common/json/annotation/JsonField.java
     method: -
-api: java.lang.annotation.RetentionPolicy.CLASS
+api: java.lang.annotation.RetentionPolicy
 api change:
     java.lang.annotation.RetentionPolicy.CLASS -> java.lang.annotation.RetentionPolicy.SOURCE
 rule:
