@@ -14,7 +14,7 @@
 
 \usepackage{booktabs} 	% For formal tables
 \usepackage{indentfirst}% For indenting first paragraphs
-\usepackage{iftex}	% Without this it yelled at me when I tried to compile
+\usepackage{iftex}     % Without this it yelled at me when I tried to compile
 % --------------------------- LATER --------------------------------------
 
 
@@ -197,6 +197,7 @@ Using the first procedure, we mined 90 Java repositories and 15 Python repositor
 
 The number of problems per tag are displayed in Table \ref{tab:tag}. Performance related bugs were the most common subtype. Table \ref{tab:domain} shows the number of projects in our dataset that have stars,watches, and forks within a given range. Nineteen of the projects had no stars; all of these were identified via the \texttt{github-search} procedure. We decided to keep these projects in the dataset because (1) some of these problems resembled others in more popular repositories and (2) it may interest others to study problems that novice programmers run into.
 
+We identified 33 different Java APIs and 9 different Python APIs as sources of API-related problems. Fixes for these problems consisted of refining the use of the problematic API, or exchanging it with a more optimal one. The number of problems involving each API is shown in Table \ref{tab:apifreq}. Java's String class contributed to the highest number of API-related problems. These were all \texttt{performance} problems, which developers fixed by using a more efficient API (e.x., StringBuilder) perform concatenation.
 % because some have two tags, this has to be a separate table(?), otherwise the totals wouldn't add up
 % --------------- TABLE -------------
 \begin{table}
@@ -233,6 +234,50 @@ The number of problems per tag are displayed in Table \ref{tab:tag}. Performance
   \bottomrule
 \end{tabular}
 \end{table}
+% --------------- TABLE -------------
+
+% --------------- TABLE -------------
+\begin{table*}[t]
+  \caption{Frequency of Problematic Java APIs}
+  \label{tab:apifreq}
+  \addtolength{\tabcolsep}{4pt}
+\begin{tabular}{ c c c c}
+  \toprule
+  \multicolumn{4}{c}{JAVA} \\
+  
+  API & Occurrence & API & Occurrence\\
+  \midrule
+  java.lang.String& 6               & java.io.BufferedOutputStream& 1\\
+  android.content.Context& 2        & org.apache.commons.io.IOUtils& 1\\
+  java.io.FileOutputStream& 1       & hudson.model.Run& 1\\
+  java.util.jar& 1                  & hudson.model.Item& 1\\
+  java.io.BufferedReader& 2         & hudson.model.Hudson& 3\\
+  java.util.zip.ZipFile& 1          & org.kohsuke.stapler.StaplerRequest&1\\
+  java.util.ArrayList& 3            & java.io.FileReader& 1\\
+  android.util.SparseArray& 1       & squareup.haha.perflib.Snapshot& 1\\
+  java.util.Vector& 2               & java.lang.Long& 3\\
+  java.lang.StringBuffer& 3         & java.lang.Double& 1\\
+  SentienceLab.PointCloudDatasetReader.DataSource& 1 & java.lang.Boolean&1\\
+  xtremelabs.robolectric.bytecode.RobolectricClassLoader&1 &java.lang.ref.WeakReference&2    \\
+  tinkerpop.pipes.serial.filter.ObjectFilterPipe& 1&java.util.HashMap& 1 \\                 fasterxml.jackson.annotation.JsonProperty.Access&2&java.lang.annotation.RetentionPolicy& 1\\
+  terasology.rendering.nui.NUIManager& 1&java.util.UUID.randomUUID& 1\\
+  terasology.physics.engine.PhysicsLiquidWrapper& 1&hudson.remoting.Channel& 1\\
+  terasology.entitySystem.entity.EntityRef& 1&&\\
+ 
+  \midrule
+  
+  \multicolumn{4}{c}{PYTHON} \\
+  API & Occurrence & API & Occurrence\\
+  \midrule
+  builtins.io.IOBase& 1              & builtins.list& 5\\
+  builtins.input& 1                  & builtins.forloop& 2\\
+  builtins.str& 2                    & builtins.map& 3\\
+  needle.driver.NeedleWebDriver.assertScreenshot& 1 & django.db.models.Model& 1\\
+  simp\_le.IOPlugin& 1               &              &\\
+  
+  \bottomrule
+\end{tabular}
+\end{table*}
 % --------------- TABLE -------------
 
 % ---------------------------------------------------------------------------------------------------
