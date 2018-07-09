@@ -15,7 +15,7 @@ location:
     method: 
         duration(seconds)
 api: 
-    builtins.list
+    builtins.list.append
 api change:
     builtins.list.append -> list comprehension
 rule:
