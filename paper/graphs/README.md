@@ -1,4 +1,5 @@
 This file contains links to different types of graphs. We should discuss which work best, as well as improvements to be made.
+
 I used [plotly](https://plot.ly/feed/#/), which I like because it has an online interface as well as conversion to Python, R, Javascript and more.
 
 The graphs here so far are:
