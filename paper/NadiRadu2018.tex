@@ -108,13 +108,13 @@
 % ---------------------------------------------------------------------------------------------------
 \section{Methodology}
 To create our dataset, we looked at a variety of Github repositories written in either Java or Python. 
-We used two main methods to identify candidate repositories for mining. 
+We used two main methods to identify candidate repositories for mining. We examined the history of these repositories to obtain commit messages related to non-functional bugs, which we used to construct our dataset.
  
 \subsection{Initial Procedure}
 First, we used the Github API to search for projects written in Java or Python, and sorted them based on their number of stars. We then selected the top 90 repositories from these results. 
 
 \subsubsection{Obtaining commits}
-To extract commits related to non-functional requirements, we implemented a keyword search using PyDriller \footnote{https://github.com/ishepard/pydriller, Davide Spadini 2018}. The stemmed keywords are listed in Table \ref{tab:kwds}. Example word endings are in square brackets.
+To extract commits related to non-functional requirements, we implemented a keyword search using PyDriller \footnote{https://github.com/ishepard/pydriller, Davide Spadini 2018}. The stemmed keywords we use in our search are listed in Table \ref{tab:kwds}. Examples of possible word endings for matches are in square brackets.
 
 % --------------- TABLE -------------
 \begin{table}
@@ -144,15 +144,15 @@ We then manually searched these files for true positives. We ignored commits tha
 
 
 \subsection{Alternate Procedure}
-Using our first method, we found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Thus, for our second method, we identified candidate repos using Github`s search bar to find similar changes. Github searches through a variety of data, including code, commit messages, and issues. We filtered our search to commit messages containing the keywords in Table \ref{tab:kwds}. As well, we searched for commit messages containing language-specific enhancements such as ``StringBuilder replace,'' and ``foreach loop replace.'' We analyzed the bug that was found in the search, then ran PyDriller on the complete repo history. Thus, these projects always had at least one potential hit. Once we ran PyDriller, the remaining steps were identical to those in the previous section.
+Using our first method, we found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Noting these patterns, we developed another, more effective strategy for finding  potential target projects. In this second method, we identified candidate repos by using Github's search bar to find relevant patterns. Github searches through a variety of data, including code, commit messages, and issues. We filtered our search to commit messages containing the keywords in Table \ref{tab:kwds}. As well, we searched for commit messages containing language-specific enhancements such as ``StringBuilder replace,'' and ``foreach loop replace,'' since we had seen these in previous projects. We analyzed the bug that was found in the search, then ran our PyDriller program on the complete repo history. Thus, these projects always had at least one potential hit. Once we ran PyDriller, the remaining steps were identical to those in the previous section.
 
 For each identified potential hit, we looked at the code changes that occurred in the commit ensure the code change was indeed fixing a non-functional property, as described in the commit message. This manual review is necessary since there are sometimes matched commits that do not contain relevant code changes. For example, a commit message may mistakenly claim to improve performance \footnote{https://github.com/adangert/JoustMania/commit/a9711c2}, or it may confuse which APIs or methods were actually changed in the commit \footnote{https://github.com/Offer-Ready/xslt-library/commit/12fbf12}.
 
 \subsection{Documentation} 
 Our problems fell into one of three types: General, API-related, and Project-Specific. General problems apply to code quality and language-independent practices. API-related problems describe changes where one API or method was improved or swapped with a better API. Project-Specific problems are those that are only applicable to the project in which they occur.
-For each problem we identified, we recorded the problem meta data in a YAML\footnote{http://yaml.org/, last checked on June 27, 2018} file. Figure \ref{fig:meta1} shows an example of our format. Each file specifies the problem's \texttt{source}. The source \texttt{commit-msg-keywords} refers to method one, while \texttt{github-search} refers to method two. Under the \texttt{project} field, we specify the \texttt{name} of the project and the \texttt{url} of its Github repository. We also document the \texttt{commit url} and \texttt{commit message} associated with the fix, as well as the particular \texttt{file} and \texttt{method} affected. Because a user`s commit message is not always thorough, we construct a \texttt{description} of our interpretation of the problem.
+For each problem we identified, we recorded the problem meta data in a YAML\footnote{http://yaml.org/, last checked on June 27, 2018} file. Figure \ref{fig:meta1} shows an example of our format. Each file specifies the problem's \texttt{source}. The source \texttt{commit-msg-keywords} refers to method one, while \texttt{github-search} refers to method two. Under the \texttt{project} field, we specify the \texttt{name} of the project and the \texttt{url} of its Github repository. We also document the \texttt{commit url} and \texttt{commit message} associated with the fix, as well as the particular \texttt{file} and \texttt{method} affected. Because a user's commit message is not always thorough, we construct a \texttt{description} of our interpretation of the problem.
 
-In addition, we assign one or more tags to each problem according to the type of fix. Our collection of tags consists of: \texttt{security}, \texttt{performance}, \texttt{memory}  and \texttt{resource management}. We chose these tags based on... For fixes related to specific APIs (e.g., using a StringBuilder in place of  a String), we record the involved \texttt{API}, as well as a \texttt{rule} corresponding to the change. For commits not connected to a particular API, we create a general \texttt{suggestion} to address similar problems. An example of this type is shown in Figure \ref{fig:meta2}. 
+In addition, we assign one or more tags to each problem according to the type of fix. Our collection of tags consists of: \texttt{security}, \texttt{performance}, \texttt{memory}  and \texttt{resource management}. For fixes related to specific APIs (e.g., using a StringBuilder in place of  a String), we record the involved \texttt{API}, as well as a \texttt{rule} corresponding to the change. For commits not connected to a particular API, we create a general \texttt{suggestion} to address similar problems. An example of this type is shown in Figure \ref{fig:meta2}. 
 
 % --------------- FIGURE -------------
 \begin{figure}
@@ -177,9 +177,9 @@ In addition, we assign one or more tags to each problem according to the type of
 Using the first procedure, we mined 90 Java repositories and 15 Python repositories. Of these, 16 Java and 8 Python repositories contained true positives. In total, we identified 62  problems using this method. Using the second procedure, we obtained 32 problems from 18 Java repositories and 13 Python repositories. In total, our dataset contains 94 problems. The distribution of problems by type and language is shown in Table \ref{tab:type}.
 
 % --------------- TABLE -------------
-\begin{table}/by Github/
+\begin{table}
 
-  \caption{Data Distribution}
+  \caption{Data Distribution by Problem Type}
   \label{tab:type}
 \begin{tabular}{ c c c c }
   \toprule
@@ -195,7 +195,7 @@ Using the first procedure, we mined 90 Java repositories and 15 Python repositor
 \end{table}
 % --------------- TABLE -------------
 
-The number of problems per tag are displayed in Table \ref{tab:tag}. Performance related bugs were the most common subtype. Table \ref{tab:domain} shows the number of projects in our dataset that have stars,watches, and forks within a given range. Nineteen of the projects had no stars; all of these were identified via the \texttt{github-search} procedure. We decided to keep these projects in the dataset because (1) some of these problems resembled others in more popular repositories and (2) it may interest others to study problems that novice programmers run into.
+The number of problems per tag are displayed in Table \ref{tab:tag}. Performance related bugs were the most common subtype. Table \ref{tab:domain} shows the number of projects in our dataset that have stars,watches, and forks within a given range. Twenty of the projects had no stars; all of these were identified via the \texttt{github-search} procedure. We decided to keep these projects in the dataset because (1) some of these problems resembled others in more popular repositories and (2) it may interest others to study problems that novice programmers run into. Meanwhile, forty projects had at least one star. Ten of these had between one and forty-nine stars, two had between fifty and 199 stars, eight between 200 and 399 stars, six between 400 and 599 stars, and 4 had between 600 and 799 stars. Ten projects had 800 or more stars. The majority of projects had less than fifty watches. Very few projects had more than 200 forks.
 
 We identified 33 different Java APIs and 9 different Python APIs as sources of API-related problems. Fixes for these problems consisted of refining the use of the problematic API, or exchanging it with a more optimal one. The number of problems involving each API is shown in Table \ref{tab:apifreq}. Java's String class contributed to the highest number of API-related problems. These were all \texttt{performance} problems, which developers fixed by using a more efficient API (e.x., StringBuilder) perform concatenation.
 % because some have two tags, this has to be a separate table(?), otherwise the totals wouldn't add up
@@ -222,6 +222,8 @@ We identified 33 different Java APIs and 9 different Python APIs as sources of A
   \label{tab:domain}
 \begin{tabular}{ c c c c }
   \toprule
+   & \multicolumn{3}{c}{Projects in Range} \\
+   \cline{2-4}
   Range & stars & watches & forks\\
   \midrule
   0			&20 & 7& 24\\
