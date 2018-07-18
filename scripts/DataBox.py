@@ -55,7 +55,7 @@ class DataBox:
         
         for (dirname, dirs, files) in os.walk(directory): 
             for filename in files:
-                if filename.endsswith('project.yml'):
+                if filename.endswith('project.yml'):
                     
                     # get count from the relevant field in yaml object
                     data = yaml.load(open(dirname+"/"+filename,"r").read())
@@ -91,7 +91,7 @@ class DataBox:
     
         for (dirname, dirs, files) in os.walk(directory):
             for filename in files:
-                if filename.startswith('problem.yml'):
+                if filename.endswith('problem.yml'):
                     
                     code = yaml.load(open(dirname+"/"+filename,"r").read())
                     
@@ -113,7 +113,7 @@ class DataBox:
             if ("api-related" not in dirname):
                 continue
             for filename in files:
-                if filename == "problem.yml":
+                if filename.endswith('problem.yml'):
                     code = yaml.load(open(dirname+"/"+filename,"r").read())
                     for api in code["api"].split():
                         api = api.strip()
@@ -140,7 +140,7 @@ class DataBox:
                 if (ptype not in dirname):
                     continue
                 for filename in files:
-                    if filename == "problem.yml":
+                    if filename.endswith('problem.yml'):
                         problem_types[key]+=1
     
         return problem_count       
