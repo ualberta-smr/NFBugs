@@ -126,9 +126,6 @@ class DataBox:
     
     
     def getProblemTypes(directory):
-        # TODO: make this cleaner by putting general problems in own directory
-        # until this is fixed the count for general problems will evaluate to 0
-        
         # counts the frequency of problem types
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns a dictionary with fields type:frequency  
