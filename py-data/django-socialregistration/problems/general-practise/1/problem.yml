@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: django-socialregistration
+    url: https://github.com/flashingpumpkin/django-socialregistration
+fix:
+    tag: security
+    description: made sure multiple users could not link their facebook to the same account
+    commit message: >
+            Fixed: #143 #142 #127 #79
+    commit: https://github.com/flashingpumpkin/django-socialregistration/commit/c773adf
+location:
+    file: 
+        socialregistration/views.py
+    method: 
+        get(self, request) in class SetupCallback(SocialRegistration, TemplateView)
+suggestion: 
+    for security, check that user credentials can only match one account
