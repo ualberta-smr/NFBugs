@@ -1,0 +1,29 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: pipes
+    url: https://github.com/tinkerpop/pipes
+fix:
+    tag: performance
+    description:  Made more specialized child classes from parent classes to improve performance
+    commit message: >
+            broke VertexEdgePipe and EdgeVertexPipe into mini-atomic pipes--OutEdgesPipe, 
+            InVertexPipe, InEdgesPipe, BothVerticesPipe, etc. 600ms vs. 500ms runtime on a branching 3 depth traversal.
+    commit: https://github.com/tinkerpop/pipes/commit/a6406d6
+location:
+    file: 
+        src/main/java/com/tinkerpop/pipes/pgm/BothEdgesPipe.java
+        src/main/java/com/tinkerpop/pipes/pgm/BothVerticesPipe.java
+        src/main/java/com/tinkerpop/pipes/pgm/InEdgesPipe.java
+        src/main/java/com/tinkerpop/pipes/pgm/InVertexPipe.java
+        src/main/java/com/tinkerpop/pipes/pgm/OutEdgesPipe.java
+        src/main/java/com/tinkerpop/pipes/pgm/OutVertexPipe.java
+    method: 
+        public class BothEdgesPipe extends AbstractEdgesPipe
+        public class BothVerticesPipe extends AbstractPipe<Edge, Vertex>
+        public class InEdgesPipe extends AbstractEdgesPipe
+        public class InVertexPipe extends AbstractPipe<Edge, Vertex>
+        public class OutEdgesPipe extends AbstractEdgesPipe
+        public class OutVertexPipe extends AbstractPipe<Edge, Vertex>
+suggestion:
+    split larger classes into more efficient small ones

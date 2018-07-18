@@ -1,0 +1,20 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: liferay-portal
+    url: https://github.com/liferay/liferay-portal
+fix:
+    tag: memory
+    description: Removed reference to an object that was preventing memory release
+    commit message: >
+            LPS-64050 Don't keep the references to the bundles, we are creating a memory leak here, 
+            since we are not releasing the bundle, every time we redeploy a bundle, we are keeping a reference 
+            to the old one, preventing the classloader to be released
+    commit: https://github.com/liferay/liferay-portal/commit/042e9a0
+location:
+    file: 
+        liferay-portal.modules.apps.foundation.portal-scripting.portal-scripting-executor.src.main.java.com.liferay.portal.scripting.executor.internal.extender.ScriptingExecutorExtender.java    
+    method: 
+        protected void setSingleDestinationMessageSenderFactory(SingleDestinationMessageSenderFactory singleDestinationMessageSenderFactory)
+suggestion:
+    avoid extraneous references to avoid memory leaks
