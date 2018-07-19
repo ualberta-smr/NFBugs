@@ -138,6 +138,6 @@ class DataBox:
                     continue
                 for filename in files:
                     if filename.endswith('problem.yml'):
-                        problem_types[key]+=1
+                        problem_types[ptype]+=1
     
         return problem_count       
