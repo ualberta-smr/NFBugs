@@ -11,7 +11,7 @@ fix:
     commit: https://github.com/s2pAIr/AWS-WAF-Test/commit/ad6db33
 location:
     file: aws-waf-test.py
-    method: -
+    method: 
 api: 
     builtins.io.IOBase
 rule: 
