@@ -1,7 +1,7 @@
 # Written by Aida Radu
 # July 12, 2018
 
-# Last Updated: July 17, 2018
+# Last Updated: July 18, 2018
 
 # requirements:
 # * pyYAML: https://pyyaml.org/wiki/PyYAMLDocumentation
@@ -16,13 +16,13 @@ import sys
 class DataBox:
     # Handles extraction of data from smr repository
     
-    def __init__(date):
+    def __init__(self,date):
         # initializes a new DataBox object
         # - date is a datetime object representing the date and time of creation
         
         self.date = date
         
-    def getProblemCount(directory):
+    def getProblemCount(self,directory):
         # calculates the number of problems in the given directory
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns an int
@@ -36,7 +36,7 @@ class DataBox:
         return count
         
     
-    def getStatDistribution(directory,stat):
+    def getStatDistribution(self,directory,stat):
         # calculates the number of project stars, watches, or forks 
         # within a range in the given directory
         # - directory is a string of the path to search (e.x., "py-data")
@@ -81,7 +81,7 @@ class DataBox:
     
         
     
-    def getTagDistribution(directory):
+    def getTagDistribution(self,directory):
         # calculates the number of project by tag 
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns a dictionary with fields tag:frequency 
@@ -102,7 +102,7 @@ class DataBox:
                     break
         return tag_nums   
     
-    def getAPIs(directory):
+    def getAPIs(self,directory):
         # collects the frequency of problematic (prior to fix) APIs
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns a dictionary with fields API:frequency         
@@ -118,14 +118,14 @@ class DataBox:
                     for api in code["api"].split():
                         api = api.strip()
                         if api in apis.keys():
-                            apis(api)+=1
+                            apis[api]+=1
                         else:
-                            apis(api) = 1
+                            apis[api] = 1
                 
         return apis
     
     
-    def getProblemTypes(directory):
+    def getProblemTypes(self,directory):
         # counts the frequency of problem types
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns a dictionary with fields type:frequency  
