@@ -36,48 +36,49 @@ class DataBox:
         return count
         
     
-    def getStatDistribution(self,directory,stat):
-        # calculates the number of project stars, watches, or forks 
-        # within a range in the given directory
-        # - directory is a string of the path to search (e.x., "py-data")
-        # - stat is a string of the stat to search for ("e.x., "stars")
-        # - returns a dictionary with fields range:frequency 
-        
-        if stat not in ("stars","watches","forks"):
-            print("Invalid stat. Aborting command.", file=sys.stderr)
-            return
-        
-        # the ranges we have chosen for our project
-        # [NOTE] should we make these customizable as a parameter?
-        ranges = {"0":0,"<50":0,"<200":0,"<400":0, \
-                  "<600":0,"<800":0,"800+":0}
-        
-        
-        for (dirname, dirs, files) in os.walk(directory): 
-            for filename in files:
-                if filename.endswith('project.yml'):
-                    
-                    # get count from the relevant field in yaml object
-                    data = yaml.load(open(dirname+"/"+filename,"r").read())
-                    count = int(data["repository"]["stats"][stat])
-                                                                
-                    if (count == 0):
-                        ranges["0"]+=1
-                    elif (count <50):
-                        ranges["<50"]+=1   
-                    elif (count < 200):
-                        ranges["<200"]+=1
-                    elif (count <400):
-                        ranges["<400"]+=1
-                    elif (count < 600):
-                        ranges["<600"]+=1
-                    elif (count <800):
-                        ranges["<800"]+=1
-                    elif (count >800):
-                        ranges["800+"]+=1 
-                    break
-                            
-        return ranges
+    def getCustomStatDistribution(self,directory,stat,ranges):
+            # calculates the number of project stars, watches, or forks 
+            # within a range in the given directory
+            # - directory is a string of the path to search (e.x., "py-data")
+            # - stat is a string of the stat to search for (e.x., "stars")
+            # - ranges is a tuple of numbers to separate by, right boundary excluded
+            # -- e.x. if ranges = (1,50,100), the boundaries are [0],[1,49],[50,99],[100+]
+            # - returns a dictionary with fields range:frequency 
+            
+            if stat.lower() not in ("stars","watches","forks"):
+                print("Invalid stat: must be stars, watches, or forks." + \
+                      " Aborting command.", file=sys.stderr)
+                return
+            
+            
+            
+            dist = {}
+            
+            # populate the distribution
+            for num in ranges:
+                dist["[<"+str(num)+"]"] = 0
+                
+            dist["["+str(max(ranges))+"+]"] = 1
+                
+            
+            for (dirname, dirs, files) in os.walk(directory): 
+                for filename in files:
+                    if filename.endswith('project.yml'):
+                        
+                        # get count from the relevant field in yaml object
+                        data = yaml.load(open(dirname+"/"+filename,"r").read())
+                        count = int(data["repository"]["stats"][stat])
+                        
+                        for num in sorted(ranges):
+                            if (count < num):
+                                dist["[<"+str(num)+"]"] += 1
+                                break
+                            if (num == max(ranges) and count >= num):
+                                dist["["+str(num)+"+]"] += 1
+                                break
+                                        
+                                
+            return dist
     
         
     
