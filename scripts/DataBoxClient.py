@@ -25,7 +25,7 @@ def main():
         for (key, value) in dict(Counter(jv_pt_items)+Counter(py_pt_items)).items():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")     
 
-        output.write("\n\tJAVA+"\n"")
+        output.write("\n\tJAVA+"\n")
         for (key, value) in jv_pt_items:
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")
         output.write("\n\tPYTHON")
