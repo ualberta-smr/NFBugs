@@ -32,14 +32,15 @@ def main():
         for (key, value) in py_pt.items():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")    
 
-
+        # the ones we chose before (so we can see if custom gives same results)    
+        ranges = (1,50,200,400,600,800) 
 
         output.write("\n------------------------------\n")
         output.write("JAVA POPULARITY STATS: "+"\n")
 
         for stat in ["stars","watches","forks"]:
             output.write("\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
-            for (key, value) in sorted(data.getStatDistribution("../java-data",stat).items()):
+            for (key, value) in sorted(data.getStatDistribution("../java-data",stat,ranges).items()):
                 output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
 
         output.write("\n------------------------------\n")
@@ -47,7 +48,7 @@ def main():
 
         for stat in ["stars","watches","forks"]:
             output.write("\n\n\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
-            for (key, value) in sorted(data.getStatDistribution("../py-data",stat).items()):
+            for (key, value) in sorted(data.getStatDistribution("../py-data",stat,ranges).items()):
                 output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")   
 
 
