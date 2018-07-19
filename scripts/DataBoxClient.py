@@ -19,7 +19,7 @@ def main():
     
         output.write("------------------------------\n")
         output.write("PROBLEM TYPES: "+"\n")
-        output.write("\TOTAL"+"\n")
+        output.write("\tTOTAL"+"\n")
         jv_pt = data.getProblemTypes("../java-data")
         py_pt = data.getProblemTypes("../py-data")
         for (key, value) in dict(Counter(jv_pt)+Counter(py_pt)).items():
@@ -39,7 +39,7 @@ def main():
 
         for stat in ["stars","watches","forks"]:
             output.write("\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
-            for (key, value) in data.getStatDistribution("../java-data",stat).items():
+            for (key, value) in sorted(data.getStatDistribution("../java-data",stat).items()):
                 output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
 
         output.write("\n------------------------------\n")
