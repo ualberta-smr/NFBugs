@@ -56,9 +56,9 @@ class DataBox:
             
             # populate the distribution
             for num in ranges:
-                dist["[<"+str(num)+"]"] = 0
+                dist["<"+str(num)] = 0
                 
-            dist["["+str(max(ranges))+"+]"] = 1
+            dist[str(max(ranges))+"+"] = 0
                 
             
             for (dirname, dirs, files) in os.walk(directory): 
@@ -71,10 +71,10 @@ class DataBox:
                         
                         for num in sorted(ranges):
                             if (count < num):
-                                dist["[<"+str(num)+"]"] += 1
+                                dist["<"+str(num)] += 1
                                 break
                             if (num == max(ranges) and count >= num):
-                                dist["["+str(num)+"+]"] += 1
+                                dist[str(num)+"+"] += 1
                                 break
                                         
                                 
