@@ -1,6 +1,6 @@
 from collections import Counter
 import datetime
-import DataBox
+from DataBox import DataBox
 
 def main():
     current_time = datetime.datetime.now()
