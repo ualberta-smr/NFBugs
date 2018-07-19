@@ -13,9 +13,9 @@ def main():
         py_probs = data.getProblemCount("../py-data")
     
         output.write("------------------------------")
-        output.write("TOTAL PROBLEMS: " + (java_probs+py_probs))
-        output.write("\tJAVA PROBLEMS: " + (java_probs))
-        output.write("\tPYTHON PROBLEMS: " + (py_probs))
+        output.write("TOTAL PROBLEMS: ",(java_probs+py_probs))
+        output.write("\tJAVA PROBLEMS: ",(java_probs))
+        output.write("\tPYTHON PROBLEMS: ",(py_probs))
     
         output.write("------------------------------")
         output.write("PROBLEM TYPES: ")
