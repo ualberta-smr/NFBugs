@@ -26,10 +26,10 @@ def main():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")     
 
         output.write("\n\tJAVA"+"\n")
-        for (key, value) in jv_pt:
+        for (key, value) in jv_pt.items():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")
         output.write("\n\tPYTHON\n")
-        for (key, value) in py_pt:
+        for (key, value) in py_pt.items():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")    
 
 
