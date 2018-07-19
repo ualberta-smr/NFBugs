@@ -19,7 +19,7 @@ def main():
     
         output.write("------------------------------\n")
         output.write("PROBLEM TYPES: "+"\n")
-        output.write("\TOTAL"+"\n")
+        output.write("\tTOTAL"+"\n")
         jv_pt = data.getProblemTypes("../java-data")
         py_pt = data.getProblemTypes("../py-data")
         for (key, value) in dict(Counter(jv_pt)+Counter(py_pt)).items():
