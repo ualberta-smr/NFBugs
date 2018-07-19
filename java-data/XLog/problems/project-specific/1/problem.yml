@@ -5,7 +5,7 @@ project:
     url: https://github.com/promeG/XLog
 fix:
     tag: performance
-    description: ?
+    description: 
     commit message: >
             Merge pull request #7 from promeG/2.0
             Speed up init process. Add support to annotated a class.
@@ -16,4 +16,4 @@ location:
     method: 
         final class XLogInitializer
 suggestion: 
-    ?
+    
