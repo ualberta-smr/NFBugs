@@ -20,16 +20,16 @@ def main():
         output.write("------------------------------")
         output.write("PROBLEM TYPES: ")
         output.write("\TOTAL")
-        jv_pt = data.getProblemTypes("../java-data").items()
-        py_pt = data.getProblemTypes("../py-data").items()
+        jv_pt_items = data.getProblemTypes("../java-data").items()
+        py_pt_items = data.getProblemTypes("../py-data").items()
         for (key, value) in dict(Counter(jv_pt)+Counter(py_pt)).items():
             output.write("\t\t "+str(key)+" : "+str(value))     
 
         output.write("\n\tJAVA")
-        for (key, value) in jv_pt.items():
+        for (key, value) in jv_pt_items:
             output.write("\t\t "+str(key)+" : "+str(value))
         output.write("\n\tPYTHON")
-        for (key, value) in py_pt.items():
+        for (key, value) in py_pt_items:
             output.write("\t\t "+str(key)+" : "+str(value))    
 
 
