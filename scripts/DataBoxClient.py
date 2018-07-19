@@ -66,7 +66,7 @@ def main():
             output.write("\t\t ["+str(key)+"] : "+str(value))
 
 
-        ourput.write("\n--------------------------------------")
+        output.write("\n--------------------------------------")
         output.write("API FREQUENCY -- JAVA\n")
 
         output.write("\t\tAPI\tfrequency")
