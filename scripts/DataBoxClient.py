@@ -22,7 +22,7 @@ def main():
         output.write("\TOTAL")
         jv_pt_items = data.getProblemTypes("../java-data").items()
         py_pt_items = data.getProblemTypes("../py-data").items()
-        for (key, value) in dict(Counter(jv_pt)+Counter(py_pt)).items():
+        for (key, value) in dict(Counter(jv_pt_items)+Counter(py_pt_items)).items():
             output.write("\t\t "+str(key)+" : "+str(value))     
 
         output.write("\n\tJAVA")
