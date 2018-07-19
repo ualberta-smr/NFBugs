@@ -39,7 +39,7 @@ def main():
 
         for stat in ["stars","watches","forks"]:
             output.write("\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
-            for (key, value) in data.getStatDistribution("../java-data",stat).items():
+            for (key, value) in sorted(data.getStatDistribution("../java-data",stat).items()):
                 output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
 
         output.write("\n------------------------------\n")
