@@ -59,7 +59,7 @@ class DataBox:
                     
                     # get count from the relevant field in yaml object
                     data = yaml.load(open(dirname+"/"+filename,"r").read())
-                    count = int(data["stats"][stat])
+                    count = int(data["repository"]["stats"][stat])
                                                                 
                     if (count == 0):
                         ranges["0"]+=1
