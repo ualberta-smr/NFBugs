@@ -158,7 +158,7 @@ class DataBox:
         return problem_types  
     
     
-    def __validate(self,directory,string="stars",int_tup=(0),str_tup=("")):
+    def __validate(self,directory,string="stars",int_tup=(0,),str_tup=("",)):
         print("???")
         if not isinstance(directory,str):
             print("Error: directory should be a string. Aborting command.",file=sys.stderr)
