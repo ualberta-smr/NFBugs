@@ -79,8 +79,7 @@ class DataBox:
     
         
     
-    def getTagDistribution(self,directory,\
-                             tag_requests = None):
+    def getTagDistribution(self,directory, tag_requests = None):
         # calculates the number of project by tag 
         # - directory is a string of the path to search (e.x., "py-data")
         # - tag_requests is a tuple of tags to get the distribution of 
