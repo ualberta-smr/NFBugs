@@ -12,7 +12,7 @@ def main():
         java_probs = data.getProblemCount("../java-data")
         py_probs = data.getProblemCount("../py-data")
         
-        output.write(" DATA AS OF "+current_time.strftime(%d-%m-%y at %H:%M)+"\n")
+        output.write(" DATA AS OF "+current_time.strftime("%d-%m-%y at %H:%M")+"\n")
     
         output.write("------------------------------\n")
         output.write("TOTAL PROBLEMS: "+str(java_probs+py_probs)+"\n")
