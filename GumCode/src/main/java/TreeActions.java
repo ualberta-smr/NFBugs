@@ -1,4 +1,4 @@
-
+// [NOTE]: is this file still necessary? Should we just delete it?
 import com.github.gumtreediff.gen.Generators;
 import com.github.gumtreediff.client.Run;
 import com.github.gumtreediff.actions.*;
