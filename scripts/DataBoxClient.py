@@ -60,7 +60,7 @@ def main():
             output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
 
         output.write("\n------------------------------\n")
-        output.write("JAVA TAG FREQUENCY: "+"\n")
+        output.write("PYTHON TAG FREQUENCY: "+"\n")
 
         output.write("\t\ttag\tfrequency"+"\n")
         for (key, value) in data.getTagDistribution("../py-data").items():
