@@ -17,7 +17,7 @@ class DataBox:
     
     def __init__(self):
         # initializes a new DataBox object
-        __self.default_tags = ("security","performance","memory","resource management")
+        self.__default_tags = ("security","performance","memory","resource management")
         
     def getProblemCount(self,directory):
         # calculates the number of problems in the given directory
@@ -80,13 +80,15 @@ class DataBox:
         
     
     def getTagDistribution(self,directory,\
-                             tag_requests = __self.default_tags):
+                             tag_requests = None):
         # calculates the number of project by tag 
         # - directory is a string of the path to search (e.x., "py-data")
         # - tag_requests is a tuple of tags to get the distribution of 
         # --(by default get all)
         # - returns a dictionary with fields tag:frequency 
         
+        if tag_requests is None:
+            tag_requests = self.__default_tags
         tag_nums = {}
         
         # populate dictionary
