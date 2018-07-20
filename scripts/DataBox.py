@@ -24,6 +24,9 @@ class DataBox:
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns an int
         
+        if not self.__validate(directory):
+            return
+        
         count = 0
         for (dirname, dirs, files) in os.walk(directory):
             for filename in files:
@@ -42,13 +45,9 @@ class DataBox:
             # -- e.x. if ranges = (1,50,100), the boundaries are [0],[1,49],[50,99],[100+]
             # - returns a dictionary with fields range:frequency 
             
-            if stat.lower() not in ("stars","watches","forks"):
-                print("Invalid stat: must be stars, watches, or forks." + \
-                      " Aborting command.", file=sys.stderr)
+            if not self.__validate(directory,string = stat,int_tup = ranges):
                 return
-            
-            
-            
+                 
             dist = {}
             
             # populate the distribution
@@ -88,6 +87,10 @@ class DataBox:
         
         if tag_requests is None:
             tag_requests = self.__default_tags
+            
+        if not self.__validate(directory,str_tuple = tag_requests):
+            return
+        
         tag_nums = {}
         
         # populate dictionary
@@ -112,7 +115,10 @@ class DataBox:
     def getAPIs(self,directory):
         # collects the frequency of problematic (prior to fix) APIs
         # - directory is a string of the path to search (e.x., "py-data")
-        # - returns a dictionary with fields API:frequency         
+        # - returns a dictionary with fields API:frequency 
+        
+        if not self.__validate(directory):
+            return
         
         apis = {}
         
@@ -137,6 +143,8 @@ class DataBox:
         # - directory is a string of the path to search (e.x., "py-data")
         # - returns a dictionary with fields type:frequency  
         
+        if not self.__validate(directory):
+            return
         
         problem_types = {"api-related":0,"general-practise":0,"project-specific":0}
         for (dirname, dirs, files) in os.walk(directory):
@@ -147,4 +155,26 @@ class DataBox:
                     if filename.endswith('problem.yml'):
                         problem_types[ptype]+=1
     
-        return problem_types      
+        return problem_types  
+    
+    
+    def __validate(self,directory,string="stars",int_tup=(0),str_tup=("")):
+        if not isinstance(directory,str):
+            print("Error: directory should be a string. Aborting command.",file=sys.stderr)
+            return False
+        
+        if not isinstance(string,str) or string.lower() not in ("stars","watches","forks"):
+            print("Error: stat must be 'stars', 'watches', or 'forks'." + \
+                      " Aborting command.", file=sys.stderr)
+            return False
+            
+        if not isinstance(int_tup,tuple) or not all([isinstance(num,int) for num in int_tup]):
+            print("Error: ranges must be a tuple of ints. Aborting command.",file=sys.stderr)
+            return False
+        
+        if not isinstance(str_tup,tuple) or not all([isinstance(tag,str) for tag in str_tup]):
+            print("Error: tags must be a tuple of strings. Aborting command.",file=sys.stderr)
+            return False
+        
+        return True
+        
