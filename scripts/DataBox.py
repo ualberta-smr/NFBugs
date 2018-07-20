@@ -1,7 +1,7 @@
 # Written by Aida Radu
 # July 12, 2018
 
-# Last Updated: July 19, 2018
+# Last Updated: July 20, 2018
 
 # requirements:
 # * pyYAML: https://pyyaml.org/wiki/PyYAMLDocumentation
@@ -9,18 +9,15 @@
 # * ruamel.yaml: https://pypi.org/project/ruamel.yaml 
 
 import os
-import datetime
 import yaml
 import sys
     
 class DataBox:
     # Handles extraction of data from smr repository
     
-    def __init__(self,date):
+    def __init__(self):
         # initializes a new DataBox object
-        # - date is a datetime object representing the date and time of creation
-        
-        self.date = date
+        __self.default_tags = ("security","performance","memory","resource management")
         
     def getProblemCount(self,directory):
         # calculates the number of problems in the given directory
@@ -83,8 +80,7 @@ class DataBox:
         
     
     def getTagDistribution(self,directory,\
-                             tag_requests = ("security","performance","memory",\
-                                             "resource management")):
+                             tag_requests = __self.default_tags):
         # calculates the number of project by tag 
         # - directory is a string of the path to search (e.x., "py-data")
         # - tag_requests is a tuple of tags to get the distribution of 
