@@ -36,7 +36,7 @@ class DataBox:
         return count
         
     
-    def getCustomStatDistribution(self,directory,stat,ranges):
+    def getStatDistribution(self,directory,stat,ranges):
             # calculates the number of project stars, watches, or forks 
             # within a range in the given directory
             # - directory is a string of the path to search (e.x., "py-data")
@@ -82,13 +82,21 @@ class DataBox:
     
         
     
-    def getTagDistribution(self,directory):
+    def getTagDistribution(self,directory,\
+                             tag_requests = ("security","performance","memory",\
+                                             "resource management")):
         # calculates the number of project by tag 
         # - directory is a string of the path to search (e.x., "py-data")
+        # - tag_requests is a tuple of tags to get the distribution of 
+        # --(by default get all)
         # - returns a dictionary with fields tag:frequency 
         
-        tag_nums = {"security":0,"performance":0,"memory":0,\
-                    "resource management":0}
+        tag_nums = {}
+        
+        # populate dictionary
+        for tag in tag_requests:
+            tag_nums[tag.lower().strip()] = 0
+
     
         for (dirname, dirs, files) in os.walk(directory):
             for filename in files:
@@ -99,7 +107,8 @@ class DataBox:
                     # split because some have more than one tag
                     tags = code["fix"]["tag"].split(",")    
                     for tag in tags:
-                        tag_nums[tag.strip()]+=1
+                        if tag.strip() in tag_nums.keys():
+                            tag_nums[tag.strip()]+=1
                     break
         return tag_nums   
     
