@@ -88,7 +88,7 @@ class DataBox:
         if tag_requests is None:
             tag_requests = self.__default_tags
             
-        if not self.__validate(directory,str_tuple = tag_requests):
+        if not self.__validate(directory,str_tup = tag_requests):
             return
         
         tag_nums = {}
@@ -159,7 +159,7 @@ class DataBox:
     
     
     def __validate(self,directory,string="stars",int_tup=(0,),str_tup=("",)):
-        print("???")
+        
         if not isinstance(directory,str):
             print("Error: directory should be a string. Aborting command.",file=sys.stderr)
             return False
