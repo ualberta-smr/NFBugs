@@ -1,0 +1,17 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: subethasmtp
+    url: https://github.com/voodoodyne/subethasmtp
+fix:
+    tag: resource management 
+    description: Preventing data corruption by remembering to close the FileOutputStream
+    commit message: >
+        Fix to properly close the output temp file
+    commit: https://github.com/voodoodyne/subethasmtp/commit/a24a884
+location:
+    file: smtp/src/org/subethamail/smtp/server/SMTPCodecDecoder.java
+    method: protected void reset() throws IOException 
+api: java.io.FileOutputStream
+rule:
+    flush and close streams when done
