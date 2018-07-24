@@ -1,0 +1,17 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: subethasmtp
+    url: https://github.com/voodoodyne/subethasmtp
+fix:
+    tag: memory 
+    description: free resources by shutting down executors
+    commit message: >
+        Fixed issue 8 : shutdown the thread pools to avoid unnecessary delays when server stopped
+    commit: https://github.com/voodoodyne/subethasmtp/commit/0fe1b69
+location:
+    file: smtp/src/org/subethamail/smtp/server/SMTPServer.java
+    method: public synchronized void stop()
+api: java.util.concurrent.Executors
+rule:
+    shut down executors to free memory
