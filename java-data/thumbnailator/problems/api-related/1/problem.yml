@@ -22,7 +22,7 @@ location:
         public BufferedImage read() throws IOException
         public void write(BufferedImage img) throws IOException        
 api:
-    import javax.imageio.ImageReader;
-    import javax.imageio.ImageWriter;
+    javax.imageio.ImageReader;
+    javax.imageio.ImageWriter;
 rule:
     dispose of ImageReader/Writer to free up memory space
