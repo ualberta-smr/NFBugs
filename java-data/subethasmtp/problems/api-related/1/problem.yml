@@ -14,4 +14,4 @@ location:
     method: protected void thresholdReached(int current, int predicted) throws IOException
 api: java.io.ByteArrayOutputStream
 rule:
-    close streams when done
+    flush and close streams when done
