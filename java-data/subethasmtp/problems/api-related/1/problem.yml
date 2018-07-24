@@ -1,0 +1,17 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: subethasmtp
+    url: https://github.com/voodoodyne/subethasmtp
+fix:
+    tag: resource management 
+    description: Preventing data corruption by remembering to close the ByteArrayOutputStream
+    commit message: >
+        Fixed streams closing
+    commit: https://github.com/voodoodyne/subethasmtp/commit/2cd795b
+location:
+    file: smtp/src/org/subethamail/smtp/server/io/DeferredFileOutputStream.java
+    method: protected void thresholdReached(int current, int predicted) throws IOException
+api: java.io.ByteArrayOutputStream
+rule:
+    close streams when done
