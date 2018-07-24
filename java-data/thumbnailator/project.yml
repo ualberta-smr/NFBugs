@@ -1,0 +1,9 @@
+name: thumbnailator
+repository:
+    type: git
+    url: https://github.com/coobird/thumbnailator
+    stats:
+        watches: 138
+        stars: 1512
+        forks: 359
+url: https://github.com/coobird/thumbnailator/wiki
