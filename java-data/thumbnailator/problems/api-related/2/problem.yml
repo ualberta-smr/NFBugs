@@ -1,0 +1,21 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: thumbnailator
+    url: https://github.com/coobird/thumbnailator
+fix:
+    tag: memory
+    description: conserves memory by releasing resources
+    commit message: >
+        Added code to flush resources of `BufferedImage`s which are no longer used, which will probably prevent `OutOfMemoryErrors`.
+        Addresses Issue 42 - http://code.google.com/p/thumbnailator/issues/detail?id=42
+    commit: https://github.com/coobird/thumbnailator/commit/abe88e7
+location:
+    file: 
+        src/net/coobird/thumbnailator/Thumbnailator.java
+    method: 
+        public static void createThumbnail(ThumbnailTask<?, ?> task) throws IOException        
+api:
+    java.awt.image.BufferedImage
+rule:
+    flush BufferedImage to free up memory space
