@@ -1,0 +1,28 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: thumbnailator
+    url: https://github.com/coobird/thumbnailator
+fix:
+    tag: memory
+    description: conserves memory by releasing resources
+    commit message: >
+        Added disposal of `ImageReader`s and `ImageWriter`s to prevent `OutOfMemoryErrors`.
+        Addresses Issue 42 - http://code.google.com/p/thumbnailator/issues/detail?id=42
+    commit: https://github.com/coobird/thumbnailator/commit/81520f6
+location:
+    file: 
+        src/net/coobird/thumbnailator/tasks/io/FileImageSink.java
+        src/net/coobird/thumbnailator/tasks/io/FileImageSource.java
+        src/net/coobird/thumbnailator/tasks/io/InputStreamImageSource.java
+        src/net/coobird/thumbnailator/tasks/io/InputStreamImageSink.java
+    method: 
+        public void write(BufferedImage img) throws IOException
+        public BufferedImage read() throws IOException
+        public BufferedImage read() throws IOException
+        public void write(BufferedImage img) throws IOException        
+api:
+    import javax.imageio.ImageReader;
+    import javax.imageio.ImageWriter;
+rule:
+    dispose of ImageReader/Writer to free up memory space
