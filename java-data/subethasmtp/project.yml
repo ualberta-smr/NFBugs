@@ -1,0 +1,9 @@
+name: subethasmtp
+repository:
+    type: git
+    url: https://github.com/voodoodyne/subethasmtp
+    stats:
+        watches: 18
+        stars: 205
+        forks: 64
+url: https://github.com/voodoodyne/subethasmtp
