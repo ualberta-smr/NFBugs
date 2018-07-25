@@ -1,0 +1,26 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: performance
+    description: Replacing StringBuffer with StringBuilder improves performance because it is not synced
+    commit message: >
+            Use StringBuilder in favor of StringBuffer
+            This removes all instances of StringBuffer that are removeable.
+            Uncontended synchronization in Java is pretty cheap, but it's unnecessary.
+    commit: https://github.com/elastic/elasticsearch/commit/1cf694b
+location:
+    file: 
+        core/src/main/java/org/elasticsearch/env/ShardLockObtainFailedException.java
+        plugins/analysis-phonetic/src/main/java/org/elasticsearch/index/analysis/phonetic/Nysiis.java
+    method: 
+        public String getMessage()
+        public String nysiis(String str)
+api: 
+    java.lang.StringBuffer
+api change:
+    java.lang.StringBuffer -> java.lang.StringBuilder
+rule:
+    if syncying is not required, use a StringBuilder instead of StringBuffer to handle strings efficiently
