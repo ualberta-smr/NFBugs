@@ -1,0 +1,9 @@
+name: elasticsearch
+repository:
+    type: git
+    url: https://github.com/elastic/elasticsearch
+    stats:
+        watches: 2580
+        stars: 32861
+        forks: 11231
+url: https://www.elastic.co/products/elasticsearch
