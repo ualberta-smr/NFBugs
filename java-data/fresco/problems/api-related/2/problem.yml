@@ -24,7 +24,6 @@ location:
     method: 
         public void onNextResult(final ForwardingConsumer consumer,final T closeableObject,final boolean isFinal)
 api: 
-    com.facebook.common.references.CloseableReference
-    com.facebook.imagepipeline.image.EncodedImage
+    java.io.Closeable
 rule:
     release closable objects to avoid memleaks
