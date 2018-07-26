@@ -1,0 +1,29 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: memory
+    description: prevent overuse of memory by setting an upper bound on processors
+    commit message: >
+        Limit the number created threads for machines with large number of cores
+        For machines with lots of cores ie. >= 48 the number of threads
+        created by default might cause unecessary memory pressure on the system
+        and can even lead to OOM where the system is not able to create any
+        native threads anymore. This commit limits the number of available
+        CPUs on the system used for thread pool initialization to at most
+        24 cores.
+        Closes #3478       
+    commit: https://github.com/elastic/elasticsearch/commit/0472bac
+location:
+    file: 
+        src/main/java/org/elasticsearch/http/netty/NettyHttpServerTransport.java
+        src/main/java/org/elasticsearch/threadpool/ThreadPool.java
+        src/main/java/org/elasticsearch/transport/netty/NettyTransport.java
+    method:
+        public NettyHttpServerTransport(Settings settings, NetworkService networkService)
+        private ExecutorHolder rebuild(String name, ExecutorHolder previousExecutorHolder, @Nullable Settings settings, Settings defaultSettings) 
+        public NettyTransport(Settings settings, ThreadPool threadPool, NetworkService networkService, Version version)
+suggestion:
+    limit number of created threads
