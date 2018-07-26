@@ -1,0 +1,54 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: fresco
+    url: https://github.com/facebook/fresco
+fix:
+    tag: memory
+    description: fix a resource leak from improperly released resource
+    commit message: >
+            Fix leaked reference in LocalExifThumbnailProducer.buildEncodedImage()
+            Summary:
+            Closes #314
+            The original reference is not closed explicitly and gets closed when garbage-collected.  The following test proves that:
+            ```java
+              Test
+              public void testFindExifThumbnail() {
+                mTestLocalExifThumbnailProducer.produceResults(mConsumer, mProducerContext);
+                mTestExecutorService.runUntilIdle();
+                // Should have 3 references open: The reference that is used in the producer, the cloned
+                // reference when the argument is captured and one more that is created when getByteBufferRef is
+                // called on EncodedImage
+                assertEquals(
+                    3,
+                    mCapturedEncodedImage.
+                        getByteBufferRef().getUnderlyingReferenceTestOnly().getRefCountTestOnly());
+
+                //////////////////////////////////////////
+                // garbage collection test
+                System.gc();
+                try {
+                  Thread.sleep(1000);
+                } catch (Exception e) {
+                }
+                assertEquals(
+                    2,
+                    mCapturedEncodedImage.
+                        getByteBufferRef().getUnderlyin
+            Closes #1040
+            Reviewed By: massimocarli
+            Differential Revision: D3230172
+            Pulled By: oprisnik
+            fb-gh-sync-id: f406c90369fd1fdbd8d752e08a459cf95e74d9ee
+            fbshipit-source-id: f406c90369fd1fdbd8d752e08a459cf95e74d9ee
+            
+    commit: https://github.com/facebook/fresco/commit/19fc8fc
+location:
+    file: 
+        imagepipeline/src/main/java/com/facebook/imagepipeline/producers/LocalExifThumbnailProducer.java
+    method: 
+        private EncodedImage buildEncodedImage
+api: 
+    com.facebook.common.references.CloseableReference
+rule:
+    release CloseableReference to avoid memleaks
