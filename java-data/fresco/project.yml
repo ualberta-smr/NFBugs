@@ -1,0 +1,9 @@
+name: fresco
+repository:
+    type: git
+    url: https://github.com/facebook/fresco
+    stats:
+        watches: 958
+        stars: 14763
+        forks: 3581
+url: http://frescolib.org/
