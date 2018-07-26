@@ -1,0 +1,30 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: fresco
+    url: https://github.com/facebook/fresco
+fix:
+    tag: memory
+    description: fix a resource leak from improperly released resource
+    commit message: >
+            closeableObject could be closed unsafely in MultiplexProducer.Multiplexer#onNextResult
+            Summary:
+            Fix:closeableObject could be closed unsafely in MultiplexProducer.Multiplexer#onNextResult
+            > Issue: #1453
+            Closes #1454
+            Reviewed By: oprisnik
+            Differential Revision: D3821893
+            Pulled By: kirwan
+            fbshipit-source-id: a675f418692febc567fe67584e078a72bfd8490b
+            
+    commit: https://github.com/facebook/fresco/commit/32c2262
+location:
+    file: 
+        imagepipeline/src/main/java/com/facebook/imagepipeline/producers/MultiplexProducer.java
+    method: 
+        public void onNextResult(final ForwardingConsumer consumer,final T closeableObject,final boolean isFinal)
+api: 
+    com.facebook.common.references.CloseableReference
+    com.facebook.imagepipeline.image.EncodedImage
+rule:
+    release closable objects to avoid memleaks
