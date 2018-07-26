@@ -47,7 +47,7 @@ location:
     file: 
         imagepipeline/src/main/java/com/facebook/imagepipeline/producers/LocalExifThumbnailProducer.java
     method: 
-        private EncodedImage buildEncodedImage
+        private EncodedImage buildEncodedImage(PooledByteBuffer imageBytes,ExifInterface exifInterface)
 api: 
     com.facebook.common.references.CloseableReference
 rule:
