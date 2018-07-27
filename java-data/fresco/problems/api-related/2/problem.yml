@@ -4,7 +4,7 @@ project:
     name: fresco
     url: https://github.com/facebook/fresco
 fix:
-    tag: memory
+    tag: resource management
     description: fix a resource leak from improperly released resource
     commit message: >
             closeableObject could be closed unsafely in MultiplexProducer.Multiplexer#onNextResult
@@ -26,4 +26,4 @@ location:
 api: 
     java.io.Closeable
 rule:
-    release closable objects to avoid memleaks
+    release closable objects to avoid leaks
