@@ -1,0 +1,24 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: fresco
+    url: https://github.com/facebook/fresco
+fix:
+    tag: memory, performance
+    description: initialized arraylist with capacity to avoid resizing
+    commit message: >
+            optimize array list creation with exact size
+    commit: https://github.com/facebook/fresco/commit/fbd926f
+location:
+    file: 
+        modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/doubles/InternalTermsStatsDoubleFacet.java
+        modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/longs/InternalTermsStatsLongFacet.java
+        modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/strings/InternalTermsStatsStringFacet.java
+    method: 
+        @Override public Facet reduce(String name, List<Facet> facets)
+        @Override public Facet reduce(String name, List<Facet> facets)
+        @Override public Facet reduce(String name, List<Facet> facets)
+api:
+    java.util.ArrayList
+rule:
+     initialize collections with the desired size if it is known
