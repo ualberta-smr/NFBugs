@@ -1,0 +1,24 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: resource management
+    description: avoids leaks by releasing closable object 
+    commit message: >
+            close JsonParser where applicable to release internal jackson resources  
+    commit: https://github.com/elastic/elasticsearch/commit/bc217d9
+location:
+    file: 
+        modules/elasticsearch/src/main/java/org/elasticsearch/index/mapper/json/JsonDocumentMapper.java
+        modules/elasticsearch/src/main/java/org/elasticsearch/index/query/json/JsonIndexQueryParser.java
+        modules/elasticsearch/src/main/java/org/elasticsearch/util/settings/loader/JsonSettingsLoader.java
+    method: 
+        @Override public ParsedDocument parse(String type, String id, String source)
+        @Override public Query parse(String source) throws QueryParsingException
+        @Override public Map<String, String> load(String source) throws IOException 
+api: 
+    org.codehaus.jackson.JsonParser
+rule:
+    close JsonParser to release resources
