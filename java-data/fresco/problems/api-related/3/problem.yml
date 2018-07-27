@@ -20,8 +20,8 @@ location:
         fbcore/src/main/java/com/facebook/common/internal/ImmutableMap.java
         fbcore/src/main/java/com/facebook/common/internal/ImmutableSet.java
     method: 
-        public static <K, V> Map<K, V> of(K k1, V v1)
-         public static <E> ImmutableSet<E> of(E... elements)
+        public static <K, V> Map<K, V> of(K k1, V v1, K k2, V v2, K k3, V v3, K k4, V v4, K k5, V v5, K k6, V v6)
+        public static <E> ImmutableSet<E> of(E... elements)
 api:
     java.util.HashMap
     java.util.HashSet
