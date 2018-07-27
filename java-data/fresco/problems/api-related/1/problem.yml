@@ -4,7 +4,7 @@ project:
     name: fresco
     url: https://github.com/facebook/fresco
 fix:
-    tag: memory
+    tag: resource management
     description: fix a resource leak from improperly released resource
     commit message: >
             Fix leaked reference in LocalExifThumbnailProducer.buildEncodedImage()
@@ -51,4 +51,4 @@ location:
 api: 
     com.facebook.common.references.CloseableReference
 rule:
-    release CloseableReference to avoid memleaks
+    release CloseableReference to avoid leaks
