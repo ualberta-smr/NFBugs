@@ -1,0 +1,27 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: security
+    description: hide user data when logging failed requests
+    commit message: >
+        Watcher: Hide credentials/secret data of integrations in toXContent (elastic/x-pack-elasticsearch#4162)
+        If a user specifies an 'Authorization' header in an HTTPRequest we,
+        which might be needed instead of using HTTP Basic Auth due to using
+        Bearer Authentication, then in case of an failure, the request gets
+        logged including that Authorization header.
+        In addition, each implementation of a sent message for jira/hipchat/slack filters
+        out special fields when a HTTP request is written in case of a failed
+        response in order to not leak secret data.
+        Relates elastic/x-pack-elasticsearch#3800
+        Original commit: elastic/x-pack-elasticsearch@66efdd9
+    commit: https://github.com/elastic/elasticsearch/commit/0a525d4
+location:
+    file: 
+        plugin/watcher/src/main/java/org/elasticsearch/xpack/watcher/common/http/HttpRequest.java
+    method:
+        public static InputStream filterToXContent(HttpRequest request, XContent xContent, ToXContent.Params params,String excludeField) throws IOException
+suggestion:
+    hide user data
