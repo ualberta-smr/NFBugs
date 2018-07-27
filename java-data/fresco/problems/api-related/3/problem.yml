@@ -26,4 +26,4 @@ api:
     java.util.HashMap
     java.util.HashSet
 rule:
-     initialize HashMaps and HashSets with the desired size if is known
+     initialize HashMaps and HashSets with the desired size if it is known
