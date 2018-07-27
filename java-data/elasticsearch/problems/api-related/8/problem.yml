@@ -1,14 +1,14 @@
 source:
     name: RepoReapers-dataset
 project: 
-    name: fresco
-    url: https://github.com/facebook/fresco
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
 fix:
     tag: memory, performance
     description: initialized arraylist with capacity to avoid resizing
     commit message: >
             optimize array list creation with exact size
-    commit: https://github.com/facebook/fresco/commit/fbd926f
+    commit: https://github.com/elastic/elasticsearch/commit/53935f0
 location:
     file: 
         modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/doubles/InternalTermsStatsDoubleFacet.java
