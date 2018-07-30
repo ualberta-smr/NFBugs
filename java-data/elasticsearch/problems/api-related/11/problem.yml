@@ -1,0 +1,33 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: memory, performance
+    description: initialized ByteArrayOutputStream with capacity instead of default to save memory and avoid resizing
+    commit message: >
+            Search: Reduce memory usage during fetch source sub phase.
+            If includes or excludes are set
+            XContentFactory.xcontentBuilder() allocates a new
+            BytesStreamOutput using the default page size which is 16kb.
+
+            Can be optimized to use the length of the sourceRef because
+            that is the maximum possible size that the streamOutput will
+            use.
+
+            This redcues the amount of memory allocated for a request
+            that is fetching 200.000 small documents (~150 bytes each)
+            by about 300 MB
+            Close #8138
+            
+    commit: https://github.com/elastic/elasticsearch/commit/b4cad96
+location:
+    file: 
+        src/main/java/org/elasticsearch/search/fetch/source/FetchSourceSubPhase.java
+    method: 
+        public void hitExecute(SearchContext context, HitContext hitContext) throws ElasticsearchException
+api:
+    java.io.ByteArrayOutputStream
+rule:
+     initialize ByteArrayOutputStream with the desired size if it is known
