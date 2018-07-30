@@ -1,0 +1,27 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: memory
+    description: initialized ByteArrayOutputStream with custom capacity instead of default to save memory
+    commit message: >
+            [CACHE] Use a smaller expected size when serializing query results
+            BytesStreamOutput allows to pass the expected size but by default uses
+            BigArrays.PAGE_SIZE_IN_BYTES which is 16k. A common cached result ie.
+            a date histogram with 3 buckets is ~100byte so 16k might be very wasteful
+            since we don't shrink to the actual size once we are done serializing.
+            By passing 512 as the expected size we will resize the byte array in the stream
+            slowly until we hit the page size and don't waste too much memory for small query
+            results.           
+    commit: https://github.com/elastic/elasticsearch/commit/b275e91
+location:
+    file: 
+        src/main/java/org/elasticsearch/indices/cache/query/IndicesQueryCache.java
+    method: 
+        public Value call() throws Exception
+api:
+    java.io.ByteArrayOutputStream
+rule:
+     initialize ByteArrayOutputStream with an expected size if the default size is too big
