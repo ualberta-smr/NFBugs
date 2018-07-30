@@ -1,0 +1,26 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: stability
+    description: replaced relational operators with compare methods, which don't propagate small errors
+    commit message: >
+            use Double/Float.compare for stable and correct float sort order
+    commit: https://github.com/elastic/elasticsearch/commit/7ea6cd6
+location:
+    file: 
+        src/main/java/org/elasticsearch/index/fielddata/fieldcomparator/DoubleValuesComparatorBase.java
+        src/main/java/org/elasticsearch/index/fielddata/fieldcomparator/FloatValuesComparator.java
+    method: 
+         static final int compare(double left, double right)
+         public int compare(int slot1, int slot2) 
+api:
+    java.lang.Double
+    java.lang.Float
+api change:
+    java.lang.Double.<relational operators> -> java.lang.Double.compare
+    java.lang.Float.<relational operators> -> java.lang.Float.compare
+rule:
+     using a type's compare method is more stable and accurate than using relational operators
