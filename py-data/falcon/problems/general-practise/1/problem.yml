@@ -1,0 +1,24 @@
+
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: stored full method names in variables so they are only evaluated once
+    commit message: >
+            Merge pull request #523 from kgriffs/optimizations
+            perf: Minor performance optimizations
+    commit: https://github.com/falconry/falcon/commit/92560eb
+location:
+    file: 
+        falcon/request.py
+        falcon/response.py
+        falcon/util/misc.py
+    method: 
+       __init__(self, env, options=None), host(self), _parse_form_urlencoded(self)
+       body_encoded(self), set_cookie(self, name, value, expires=None, max_age=None,domain=None, path=None, secure=True, http_only=True),add_link(self, target, rel, title=None, title_star=None, anchor=None, hreflang=None, type_hint=None), _wsgi_headers(self, media_type=None)
+       http_date_to_dt(http_date)
+suggestion:
+    avoid dereferencing namespaces multiple times by storing them in variables 
