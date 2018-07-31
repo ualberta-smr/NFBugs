@@ -1,0 +1,27 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: check if an object is callable using the callable function instead of looking up a call attribute
+    commit message: >
+            perf: Use `callable` instead of testing for `__call__` attribute.
+            Should be faster, more elegant. See http://stackoverflow.com/questions/16388059/using-callablex-vs-hasattrx-call
+    commit: https://github.com/falconry/falcon/commit/7370594
+location:
+    file: 
+        falcon/api_helpers.py
+        falcon/hooks.py
+        falcon/testing/base.py
+    method: 
+        prepare_global_hooks(hooks), create_http_method_map(resource, uri_fields, before, after)
+        _before(responder_or_resource), _after(responder_or_resource)
+        setUp(self)       
+api:
+    builtins.hasattr
+api change: 
+    builtins.hasattr -> builtins.callable
+rule:
+    the callable function is faster than checking for a __call__ attribute
