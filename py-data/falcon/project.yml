@@ -1,0 +1,9 @@
+name: falcon
+repository:
+    type: git
+    url: https://github.com/falconry/falcon
+    stats:
+        watches: 279
+        stars: 5374
+        forks: 569
+url: https://falcon.readthedocs.io/en/stable/
