@@ -1,0 +1,24 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: stability
+    description: replaced == operator with compare method, which can handle special values correctly
+    commit message: >
+            Change trappy float comparison (#31889)
+            Comparing primitive floats with '==' can be trappy because e.g. special handling
+            of NaN values. It can be avoided by using Float.compare().
+    commit: https://github.com/elastic/elasticsearch/commit/e60987b
+location:
+    file: 
+        server/src/main/java/org/elasticsearch/cluster/routing/allocation/allocator/BalancedShardsAllocator.java
+    method: 
+         private boolean tryRelocateShard(ModelNode minNode, ModelNode maxNode, String idx, float minCost)
+api:
+    java.lang.Float
+api change:
+    java.lang.Float.<equality operator> -> java.lang.Float.compare
+rule:
+     using a type's compare method is more stable and accurate than using relational operators
