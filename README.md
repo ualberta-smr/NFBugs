@@ -15,13 +15,13 @@ Mining:
 - using word stemming and issue linking 
 - current search term inventory : 
                     
-                    ["fix","bug","error","refactor","secur","maint", \
-                    "stab","portab","efficien","usab", "perform" \
-                    "reliab", "testab", "changeab", "replace"\
+                    ["fix","bug","error","secur","maint", \
+                    "stab","portab","efficien","usab", "perf" \
+                    "reliab", "testab", "changeab", "replac"\
                     "memory","resource", "runtime", "#", "crash", "leak" \
                     "attack" , "authenticat", "authoriz", "cipher","crack", \
-                    "decrypt","encrypt","vulnerab","minimiz","optimiz",\
-                    "slow"]
+                    "decrypt","encrypt","vulnerab","minimize","optimize",\
+                    "slow", "fast"]
                     
 - current terms filtered out :
                     
