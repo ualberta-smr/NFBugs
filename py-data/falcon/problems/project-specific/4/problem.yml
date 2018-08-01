@@ -1,0 +1,27 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: improved efficiency by creating a faster api
+    commit message: >
+            perf(Response): Improve performance of url encoding
+            Wrote a custom url encoder to replace urllib.quote. Slightly faster on
+            Python 2, substantially faster on Python 3.
+            Closes #134
+    commit: https://github.com/falconry/falcon/commit/b04a3a0
+location:
+    file: 
+        falcon/response.py
+        falcon/util/uri.py
+    method: 
+        set_headers(self, headers)
+        _create_str_encoder(is_value)
+api:
+    urllib
+api change:
+    urllib.quote -> uri.encode
+rule:
+    replace usages of urllib.quote with uri.encode api
