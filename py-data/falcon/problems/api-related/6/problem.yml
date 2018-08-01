@@ -1,0 +1,28 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: replace str.split() with str.partition(), since only one split is desired
+    commit message: >
+        fix(Request): Improve access_route perf and error handling
+        Tune performance of the Request.access_route property, while also
+        making error handling more consistent, in the case that a header value
+        is malformed. Also, add a test to ensure that wsgiref passes
+        REMOTE_ADDR in the environment dict, as has been observed in production
+        WSGI servers. This is necessary to ensure that Request.access_route's
+        fallback to REMOTE_ADDR makes sense.
+    commit: https://github.com/falconry/falcon/commit/7bd2714
+location:
+    file: 
+        falcon/request.py
+    method: 
+        _parse_rfc_forwarded(self)       
+api:
+    builtins.str
+api change: 
+    builtins.str.split -> builtins.str.partition
+rule:
+    if only one separation is needed, partitioning a string is faster than using split
