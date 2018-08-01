@@ -1,0 +1,20 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: Replacing if/else with try/except since keyerror is less likely  
+    commit message: >
+            perf(Request): use try/catch instead of if..in for query string (#805)
+            Use try-catch instead of if..in for query string. try-catch is cheaper and faster in Python, also more Pythonic FTW!
+            Fixes #637
+    commit: https://github.com/falconry/falcon/commit/27f4166
+location:
+    file: 
+        falcon/request.py
+    method: 
+        __init__(self, env, options=None)
+suggestion:
+    if exceptions are expected to be rare, use try/except blocks instead of if/else
