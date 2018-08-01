@@ -16,7 +16,7 @@ Mining:
 - current search term inventory : 
                     
                     ["fix","bug","error","refactor","secur","maint", \
-                    "stab","portab","efficien","usab" \
+                    "stab","portab","efficien","usab", "perf" \
                     "reliab", "testab", "changeab", "replace"\
                     "memory","resource", "runtime", "#", "crash", "leak" \
                     "attack" , "authenticat", "authoriz", "cipher","crack", \
