@@ -1,0 +1,9 @@
+name: storio
+repository:
+    type: git
+    url: https://github.com/pushtorefresh/storio
+    stats:
+        watches: 109
+        stars: 2622
+        forks: 179
+url: https://github.com/pushtorefresh/storio/blob/master/docs/StorIOSQLite.md
