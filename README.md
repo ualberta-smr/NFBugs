@@ -20,7 +20,7 @@ Mining:
                     "reliab", "testab", "changeab", "replace"\
                     "memory","resource", "runtime", "#", "crash", "leak" \
                     "attack" , "authenticat", "authoriz", "cipher","crack", \
-                    "decrypt","encrypt","vulnerab","minimize","optimize",\
+                    "decrypt","encrypt","vulnerab","minimiz","optimiz",\
                     "slow"]
                     
 - current terms filtered out :
