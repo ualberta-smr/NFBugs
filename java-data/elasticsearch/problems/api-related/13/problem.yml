@@ -1,0 +1,26 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch
+    url: https://github.com/elastic/elasticsearch
+fix:
+    tag: performance
+    description: Replacing Vector with ArrayList improves performance because it is not synced
+    commit message: >
+            [Test] Prefer ArrayList over Vector (#30965)
+            Replaces some occurances of Vector class with ArrayList in
+            tests of the rank-eval module.
+    commit: https://github.com/elastic/elasticsearch/commit/0a5d46e
+location:
+    file: 
+        modules/rank-eval/src/test/java/org/elasticsearch/index/rankeval/MeanReciprocalRankTests.java
+        modules/rank-eval/src/test/java/org/elasticsearch/index/rankeval/PrecisionAtKTests.java
+    method: 
+        testCombine()
+        testCombine()
+api: 
+    java.util.Vector
+api change:
+    java.util.Vector -> java.util.ArrayList 
+rule:
+    if syncing not required, use ArrayList instead of Vector for better performance
