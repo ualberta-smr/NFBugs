@@ -19,13 +19,13 @@ import sys
 
 def main():
     # mine for non-functional fixes in commit messages -- stem words to catch more commits
-    search_terms = ["fix","bug","error","refactor","secur","maintenance","maintain","crash" \
-                    "stability","portability","efficien","usability" \
-                    "reliab", "testab", "changeab", "replace" \
-                    "memory","resource", "runtime", "#", "leak"\
-                   "attack" , "authenticat", "authoriz", "cipher","crack", \
+    search_terms = ["fix","bug","error","secur","maint", \
+                    "stab","portab","efficien","usab", "perf" \
+                    "reliab", "testab", "changeab", "replac"\
+                    "memory","resource", "runtime", "#", "crash", "leak" \
+                    "attack" , "authenticat", "authoriz", "cipher","crack", \
                     "decrypt","encrypt","vulnerab","minimize","optimize",\
-                    "slow"]
+                    "slow", "fast"]
     
     # the program is run with command line arguments representing
     # github repos
