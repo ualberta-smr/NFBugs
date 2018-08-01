@@ -1,0 +1,20 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: performance
+    description: Replacing if/else with try/except since keyerror is less likely  
+    commit message: >
+            perf(uri): Replace if...else with try...except in the decode function (#905)
+            Most of the time the token will be found in the dict, so let's optimize
+            for that and avoid an extra membership check (if token in _HEX_TO_BYTE).
+    commit: https://github.com/falconry/falcon/commit/ae80d80
+location:
+    file: 
+        falcon/util/uri.py
+    method: 
+        decode(encoded_uri)
+suggestion:
+    if exceptions are expected to be rare, use try/except blocks instead of if/else
