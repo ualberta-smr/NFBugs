@@ -1,0 +1,22 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: storio
+    url: https://github.com/pushtorefresh/storio
+fix:
+    tag: memory, performance
+    description: initialized hashmaps with capacity to avoid resizing
+    commit message: >
+            Little performance optimization
+    commit: https://github.com/pushtorefresh/storio/commit/228a961
+location:
+    file: 
+        storio-sqlite/src/main/java/com/pushtorefresh/storio/sqlite/operation/delete/PreparedDeleteCollectionOfObjects.java
+        storio-sqlite/src/main/java/com/pushtorefresh/storio/sqlite/operation/put/PreparedPutCollectionOfObjects.java
+    method: 
+        public DeleteResults<T> executeAsBlocking()
+        public PutResults<T> executeAsBlocking()
+api:
+    java.util.HashMap
+rule:
+     initialize HashMaps with the desired size if it is known
