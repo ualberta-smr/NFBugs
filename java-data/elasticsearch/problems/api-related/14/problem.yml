@@ -4,7 +4,7 @@ project:
     name: elasticsearch
     url: https://github.com/elastic/elasticsearch
 fix:
-    tag: stability
+    tag: determinism
     description: replaced == operator with compare method, which can handle special values correctly
     commit message: >
             Change trappy float comparison (#31889)
@@ -21,4 +21,4 @@ api:
 api change:
     java.lang.Float.<equality operator> -> java.lang.Float.compare
 rule:
-     using a type's compare method is more stable and accurate than using relational operators
+     using a type's compare method is more reliable than using relational operators
