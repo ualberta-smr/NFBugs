@@ -1,0 +1,18 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: storio
+    url: https://github.com/pushtorefresh/storio
+fix:
+    tag: performance
+    description: Replacing enhanced for loops with regular ones improves performance because it saves memory space 
+    commit message: >
+            Revert foreach for better performance in java
+    commit: https://github.com/pushtorefresh/storio/commit/fbce95e
+location:
+    file: 
+        storio-common/src/main/java/com/pushtorefresh/storio/util/QueryUtil.java
+    method: 
+        @Nullable public static List<String> varargsToList(@Nullable Object[] args)
+suggestion: 
+    a for loop may be more efficient than a foreach loop
