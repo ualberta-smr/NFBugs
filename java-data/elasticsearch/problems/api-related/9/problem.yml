@@ -4,8 +4,8 @@ project:
     name: elasticsearch
     url: https://github.com/elastic/elasticsearch
 fix:
-    tag: stability
-    description: replaced relational operators with compare methods, which don't propagate small errors
+    tag: determinism
+    description: replaced relational operators with compare methods, which handle NaN and Infinity correctly
     commit message: >
             use Double/Float.compare for stable and correct float sort order
     commit: https://github.com/elastic/elasticsearch/commit/7ea6cd6
@@ -23,4 +23,4 @@ api change:
     java.lang.Double.<relational operators> -> java.lang.Double.compare
     java.lang.Float.<relational operators> -> java.lang.Float.compare
 rule:
-     using a type's compare method is more stable and accurate than using relational operators
+     using a type's compare method is more reliable than using relational operators
