@@ -10,8 +10,12 @@ fix:
         Prevent memory leak in TweetsFragment from Sample App
     commit: https://github.com/pushtorefresh/storio/commit/2367243
 location:
-    file: storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/TweetsFragment.java
-    method: void reloadData()
+    file: 
+        storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/TweetsFragment.java
+        storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/BaseFragment.java
+    method: 
+        void reloadData()
+        protected void unsubscribeOnStop(@NonNull Subscription subscription), @Override public void onStop() 
 api:
     rx.subscriptions.CompositeSubscription
     rx.Subscription;
