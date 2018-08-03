@@ -1,0 +1,9 @@
+name: device-year-class
+repository:
+    type: git
+    url: https://github.com/facebook/device-year-class
+    stats:
+        watches: 146
+        stars: 2040
+        forks: 213
+url: https://github.com/facebook/device-year-class
