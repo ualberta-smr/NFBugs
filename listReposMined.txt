@@ -1,3 +1,5 @@
+NOTE: TO DELETE ONCE ReposMined.yml IS DONE
+
 ----------------------------------------------------------------------
 | List of all github repositories that have been mined, including    |
 | those that gave no results.                                        |
