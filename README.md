@@ -8,7 +8,7 @@ Current TOTAL Bug Count = TBD
 Candidate Repos:
 - earlier: chosen by highest number of stars, then mined with PyDriller
 - currently: chosen via github search, then mined with PyDriller 
-- List of all repos examined [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/listReposMined.txt)
+- List of all repos examined [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/listReposMined.txt) but currently being moved to [ReposMined.yml](https://github.com/ualberta-smr/researchwiki-radu/blob/master/ReposMined.yml)
 
 Mining:
 - using [PyDriller](https://github.com/ishepard/pydriller)
