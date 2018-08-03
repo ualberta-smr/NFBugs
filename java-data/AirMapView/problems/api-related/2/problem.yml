@@ -1,0 +1,20 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: AirMapView
+    url: https://github.com/airbnb/AirMapView
+fix:
+    tag: memory 
+    description: replaced hashmap with sparsearray because it uses less memory
+    commit message: >
+        changed hashmap to sparsearray (#106)
+    commit: https://github.com/airbnb/AirMapView/commit/6cd9c22
+location:
+    file: library/src/main/java/com/airbnb/android/airmapview/WebViewMapFragment.java
+    method: 
+api: 
+    java.util.HashMap
+api change:
+    java.util.HashMap -> android.support.v4.util.LongSparseArray
+rule:
+    SparseArrays are more memory efficient than HashMaps
