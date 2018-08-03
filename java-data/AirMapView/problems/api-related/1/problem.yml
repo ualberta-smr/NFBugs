@@ -1,0 +1,20 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: AirMapView
+    url: https://github.com/airbnb/AirMapView
+fix:
+    tag: security 
+    description: setAllowFileAccess and setAllowContentAccess were set to false; WebView can no longer access file system or content URLs
+    commit message: >
+        Merge pull request #72 from airbnb/felipe/file-access
+        Security] Disable file access on WebView
+    commit: https://github.com/airbnb/AirMapView/commit/bf3da9f
+location:
+    file: library/src/main/java/com/airbnb/android/airmapview/WebViewMapFragment.java
+    method: public WebViewMapFragment setArguments(AirMapType mapType)
+api: 
+    android.webkit.WebSettings
+    android.webkit.WebView
+rule:
+    prohibit access to files and content URLs to prevent malicious activity
