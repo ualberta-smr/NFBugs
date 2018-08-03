@@ -1,0 +1,9 @@
+name: AirMapView
+repository:
+    type: git
+    url: https://github.com/airbnb/AirMapView
+    stats:
+        watches: 190
+        stars: 1593
+        forks: 186
+url: https://airbnb.io/AirMapView/
