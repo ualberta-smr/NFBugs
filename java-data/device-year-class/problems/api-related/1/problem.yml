@@ -1,0 +1,17 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: device-year-class
+    url: https://github.com/facebook/device-year-class
+fix:
+    tag: resource management 
+    description: Preventing data corruption by remembering to close a stream at termination
+    commit message: >
+        Fix a leak of FileInputStream object in DeviceInfo#getCoresFromFileInfo
+    commit: https://github.com/facebook/device-year-class/commit/5e77391
+location:
+    file: yearclass/src/main/java/com/facebook/device/yearclass/DeviceInfo.java
+    method: private static int getCoresFromFileInfo(String fileLocation)
+api: java.io.FileInputStream
+rule:
+    close streams when done
