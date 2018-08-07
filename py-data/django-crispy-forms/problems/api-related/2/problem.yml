@@ -1,0 +1,27 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: django-crispy-forms
+    url: https://github.com/django-crispy-forms/django-crispy-forms
+fix:
+    tag: determinism
+    description: Replacing class name checking with isinstance, because it can handle subclasses
+    commit message: >
+           Doing type checking with isinstance instead of class names
+           `|css_class` will be kept for backwards compatibility, however is not a
+           good practice to type check this way, as subclasses don't get recognized
+           as these types, because they don't have `__name__` attribute set the same
+           way as the parent class.
+           Patch for issue #176
+    commit: https://github.com/django-crispy-forms/django-crispy-forms/commit/a41edfa
+location:
+    file: 
+        crispy_forms/templatetags/crispy_forms_field.py
+    method: 
+        is_checkbox(field)
+api:
+    Object.__class__.__name__
+api change: 
+    Object.__class__.__name__.<equality operator> -> builtins.isinstance
+rule:
+    comparing classes with isinstance() is more reliable than using class names
