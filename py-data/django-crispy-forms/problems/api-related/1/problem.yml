@@ -1,0 +1,24 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: django-crispy-forms
+    url: https://github.com/django-crispy-forms/django-crispy-forms
+fix:
+    tag: performance
+    description: Replacing a deepcopy with a shallow copy
+    commit message: >
+            Fixing context copying
+            Avoid using deepcopying, instead using context private __copy__ method.
+            This should fix #GH-57
+    commit: https://github.com/django-crispy-forms/django-crispy-forms/commit/28b636c
+location:
+    file: 
+        crispy_forms/templatetags/crispy_forms_tags.py
+    method: 
+        get_render(self, context)
+api:
+    copy.deepcopy
+api change: 
+    copy.deepcopy -> django.template.Context.__copy__
+rule:
+    use shallow copy if deep copying is not necessary
