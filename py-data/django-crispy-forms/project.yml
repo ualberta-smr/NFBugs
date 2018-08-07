@@ -1,0 +1,9 @@
+name: django-crispy-forms
+repository:
+    type: git
+    url: https://github.com/django-crispy-forms/django-crispy-forms
+    stats:
+        watches: 139
+        stars: 3274
+        forks: 569
+url: http://django-crispy-forms.readthedocs.io/en/latest/
