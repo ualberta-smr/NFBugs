@@ -1,0 +1,23 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: autograd
+    url: https://github.com/HIPS/autograd
+fix:
+    tag: performance
+    description: Replacing numpy array add with += add
+    commit message: >
+            Merge pull request #136 from davidweichiang/master
+            Use a[idx] += b instead of numpy.add.at(a, idx, b)
+    commit: https://github.com/HIPS/autograd/commit/6492359
+location:
+    file: 
+        autograd/numpy/numpy_extra.py
+    method: 
+        primitive_sum_arrays(*arrays)
+api:
+    numpy
+api change: 
+    numpy.add.at -> builtins.<addition assignment>
+rule:
+    adding values to array elements if faster with += than with numpy.add.at
