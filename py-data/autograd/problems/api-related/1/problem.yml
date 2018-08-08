@@ -5,7 +5,7 @@ project:
     url: https://github.com/HIPS/autograd
 fix:
     tag: performance
-    description: Replacing numpy array add with += add
+    description: Replacing numpy array add with += add if values are not repeated
     commit message: >
             Merge pull request #136 from davidweichiang/master
             Use a[idx] += b instead of numpy.add.at(a, idx, b)
@@ -20,4 +20,4 @@ api:
 api change: 
     numpy.add.at -> builtins.<addition assignment>
 rule:
-    adding values to array elements if faster with += than with numpy.add.at
+    adding values to non-repeating array elements is faster with += than with numpy.add.at
