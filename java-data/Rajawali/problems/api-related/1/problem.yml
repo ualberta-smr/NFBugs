@@ -12,10 +12,10 @@ fix:
 location:
     file: src/rajawali/parser/MD2Parser.java
     method: 
-        private void getMaterials(BufferedInputStream stream, byte[] bytes)
-        private void getFrames(BufferedInputStream stream, byte[] bytes)
-        private void getTriangles(BufferedInputStream stream, byte[] bytes, float[] texCoords)
-        private float[] getTexCoords(BufferedInputStream stream, byte[] bytes)
+        private void getMaterials(BufferedInputStream stream, byte[] bytes) throws IOException
+        private void getFrames(BufferedInputStream stream, byte[] bytes) throws IOException
+        private void getTriangles(BufferedInputStream stream, byte[] bytes, float[] texCoords) throws IOException
+        private float[] getTexCoords(BufferedInputStream stream, byte[] bytes) throws IOException
 api: rajawali.util.LittleEndianDataInputStream
 rule:
     close streams when done
