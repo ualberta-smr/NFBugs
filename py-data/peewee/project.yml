@@ -1,0 +1,9 @@
+name: peewee
+repository:
+    type: git
+    url: https://github.com/coleifer/peewee
+    stats:
+        watches: 191
+        stars: 5486
+        forks: 956
+url: http://docs.peewee-orm.com/en/latest/
