@@ -1,0 +1,18 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: falcon
+    url: https://github.com/falconry/falcon
+fix:
+    tag: resource management 
+    description: Added a call to close the Connection in case of error
+    commit message: >
+        Do not leak connections.
+    commit: https://github.com/coleifer/peewee/commit/74bfe47
+location:
+    file: peewee.py
+    method: _connect(self, database, **kwargs)
+api: 
+    sqlite3.Connection
+rule: 
+    close Connections when done
