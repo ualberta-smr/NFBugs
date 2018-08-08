@@ -1,0 +1,9 @@
+name: autograd
+repository:
+    type: git
+    url: https://github.com/HIPS/autograd
+    stats:
+        watches: 160
+        stars: 2810
+        forks: 413
+url: https://github.com/HIPS/autograd/blob/master/docs/tutorial.md
