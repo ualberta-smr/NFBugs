@@ -1,0 +1,9 @@
+name: elasticsearch-py
+repository:
+    type: git
+    url: https://github.com/elastic/elasticsearch-py
+    stats:
+        watches: 255
+        stars: 1815
+        forks: 655
+url: http://elasticsearch-py.readthedocs.io/en/master/
