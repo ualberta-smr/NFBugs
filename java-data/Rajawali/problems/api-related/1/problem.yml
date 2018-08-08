@@ -1,0 +1,21 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: Rajawali
+    url: https://github.com/Rajawali/Rajawali
+fix:
+    tag: resource management 
+    description: Added call to close InputStream
+    commit message: >
+        Fix small resource leak because streams where not closed
+    commit: https://github.com/Rajawali/Rajawali/commit/3ab836e
+location:
+    file: src/rajawali/parser/MD2Parser.java
+    method: 
+        private void getMaterials(BufferedInputStream stream, byte[] bytes)
+        private void getFrames(BufferedInputStream stream, byte[] bytes)
+        private void getTriangles(BufferedInputStream stream, byte[] bytes, float[] texCoords)
+        private float[] getTexCoords(BufferedInputStream stream, byte[] bytes)
+api: rajawali.util.LittleEndianDataInputStream
+rule:
+    close streams when done
