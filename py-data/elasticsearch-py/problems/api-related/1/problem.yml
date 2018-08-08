@@ -1,0 +1,25 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: elasticsearch-py
+    url: https://github.com/elastic/elasticsearch-py
+fix:
+    tag: performance
+    description: switched from json module to simplejson
+    commit message: >
+            Use simplejson if present instead of the stdlib json module.
+            The simplejson parser drop-in compatible with the builtin python JSON
+            parser, but much faster. In particular, this makes operations like
+            reindexing quicker.
+    commit: https://github.com/elastic/elasticsearch-py/commit/4d37a54
+location:
+    file: 
+        elasticsearch/connection/memcached.py
+        elasticsearch/serializer.py
+    method: 
+api:
+    Lib.json
+api change: 
+    Lib.json -> simplejson
+rule:
+    the simplejson library is more efficient than the json library
