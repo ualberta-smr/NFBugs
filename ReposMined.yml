@@ -31,7 +31,20 @@ Python:
             elasticsearch-dsl-py: 197
             autograd: 225
             django-cache-machine: 40
-            cointrol: 1
+            peewee: 963
+            randomchat: 6
+            BBS: 3
+            plugin.video.arteplussept: 27
+            himawaripy: 48
+            integration_tests: 8651
+            AWS-WAF-Test: 1
+            Text-similarity-class: 1
+            Terminal-on-FB-Messenger: 10
+            django-socialregistration: 74
+            VS_test: 11
+            backend-interpreter: 207
+            Theano: 10835
+            PaintsChainer: 40
         commit-msg-keywords:
         github-search:
         
