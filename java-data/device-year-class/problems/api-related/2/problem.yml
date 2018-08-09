@@ -1,0 +1,18 @@
+source:
+    name: RepoReapers-dataset
+project: 
+    name: device-year-class
+    url: https://github.com/facebook/device-year-class
+fix:
+    tag: resource management 
+    description: Added code to close a BufferedReader at termination
+    commit message: >
+        Merge pull request #22 from zlern2k/master
+        Close the cpu buffer to (fix a strict mode violation)
+    commit: https://github.com/facebook/device-year-class/commit/84a7f99
+location:
+    file: yearclass/src/main/java/com/facebook/device/yearclass/DeviceInfo.java
+    method: private static int getCoresFromFileInfo(String fileLocation)
+api: java.io.BufferedReader
+rule:
+    close resources when done
