@@ -15,9 +15,9 @@ location:
         modules/elasticsearch/src/main/java/org/elasticsearch/index/query/json/JsonIndexQueryParser.java
         modules/elasticsearch/src/main/java/org/elasticsearch/util/settings/loader/JsonSettingsLoader.java
     method: 
-        @Override public ParsedDocument parse(String type, String id, String source)
-        @Override public Query parse(String source) throws QueryParsingException
-        @Override public Map<String, String> load(String source) throws IOException 
+        public ParsedDocument parse(String type, String id, String source)
+        public Query parse(String source) throws QueryParsingException
+        public Map<String, String> load(String source) throws IOException 
 api: 
     org.codehaus.jackson.JsonParser
 rule:
