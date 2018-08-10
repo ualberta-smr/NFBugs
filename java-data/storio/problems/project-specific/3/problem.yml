@@ -15,7 +15,7 @@ location:
         storio-sample-app/src/main/java/com/pushtorefresh/storio/sample/ui/fragment/BaseFragment.java
     method: 
         void reloadData()
-        protected void unsubscribeOnStop(@NonNull Subscription subscription), @Override public void onStop() 
+        protected void unsubscribeOnStop('@NonNull' Subscription subscription), public void onStop() 
 api:
     rx.subscriptions.CompositeSubscription
     rx.Subscription;
