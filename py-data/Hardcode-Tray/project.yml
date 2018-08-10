@@ -1,9 +1,0 @@
-name: Hardcode-Tray
-repository:
-    type: git
-    url: https://github.com/bilelmoussaoui/Hardcode-Tray
-    stats:
-        watches: 25
-        stars: 377
-        forks: 33
-url: https://github.com/bilelmoussaoui/Hardcode-Tray

@@ -1,9 +1,0 @@
-name: SproutLife
-repository:
-    type: git
-    url: https://github.com/ShprAlex/SproutLife
-    stats:
-        watches: 15
-        stars: 272
-        forks: 10
-url: https://github.com/ShprAlex/SproutLife/wiki
