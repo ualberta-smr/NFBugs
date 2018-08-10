@@ -12,7 +12,7 @@ fix:
     commit: https://github.com/airbnb/AirMapView/commit/bf3da9f
 location:
     file: library/src/main/java/com/airbnb/android/airmapview/WebViewMapFragment.java
-    method: @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    method: "@"Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 api: 
     android.webkit.WebSettings
     android.webkit.WebView
