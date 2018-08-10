@@ -23,7 +23,7 @@ location:
         src/main/java/org/elasticsearch/transport/netty/NettyTransport.java
     method:
         public NettyHttpServerTransport(Settings settings, NetworkService networkService)
-        private ExecutorHolder rebuild(String name, ExecutorHolder previousExecutorHolder, @Nullable Settings settings, Settings defaultSettings) 
+        private ExecutorHolder rebuild(String name, ExecutorHolder previousExecutorHolder, '@Nullable' Settings settings, Settings defaultSettings) 
         public NettyTransport(Settings settings, ThreadPool threadPool, NetworkService networkService, Version version)
 suggestion:
     limit number of created threads
