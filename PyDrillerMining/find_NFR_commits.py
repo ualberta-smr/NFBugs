@@ -11,7 +11,7 @@
 # Output for each repo is stored in a csv file
 
 # May 4th, 2018
-# Last Updated: Aug 1st, 2018 -- Aida Radu
+# Last Updated: Aug 10th, 2018 -- Aida Radu
 
 from pydriller import GitRepository
 from pydriller import RepositoryMining
@@ -35,7 +35,7 @@ def main():
         with open(sys.argv[repo].replace('../', '').replace('/','')+".csv","w") as new_file:
             new_file.write('{:^40},{:^40}\n'.format('Commit ID:','Commit Message:')) 
             
-            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java']).traverse_commits():
+            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java','.py']).traverse_commits():
                 # bool written avoids duplication if more than one word matches
                 written = False 
                 msg = commit.msg.lower()
