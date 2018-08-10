@@ -15,9 +15,9 @@ location:
         modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/longs/InternalTermsStatsLongFacet.java
         modules/elasticsearch/src/main/java/org/elasticsearch/search/facet/termsstats/strings/InternalTermsStatsStringFacet.java
     method: 
-        @Override public Facet reduce(String name, List<Facet> facets)
-        @Override public Facet reduce(String name, List<Facet> facets)
-        @Override public Facet reduce(String name, List<Facet> facets)
+        public Facet reduce(String name, List<Facet> facets)
+        public Facet reduce(String name, List<Facet> facets)
+        public Facet reduce(String name, List<Facet> facets)
 api:
     java.util.ArrayList
 rule:
