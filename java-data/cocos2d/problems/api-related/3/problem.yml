@@ -15,6 +15,6 @@ location:
     method: 
         public CCQuadParticleSystem(int numberOfParticles)
 api: 
-    java.lang.ref.WeakReference;
+    java.lang.ref.WeakReference
 rule:
     use WeakReferences to avoid memory leaks
