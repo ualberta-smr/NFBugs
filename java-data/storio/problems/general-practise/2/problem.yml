@@ -13,6 +13,6 @@ location:
     file: 
         storio-common/src/main/java/com/pushtorefresh/storio/util/QueryUtil.java
     method: 
-        @Nullable public static List<String> varargsToList(@Nullable Object[] args)
+        @Nullable public static List<String> varargsToList('@Nullable' Object[] args)
 suggestion: 
     a for loop may be more efficient than a foreach loop
