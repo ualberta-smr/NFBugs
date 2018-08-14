@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: osmeditor4android
     url: https://github.com/MarcusWolschon/osmeditor4android
