@@ -1,8 +1,8 @@
 source:
     name: RepoReapers-dataset
 project: 
-    name: falcon
-    url: https://github.com/falconry/falcon
+    name: peewee
+    url: https://github.com/coleifer/peewee
 fix:
     tag: resource management 
     description: Added a call to close the Connection in case of error
