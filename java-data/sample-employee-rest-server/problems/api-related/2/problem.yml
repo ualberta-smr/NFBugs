@@ -1,5 +1,5 @@
 source:
-    name: commit-msg-keywords
+    name: github-search
 project: 
     name: liferay-portal
     url: https://github.com/liferay/liferay-portal
