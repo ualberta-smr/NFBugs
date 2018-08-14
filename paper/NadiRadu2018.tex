@@ -14,7 +14,7 @@
 
 \usepackage{booktabs} 	% For formal tables
 \usepackage{indentfirst}% For indenting first paragraphs
-\usepackage{iftex}     % Without this it yelled at me when I tried to compile
+\usepackage{iftex}
 % --------------------------- LATER --------------------------------------
 
 
@@ -110,11 +110,11 @@
 To create our dataset, we looked at a variety of Github repositories written in either Java or Python. 
 We used two main methods to identify candidate repositories for mining. We examined the history of these repositories to obtain commit messages related to non-functional bugs, which we used to construct our dataset.
  
-\subsection{Initial Procedure}
+\subsection{Selecting Projects by Star Rating}
 First, we used the Github API to search for projects written in Java or Python, and sorted them based on their number of stars. We then selected the top 90 repositories from these results. 
 
 \subsubsection{Obtaining commits}
-To extract commits related to non-functional requirements, we implemented a keyword search using PyDriller \footnote{https://github.com/ishepard/pydriller, Davide Spadini 2018}. The stemmed keywords we use in our search are listed in Table \ref{tab:kwds}. Examples of possible word endings for matches are in square brackets.
+To extract commits related to non-functional requirements, we implemented a keyword search using PyDriller \cite{Spadini2018}. The stemmed keywords we use in our search are listed in Table \ref{tab:kwds}. Examples of possible word endings for matches are in square brackets.
 
 % --------------- TABLE -------------
 \begin{table}
@@ -123,16 +123,16 @@ To extract commits related to non-functional requirements, we implemented a keyw
 \begin{tabular}{ c c c }
   \toprule
    "fix"             &"bug"           &"error"\\
-   "refactor"	     &"secur[ity]"    &"maint[enance]"\\
-   "stab[ility]"     &"portab[ility]" &"efficien[cy]"\\
-   "usab[ility]"     &"reliab[ility]" &"testab[ility]"\\
+   "refactor"		 &"secur[ity]"    &"maint[enance]"\\
+   "stab[ility]"	 &"portab[ility]" &"efficien[cy]"\\
+   "usab[ility]" 	 &"reliab[ility]" &"testab[ility]"\\
    "changeab[ility]" &"replac[e]"     &"memory"\\
    "resource"        &"runtime"       &"crash"\\
    "leak"            &"attack"        &"authenticat[ion]"\\
    "authoriz[ation]" &"cipher"        &"crack" \\ 
    "decrypt"         &"encrypt"       &"vulnerab[ility]"\\ 
    "minimiz[e]"      &"optimiz[e]"    &"slow"\\
-   "\#"              &"fast"          &"perform[ance]"\\
+   "\#"              &"fast"          &"perform[ance]\\
   \bottomrule
 \end{tabular}
 \end{table}
@@ -143,8 +143,13 @@ Our PyDriller based program mined the commit history of each project, and output
 We then manually searched these files for true positives. We ignored commits that, despite containing one or more of the keywords in our list, did not relate to non-functional requirements (e.g., ``Fix copy paste error''\footnote{https://github.com/jenkinsci/jenkins/commit/9fb6ccf} and ``Allow modules to replace visual character representation''\footnote{https://github.com/MovingBlocks/Terasology/commit/45f915a}). Furthermore, we did not include problems that were highly specific to the given project. 
 
 
-\subsection{Alternate Procedure}
+\subsection{Selecting Projects by Github Search}
 Using our first method, we found several instances where developers corrected memory leaks, or replaced one API with another to improve performance. Noting these patterns, we developed another, more effective strategy for finding  potential target projects. In this second method, we identified candidate repos by using Github's search bar to find relevant patterns. Github searches through a variety of data, including code, commit messages, and issues. We filtered our search to commit messages containing the keywords in Table \ref{tab:kwds}. As well, we searched for commit messages containing language-specific enhancements such as ``StringBuilder replace,'' and ``foreach loop replace,'' since we had seen these in previous projects. We analyzed the bug that was found in the search, then ran our PyDriller program on the complete repo history. Thus, these projects always had at least one potential hit. Once we ran PyDriller, the remaining steps were identical to those in the previous section.
+
+\subsection{Selecting Projects from RepoReapers}
+In order to add more examples from well-engineered projects to our dataset, we chose Github repositories from the results of Munaiah et al \cite{Munaiah2017}. We sorted this dataset in descending order of star rating. Using this dataset, we obtained problems from 8 Java and 5 Python repositories. We then ran our PyDriller program on these repositories as in the previous two methods. 
+
+\subsection{Removing False Positives}
 
 For each identified potential hit, we looked at the code changes that occurred in the commit to ensure the code change was indeed fixing a non-functional property, as described in the commit message. This manual review is necessary since there are sometimes matched commits that do not contain relevant code changes. For example, a commit message may mistakenly claim to improve performance \footnote{https://github.com/adangert/JoustMania/commit/a9711c2}, or it may confuse which APIs or methods were actually changed in the commit \footnote{https://github.com/Offer-Ready/xslt-library/commit/12fbf12}.
 
@@ -174,7 +179,7 @@ In addition, we assign one or more tags to each problem according to the type of
 % ---------------------------------------------------------------------------------------------------
 \section{Dataset}
 
-Using the first procedure, we mined 90 Java repositories and 15 Python repositories. Of these, 16 Java and 8 Python repositories contained true positives. In total, we identified 62  problems using this method. Using the second procedure, we obtained 32 problems from 18 Java repositories and 13 Python repositories. In total, our dataset contains 94 problems. The distribution of problems by type and language is shown in Table \ref{tab:type}.
+Using the first procedure, we mined 90 Java repositories and 15 Python repositories. Of these, 15 Java and 9 Python repositories contained true positives. In total, we identified 62 problems using this method. Using the second procedure, we obtained 32 problems from 19 Java repositories and 11 Python repositories. With the third procedure, we identified 44 problems from 8 Java and 5 Python repositories. In total, our dataset contains 138 problems. The distribution of problems by type and language is shown in Table \ref{tab:type}.
 
 % --------------- TABLE -------------
 \begin{table}
@@ -296,4 +301,3 @@ We identified 33 different Java APIs and 9 different Python APIs as sources of A
 \bibliography{bibRaduNadi2018}
 
 \end{document}
-
