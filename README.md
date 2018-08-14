@@ -3,11 +3,13 @@
 Mining commit history of open-source projects for fixes related non-functional requirements. 
 
 
-Current TOTAL Bug Count = TBD
+Current TOTAL Bug Count = 138
 
 Candidate Repos:
-- earlier: chosen by highest number of stars, then mined with PyDriller
-- currently: chosen via github search, then mined with PyDriller 
+- methods:
+    - 1: chosen by highest number of stars, then mined with PyDriller
+    - 2: chosen via github search, then mined with PyDriller 
+    - 3: chosen from RepoReapers dataset
 - List of all repos examined [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/listReposMined.txt) but currently being moved to [ReposMined.yml](https://github.com/ualberta-smr/researchwiki-radu/blob/master/ReposMined.yml)
 
 Mining:
