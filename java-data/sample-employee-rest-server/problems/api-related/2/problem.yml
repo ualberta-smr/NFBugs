@@ -1,8 +1,8 @@
 source:
     name: github-search
 project: 
-    name: liferay-portal
-    url: https://github.com/liferay/liferay-portal
+    name: sample-employee-rest-server
+    url: https://github.com/derrikcurran/sample-employee-rest-server
 fix:
     tag: security
     description: changed access of id to read-only
