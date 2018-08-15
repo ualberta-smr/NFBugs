@@ -16,8 +16,8 @@ location:
     method: 
         c_code(self, node, name, (a_val, a_ind, a_ptr, a_nrows, b), (z,), sub)
 api:
-    loop
+    builtins.forloop
 api change:
-    loop -> ctypes.memset
+    builtins.forloop -> ctypes.memset
 rule:
     (de)allocate memory faster using ctypes library

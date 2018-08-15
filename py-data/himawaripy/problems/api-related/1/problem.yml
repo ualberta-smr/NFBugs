@@ -16,8 +16,8 @@ location:
     method: 
         main()
 api: 
-    loop
+    builtins.forloop
 api change:
-    loop -> multiprocessing.Pool.map
+    builtins.forloop -> multiprocessing.Pool.map
 rule:
     performing commands in parallel using Pool object speeds up performance
