@@ -17,7 +17,7 @@ class DataBox:
     
     def __init__(self):
         # initializes a new DataBox object
-        self.__default_tags = ("security","performance","memory","resource management")
+        self.__default_tags = ("security","performance","memory","resource management","determinism")
         
     def getProblemCount(self,directory):
         # calculates the number of problems in the given directory
