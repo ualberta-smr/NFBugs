@@ -123,7 +123,7 @@ class DataBox:
         apis = {}
         
         for (dirname, dirs, files) in os.walk(directory):
-            if ("api" not in dirname):
+            if ("api-related" not in dirname):
                 continue
             for filename in files:
                 if filename.endswith('problem.yml'):
@@ -146,7 +146,7 @@ class DataBox:
         if not self.__validate(directory):
             return
         
-        problem_types = {"api":0,"general-practise":0,"project-specific":0}
+        problem_types = {"api-related":0,"general-practise":0,"project-specific":0}
         for (dirname, dirs, files) in os.walk(directory):
             for ptype in problem_types.keys():
                 if (ptype not in dirname):
