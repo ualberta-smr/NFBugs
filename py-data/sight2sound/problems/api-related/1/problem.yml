@@ -17,6 +17,6 @@ location:
 api:
     builtins.list
 api change: 
-    builtins.list.append -> list comprehension
+    builtins.list.append -> builtins.list list comprehension
 rule:
      use list comprehension instead of list.append loops to create lists efficiently
