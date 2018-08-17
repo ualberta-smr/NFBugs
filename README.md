@@ -83,14 +83,14 @@ User client scripts can customize method arguments in the following ways:
 
 Current TOTAL Bug Count = 138 from 67 projects
 
-Current TOTAL projects examined = ___ 
+Current TOTAL projects examined = 161 
 
 Candidate Repos:
 - methods:
     - 1: chosen by highest number of stars; `source: commit-msg-keywords`
     - 2: chosen via github search for relevant terms; `source: github-search`
     - 3: chosen from [RepoReapers](https://reporeapers.github.io/results/1.html) dataset; `source: RepoReapers-dataset`
-- List of all repos examined [here](https://github.com/ualberta-smr/researchwiki-radu/blob/master/listReposMined.txt) but currently migrating to [ReposMined.yml](https://github.com/ualberta-smr/researchwiki-radu/blob/master/ReposMined.yml)
+- List of all repos examined in [ReposMined.yml](https://github.com/ualberta-smr/researchwiki-radu/blob/master/ReposMined.yml)
 
 Mining:
 - done using a [PyDriller](https://github.com/ishepard/pydriller) based program
