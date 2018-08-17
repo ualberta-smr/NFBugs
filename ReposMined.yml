@@ -3,176 +3,180 @@
 Java:
     source:
         RepoReapers-dataset:
-            SlidingMenu: 28
+            AirMapView: 61  
             android-UniversalMusicPlayer: 34
-            RxBinding: 120
-            storio: 406
-            moshi: 188
-            dex2jar: 32
-            Euclid: 0
-            keywhiz: 228
-            network-connection-class: 3
             device-year-class: 15
+            dex2jar: 32
             ElasticDownload: 17
-            AirMapView: 43  
-            Rajawali : 839
-            fresco : 395
-            thumbnailator : 67
             elasticsearch : 18729
+            Euclid: 0
+            fresco : 395
+            keywhiz: 228
+            moshi: 188
+            network-connection-class: 3
+            Rajawali : 839
+            RxBinding: 120
+            SlidingMenu: 28
+            storio: 406
             subethasmtp : 86
-
-
-            
-
+            thumbnailator : 67
 
         commit-msg-keywords:
-            RoboSpock : 23
-            terasology : 3102
-            pipes : 86
-            jenkins : 6744
-            EfficientAdapter : 20
-            XLog : 4
-            leakcanary : 284
-            deltachat-android : 159
-            selendroid : 449
-            Catacomb-Snatch : 660
-            Pydev : 1201
+            android-floatinglabel-widgets : 9
+            android-instagram-filter : 0
+            android-material-icons : 1
+            Android-RecurrencePicker : 0
+            Android-Tiling-ScrollView : 4
             AndroidBillingLibrary : 34
-            socialauth-android : 7
-            grunt-maven-plugin : 31
-            websocket-android-phonegap : 9
-            Foursquare-CollectionPicker : 4
-            plaid : 87
-            FragmentNavigator : 1
-            Cappuccino : 10
-            androidsvgdrawable-plugin : 40
+            AndroidIndicators : 0
             AndroidStudio : 0
-            HttpResponseCache : 10
-            CatKit : 2
+            androidsvgdrawable-plugin : 40
+            angularjs-plugin : 2
+            AutoSpannableTextView : 0
+            Avengers : 61
+            BabushkaText : 1
             BlurNavigationDrawer : 1
-            CyberLink4Android : 0
-            Decor : 9
+            Cappuccino : 10
+            Catacomb-Snatch : 660
+            CatKit : 2
+            celerio-angular-quickstart : 2
+            cocos2d : 112
+            Colours : 3
+            cssembed : 24
             cwac-loaderex : 5
             cwac-wakeful : 5
-            gherkin2 : 78
-            RibbonMenu : 2
-            Android-Tiling-ScrollView : 4
+            CyberLink4Android : 0
+            dagger2-example : 4
+            deck2pdf : 10
+            Decor : 9
+            deltachat-android : 159
+            divide : 16
+            easygcm : 26
+            EfficientAdapter : 20
             Fabulous : 7
             fanfoudroid : 115
-            heapaudit : 23
-            TriangleRectangleLabelView : 0
+            fit-chart : 2
+            Folding-Android : 6
+            fontbinding : 3
             FontsManager : 0
-            TransitionsBackport : 6
-            divide : 16
-            SortRichEditor : 3
-            easygcm : 26
-            ig-json-parser : 16
-            TutorialView : 7
-            celerio-angular-quickstart : 2
+            Foursquare-CollectionPicker : 4
+            Fragmentation : 177
+            FragmentNavigator : 1
+            GAlette : 18
+            gherkin2 : 78
+            google-io-2014-compat : 4
+            grunt-maven-plugin : 31
+            heapaudit : 23
             HighLightGuideView : 0
-            opposite_of_a_bloom_filter : 0
-            angularjs-plugin : 2
-            kandroid : 1
-            spring-boot-thymeleaf : 4
-            JActor : 89
+            holoaccent : 29
+            Hot : 1
+            HttpResponseCache : 10
             icon-font-for-multiple-platforms : 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            
+            ig-json-parser : 16
+            instant-adapter : 1
+            IonIconView : 0
+            irccat : 12
+            JActor : 89
+            jenkins : 6744
+            kandroid : 1
+            leakcanary : 284
+            Nox : 38
+            opposite_of_a_bloom_filter : 0
+            PagingGridView : 1
+            Pancakes : 12
+            phonegap-websocket : 21
+            pipes : 86
+            plaid : 87
+            Pydev : 1201
+            RibbonMenu : 2
+            roboguice-sherlock : 6
+            RoboSpock : 23
+            rsense : 32
+            ruboto-irb : 38
+            RxPaparazzo : 65
+            selendroid : 449
+            simple-slack-api : 134
+            soap-ws : 49
+            socialauth-android : 7
+            SortRichEditor : 3
+            SplinterNet : 1
+            spring-boot-thymeleaf : 4
+            Teleport : 7
+            terasology : 3102
+            ThemeDemo : 2
+            TransitionsBackport : 6
+            TriangleRectangleLabelView : 0
+            TuentiTV : 10
+            TutorialView : 7
+            WaterDropListView : 0
+            websocket-android-phonegap : 9
+            wqgallery : 4
+            XLog : 4
+            yobi : 1478
+       
         github-search:
             ADFGVX: 20
-            xslt-library : 10
-            POO : 6
-            Fowler : 11
-            poei-2018-cgi-base-spring : 1
-            sample-employee-rest-server : 3
+            catalina : 865
             dbmaintain : 225
             ExampleProject : 31
-            WaniKani-Ripoff-Project : 7
-            librarytest: 3
-            osmeditor4android : 623
-            Glazed : 30
             ForestFireModel : 4
-            catalina : 865
+            Fowler : 11
+            galeb-libraries : 223
+            Glazed : 30
             igi2-multiplayer-launcher-masterserver : 3
-            quiz-app : 73
+            librarytest: 3
+            marid : 277
+            neodymium-library : 91
+            osmeditor4android : 623
+            poei-2018-cgi-base-spring : 1
             PointCloudDatasetReader : 0
+            POO : 6
+            Praline-cashmere : 30
+            quiz-app : 73
+            sample-employee-rest-server : 3
             sandwich-club : 0
-            
-
-
-
-
-
-
-
-
+            SproutLife : 42
+            WaniKani-Ripoff-Project : 7
+            xslt-library : 10
 
 Python:
     source:
         RepoReapers-dataset:
-            yapf: 227
-            falcon : 746
-            fuck12306: 3
-            responses: 52
-            elasticsearch-py : 217
-            elasticsearch-dsl-py: 197
             autograd : 357
             django-cache-machine: 40
-            peewee: 963
             django-crispy-forms : 358
-   
+            elasticsearch-dsl-py: 197
+            elasticsearch-py : 217
+            falcon : 746
+            fuck12306: 3
+            peewee: 963
+            responses: 52
+            yapf: 227
+ 
         commit-msg-keywords:
-            himawaripy: 48
-            Terminal-on-FB-Messenger: 10
-            needle : 38
-            salmon : 41
-            gae-boilerplate : 256
             django-socialregistration: 74
-            Theano: 10835
+            gae-boilerplate : 256
+            himawaripy: 48
+            needle : 38
             PaintsChainer: 40
+            salmon : 41
             simp_le : 49
-            
-            
+            Terminal-on-FB-Messenger: 10
+            Theano: 10835
+                   
         github-search:
             AWS-WAF-Test : 1
-            randomchat : 6
-            BBS: 3
-            plugin.video.arteplussept: 27
-            integration_tests: 8664
-            Text-similarity-class: 1
-            inline_table : 8
-            personal : 1
-            VS_test : 11
             backend-interpreter: 207
+            BBS: 3
+            inline_table : 8
+            integration_tests: 8664
+            personal : 1
+            plugin.video.arteplussept: 27
+            randomchat : 6
             sight2sound : 27
+            Text-similarity-class: 1
+            VS_test : 11
+
 
 
         
