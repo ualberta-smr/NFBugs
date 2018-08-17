@@ -3,179 +3,181 @@
 Java:
     source:
         RepoReapers-dataset:
-            AirMapView: 61  
-            android-UniversalMusicPlayer: 34
-            device-year-class: 15
-            dex2jar: 32
-            ElasticDownload: 17
-            elasticsearch : 18729
-            Euclid: 0
-            fresco : 395
-            keywhiz: 228
-            moshi: 188
-            network-connection-class: 3
-            Rajawali : 839
-            RxBinding: 120
-            SlidingMenu: 28
-            storio: 406
-            subethasmtp : 86
-            thumbnailator : 67
+            airbnb/AirMapView: 61  
+            coobird/thumbnailator : 67
+            dex2jar/dex2jar: 32
+            elastic/elasticsearch : 18729
+            facebook/device-year-class: 15
+            facebook/fresco : 395
+            facebook/network-connection-class: 3
+            googlesamples/android-UniversalMusicPlayer: 34
+            JakeWharton/RxBinding: 120
+            jfeinstein10/SlidingMenu: 28
+            pushtorefresh/storio: 406
+            Rajawali/Rajawali : 839
+            square/keywhiz: 228
+            square/moshi: 188
+            Tibolte/ElasticDownload: 17
+            voodoodyne/subethasmtp : 86
+            Yalantis/Euclid: 0
 
         commit-msg-keywords:
-            android-floatinglabel-widgets : 9
-            android-instagram-filter : 0
-            android-material-icons : 1
-            Android-RecurrencePicker : 0
-            Android-Tiling-ScrollView : 4
-            AndroidBillingLibrary : 34
-            AndroidIndicators : 0
-            AndroidStudio : 0
-            androidsvgdrawable-plugin : 40
-            angularjs-plugin : 2
-            AutoSpannableTextView : 0
-            Avengers : 61
-            BabushkaText : 1
-            BlurNavigationDrawer : 1
-            Cappuccino : 10
-            Catacomb-Snatch : 660
-            CatKit : 2
-            celerio-angular-quickstart : 2
-            cocos2d : 112
-            Colours : 3
-            cssembed : 24
-            cwac-loaderex : 5
-            cwac-wakeful : 5
-            CyberLink4Android : 0
-            dagger2-example : 4
-            deck2pdf : 10
-            Decor : 9
-            deltachat-android : 159
-            divide : 16
-            easygcm : 26
-            EfficientAdapter : 20
-            Fabulous : 7
-            fanfoudroid : 115
-            fit-chart : 2
-            Folding-Android : 6
-            fontbinding : 3
-            FontsManager : 0
-            Foursquare-CollectionPicker : 4
-            Fragmentation : 177
-            FragmentNavigator : 1
-            GAlette : 18
-            gherkin2 : 78
-            google-io-2014-compat : 4
-            grunt-maven-plugin : 31
-            heapaudit : 23
-            HighLightGuideView : 0
-            holoaccent : 29
-            Hot : 1
-            HttpResponseCache : 10
-            icon-font-for-multiple-platforms : 0
-            ig-json-parser : 16
-            instant-adapter : 1
-            IonIconView : 0
-            irccat : 12
-            JActor : 89
-            jenkins : 6744
-            kandroid : 1
-            leakcanary : 284
-            Nox : 38
-            opposite_of_a_bloom_filter : 0
-            PagingGridView : 1
-            Pancakes : 12
-            phonegap-websocket : 21
-            pipes : 86
-            plaid : 87
-            Pydev : 1201
-            RibbonMenu : 2
-            roboguice-sherlock : 6
-            RoboSpock : 23
-            rsense : 32
-            ruboto-irb : 38
-            RxPaparazzo : 65
-            selendroid : 449
-            simple-slack-api : 134
-            soap-ws : 49
-            socialauth-android : 7
-            SortRichEditor : 3
-            SplinterNet : 1
-            spring-boot-thymeleaf : 4
-            Teleport : 7
-            terasology : 3102
-            ThemeDemo : 2
-            TransitionsBackport : 6
-            TriangleRectangleLabelView : 0
-            TuentiTV : 10
-            TutorialView : 7
-            WaterDropListView : 0
-            websocket-android-phonegap : 9
-            wqgallery : 4
-            XLog : 4
-            yobi : 1478
-       
+            3pillarlabs/socialauth-android : 7
+            allegro/grunt-maven-plugin : 31
+            anismiles/websocket-android-phonegap : 9
+            anton46/Foursquare-CollectionPicker : 4
+            aptana/Pydev : 1201
+            Ashok-Varma/plaid : 87
+            Aspsine/FragmentNavigator : 1
+            autonomousapps/Cappuccino : 10
+            avianey/androidsvgdrawable-plugin : 40
+            bxiaopeng/AndroidStudio : 0
+            candrews/HttpResponseCache : 10
+            cesarferreira/CatKit : 2
+            charbgr/BlurNavigationDrawer : 1
+            CharonChui/CyberLink4Android : 0
+            commonsguy/cwac-loaderex : 5
+            commonsguy/cwac-wakeful : 5
+            cucumber-attic/gherkin2 : 78
+            darvds/RibbonMenu : 2
+            deltachat/deltachat-android : 159
+            ened/Android-Tiling-ScrollView : 4
+            faizmalkani/Fabulous : 7
+            fanfoudroid/fanfoudroid : 115
+            foursquare/heapaudit : 23
+            Frank-Zhu/TriangleRectangleLabelView : 0
+            GcsSloop/FontsManager : 0
+            guerwan/TransitionsBackport : 6
+            HiddenStage/divide : 16
+            Hitomis/SortRichEditor : 3
+            inloop/easygcm : 26
+            Instagram/ig-json-parser : 16
+            itzikBraun/TutorialView : 7
+            jaxio/celerio-angular-quickstart : 2
+            jaydenxiao2016/HighLightGuideView : 0
+            jenkinsci/jenkins : 6744
+            jmhodges/opposite_of_a_bloom_filter : 0
+            johnlindquist/angularjs-plugin : 2
+            keeganlee/kandroid : 1
+            kolorobot/spring-boot-thymeleaf : 4
+            laforge49/JActor : 89
+            liaohuqiu/icon-font-for-multiple-platforms : 0
+            lisawray/fontbinding : 3
+            m2ym/rsense : 32
+            Maescool/Catacomb-Snatch : 660
+            Malinskiy/android-material-icons : 1
+            Mariuxtheone/Teleport : 7
+            MarsVard/IonIconView : 0
+            marvinlabs/android-floatinglabel-widgets : 9
+            MatthewYork/Colours : 3
+            mattlogan/Pancakes : 12
+            megamattron/SplinterNet : 1
+            melix/deck2pdf : 10
+            melix/Decor : 9
+            mgrzechocinski/dagger2-example : 4
+            miguelbcr/RxPaparazzo : 65
+            mkuklis/phonegap-websocket : 21
+            mkuklis/pipes : 86
+            MoshDev/AndroidIndicators : 0
+            MovingBlocks/Terasology : 3102
+            naver/yobi : 1478
+            negusoft/holoaccent : 29
+            nicolasjafelle/PagingGridView : 1
+            nzakas/cssembed : 24
+            pedrovgs/Nox : 38
+            pedrovgs/TuentiTV : 10
+            promeG/XLog : 4
+            quiqueqs/BabushkaText : 1
+            ragunathjawahar/instant-adapter : 1
+            rahulparsani/google-io-2014-compat : 4
+            reficio/soap-ws : 49
+            RJ/irccat : 12
+            robospock/RoboSpock : 23
+            robotmedia/AndroidBillingLibrary : 34
+            rtyley/roboguice-sherlock : 6
+            ruboto/ruboto-irb : 38
+            sangmingming/android-instagram-filter : 0
+            saulmm/Avengers : 61
+            selendroid/selendroid : 449
+            Shusshu/Android-RecurrencePicker : 0
+            square/leakcanary : 284
+            StanKocken/EfficientAdapter : 20
+            ThemeDemo/ThemeDemo : 2
+            THEONE10211024/WaterDropListView : 0
+            tibi1712/Folding-Android : 6
+            txusballesteros/fit-chart : 2
+            Ullink/simple-slack-api : 134
+            uPhyca/GAlette : 18
+            wangshaolei/AutoSpannableTextView : 0
+            wqandroid/wqgallery : 4
+            YoKeyword/Fragmentation : 177
+            ZhouWeikuan/cocos2d : 112
+            zj-wukewei/Hot : 1
+
         github-search:
-            ADFGVX: 20
-            catalina : 865
-            dbmaintain : 225
-            ExampleProject : 31
-            ForestFireModel : 4
-            Fowler : 11
-            galeb-libraries : 223
-            Glazed : 30
-            igi2-multiplayer-launcher-masterserver : 3
-            librarytest: 3
-            marid : 277
-            neodymium-library : 91
-            osmeditor4android : 623
-            poei-2018-cgi-base-spring : 1
-            PointCloudDatasetReader : 0
-            POO : 6
-            Praline-cashmere : 30
-            quiz-app : 73
-            sample-employee-rest-server : 3
-            sandwich-club : 0
-            SproutLife : 42
-            WaniKani-Ripoff-Project : 7
-            xslt-library : 10
+            alves-luis/POO : 6
+            Cashney/ForestFireModel : 4
+            DbMaintain/dbmaintain : 225
+            derrikcurran/sample-employee-rest-server : 3
+            Firespirit93/WaniKani-Ripoff-Project : 7
+            GuyOhm/sandwich-club : 0
+            hyperxpro/igi2-multiplayer-launcher-masterserver : 3
+            jponcy/poei-2018-cgi-base-spring : 1
+            mahairod/catalina : 865
+            ManyCore-NLeSC/Praline-cashmere : 30
+            MarcusWolschon/osmeditor4android : 623
+            MaridProject/marid : 277
+            MidasChallenge2018/ExampleProject : 31
+            Offer-Ready/xslt-library : 10
+            SaitDev/librarytest: 3
+            ShprAlex/SproutLife : 42
+            SleeplessDevelopment/Glazed : 30
+            stefanmarks/PointCloudDatasetReader : 0
+            TheFreshMango/Fowler : 11
+            tuxmonteiro/galeb-libraries : 223
+            UdacityAndroidDevScholarship/quiz-app : 73
+            valentindubois/ADFGVX: 20
+            Xceptance/neodymium-library : 91
+
 
 Python:
     source:
         RepoReapers-dataset:
-            autograd : 357
-            django-cache-machine: 40
-            django-crispy-forms : 358
-            elasticsearch-dsl-py: 197
-            elasticsearch-py : 217
-            falcon : 746
-            fuck12306: 3
-            peewee: 963
-            responses: 52
-            yapf: 227
- 
+            andelf/fuck12306: 3
+            coleifer/peewee: 963
+            django-cache-machine/django-cache-machine: 40
+            django-crispy-forms/django-crispy-forms : 358
+            elastic/elasticsearch-dsl-py: 197
+            elastic/elasticsearch-py : 217
+            falconry/falcon : 746
+            getsentry/responses: 52
+            google/yapf: 227
+            HIPS/autograd : 357
+
         commit-msg-keywords:
-            django-socialregistration: 74
-            gae-boilerplate : 256
-            himawaripy: 48
-            needle : 38
-            PaintsChainer: 40
-            salmon : 41
-            simp_le : 49
-            Terminal-on-FB-Messenger: 10
-            Theano: 10835
+            boramalper/himawaripy: 48
+            coto/gae-boilerplate : 256
+            dhruvramani/Terminal-on-FB-Messenger: 10
+            flashingpumpkin/django-socialregistration: 74
+            kuba/simp_le : 49
+            lincolnloop/salmon : 41
+            pfnet/PaintsChainer: 40
+            python-needle/needle : 38
+            Theano/Theano: 10835
                    
         github-search:
-            AWS-WAF-Test : 1
-            backend-interpreter: 207
-            BBS: 3
-            inline_table : 8
-            integration_tests: 8664
-            personal : 1
-            plugin.video.arteplussept: 27
-            randomchat : 6
-            sight2sound : 27
-            Text-similarity-class: 1
-            VS_test : 11
+            chenblair/sight2sound : 27
+            Chetan0403/Text-similarity-class: 1
+            fjkz/inline_table : 8
+            georgeriz/VS_test : 11
+            known-as-bmf/plugin.video.arteplussept: 27
+            ManageIQ/integration_tests: 8664
+            matheus-crivellari/randomchat : 6
+            ramrod-project/backend-interpreter: 207
+            s2pAIr/AWS-WAF-Test : 1
+            salmonroll/personal : 1
+            Timuer/BBS: 3
+
 
 
 
