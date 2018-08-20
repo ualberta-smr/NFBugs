@@ -118,6 +118,6 @@ If you experience an error using the dataset, let us know by opening a [new issu
 
 ## License
 
-This project is licensed according to the conditions of the [MIT license](/LICENSE.md).
+This project is subject to the conditions of the [MIT license](/LICENSE.md).
 
 
