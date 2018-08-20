@@ -28,4 +28,4 @@
                     
 - you can find the mining code [here](PyDrillerMining/find_NFR_commits.py)
 
-Also see our seminar [presentation](link) created by [Aida Radu](https://github.com/aradu12)
+Also see our seminar [presentation](/presentation.pdf) created by [Aida Radu](https://github.com/aradu12)
