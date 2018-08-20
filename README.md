@@ -1,8 +1,8 @@
 
-# SMR Non-Functional Bugs Project
+# Non-Functional Bugs Dataset
 
 ## Description
-This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data. We began collecting the data in May 2018.
+This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data. We began collecting the data in May 2018. Right now, we focus on non-functional bugs in Java and Python code.
 
 ## Contributors
 - [Aida Radu](https://github.com/aradu12)
@@ -25,7 +25,7 @@ Each project has its own subfolder in the directory corresponding to its languag
 
 ## Using the Scripts
 
-To allow users to process the data, we provide a DataBox python type. This type contains methods to filter the data distribution
+To allow users to process the data, we provide a `DataBox` python type. This type contains methods to filter the data distribution
 by tags, type, star rating, and more. 
 
 We also provide a sample [client script](/scripts/DataBoxClient.py). The output is a .txt file. To run this sample:
@@ -79,7 +79,7 @@ User client scripts can customize method arguments in the following ways:
          - `getProblemTypes("java-data")` => {"api-related" : 71, "project-specific" : 4, "general-practise" : 19}
          - interpretation: there are 71 api related Java problems in the dataset
          
-## Data Collection
+## Dataset Size
 
 Current TOTAL Bug Count = 138 from 67 projects
 
