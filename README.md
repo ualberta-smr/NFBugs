@@ -116,4 +116,8 @@ Mining:
 ## Issues
 If you experience an error using the dataset, let us know by opening a [new issue](https://github.com/ualberta-smr/researchwiki-radu/issues/new).
 
+## License
+
+This project is licensed according to the conditions of the [MIT license](/LICENSE.md).
+
 
