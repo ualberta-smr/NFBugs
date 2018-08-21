@@ -46,7 +46,12 @@ The dataset consists of 44 non-functional bugs in Python and 94 non-functional b
 
 ![type graph](/docs/Distribution%20of%20Problem%20Types.png "Frequency for Each Problem Type")
 
-Problem types represent the domain that a problem applies to. The `api related` type refers to problems that developers fixed by switching to a more optimal method or api. The `general practise` problems refer to broad practices that improve the code without reference to a specific api. `Project specific` problems fix non-functional bugs, but cannot be generalized beyond the scope of their own project. Currently, the majority of our problems are api related.
+Problem types represent the domain that a problem applies to. 
+* The `api related` type refers to problems that developers fixed by switching to a more optimal method or api. 
+* The `general practise` problems refer to broad practices that improve the code without reference to a specific api.
+* `Project specific` problems fix non-functional bugs, but cannot be generalized beyond the scope of their own project.    
+
+Currently, the majority of our problems are api related.
 
 ![tag graph](/docs/Distribution%20of%20Problem%20Tags.png "Frequency for Each Problem Tag")
 
