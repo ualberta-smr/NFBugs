@@ -22,3 +22,8 @@ $ unzip test-repos.zip
 $ pytest
 ```
 For more details, see the [PyDriller](https://github.com/ishepard/pydriller) project
+
+`find_NFR_commits.py` mines projects given as command line arguments. Run the program using:
+```
+python3 find_NFR_commits.py <paths to repositories>
+```
