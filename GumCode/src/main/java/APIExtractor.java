@@ -36,8 +36,8 @@ public class APIExtractor {
     
         Run.initGenerators();
 
-        String file1 = "/Users/radu/Documents/Test2.java";
-        String file2 = "/Users/radu/Documents/TestEDITED2.java";
+        String file1 = "./Test.java";
+        String file2 = "./TestEdited.java";
 
         ITree src = Generators.getInstance().getTree(file1).getRoot();
         ITree dst = Generators.getInstance().getTree(file2).getRoot();
