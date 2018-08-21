@@ -37,9 +37,27 @@ We also provide a sample [client script](/scripts/DataBoxClient.py). The output 
          
 ## Dataset Size
 
-Current TOTAL Bug Count = 138 from 67 projects
+As of 21/08/18, the dataset contains 138 bugs from 67 open source projects. In total, we examined 167 projects.  
+We also provide the [list](/ReposMined.yml) of all the projects mined, along with the number of hits generated. 
 
-Current TOTAL projects examined = 167 
+Please note that we include a variety of projects, both from novice and experienced developers. If you are using the data in your analysis, you may want to filter projects based on your needs (ex. by star rating, etc).
+
+The dataset consists of 44 non-functional bugs in Python and 94 non-functional bugs in Java. The following charts show the distribution of the data.
+
+![type graph](/docs/Distribution%20of%20Problem%20Types.png "Frequency for Each Problem Type")
+
+Problem types represent the domain that a problem applies to. The `api related` type refers to problems that developers fixed by switching to a more optimal method or api. The `general practise` problems refer to broad practices that improve the code without reference to a specific api. `Project specific` problems fix non-functional bugs, but cannot be generalized beyond the scope of their own project. Currently, the majority of our problems are api related.
+
+![tag graph](/docs/Distribution%20of%20Problem%20Tags.png "Frequency for Each Problem Tag")
+
+Problem tags represent the non-functional requirement that a fix improves. Some examples for improvements under each tag are:
+* `security`: improving encryption, restricting access to sensitive data
+* `performance`: using a faster method or algorithm
+* `resource management`: adding code to close files and streams
+* `memory`: fixing a memory leak or overflow
+* `determinism`: using an algorithm that gives more consistent or well-defined results
+
+Problems can have more than one tag.
 
 
 ## Issues
