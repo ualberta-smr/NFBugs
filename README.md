@@ -2,9 +2,12 @@
 # Non-Functional Bugs Dataset
 
 ## Description
-This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data. We began collecting the data in May 2018. Right now, we focus on non-functional bugs in Java and Python code.
+This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data. We began collecting the data in May 2018. Right now, we focus on non-functional bugs in Java and Python code. 
 
 ## Contributors
+
+This data set has been developed in the Software Maintenance and Reuse lab at the University of Alberta. Current contributors are:
+
 - [Aida Radu](https://github.com/aradu12)
 - [Sarah Nadi](http://sarahnadi.org/)
 
