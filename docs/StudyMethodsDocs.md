@@ -7,7 +7,7 @@ We constructed our dataset by searching the commit history of open source projec
     - 1: chosen by highest number of stars; `source: commit-msg-keywords`
     - 2: chosen via github search for relevant terms; `source: github-search`
     - 3: chosen from [RepoReapers](https://reporeapers.github.io/results/1.html) dataset; `source: RepoReapers-dataset`
-- List of all repos examined in [ReposMined.yml](https://github.com/ualberta-smr/researchwiki-radu/blob/master/ReposMined.yml)
+- List of all repos examined in [ReposMined.yml](../ReposMined.yml)
 
 ## Mining
 - done using a [PyDriller](https://github.com/ishepard/pydriller) based program
@@ -30,13 +30,12 @@ We constructed our dataset by searching the commit history of open source projec
                     
 - you can find the mining code [here](../PyDrillerMining)
 
-Also see the seminar [presentation](
-      https://github.com/ualberta-smr/researchwiki-radu/blob/master/docs/PLSE%20Presentation.pdf
+Also see the seminar [presentation](../docs/PLSE%20Presentation.pdf
     ) created by [Aida Radu](https://github.com/aradu12)
     
 ## Documenting Bugs
 
-To understand how the data is organized, see our explanation of the [Layout of the Dataset](https://github.com/ualberta-smr/researchwiki-radu#layout-of-the-dataset). 
+To understand how the data is organized, see our explanation of the [Layout of the Dataset](https://github.com/ualberta-smr/NFBugs#layout-of-the-dataset). 
 
 Within each `project.yml` file, we document the relevant characteristics of the project:
 ```
@@ -73,7 +72,7 @@ rule / suggestion:
     
 ```
 The fileds in square brackets are not present for each problem as they only apply to `api-related` problem types.
-We use `rule` for `api-related` problems and `suggestion` for `general-practise` problems. For an explanation of problem tags and types see the details of the [Data Distribution](https://github.com/ualberta-smr/researchwiki-radu/blob/master/README.md#dataset-size).
+We use `rule` for `api-related` problems and `suggestion` for `general-practise` problems. For an explanation of problem tags and types see the details of the [Data Distribution](https://github.com/ualberta-smr/NFBugs#dataset-size).
 
 Within each `version.yml` file, we record the project version associated with each problem:
 
