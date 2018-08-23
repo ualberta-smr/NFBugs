@@ -25,6 +25,9 @@ Each project has its own subfolder in the directory corresponding to its languag
 - a `versions` folder
     - these folders contain subfolders for the point in the project history where a problem was found. The `version.yml` files in these subdirectories specify which problem(s) the version applies to.
 
+## Methods
+
+For a detailed description of how we collected our data, see the [Methodology](./docs/StudyMethodsDocs.md) documentation.
 
 ## Processing the Data
 
@@ -37,6 +40,8 @@ We also provide a sample [client script](/scripts/DataBoxClient.py). The output 
 
 - clone the repo: `git clone https://github.com/ualberta-smr/researchwiki-radu.git`
 - run `python3 scripts/DataBoxClient.py`
+
+We have also experimented with using [GumTreeDiff](https://github.com/GumTreeDiff/gumtree) to detect API changes. You can find this code in the [GumCode](./GumCode/src/main/java) folder.   
          
 ## Dataset Size
 
@@ -66,7 +71,6 @@ Problem tags represent the non-functional requirement that a fix improves. Some 
 * `determinism`: using an algorithm that gives more consistent or well-defined results
 
 Problems can have more than one tag.
-
 
 ## Issues
 If you experience an error using the dataset, let us know by opening a [new issue](https://github.com/ualberta-smr/researchwiki-radu/issues/new).
