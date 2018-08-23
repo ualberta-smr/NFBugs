@@ -28,7 +28,7 @@ We constructed our dataset by searching the commit history of open source projec
 
 - limited to commits affecting .java and .py files
                     
-- you can find the mining code [here](../PyDrillerMining/find_NFR_commits.py)
+- you can find the mining code [here](../PyDrillerMining)
 
 Also see the seminar [presentation](
       https://github.com/ualberta-smr/researchwiki-radu/blob/master/docs/PLSE%20Presentation.pdf
