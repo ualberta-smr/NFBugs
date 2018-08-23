@@ -21,7 +21,7 @@ Each project has its own subfolder in the directory corresponding to its languag
     - these folders have Non-Functional Bugs organized into the subdirectories `general-practise`, `api-related`, or `project-specific`
     - within these subdirectories each problem has a its own numbered folder containing
         - a `problem.yml` file describing the bug and fix data
-        - api related problems have a `correct-usages` folder containing examples of the code improved by the fix. NOTE: We are currently still reviewing these examples. Please use with caution.
+        - API related problems have a `correct-usages` folder containing examples of the code improved by the fix. NOTE: We are currently still reviewing these examples. Please use with caution.
 - a `versions` folder
     - these folders contain subfolders for the point in the project history where a problem was found. The `version.yml` files in these subdirectories specify which problem(s) the version applies to.
 
@@ -50,11 +50,11 @@ The dataset consists of 44 non-functional bugs in Python and 94 non-functional b
 ![type graph](/docs/Distribution%20of%20Problem%20Types.png "Frequency for Each Problem Type")
 
 Problem types represent the domain that a problem applies to. 
-* The `api related` type refers to problems that developers fixed by switching to a more optimal method or api. 
-* The `general practise` problems refer to broad practices that improve the code without reference to a specific api.
+* The `api related` type refers to problems that developers fixed by switching to a more optimal method or API. 
+* The `general practise` problems refer to broad practices that improve the code without reference to a specific API.
 * `Project specific` problems fix non-functional bugs, but cannot be generalized beyond the scope of their own project.    
 
-Currently, the majority of our problems are api related.
+Currently, the majority of our problems are API related.
 
 ![tag graph](/docs/Distribution%20of%20Problem%20Tags.png "Frequency for Each Problem Tag")
 
