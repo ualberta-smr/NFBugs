@@ -64,7 +64,7 @@ Currently, the majority of our problems are API related.
 ![tag graph](/docs/Distribution%20of%20Problem%20Tags.png "Frequency for Each Problem Tag")
 
 Problem tags represent the non-functional requirement that a fix improves. Some examples for improvements under each tag are:
-* `security`: improving encryption, restricting access to sensitive data
+* `security`: improving encryption, restricting access to sensitive data, etc.
 * `performance`: using a faster method or algorithm
 * `resource management`: adding code to close files and streams
 * `memory`: fixing a memory leak or overflow
