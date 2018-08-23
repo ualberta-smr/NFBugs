@@ -6,7 +6,7 @@ This repository contains a dataset of real-world bugs related to Non-Functional 
 
 ## Contributors
 
-This data set has been developed in the Software Maintenance and Reuse lab at the University of Alberta. Current contributors are:
+This data set has been developed in the [Software Maintenance and Reuse lab](https://sarahnadi.org/smr/) at the University of Alberta. Current contributors are:
 
 - [Aida Radu](https://github.com/aradu12)
 - [Sarah Nadi](http://sarahnadi.org/)
