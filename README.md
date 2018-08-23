@@ -13,7 +13,7 @@ This data set has been developed in the Software Maintenance and Reuse lab at th
 
 ## Layout of the Dataset 
 
-Our data is separated into two main folders: one for [Java data](/java-data) and one for [Python data](py-data).
+Our data is separated into two main folders: one for [Java data](/java-data) and one for [Python data](/py-data).
 Each project has its own subfolder in the directory corresponding to its language. Within each project's folder you will find:
 
 - a `project.yml` file containing the project metadata
