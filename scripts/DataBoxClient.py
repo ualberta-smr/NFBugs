@@ -81,6 +81,19 @@ def main():
         for (key, value) in data.getAPIs("../py-data").items():
             output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
             
+       
+        output.write("\n--------------------------------------\n")
+        output.write("SOURCE DISTRIBUTION -- JAVA\n")
+
+        output.write("\t\tSource\tfrequency"+"\n")
+        for (key, value) in data.getSources("../java-data").items():
+            output.write("\t\t "+str(key)+" : "+str(value)+"\n")
+
+        output.write("\nSOURCE FREQUENCY -- PYTHON\n")
+        output.write("\t\tSource\tfrequency"+"\n")      
+        for (key, value) in data.getSources("../py-data").items():
+            output.write("\t\t "+str(key)+" : "+str(value)+"\n")
+            
     finally:
         output.close()
 main()
