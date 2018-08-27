@@ -2,7 +2,7 @@
 # aradu@ualberta.ca
 # July 12, 2018
 
-# Last Updated: Aug 16, 2018
+# Last Updated: Aug 27, 2018
 
 # requirements:
 # * pyYAML: https://pyyaml.org/wiki/PyYAMLDocumentation
@@ -157,6 +157,29 @@ class DataBox:
                         problem_types[ptype]+=1
     
         return problem_types  
+    
+    def getSources(self,directory):
+        # counts the number of problems from each source
+        # - directory is a string of the path to search (e.x., "py-data")
+        # - returns a dictionary with fields source:frequency 
+
+        if not self.__validate(directory):
+            return
+
+        sources = {}
+        
+        for (dirname, dirs, files) in os.walk(directory):
+            for filename in files:
+                if filename.endswith('problem.yml'):
+                    code = yaml.load(open(dirname+"/"+filename,"r").read())
+                    source = code["source"]["name"].strip()
+                    
+                    if source in sources.keys():
+                        sources[source]+=1
+                    else:
+                        sources[source] = 1
+            
+        return sources
     
     
     def __validate(self,directory,string="stars",int_tup=(0,),str_tup=("",)):
