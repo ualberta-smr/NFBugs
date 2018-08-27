@@ -45,3 +45,13 @@
         
          - `getProblemTypes("java-data")` => {"api-related" : 71, "project-specific" : 4, "general-practise" : 19}
          - interpretation: there are 71 api related Java problems in the dataset
+         
+* `getSources(directory)`
+    - `directory`: provide the part of the dataset to process (ex: `"java-data"`, or `"py-data"`)
+    - return a dictionary containing the disribution of problems by source (ex: `RepoReapers-dataset`)
+    
+        Example output:
+        
+         - `getSources("java-data")` => {"RepoReapers-dataset" : 30, "github-search" : 24, "commit-msg-keywords " : 40}
+         - interpretation: there are 30 Java problems that came from projects chosen via the RepoReapers dataset
+
