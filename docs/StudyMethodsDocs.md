@@ -30,7 +30,7 @@ We constructed our dataset by searching the commit history of open source projec
                     
 - you can find the mining code [here](../PyDrillerMining)
 
-Also see the seminar [presentation](../docs/PLSE%20Presentation.pdf
+Also see the seminar [presentation](../docs/AnonymizedPresentation.pdf)
     ) created by [Aida Radu](https://github.com/aradu12)
     
 ## Documenting Bugs
