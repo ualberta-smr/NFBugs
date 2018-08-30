@@ -24,7 +24,7 @@ We constructed our dataset by searching the commit history of open source projec
                     
 - current terms filtered out :
                     
-                    ["typo","npe","spelling"]
+                    ["typo","npe","spell"]
 
 - limited to commits affecting .java and .py files
                     
