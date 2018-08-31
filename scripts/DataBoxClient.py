@@ -43,7 +43,7 @@ def main():
         for stat in ["stars","watches","forks"]:
             output.write("\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
             for (key, value) in sorted(data.getStatDistribution("../java-data",stat,ranges).items()):
-                output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")
+                output.write("\t\t "+str(key)+" : "+str(value)+"\n")
 
         output.write("\n------------------------------\n")
         output.write("PYTHON POPULARITY STATS: "+"\n")
@@ -51,7 +51,7 @@ def main():
         for stat in ["stars","watches","forks"]:
             output.write("\n\n\t"+stat.upper()+": \n\t\trange\tfrequency"+"\n")
             for (key, value) in sorted(data.getStatDistribution("../py-data",stat,ranges).items()):
-                output.write("\t\t ["+str(key)+"] : "+str(value)+"\n")   
+                output.write("\t\t "+str(key)+" : "+str(value)+"\n")   
 
 
         output.write("\n\n------------------------------\n")
