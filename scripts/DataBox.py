@@ -64,7 +64,9 @@ class DataBox:
           
     dist = {}
     stat_list = self._getStatList(directory,stat)
-    range_bins = np.array(list(ranges).append(math.inf))
+    list_rg = list(ranges)
+    list_rg.append(math.inf)
+    range_bins = np.array(list_rg)
     hist = list(np.histogram(stat_list,bins=range_bins))
 
     # populate the distribution
