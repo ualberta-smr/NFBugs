@@ -35,7 +35,7 @@ def main():
             output.write("\t\t "+str(key)+" : "+str(value)+"\n")    
 
         # the ones we chose before (so we can see if custom gives same results)    
-        ranges = (1,50,200,400,600,800) 
+        ranges = (0,1,50,200,400,600,800) 
 
         output.write("\n------------------------------\n")
         output.write("JAVA POPULARITY STATS: "+"\n")
