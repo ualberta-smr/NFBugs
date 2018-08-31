@@ -6,17 +6,24 @@
     -  `directory`: provide the part of the dataset to process (ex: `"java-data"`, or `"py-data"`)
     - return the total number of problems of all types in the given directory
     
+* `_getStatList(self,directory,stat)`
+    - `directory`: provide the part of the dataset to process (ex: `"java-data"`, or `"py-data"`)
+    - `stat`: provide the popularity stat to filter by (ex: `"stars"`, `"watches"`, or `"forks"`)
+    - return a list of all values of stat
+
+
+
 * `getStatDistribution(directory,stat,ranges)`
     - `directory`: provide the part of the dataset to process (ex: `"java-data"`, or `"py-data"`)
     - `stat`: provide the popularity stat to filter by (ex: `"stars"`, `"watches"`, or `"forks"`)
-    - `ranges`: provide a tuple of integers to separate by, right boundary excluded. 
+    - `ranges`: provide a tuple of bins to separate into, right boundary excluded. 
     - return a dictionary containing the number of projects whose stat falls into each range
 
       Examples for ``ranges`` and corresponding boundaries:
 
-        - `(1,100,500,1000)` => stat is separated into bins [0] [1,99] [100, 499] [500, 999] [1000+]
-        - `(1000)` => stat is separated into bins [0,999] [1000+]
-        - `(1)` => stat is separated into bins [0] [1+]
+        - `(0,100,500,1000)` => stat is separated into bins [0,100) [100,500) [500, 1000) [1000, inf)
+        - `(0,1000)` => stat is separated into bins [0,1000) [1000,inf)
+        - `(0,1)` => stat is separated into bins [0,1) [1,inf)
         
 * `getTagDistribution(directory[,tag_requests])`
     - `directory`: provide the part of the dataset to process (ex: `"java-data"`, or `"py-data"`)
