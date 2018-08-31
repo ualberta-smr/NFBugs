@@ -70,12 +70,11 @@ class DataBox:
     hist = list(np.histogram(stat_list,bins=range_bins))
 
     # populate the distribution
-    try:
-        for index in range(len(ranges)-1):
-          dist["["+str(ranges[index])+", "+str(ranges[index+1])+")"] = hist[index]
-        dist["["+str(max(ranges))+str(math.inf)+")"] = hist[len(hist)-1]
-    except IndexError:
-        print(hist)
+    
+    for index in range(len(ranges)-1):
+      dist["["+str(ranges[index])+", "+str(ranges[index+1])+")"] = hist[0][index]
+    dist["["+str(max(ranges))+str(math.inf)+")"] = hist[len(hist[0])-1]
+    
     return dist
   
       
