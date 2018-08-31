@@ -75,7 +75,7 @@ class DataBox:
           dist["["+str(ranges[index])+", "+str(ranges[index+1])+")"] = hist[index]
         dist["["+str(max(ranges))+str(math.inf)+")"] = hist[len(hist)-1]
     except IndexError:
-        print(index,len(ranges),len(hist))
+        print(hist)
     return dist
   
       
