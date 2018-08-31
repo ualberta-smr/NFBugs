@@ -73,7 +73,7 @@ class DataBox:
     
     for index in range(len(ranges)-1):
       dist["["+str(ranges[index])+", "+str(ranges[index+1])+")"] = hist[0][index]
-    dist["["+str(max(ranges))+str(math.inf)+")"] = hist[len(hist[0])-1]
+    dist["["+str(max(ranges))+str(math.inf)+")"] = hist[0][len(hist[0])-1]
     
     return dist
   
