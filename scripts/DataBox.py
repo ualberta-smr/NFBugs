@@ -2,7 +2,7 @@
 # aradu@ualberta.ca
 # July 12, 2018
 
-# Last Updated: Aug 27, 2018
+# Last Updated: Aug 31, 2018
 
 # requirements:
 # * pyYAML: https://pyyaml.org/wiki/PyYAMLDocumentation
@@ -37,45 +37,41 @@ class DataBox:
         return count
         
     
-    def getStatDistribution(self,directory,stat,ranges):
-            # calculates the number of project stars, watches, or forks 
-            # within a range in the given directory
-            # - directory is a string of the path to search (e.x., "py-data")
-            # - stat is a string of the stat to search for (e.x., "stars")
-            # - ranges is a tuple of numbers to separate by, right boundary excluded
-            # -- e.x. if ranges = (1,50,100), the boundaries are [0],[1,49],[50,99],[100+]
-            # - returns a dictionary with fields range:frequency 
-            
-            if not self.__validate(directory,string = stat,int_tup = ranges):
-                return
-                 
-            dist = {}
-            
-            # populate the distribution
-            for num in ranges:
-                dist["<"+str(num)] = 0
-                
-            dist[str(max(ranges))+"+"] = 0
-                
-            
-            for (dirname, dirs, files) in os.walk(directory): 
-                for filename in files:
-                    if filename.endswith('project.yml'):
-                        
-                        # get count from the relevant field in yaml object
-                        data = yaml.load(open(dirname+"/"+filename,"r").read())
-                        count = int(data["repository"]["stats"][stat])
-                        
-                        for num in sorted(ranges):
-                            if (count < num):
-                                dist["<"+str(num)] += 1
-                                break
-                            if (num == max(ranges) and count >= num):
-                                dist[str(num)+"+"] += 1
-                                break
-                                        
-                                
-            return dist
+    def _getStatList(self,directory,stat):
+        if not self.__validate(directory,string = stat):
+          return
+        stats = []
+        for (dirname, dirs, files) in os.walk(directory):
+          for filename in files:
+            if filename.endswith('project.yml'):
+              data = yaml.load(open(dirname+"/"+filename,"r").read())
+              my_stat = int(data["repository"]["stats"][stat])
+              stats.append(my_stat)
+        return stats
+
+  def getStatDistribution(self,directory,stat,ranges):
+        # calculates the number of project stars, watches, or forks 
+        # within a range in the given directory
+        # - directory is a string of the path to search (e.x., "py-data")
+        # - stat is a string of the stat to search for (e.x., "stars")
+        # - ranges is a tuple of numbers to separate by, right boundary excluded
+        # -- e.x. if ranges = (1,50,100), the boundaries are [0,1),[1,50),[50,100),[100,inf)
+        # - returns a dictionary with fields range:frequency 
+
+        if not self.__validate(directory,string = stat,int_tup = ranges):
+            return
+
+        dist = {}
+        stat_list = self._getStatList(directory,stat)
+        range_bins = np.array(list(ranges).append(math.inf))
+        hist = list(np.histogram(stat_list,bins=range_bins))
+
+        # populate the distribution
+        for index in len(ranges)-2:
+          dist["["+str(ranges[index])+", "+str(ranges[index+1])+")"] = hist[index]
+        dist["["+str(max(ranges))+str(math.inf)+")"] = hist[len(hist)-1]
+
+        return dist
     
         
     
