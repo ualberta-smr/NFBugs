@@ -39,6 +39,11 @@ class DataBox:
     return count
       
   def _getStatList(self,directory,stat):
+    # get a list of all stat counts in the directory
+    # - directory is a string of the path to search (e.x., "py-data")
+    # - stat is a string of the stat to search for (e.x., "stars")
+    # - returns a list object
+    
     if not self.__validate(directory,string = stat):
       return
     stats = []
@@ -55,8 +60,8 @@ class DataBox:
     # within a range in the given directory
     # - directory is a string of the path to search (e.x., "py-data")
     # - stat is a string of the stat to search for (e.x., "stars")
-    # - ranges is a tuple of numbers to separate by, right boundary excluded
-    # -- e.x. if ranges = (1,50,100), the boundaries are [0],[1,49],[50,99],[100+]
+    # - ranges is a tuple of bins to separate into, right boundary excluded
+    # -- e.x. if ranges = (0,1,50,100), the boundaries are [0,1),[1,50),[50,100),[100, inf)
     # - returns a dictionary with fields range:frequency 
     
     if not self.__validate(directory,string = stat,int_tup = ranges):
