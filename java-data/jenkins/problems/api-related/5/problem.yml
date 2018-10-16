@@ -14,4 +14,4 @@ location:
     method: public static BuildAuthorizationToken create(StaplerRequest req)
 api: hudson.model.Hudson
 rule:
-    make sure everyone is authorized before scheduling a job 
+    make sure security checking is on (Hudson.getInstance().isUseSecurity()) and everyone is authorized before scheduling a job 
