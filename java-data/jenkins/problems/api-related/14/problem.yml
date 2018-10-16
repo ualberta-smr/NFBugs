@@ -14,4 +14,4 @@ location:
     method: public String getShortDescription()
 api: hudson.model.Run
 rule:
-    don't update states unless authorized
+    don't update states unless authorized (check authorization through checkPermission(Run.UPDATE))
