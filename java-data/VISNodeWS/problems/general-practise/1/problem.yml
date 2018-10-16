@@ -15,4 +15,4 @@ location:
     method:
         public User save(User obj)
 suggestion:
-    encrypt user data
+    hash user password
