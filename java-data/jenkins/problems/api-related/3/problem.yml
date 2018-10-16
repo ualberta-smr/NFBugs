@@ -14,5 +14,5 @@ location:
     method: private File getRootDirFor(String name)
 api: hudson.model.Item
 rule: 
-    check if accessing an object is allowed before trying to do it
+    check if accessing an object is allowed before trying to do it (through hasPermission(Item.READ))
     
