@@ -16,6 +16,6 @@ fix:
 location:
     file: src/main/java/org/elasticsearch/index/store/Store.java
     method: public IndexOutput createOutput(String name, IOContext context, boolean raw) throws IOException, public IndexInput openInput(String name, IOContext context) throws IOException
-api: org.apache.lucene.util.IOUtils
+api: org.apache.lucene.store.IndexOutput
 rule:
     close resources when done
