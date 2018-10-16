@@ -5,7 +5,7 @@ project:
     url: https://github.com/airbnb/AirMapView
 fix:
     tag: security 
-    description: setAllowFileAccess and setAllowContentAccess were set to false; WebView can no longer access file system or content URLs
+    description: setAllowFileAccess and setAllowContentAccess need to be false so that WebView can no longer access file system or content URLs
     commit message: >
         Merge pull request #72 from airbnb/felipe/file-access
         Security] Disable file access on WebView
