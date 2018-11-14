@@ -1,9 +1,0 @@
-name: librarytest
-repository:
-    type: git
-    url: https://github.com/SaitDev/librarytest
-    stats:
-        watches: 1 
-        stars: 0
-        forks: 0
-url: https://github.com/SaitDev/librarytest
