@@ -19,6 +19,6 @@ location:
 api:
     requests
 api change: 
-    requests -> urllib3
+    connection.RequestsHttpConnection -> .connection import Urllib3HttpConnection
 rule:
     the urllib3 library has a performance advantage over the requests library
