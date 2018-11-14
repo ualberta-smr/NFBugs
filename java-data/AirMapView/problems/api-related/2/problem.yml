@@ -17,4 +17,4 @@ api:
 api change:
     java.util.HashMap -> android.support.v4.util.LongSparseArray
 rule:
-    SparseArrays are more memory efficient than HashMaps
+    SparseArrays are more memory efficient than HashMaps. See https://stackoverflow.com/questions/25560629/sparsearray-vs-hashmap for reasoning.
