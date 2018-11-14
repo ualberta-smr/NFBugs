@@ -14,5 +14,5 @@ location:
     method: public TagAction(AbstractBuild build)
 api: hudson.model.Hudson
 rule:
-    validate users before altering object states
+    validate users before altering object states (check Hudson.adminCheck(...))
     
