@@ -5,7 +5,7 @@ project:
     url: https://github.com/MidasChallenge2018/ExampleProject
 fix:
     tag: security
-    description: added methods to encrypt user passwords on signup and signin
+    description: added methods to hash and encrypt user passwords on signup and signin
     commit message: >
         Add encrypt user password logic
     commit: https://github.com/MidasChallenge2018/ExampleProject/commit/4307be5
@@ -17,4 +17,4 @@ location:
         public UserVO signup(UserVO user) throws UserAlreadyExistsException
         public static String encryptMD5(String str), public static String encryptSHA256(String str), public static String encryptMD5AndSHA256(String str)
 suggestion:
-    encrypt user data
+    hash and encrypt user data
