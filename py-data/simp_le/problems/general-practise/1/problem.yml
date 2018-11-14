@@ -1,0 +1,18 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: simp_le
+    url: https://github.com/kuba/simp_le
+fix:
+    tag: performance
+    description: Don't overwrite old data if nothing has changed; saves time and improves efficiency
+    commit message: >
+            Persist new data only (fixes #67)
+    commit: https://github.com/kuba/simp_le/commit/d9050a2
+location:
+    file: 
+        simp_le.py
+    method: 
+        persist_data(args, existing_data, new_data)
+suggestion: 
+    only save data to persist files if it has been modified
