@@ -15,4 +15,4 @@ location:
     method:
         new_and_save(cls, form=None, **kwargs)
 suggestion:
-    use hashing on user data
+    use hashing for passwords
