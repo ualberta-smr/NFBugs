@@ -14,4 +14,4 @@ location:
     method: private void explode(File archive, File destDir) throws IOException
 api: hudson.model.Hudson
 rule:
-    enable/disable plugins only for those with correct permissions
+    enable/disable plugins only for those with correct permissions (through Hudson.adminCheck(...))
