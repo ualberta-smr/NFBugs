@@ -5,7 +5,7 @@ project:
     url: https://github.com/coto/gae-boilerplate
 fix:
     tag: security
-    description: enhance security by encrypting passwords
+    description: enhance security by hashing passwords
     commit message: >
             Added basic encryption to hashing function, extra security layer for passwords.
     commit: https://github.com/coto/gae-boilerplate/commit/6743e0c
@@ -15,4 +15,4 @@ location:
     method: 
         hashing(plaintext, salt="", sha="512")
 suggestion: 
-    to improve security, use encryption on passwords
+    to improve security, use hasing on passwords
