@@ -5,7 +5,7 @@ project:
     url: https://github.com/Timuer/BBS
 fix:
     tag: security
-    description: enhance security by enabling a xsrf/csrf token
+    description: enhance security by enabling a xsrf/csrf protection token
     commit message: >
             protect from xsrf attack
     commit: https://github.com/Timuer/BBS/commit/8a6300d
@@ -15,4 +15,4 @@ location:
     method: 
         register(cls, form)
 suggestion: 
-    to improve site security, allow csrf/xsrf processing
+    to improve site security, implement token based csrf protection
