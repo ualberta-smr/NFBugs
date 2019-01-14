@@ -5,7 +5,7 @@ project:
     url: https://github.com/derrikcurran/sample-employee-rest-server
 fix:
     tag: security
-    description: changed access of id to read-only
+    description: changed access of id to read-only so no deserialization updates allowed
     commit message: >
             Make Employee.id read-only and stop employees from being updated via POST endpoint
     commit: https://github.com/derrikcurran/sample-employee-rest-server/commit/c17722d
@@ -17,4 +17,4 @@ location:
 api:
     com.fasterxml.jackson.annotation.JsonProperty.Access
 rule: 
-    to improve security, conceal user credentials using READ_ONLY access
+    to improve security, prevent unauthorized data changes using READ_ONLY access
