@@ -20,4 +20,4 @@ api:
 api change:
     builtins.forloop -> ctypes.memset
 rule:
-    (de)allocate memory faster using ctypes library
+    clear or initialize memory faster using ctypes.memset
