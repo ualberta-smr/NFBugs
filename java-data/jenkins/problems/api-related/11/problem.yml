@@ -1,0 +1,19 @@
+source:
+    name: commit-msg-keywords
+project: 
+    name: jenkins
+    url: https://github.com/jenkinsci/jenkins
+fix:
+    tag: resource management 
+    description: Prevents data corruption by ensuring files don’t remain open at termination
+    commit message: >
+        [fixed 1.206] make sure to close changelog.xml more rigorously to prevent problems like #1509
+    commit: https://github.com/jenkinsci/jenkins/commit/5f1a706
+location:
+    file: core/src/main/java/hudson/scm/CVSSCM.java
+    method: public void log(String msg, int msgLevel)
+api: 
+    java.io.BufferedOutputStream
+    org.apache.commons.io.IOUtils
+rule:
+    close streams when done
