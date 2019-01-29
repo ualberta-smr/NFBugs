@@ -4,26 +4,21 @@ project:
     name: Catacomb-Snatch
     url: https://github.com/Maescool/Catacomb-Snatch
 fix:
-    tag: resource management 
-    description: Preventing data corruption by remembering to close resources when finished
+    tag: memory, performance
+    description: replaced ArrayList with an array -- resizing an ArrayList can hurt performance; also ArrayList has a larger memory overhead than an array because of object metadata
     commit message: >
-        Code Cleanup: Closed resource leaks,
-        and removed or commented out unused code/resources,
-        and did some code layout clean up (braces on ifs and correct indentation)
-    commit: https://github.com/Maescool/Catacomb-Snatch/commit/2391544
+            Merge pull request #1 from KyleBrodie/joypad
+            Joypad Clean up : Stability and memory usage
+    commit: https://github.com/Maescool/Catacomb-Snatch/commit/e228751
 location:
     file: 
-        src/com/mojang/mojam/downloader/ChannelDownloader.java
-        src/com/mojang/mojam/downloader/Downloader.java
-        src/com/mojang/mojam/mod/ModSystem.java
+        src/com/mojang/mojam/JoypadHandler.java
     method: 
-        public void downloadTo(String turl, String dest) throws IOException
-        public static void unpackJar(String jarFile, String destDir)
-        private static ScriptEngine addScript(ZipEntry entry), private static String readStringFromFile(File f) throws IOException, private static boolean upToDate(String s) throws IOException
-api: 
-    java.io.FileOutputStream
-    java.util.jar
-    java.io.BufferedReader
-    java.util.zip.ZipFile    
-rule: 
-    close streams when done
+        public JoypadHandler(int index)
+api:
+    java.util.ArrayList
+api change:
+    java.util.ArrayList -> array[]
+rule:
+     replace ArrayList with Arrays if the desired size of the collection is known
+    
