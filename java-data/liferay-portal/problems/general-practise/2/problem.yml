@@ -13,10 +13,8 @@ fix:
     commit: https://github.com/liferay/liferay-portal/commit/042e9a0
 location:
     file: 
-        liferay-portal.modules.apps.foundation.portal-scripting.portal-scripting-executor.src.main.java.com.
-            liferay.portal.scripting.executor.internal.extender.ScriptingExecutorExtender.java    
+        liferay-portal.modules.apps.foundation.portal-scripting.portal-scripting-executor.src.main.java.com.liferay.portal.scripting.executor.internal.extender.ScriptingExecutorExtender.java    
     method: 
-        protected void setSingleDestinationMessageSenderFactory(SingleDestinationMessageSenderFactory 
-            singleDestinationMessageSenderFactory)
+        protected void setSingleDestinationMessageSenderFactory(SingleDestinationMessageSenderFactory singleDestinationMessageSenderFactory)
 suggestion:
     avoid extraneous references to avoid memory leaks
