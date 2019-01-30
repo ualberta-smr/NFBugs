@@ -11,13 +11,15 @@ def main():
     try:
         java_probs = data.getProblemCount("../java-data")
         py_probs = data.getProblemCount("../py-data")
+        java_projects = data.getProjectCount("../java-data")
+        py_projects = data.getProjectCount("../py-data")
         
         output.write(" DATA AS OF "+current_time.strftime("%d-%m-%y at %H:%M")+"\n")
     
         output.write("------------------------------\n")
-        output.write("TOTAL PROBLEMS: "+str(java_probs+py_probs)+"\n")
-        output.write("\tJAVA PROBLEMS: "+str(java_probs)+"\n")
-        output.write("\tPYTHON PROBLEMS: "+str(py_probs)+"\n")
+        output.write("TOTAL PROBLEMS: "+str(java_probs+py_probs)+" FROM "+ str(java_projects+py_projects)+" projects \n")
+        output.write("\tJAVA PROBLEMS: "+str(java_probs)+" FROM " + str(java_projects)+" projects \n")
+        output.write("\tPYTHON PROBLEMS: "+str(py_probs)+" FROM " + str(py_projects)+" projects \n")
     
         output.write("------------------------------\n")
         output.write("PROBLEM TYPES: "+"\n")

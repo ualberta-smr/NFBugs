@@ -1,0 +1,190 @@
+ DATA AS OF 30-01-19 at 07:56
+------------------------------
+TOTAL PROBLEMS: 133FROM 65 projects 
+	JAVA PROBLEMS: 90FROM 40 projects 
+	PYTHON PROBLEMS: 43FROM 25 projects 
+------------------------------
+PROBLEM TYPES: 
+	TOTAL
+		 api-related : 92
+		 general-practise : 32
+		 project-specific : 9
+
+	JAVA
+		 api-related : 68
+		 general-practise : 16
+		 project-specific : 6
+
+	PYTHON
+		 api-related : 24
+		 general-practise : 16
+		 project-specific : 3
+
+------------------------------
+JAVA POPULARITY STATS: 
+	STARS: 
+		range	frequency
+		 [0, 1) : 10
+		 [1, 50) : 6
+		 [200, 400) : 6
+		 [400, 600) : 3
+		 [50, 200) : 1
+		 [600, 800) : 2
+		 [800, inf) : 12
+	WATCHES: 
+		range	frequency
+		 [0, 1) : 4
+		 [1, 50) : 21
+		 [200, 400) : 2
+		 [400, 600) : 0
+		 [50, 200) : 9
+		 [600, 800) : 0
+		 [800, inf) : 4
+	FORKS: 
+		range	frequency
+		 [0, 1) : 11
+		 [1, 50) : 8
+		 [200, 400) : 3
+		 [400, 600) : 1
+		 [50, 200) : 10
+		 [600, 800) : 1
+		 [800, inf) : 6
+
+------------------------------
+PYTHON POPULARITY STATS: 
+
+
+	STARS: 
+		range	frequency
+		 [0, 1) : 7
+		 [1, 50) : 3
+		 [200, 400) : 0
+		 [400, 600) : 3
+		 [50, 200) : 1
+		 [600, 800) : 2
+		 [800, inf) : 9
+
+
+	WATCHES: 
+		range	frequency
+		 [0, 1) : 1
+		 [1, 50) : 16
+		 [200, 400) : 2
+		 [400, 600) : 1
+		 [50, 200) : 5
+		 [600, 800) : 0
+		 [800, inf) : 0
+
+
+	FORKS: 
+		range	frequency
+		 [0, 1) : 9
+		 [1, 50) : 2
+		 [200, 400) : 1
+		 [400, 600) : 4
+		 [50, 200) : 6
+		 [600, 800) : 1
+		 [800, inf) : 2
+
+
+------------------------------
+JAVA TAG FREQUENCY: 
+		tag	frequency
+		 [security] : 15
+		 [performance] : 36
+		 [memory] : 33
+		 [resource management] : 14
+		 [determinism] : 2
+
+------------------------------
+PYTHON TAG FREQUENCY: 
+		tag	frequency
+		 [security] : 10
+		 [performance] : 27
+		 [memory] : 3
+		 [resource management] : 2
+		 [determinism] : 1
+
+--------------------------------------
+API FREQUENCY -- JAVA
+		API	frequency
+		 [java.lang.String] : 8
+		 [android.webkit.WebSettings] : 1
+		 [android.webkit.WebView] : 1
+		 [java.util.HashMap] : 3
+		 [android.content.ContextWrapper] : 1
+		 [java.io.FileOutputStream] : 2
+		 [java.util.jar] : 1
+		 [java.io.BufferedReader] : 3
+		 [java.util.zip.ZipFile] : 1
+		 [java.util.ArrayList] : 2
+		 [java.lang.StringBuffer] : 5
+		 [java.lang.ref.WeakReference] : 2
+		 [PowerManager.WakeLock] : 1
+		 [java.io.FileInputStream] : 1
+		 [android.util.SparseArray] : 1
+		 [org.apache.lucene.store.IndexOutput] : 1
+		 [java.io.ByteArrayOutputStream] : 3
+		 [java.util.Vector] : 3
+		 [java.lang.Float] : 2
+		 [org.codehaus.jackson.JsonParser] : 1
+		 [java.lang.Double] : 2
+		 [com.facebook.common.references.CloseableReference] : 1
+		 [java.io.Closeable] : 1
+		 [java.util.HashSet] : 1
+		 [java.lang.annotation.RetentionPolicy] : 1
+		 [hudson.remoting.Channel] : 1
+		 [java.io.BufferedOutputStream] : 1
+		 [org.apache.commons.io.IOUtils] : 1
+		 [hudson.model.Run] : 1
+		 [hudson.model.Item] : 1
+		 [hudson.model.Hudson] : 3
+		 [org.kohsuke.stapler.StaplerRequest] : 1
+		 [java.io.FileReader] : 1
+		 [com.squareup.haha.perflib.Snapshot] : 1
+		 [java.lang.Long] : 3
+		 [android.content.Context] : 1
+		 [com.fasterxml.jackson.annotation.JsonProperty.Access] : 2
+		 [src.nz.ac.aut.SentienceLab.PointCloudDatasetReader.DataSource] : 1
+		 [java.lang.Boolean] : 1
+		 [rajawali.util.LittleEndianDataInputStream] : 1
+		 [com.xtremelabs.robolectric.bytecode.RobolectricClassLoader] : 1
+		 [java.util.UUID.randomUUID] : 1
+		 [java.util.concurrent.Executors] : 1
+		 [org.terasology.rendering.nui.NUIManager] : 1
+		 [org.terasology.physics.engine.PhysicsLiquidWrapper] : 1
+		 [org.terasology.entitySystem.entity.EntityRef] : 1
+		 [javax.imageio.ImageReader] : 1
+		 [javax.imageio.ImageWriter] : 1
+		 [java.awt.image.BufferedImage] : 1
+
+API FREQUENCY -- PYTHON
+		API	frequency
+		 [numpy] : 1
+		 [builtins.io.IOBase] : 1
+		 [builtins.str] : 3
+		 [copy.deepcopy] : 1
+		 [Object.__class__.__name__] : 1
+		 [Lib.json] : 1
+		 [requests] : 1
+		 [builtins.generator] : 1
+		 [builtins.hasattr] : 1
+		 [builtins.forloop] : 2
+		 [builtins.list] : 5
+		 [builtins.map] : 3
+		 [sqlite3.Connection] : 1
+		 [django.db.models.Model] : 1
+		 [builtins.input] : 1
+
+--------------------------------------
+SOURCE DISTRIBUTION -- JAVA
+		Source	frequency
+		 github-search : 22
+		 RepoReapers-dataset : 30
+		 commit-msg-keywords : 38
+
+SOURCE FREQUENCY -- PYTHON
+		Source	frequency
+		 RepoReapers-dataset : 14
+		 github-search : 13
+		 commit-msg-keywords : 16

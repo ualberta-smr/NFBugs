@@ -21,7 +21,23 @@ class DataBox:
   def __init__(self):
     # initializes a new DataBox object
     self.__default_tags = ("security","performance","memory","resource management","determinism")
-      
+  
+  def getProjectCount(self,directory):
+    # calculates the number of projects in the  given directory
+    # - directory is a string of the path to search (e.x., "py-data")
+    # - returns an int
+
+    if not self.__validate(directory):
+        return
+
+    count = 0
+    for (dirname, dirs, files) in os.walk(directory):
+        for filename in files:
+            if filename.endswith('project.yml'):
+                count+=1
+
+    return count
+    
   def getProblemCount(self,directory):
     # calculates the number of problems in the given directory
     # - directory is a string of the path to search (e.x., "py-data")
