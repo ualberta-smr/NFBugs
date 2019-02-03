@@ -1,6 +1,8 @@
 
 # Non-Functional Bugs Dataset
 
+[![DOI](https://zenodo.org/badge/130276895.svg)](https://zenodo.org/badge/latestdoi/130276895)
+
 ## Description
 This repository contains a dataset of real-world bugs related to Non-Functional Requirements, as well as scripts to process the data. We began collecting the data in May 2018. Right now, we focus on non-functional bugs in Java and Python code. 
 
