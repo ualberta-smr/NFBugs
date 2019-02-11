@@ -21,7 +21,7 @@ Each project has its own subfolder in the directory corresponding to its languag
 - a `project.yml` file containing the project metadata
 - a `problems` folder 
     - these folders have Non-Functional Bugs organized into the subdirectories `general-practise`, `api-related`, or `project-specific`
-    - within these subdirectories each problem has a its own numbered folder containing
+    - within these subdirectories each problem has its own numbered folder containing
         - a `problem.yml` file describing the bug and fix data
         - API related problems have a `correct-usages` folder containing examples of the code improved by the fix. NOTE: We are currently still reviewing these examples. Please use with caution.
 - a `versions` folder
