@@ -2,13 +2,15 @@ source:
     name: github-search
 project: 
     name: ADFGVX
-    url: https://github.com/valentindubois/ADFGVX
+    url: https://github.com/nfbugs/ADFGVX
+    original-url: https://github.com/valentindubois/ADFGVX
 fix:
     tag: performance
     description: Replacing "+" with StringBuilder improves performance and memory space
     commit message: >
             Refactoring getIndicePermutation use StringBuilder instead of String
-    commit: https://github.com/valentindubois/ADFGVX/commit/6c931fe
+    original-commit: https://github.com/valentindubois/ADFGVX/commit/6c931fe
+    commit: https://github.com/nfbugs/ADFGVX
 location:
     file: 
         src/main/java/ch/hearc/st/app/Utils.java
