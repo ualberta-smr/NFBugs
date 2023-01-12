@@ -14,6 +14,7 @@ import yaml
 import sys
 import math
 import numpy as np
+from yaml import Loader
     
 class DataBox:
   # Handles extraction of data from smr repository
@@ -47,11 +48,11 @@ class DataBox:
         return
     
     count = 0
-    for (dirname, dirs, files) in os.walk(directory):
+    for (dirname, dirs, files) in os.walk(os.path.abspath(directory)):
         for filename in files:
             if filename.endswith('problem.yml'):
                 count+=1
-                
+          
     return count
       
   def _getStatList(self,directory,stat):
@@ -66,7 +67,7 @@ class DataBox:
     for (dirname, dirs, files) in os.walk(directory):
       for filename in files:
         if filename.endswith('project.yml'):
-          data = yaml.load(open(dirname+"/"+filename,"r").read())
+          data = yaml.load(open(dirname+"/"+filename,"r").read(),  Loader=Loader)
           my_stat = int(data["repository"]["stats"][stat])
           stats.append(my_stat)
     return stats
@@ -124,7 +125,7 @@ class DataBox:
         for filename in files:
             if filename.endswith('problem.yml'):
                 
-                code = yaml.load(open(dirname+"/"+filename,"r").read())
+                code = yaml.load(open(dirname+"/"+filename,"r").read(), Loader=Loader)
                 
                 # split because some have more than one tag
                 tags = code["fix"]["tag"].split(",")    
@@ -149,7 +150,7 @@ class DataBox:
             continue
         for filename in files:
             if filename.endswith('problem.yml'):
-                code = yaml.load(open(dirname+"/"+filename,"r").read())
+                code = yaml.load(open(dirname+"/"+filename,"r").read(), Loader=Loader)
                 for api in code["api"].split():
                     api = api.strip()
                     if api in apis.keys():
@@ -192,7 +193,7 @@ class DataBox:
     for (dirname, dirs, files) in os.walk(directory):
         for filename in files:
             if filename.endswith('problem.yml'):
-                code = yaml.load(open(dirname+"/"+filename,"r").read())
+                code = yaml.load(open(dirname+"/"+filename,"r").read(), Loader=Loader)
                 source = code["source"]["name"].strip()
                 
                 if source in sources.keys():

@@ -38,10 +38,10 @@ by tags, type, star rating, and more.
 
 For more details, see the DataBox [documentation](/docs/DataBoxDocs.md).
 
-We also provide a sample [client script](/scripts/DataBoxClient.py). The output is a .txt file. To run this sample:
+We also provide a sample [client script](/scripts/DataBoxClient.py) that outputs the current data statististicso to `NFBugsStats.txt`. To run this script:
 
 - clone the repo: `git clone https://github.com/ualberta-smr/researchwiki-radu.git`
-- run `python3 scripts/DataBoxClient.py`
+- run `python3 DataBoxClient.py` from inside the `scripts` directory
 
 We have also experimented with using [GumTreeDiff](https://github.com/GumTreeDiff/gumtree) to detect API changes. You can find this code in the [GumCode](./GumCode/src/main/java) folder.   
          
